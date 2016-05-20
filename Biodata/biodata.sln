@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biodata", "biodata\biodata.csproj", "{B59680D8-3A11-44C3-989F-2C89E059E28C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFGenerator", "PDFGenerator\PDFGenerator.csproj", "{7DD72EA9-FAD3-4D23-97D5-B83CA470BBD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B59680D8-3A11-44C3-989F-2C89E059E28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B59680D8-3A11-44C3-989F-2C89E059E28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B59680D8-3A11-44C3-989F-2C89E059E28C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD72EA9-FAD3-4D23-97D5-B83CA470BBD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD72EA9-FAD3-4D23-97D5-B83CA470BBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD72EA9-FAD3-4D23-97D5-B83CA470BBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD72EA9-FAD3-4D23-97D5-B83CA470BBD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
