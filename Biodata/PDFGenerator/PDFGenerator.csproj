@@ -32,8 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\amazing-resume-template-2016-20.jpg" />
+    <Content Include="images\clean-resume.jpg" />
+    <Content Include="images\Flat-Style-Resume-Template-PSD-e1451163422336.jpg" />
+    <Content Include="images\Image Preview_Resume_V1.jpg" />
+    <Content Include="images\me.jpg" />
+    <Content Include="images\ms-word-resume-pack.jpg" />
+    <Content Include="images\New-Invoice-Template-Design.jpg" />
+    <Content Include="images\professional-resume.jpg" />
+    <Content Include="images\Resume Preview.jpg" />
+    <Content Include="images\resume-design-templates-Below-you-will-find-example-social-work-resums-and-tips-on-how-to-develop-both-Having-an-effective-resume-are-essential-fresh-premium.png" />
+    <Content Include="images\Resume-Templates-100a0.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
