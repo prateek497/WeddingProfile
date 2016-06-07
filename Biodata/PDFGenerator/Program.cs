@@ -13,7 +13,7 @@ namespace PDFGenerator
     {
         static void Main(string[] args)
         {
-          //  CreatePdf();
+            CreatePdf();
         }
 
         #region extra code
@@ -57,40 +57,77 @@ namespace PDFGenerator
         //}
         #endregion
 
-        //private static void CreatePdf()
-        //{
-        //    var fileCreationDatetime = DateTime.Now;
-        //    var fileName = string.Format("\\{0}.pdf", fileCreationDatetime.ToString(@"yyyyMMdd") + "_" + fileCreationDatetime.ToString(@"HHmmss"));
-        //    var path = System.Reflection.Assembly.GetExecutingAssembly().Location.Substring(0, 48);
-        //    var name = Path.GetDirectoryName(path);
-        //    var pdfPath = name + "biodata.pdf";//fileName;
-        //    using (var msReport = new FileStream(pdfPath, FileMode.Create))
-        //    {
-        //        //step 1
-        //        using (Document pdfDoc = new Document(PageSize.A4, 5f, 5f, 100f, 5f))
-        //        {
-        //            try
-        //            {
-        //                // step 2
-        //                PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, msReport);
-        //                pdfWriter.PageEvent = new TextEvents();
-        //                //open the stream 
-        //                pdfDoc.Open();
-        //                for (int i = 0; i < 1; i++)
-        //                {
-        //                    var para = new Paragraph("Hello world. Checking Header Footer", new Font(Font.FontFamily.HELVETICA, 22)) { Alignment = Element.ALIGN_CENTER };
-        //                    pdfDoc.Add(para);
-        //                    pdfDoc.NewPage();
-        //                }
-        //                pdfDoc.Close();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                //handle exception
-        //            }
-        //        }
-        //    }
-        //}
+        private static void CreatePdf()
+        {
+            var fileCreationDatetime = DateTime.Now;
+            var fileName = string.Format("\\{0}.pdf", fileCreationDatetime.ToString(@"yyyyMMdd") + "_" + fileCreationDatetime.ToString(@"HHmmss"));
+            var path = System.Reflection.Assembly.GetExecutingAssembly().Location.Substring(0, 48);
+            var name = Path.GetDirectoryName(path);
+            var pdfPath = name + "biodata.pdf";//fileName;
+            using (var msReport = new FileStream(pdfPath, FileMode.Create))
+            {
+                //step 1
+                using (Document pdfDoc = new Document(PageSize.A4, 5f, 5f, 150f, 5f))
+                {
+                    try
+                    {
+                        // step 2
+                        PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, msReport);
+                        pdfWriter.PageEvent = new Events();
+                        //open the stream 
+                        pdfDoc.Open();
+                        for (int i = 0; i < 1; i++)
+                        {
+                            
+                            var para = new Paragraph("Hello world. Checking Header Footer", new Font(Font.FontFamily.HELVETICA, 16)) { Alignment = Element.ALIGN_CENTER };
+                            pdfDoc.Add(para);
+                            pdfDoc.NewPage();
+                        }
+                        pdfDoc.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        //handle exception
+                    }
+                }
+            }
+        }
+
+        public class Events : PdfPageEventHelper
+        {
+            public override void OnEndPage(PdfWriter writer, Document document)
+            {
+                PdfPTable table = new PdfPTable(1);
+                table.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin; //this centers [table]
+                var table2 = new PdfPTable(2);
+
+                var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                var imgPath = Path.GetDirectoryName(path) + "\\me.jpg";
+
+                //logo
+                var imghead = Image.GetInstance(imgPath);
+                imghead.ScaleToFit(64f, 64f);
+
+                var cell2 = new PdfPCell(imghead) { Colspan = 2 };
+
+                table2.AddCell(cell2);
+
+                //title
+                //cell2 = new PdfPCell(new Phrase("\nTITLE", new Font(Font.NORMAL, 16, Font.BOLD | Font.UNDERLINE)))
+                //{
+                //    HorizontalAlignment = Element.ALIGN_CENTER,
+                //    Colspan = 2
+                //};
+                //table2.AddCell(cell2);
+
+                var cell = new PdfPCell(table2);
+                table.AddCell(cell);
+
+                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 36, writer.DirectContent);
+            }
+        }
+
+
 
         //public class TextEvents : PdfPageEventHelper
         //{
@@ -111,18 +148,8 @@ namespace PDFGenerator
 
         //    public override void OnStartPage(PdfWriter writer, Document document)
         //    {
-        //        var path = System.Reflection.Assembly.GetExecutingAssembly().Location.Substring(0, 49);
-        //        string imgPath = Path.GetDirectoryName(path) + "\\images\\me.jpg";
-
-        //        //Footer Image
-        //        //Image imgfoot = Image.GetInstance(imgPath);
-
-        //        //imgfoot.ScaleToFit(70f, 60f);
-        //        ////Give space before image
-        //        //imgfoot.SpacingBefore = 10f;
-        //        ////Give some space after the image
-        //        //imgfoot.SpacingAfter = 1f;
-        //        //imgfoot.Alignment = Element.ALIGN_LEFT;
+        //        var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+        //        string imgPath = Path.GetDirectoryName(path) + "\\me.jpg";
 
         //        //Header Image
         //        Image imghead = Image.GetInstance(imgPath);
@@ -134,43 +161,22 @@ namespace PDFGenerator
         //        imghead.SpacingAfter = 1f;
         //        imghead.Alignment = Element.ALIGN_LEFT;
 
-        //        //imgfoot.SetAbsolutePosition(0, 0);
         //        imghead.SetAbsolutePosition(50, 10);
 
         //        PdfContentByte cbhead = writer.DirectContent;
         //        PdfTemplate tp = cbhead.CreateTemplate(273, 95);
         //        tp.AddImage(imghead);
 
-        //        PdfContentByte cbfoot = writer.DirectContent;
-        //        PdfTemplate tpl = cbfoot.CreateTemplate(273, 95);
-        //        //tpl.AddImage(imgfoot);
-
         //        cbhead.AddTemplate(tp, 0, 842 - 95);
-        //        cbfoot.AddTemplate(tpl, 595 - 273, 0);
 
         //        bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.WINANSI, BaseFont.NOT_EMBEDDED);
         //        PdfContentByte cb = writer.DirectContent;
-        //        cbfoot.SaveState();
         //        document.SetMargins(35, 35, 100, 82);
 
-
         //        string text = "Developed by ";
-        //        float textBase = document.Bottom - 62;
         //        float textSize = 9;
-        //        cbfoot.BeginText();
-        //        cbfoot.SetFontAndSize(bf, 9);
-        //        cbfoot.SetTextMatrix(document.Left, textBase);
-        //        cbfoot.ShowText(text);
-        //        cbfoot.SetColorFill(BaseColor.BLUE);
-        //        cbfoot.ShowText("www.nishit.com");
-        //        cbfoot.EndText();
-        //        cbfoot.AddTemplate(_headerTemplate, document.Left + textSize, textBase);
         //        cb.RestoreState();
-                
-        //        //document.NewPage();
         //        base.OnStartPage(writer, document);
-
-
         //    }
 
         //    public override void OnOpenDocument(PdfWriter writer, Document document)
@@ -206,9 +212,9 @@ namespace PDFGenerator
         //        //Create PdfTable object
         //        PdfPTable pdfTab = new PdfPTable(3);
 
-        //        var path = System.Reflection.Assembly.GetExecutingAssembly().Location.Substring(0, 49);
+        //        var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
         //        string imgPath = Path.GetDirectoryName(path);
-        //        Image jpg = Image.GetInstance(imgPath + "\\images\\me.jpg");
+        //        Image jpg = Image.GetInstance(imgPath + "\\me.jpg");
         //        //Resize image depend upon your need
         //        jpg.ScaleToFit(70f, 60f);
         //        //Give space before image
