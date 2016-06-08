@@ -78,7 +78,7 @@ namespace PDFGenerator
                         pdfDoc.Open();
                         for (int i = 0; i < 1; i++)
                         {
-                            
+
                             var para = new Paragraph("Hello world. Checking Header Footer", new Font(Font.FontFamily.HELVETICA, 16)) { Alignment = Element.ALIGN_CENTER };
                             pdfDoc.Add(para);
                             pdfDoc.NewPage();
@@ -97,20 +97,38 @@ namespace PDFGenerator
         {
             public override void OnEndPage(PdfWriter writer, Document document)
             {
-                PdfPTable table = new PdfPTable(1);
-                table.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin; //this centers [table]
-                var table2 = new PdfPTable(2);
+                var table = new PdfPTable(2)
+                {
+                    TotalWidth = document.PageSize.Width - (document.LeftMargin + document.RightMargin + 20)
+                };
 
-                var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                var imgPath = Path.GetDirectoryName(path) + "\\me.jpg";
+                table.AddCell(new Paragraph("first col"));
+                table.AddCell(new Paragraph("second col"));
 
-                //logo
-                var imghead = Image.GetInstance(imgPath);
-                imghead.ScaleToFit(64f, 64f);
+                table.AddCell(new Paragraph("third col"));
+                table.AddCell(new Paragraph("fourth col"));
 
-                var cell2 = new PdfPCell(imghead) { Colspan = 2 };
+                //this centers [table]
+                //var table2 = new PdfPTable(2);
 
-                table2.AddCell(cell2);
+                //var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                //var imgPath = Path.GetDirectoryName(path) + "\\me.jpg";
+
+                ////logo
+                //var imghead = Image.GetInstance(imgPath);
+                //imghead.ScaleToFit(64f, 64f);
+                //imghead.IndentationLeft = 100f;
+                //imghead.SetAbsolutePosition(50, 50);
+                //imghead.SpacingAfter = 9f;
+                //imghead.BorderWidthTop = 36f;
+
+                //imghead.Alignment = Element.ALIGN_CENTER;
+
+                //document.Add(imghead);
+
+                //var cell2 = new PdfPCell(imghead) { Colspan = 2 };
+
+                //table2.AddCell(cell2);
 
                 //title
                 //cell2 = new PdfPCell(new Phrase("\nTITLE", new Font(Font.NORMAL, 16, Font.BOLD | Font.UNDERLINE)))
@@ -120,10 +138,11 @@ namespace PDFGenerator
                 //};
                 //table2.AddCell(cell2);
 
-                var cell = new PdfPCell(table2);
-                table.AddCell(cell);
+                //var cell = new PdfPCell(table2);
 
-                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 36, writer.DirectContent);
+                //table.AddCell(cell2);
+
+                table.WriteSelectedRows(0, -1, document.LeftMargin + 10, document.PageSize.Height - 36, writer.DirectContent);
             }
         }
 
