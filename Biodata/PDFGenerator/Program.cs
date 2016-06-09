@@ -67,7 +67,7 @@ namespace PDFGenerator
             using (var msReport = new FileStream(pdfPath, FileMode.Create))
             {
                 //step 1
-                using (Document pdfDoc = new Document(PageSize.A4, 5f, 5f, 150f, 5f))
+                using (Document pdfDoc = new Document(PageSize.A4, 0f, 0f, 150f, 0f))
                 {
                     try
                     {
@@ -97,16 +97,65 @@ namespace PDFGenerator
         {
             public override void OnEndPage(PdfWriter writer, Document document)
             {
-                var table = new PdfPTable(2)
+                var table = new PdfPTable(3)
                 {
-                    TotalWidth = document.PageSize.Width - (document.LeftMargin + document.RightMargin + 20)
+                    TotalWidth = document.PageSize.Width,
+                    HorizontalAlignment = 0,
+                    LockedWidth = true,
                 };
 
-                table.AddCell(new Paragraph("first col"));
-                table.AddCell(new Paragraph("second col"));
+                //table.DefaultCell.Border = Rectangle.NO_BORDER;
+                //table.TotalWidth = 500f;
 
-                table.AddCell(new Paragraph("third col"));
-                table.AddCell(new Paragraph("fourth col"));
+                var widths = new[] { 50f, 150f, 50f};
+
+                table.SetWidths(widths);
+
+                //table.DefaultCell.FixedHeight = 75f;
+                var color = new BaseColor(247, 247, 247);
+
+                var cell1 = new PdfPCell { BackgroundColor = color };
+                var cell2 = new PdfPCell { BackgroundColor = color };
+                var cell3 = new PdfPCell { BackgroundColor = color };
+                var cell4 = new PdfPCell { BackgroundColor = color };
+                var cell5 = new PdfPCell { BackgroundColor = color };
+                var cell6 = new PdfPCell { BackgroundColor = color };
+
+                cell1.FixedHeight = 75f;
+                cell2.FixedHeight = 75f;
+                cell3.FixedHeight = 75f;
+                cell4.FixedHeight = 75f;
+                cell5.FixedHeight = 75f;
+                cell6.FixedHeight = 75f;
+
+                
+
+
+                //cell1.BorderWidth = Rectangle.NO_BORDER;
+                //cell2.BorderWidth = Rectangle.NO_BORDER;
+                //cell3.BorderWidth = Rectangle.NO_BORDER;
+                //cell4.BorderWidth = Rectangle.NO_BORDER;
+
+                cell1.AddElement(new Paragraph("first col"));
+                cell2.AddElement(new Paragraph("second col"));
+                cell3.AddElement(new Paragraph("thrid col"));
+                cell4.AddElement(new Paragraph("fourth col"));
+                cell5.AddElement(new Paragraph("fifth col"));
+                cell6.AddElement(new Paragraph("sixth col"));
+                
+                //- (document.LeftMargin + document.RightMargin)
+                //table.AddCell(new Paragraph("first col"));
+                //table.AddCell(new Paragraph("second col"));
+                //table.AddCell(new Paragraph("third col"));
+
+                table.AddCell(cell1);
+                table.AddCell(cell2);
+                table.AddCell(cell3);
+                table.AddCell(cell4);
+                table.AddCell(cell5);
+                table.AddCell(cell6);
+
+                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 5, writer.DirectContent);
 
                 //this centers [table]
                 //var table2 = new PdfPTable(2);
@@ -141,12 +190,8 @@ namespace PDFGenerator
                 //var cell = new PdfPCell(table2);
 
                 //table.AddCell(cell2);
-
-                table.WriteSelectedRows(0, -1, document.LeftMargin + 10, document.PageSize.Height - 36, writer.DirectContent);
             }
         }
-
-
 
         //public class TextEvents : PdfPageEventHelper
         //{
