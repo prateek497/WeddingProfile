@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Font = iTextSharp.text.Font;
+using Image = iTextSharp.text.Image;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace PDFGenerator
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             CreatePdf();
         }
@@ -67,7 +71,7 @@ namespace PDFGenerator
             using (var msReport = new FileStream(pdfPath, FileMode.Create))
             {
                 //step 1
-                using (Document pdfDoc = new Document(PageSize.A4, 0f, 0f, 150f, 0f))
+                using (Document pdfDoc = new Document(PageSize.A4, 0f, 0f, 160f, 0f))
                 {
                     try
                     {
@@ -97,65 +101,76 @@ namespace PDFGenerator
         {
             public override void OnEndPage(PdfWriter writer, Document document)
             {
+                var topTable = new PdfPTable(1)
+                {
+                    TotalWidth = document.PageSize.Width,
+                    HorizontalAlignment = 0,
+                    LockedWidth = true
+                };
+
+                var topTableCell = new PdfPCell
+                {
+                    BackgroundColor = new BaseColor(250, 178, 31),
+                    FixedHeight = 10f,
+                    BorderWidth = Rectangle.NO_BORDER
+                };
+
+                topTable.AddCell(topTableCell);
+
+                topTable.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height, writer.DirectContent);
+
                 var table = new PdfPTable(3)
                 {
                     TotalWidth = document.PageSize.Width,
                     HorizontalAlignment = 0,
-                    LockedWidth = true,
+                    LockedWidth = true
                 };
 
-                //table.DefaultCell.Border = Rectangle.NO_BORDER;
-                //table.TotalWidth = 500f;
-
-                var widths = new[] { 50f, 150f, 50f};
-
+                var widths = new[] { 60f, 150f, 80f };
                 table.SetWidths(widths);
 
-                //table.DefaultCell.FixedHeight = 75f;
-                var color = new BaseColor(247, 247, 247);
+                var color = new BaseColor(240, 240, 240);
 
                 var cell1 = new PdfPCell { BackgroundColor = color };
                 var cell2 = new PdfPCell { BackgroundColor = color };
                 var cell3 = new PdfPCell { BackgroundColor = color };
-                var cell4 = new PdfPCell { BackgroundColor = color };
-                var cell5 = new PdfPCell { BackgroundColor = color };
-                var cell6 = new PdfPCell { BackgroundColor = color };
 
-                cell1.FixedHeight = 75f;
-                cell2.FixedHeight = 75f;
-                cell3.FixedHeight = 75f;
-                cell4.FixedHeight = 75f;
-                cell5.FixedHeight = 75f;
-                cell6.FixedHeight = 75f;
+                cell1.FixedHeight = 150f;
+                cell2.FixedHeight = 150f;
+                cell3.FixedHeight = 150f;
 
-                
+                //cell1.Border = Rectangle.BOTTOM_BORDER;
+                //cell2.Border = Rectangle.BOTTOM_BORDER;
+                //cell3.Border = Rectangle.BOTTOM_BORDER;
 
-
-                //cell1.BorderWidth = Rectangle.NO_BORDER;
-                //cell2.BorderWidth = Rectangle.NO_BORDER;
-                //cell3.BorderWidth = Rectangle.NO_BORDER;
+                cell1.BorderColor = new BaseColor(200, 200, 200);
+                cell2.BorderColor = new BaseColor(200, 200, 200);
+                cell3.BorderColor = new BaseColor(200, 200, 200);
                 //cell4.BorderWidth = Rectangle.NO_BORDER;
 
-                cell1.AddElement(new Paragraph("first col"));
+                var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                var imgPath = Path.GetDirectoryName(path) + "\\me.jpg";
+
+                var imghead = Image.GetInstance(imgPath);
+                imghead.ScaleToFit(82f, 82f);
+                imghead.Border = Rectangle.BOX;
+                imghead.BorderColor = new BaseColor(250, 172, 92);
+                imghead.BorderWidth = 2f;
+
+                //imghead.BorderColor = new BaseColor(250, 172, 92);
+                //imghead.BorderWidth = 2f;
+                imghead.Alignment = Element.ALIGN_RIGHT;
+
+                cell1.PaddingTop = 30f;
+                cell1.AddElement(imghead);
                 cell2.AddElement(new Paragraph("second col"));
                 cell3.AddElement(new Paragraph("thrid col"));
-                cell4.AddElement(new Paragraph("fourth col"));
-                cell5.AddElement(new Paragraph("fifth col"));
-                cell6.AddElement(new Paragraph("sixth col"));
-                
-                //- (document.LeftMargin + document.RightMargin)
-                //table.AddCell(new Paragraph("first col"));
-                //table.AddCell(new Paragraph("second col"));
-                //table.AddCell(new Paragraph("third col"));
 
                 table.AddCell(cell1);
                 table.AddCell(cell2);
                 table.AddCell(cell3);
-                table.AddCell(cell4);
-                table.AddCell(cell5);
-                table.AddCell(cell6);
 
-                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 5, writer.DirectContent);
+                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 10, writer.DirectContent);
 
                 //this centers [table]
                 //var table2 = new PdfPTable(2);
