@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Org.BouncyCastle.Asn1.Crmf;
 using Font = iTextSharp.text.Font;
 using Image = iTextSharp.text.Image;
 using Rectangle = iTextSharp.text.Rectangle;
@@ -157,14 +159,28 @@ namespace PDFGenerator
                 imghead.BorderColor = new BaseColor(250, 172, 92);
                 imghead.BorderWidth = 2f;
 
-                //imghead.BorderColor = new BaseColor(250, 172, 92);
-                //imghead.BorderWidth = 2f;
                 imghead.Alignment = Element.ALIGN_RIGHT;
 
+                var verdanaBold = FontFactory.GetFont("Verdana", 26f, Font.NORMAL, new BaseColor(111, 113, 116));
+
+                var education = FontFactory.GetFont("Verdana", 18f, Font.NORMAL, new BaseColor(140, 140, 140));
+
+                var name = new Chunk("Applicant Name", verdanaBold);
+
+                var educationName = new Chunk("\n" + "Education details", education);
+
+                var ph = new Phrase(25) { name, educationName };
+
                 cell1.PaddingTop = 30f;
+                cell2.PaddingLeft = 20f;
+                cell2.PaddingTop = 50f;
+
+                PdfPTable contactinfo = new PdfPTable(1);
+                contactinfo.AddCell(new Paragraph("cvakdbcvdjbvj"));
+
                 cell1.AddElement(imghead);
-                cell2.AddElement(new Paragraph("second col"));
-                cell3.AddElement(new Paragraph("thrid col"));
+                cell2.AddElement(ph);
+                cell3.AddElement(contactinfo);
 
                 table.AddCell(cell1);
                 table.AddCell(cell2);
