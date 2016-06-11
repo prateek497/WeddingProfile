@@ -176,7 +176,7 @@ namespace PDFGenerator
                 cell2.PaddingTop = 50f;
 
                 PdfPTable contactinfo = new PdfPTable(1);
-                contactinfo.AddCell(new Paragraph("cvakdbcvdjbvj"));
+                contactinfo.AddCell(new Paragraph("contact info"));
 
                 cell1.AddElement(imghead);
                 cell2.AddElement(ph);
