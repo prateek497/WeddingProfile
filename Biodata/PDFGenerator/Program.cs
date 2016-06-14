@@ -154,20 +154,33 @@ namespace PDFGenerator
                 var imgPath = Path.GetDirectoryName(path) + "\\me.jpg";
 
                 var imghead = Image.GetInstance(imgPath);
-                imghead.ScaleToFit(82f, 82f);
-                imghead.Border = Rectangle.BOX;
-                imghead.BorderColor = new BaseColor(250, 172, 92);
-                imghead.BorderWidth = 2f;
+               // imghead.ScaleToFit(82f, 82f);
+               // imghead.Border = Rectangle.BOX;
+               // imghead.BorderColor = new BaseColor(220, 220, 220);
+               // imghead.BorderWidth = 2f;
 
-                imghead.Alignment = Element.ALIGN_RIGHT;
+               //imghead.UseVariableBorders = true;
+
+                //imghead.Alignment = Element.ALIGN_RIGHT;
+
+                //todo working on round shape of image
+
+                float w = imghead.ScaledWidth;
+                float h = imghead.ScaledHeight;
+                PdfTemplate t = writer.DirectContent.CreateTemplate(w, h);
+                t.Ellipse(0, 0, w, h);
+                t.Clip();
+                t.NewPath();
+                t.AddImage(imghead, w, 0, 0, h, 0, -600);
+                Image clipped = Image.GetInstance(t);
 
                 var verdanaBold = FontFactory.GetFont("Verdana", 26f, Font.NORMAL, new BaseColor(111, 113, 116));
 
                 var education = FontFactory.GetFont("Verdana", 18f, Font.NORMAL, new BaseColor(140, 140, 140));
 
-                var name = new Chunk("Applicant Name", verdanaBold);
+                var name = new Chunk("Prateek Gangwar", verdanaBold);
 
-                var educationName = new Chunk("\n" + "Education details", education);
+                var educationName = new Chunk("\n" + "Bachelor Of Engineering", education);
 
                 var ph = new Phrase(25) { name, educationName };
 
@@ -175,10 +188,27 @@ namespace PDFGenerator
                 cell2.PaddingLeft = 20f;
                 cell2.PaddingTop = 50f;
 
-                PdfPTable contactinfo = new PdfPTable(1);
-                contactinfo.AddCell(new Paragraph("contact info"));
+                cell3.PaddingTop = 40f;
 
-                cell1.AddElement(imghead);
+                var contactinfo = new PdfPTable(1)
+                {
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    WidthPercentage = 100f
+                };
+
+                PdfPCell socialCell = new PdfPCell(new Paragraph("Social media link" + "\n\n"));
+                PdfPCell emailCell = new PdfPCell(new Paragraph("\n" + "prateek497@gmail.com"));
+                PdfPCell phCell = new PdfPCell(new Paragraph("+91-9164865382"));
+
+                socialCell.BorderWidth = Rectangle.NO_BORDER;
+                emailCell.BorderWidth = Rectangle.NO_BORDER;
+                phCell.BorderWidth = Rectangle.NO_BORDER;
+
+                contactinfo.AddCell(socialCell);
+                contactinfo.AddCell(emailCell);
+                contactinfo.AddCell(phCell);
+
+                cell1.AddElement(clipped);
                 cell2.AddElement(ph);
                 cell3.AddElement(contactinfo);
 
