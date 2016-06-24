@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 using Org.BouncyCastle.Asn1.Crmf;
 using Font = iTextSharp.text.Font;
 using Image = iTextSharp.text.Image;
@@ -84,9 +85,23 @@ namespace PDFGenerator
                         pdfDoc.Open();
                         for (int i = 0; i < 1; i++)
                         {
+                            //Chunk linebreak = new Chunk(new LineSeparator(2f, 100f, new BaseColor(250, 178, 31), Element.ALIGN_CENTER, -1));
 
-                            var para = new Paragraph("Hello world. Checking Header Footer", new Font(Font.FontFamily.HELVETICA, 16)) { Alignment = Element.ALIGN_CENTER };
-                            pdfDoc.Add(para);
+                            //pdfDoc.Add(linebreak);
+
+                            PdfPTable personaltable = new PdfPTable(1) { TotalWidth = pdfDoc.PageSize.Width, HorizontalAlignment = 0, LockedWidth = true };
+
+                            PdfPCell personaltableheader = new PdfPCell { BackgroundColor = new BaseColor(240, 240, 240) };
+
+                            personaltableheader.AddElement(new Phrase("Personal Information"));
+
+                            personaltable.AddCell(personaltableheader);
+
+                            pdfDoc.Add(personaltable);
+
+                            //var para = new Paragraph("Hello world. Checking Header Footer", new Font(Font.FontFamily.HELVETICA, 16)) { Alignment = Element.ALIGN_CENTER };
+                            //pdfDoc.Add(para);
+
                             pdfDoc.NewPage();
                         }
                         pdfDoc.Close();
@@ -113,13 +128,31 @@ namespace PDFGenerator
                 var topTableCell = new PdfPCell
                 {
                     BackgroundColor = new BaseColor(250, 178, 31),
-                    FixedHeight = 10f,
+                    FixedHeight = 5f,
                     BorderWidth = Rectangle.NO_BORDER
                 };
 
                 topTable.AddCell(topTableCell);
 
                 topTable.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height, writer.DirectContent);
+
+                var bottomTable = new PdfPTable(1)
+                {
+                    TotalWidth = document.PageSize.Width,
+                    HorizontalAlignment = 0,
+                    LockedWidth = true
+                };
+
+                var bottomTableCell = new PdfPCell
+                {
+                    BackgroundColor = new BaseColor(250, 178, 31),
+                    FixedHeight = 2f,
+                    BorderWidth = Rectangle.NO_BORDER
+                };
+
+                bottomTable.AddCell(bottomTableCell);
+
+                bottomTable.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 155, writer.DirectContent);
 
                 var table = new PdfPTable(3)
                 {
@@ -174,9 +207,9 @@ namespace PDFGenerator
                 //                t.AddImage(imghead, w, 0, 0, h, 0, -600);
                 //                Image clipped = Image.GetInstance(t);
 
-                var verdanaBold = FontFactory.GetFont("Verdana", 26f, Font.NORMAL, new BaseColor(111, 113, 116));
+                var verdanaBold = FontFactory.GetFont("Verdana", 18f, Font.NORMAL, new BaseColor(111, 113, 116));
 
-                var education = FontFactory.GetFont("Verdana", 16f, Font.NORMAL, new BaseColor(140, 140, 140));
+                var education = FontFactory.GetFont("Verdana", 12f, Font.NORMAL, new BaseColor(140, 140, 140));
 
                 var name = new Chunk("Prateek Gangwar", verdanaBold);
 
@@ -216,7 +249,7 @@ namespace PDFGenerator
                 table.AddCell(cell2);
                 table.AddCell(cell3);
 
-                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 10, writer.DirectContent);
+                table.WriteSelectedRows(0, -1, document.LeftMargin, document.PageSize.Height - 5, writer.DirectContent);
 
                 //this centers [table]
                 //var table2 = new PdfPTable(2);
