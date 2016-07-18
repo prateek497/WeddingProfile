@@ -95,7 +95,17 @@ namespace PDFGenerator
 
                             personaltableheader.AddElement(new Phrase("Personal Information"));
 
+                            //Chunk linebreak = new Chunk(new LineSeparator(2f, 100f, new BaseColor(250, 178, 31), Element.ALIGN_CENTER, -1));
+
+                            //PdfPCell personaltableborder = new PdfPCell();
+                            
+                            //personaltableborder.AddElement(linebreak);
+
+
                             personaltable.AddCell(personaltableheader);
+
+                            
+
 
                             pdfDoc.Add(personaltable);
 
