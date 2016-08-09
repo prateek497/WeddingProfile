@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Select.HtmlToPdf</id>
+    <version>2.3.0.0</version>
+    <title>Select.Pdf Html To Pdf Converter for .NET - Community Edition (FREE)</title>
+    <authors>SelectPdf</authors>
+    <owners>SelectPdf</owners>
+    <projectUrl>http://selectpdf.com/community-edition/</projectUrl>
+    <iconUrl>http://selectpdf.com/icon144x144.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Select.Pdf Html To Pdf Converter for .NET - Community Edition is the free version of the powerful html to pdf converter available in Select.Pdf Library for .NET.
+
+The converter offers a lot of powerful options (convert any web page to pdf, convert any html string to pdf, html5/css3/javascript support, headers and footers support, etc) and the only limitation is that it can generate pdf documents up to 5 pages long.</description>
+    <summary>Select.Pdf Free Html To Pdf for .NET - Community Edition is a powerful, free library that can convert from html to pdf in .NET.</summary>
+    <language>en-US</language>
+    <tags>pdf converter html2pdf htmltopdf html library html-to-pdf pdf-converter html-to-pdf-converter sdk html-to-pdf-net pdf-library pdf-sdk html-to-pdf-converter-net free-html-to-pdf free-pdf-library free-html-to-pdf-converter free-html-to-pdf-net</tags>
+  </metadata>
+</package>
