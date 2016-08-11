@@ -13,9 +13,10 @@ namespace biodata.Controllers
             return View();
         }
 
-        public ActionResult GenaratePdf(string html)
+        [HttpPost]
+        public ActionResult GenaratePdf(string htmlcontent)
         {
-            var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(html);
+            var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(htmlcontent);
 
             return null;
         }
