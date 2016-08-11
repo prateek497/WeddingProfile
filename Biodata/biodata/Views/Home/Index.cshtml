@@ -2,4 +2,49 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@section scripts
+{
+    <script type="text/javascript">
+        var htmlcontent = $("#mainDiv").html();
+
+    </script>
+}
+
+
+<div class="container-fluid" id="mainDiv">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Index</h2>
+            <table class="table table-hover table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <td><label style="font-size: 14px;"></label></td>
+                        <td><label style="font-size: 14px;">Before</label></td>
+                        <td><label style="font-size: 14px;">After</label></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>NeckCircumferenceGreaterThen</b></td>
+                        <td class="warning" style="border: 1px solid #dddddd;">
+                            <div>
+                                <mark style="background: #E0E0E0; color: #FA0F87">Yes</mark>
+                            </div>
+                        </td>
+                        <td class="warning" style="border: 1px solid #dddddd;"><mark style="background: #E0E0E0; color: #FA0F87">Unsure</mark></td>
+                    </tr>
+                    <tr>
+                        <td><b>HeartAttack</b></td>
+                        <td class="warning" style="border: 1px solid #dddddd;"><mark style="background: #E0E0E0; color: #FA0F87">Yes</mark></td>
+                        <td class="warning" style="border: 1px solid #dddddd;"><mark style="background: #E0E0E0; color: #FA0F87">False</mark></td>
+                    </tr>
+                    <tr>
+                        <td><b>AngioplastyOrStents</b></td>
+                        <td class="warning" style="border: 1px solid #dddddd;"><mark style="background: #E0E0E0; color: #FA0F87">No</mark></td>
+                        <td class="warning" style="border: 1px solid #dddddd;"><mark style="background: #E0E0E0; color: #FA0F87">Unsure</mark></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
