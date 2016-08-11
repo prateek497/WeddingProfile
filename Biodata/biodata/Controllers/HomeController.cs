@@ -16,7 +16,8 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult GenaratePdf(string htmlcontent)
         {
-            var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(htmlcontent);
+            //render partial view as string
+            //var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(htmlcontent);
 
             return null;
         }

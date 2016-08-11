@@ -5,20 +5,50 @@
 @section scripts
 {
     <script type="text/javascript">
-        $(function () {
-            $("#MyForm").on('submit', function (e) {
-                e.preventDefault(); // prevent the form's normal submission
-                var htmlcontent = $("#mainDiv")[0].outerHTML;
+        //$(function () {
+        //    $("#MyForm").on('submit', function (e) {
+        //        e.preventDefault(); // prevent the form's normal submission
+        //        var htmlcontent = $("#mainDiv")[0].outerHTML;
 
-                $.post("Home/GenaratePdf", htmlcontent)
-                            .done(function (response, status, jqxhr) {
-                                // this is the "success" callback
-                            })
-                            .fail(function (jqxhr, status, error) {
-                                // this is the ""error"" callback
-                            });
+        //        $.post("Home/GenaratePdf", htmlcontent)
+        //            .done(function (response, status, jqxhr) {
+        //                // this is the "success" callback
+        //            })
+        //            .fail(function (jqxhr, status, error) {
+        //                // this is the ""error"" callback
+        //            });
+        //    });
+        //});
+
+        function post() {
+
+            //var htmlcontent = $("#mainDiv")[0].outerHTML;
+
+            //$.post("Home/GenaratePdf", htmlcontent);
+
+
+            //        .done(function (response, status, jqxhr) {
+            //    alert("done");
+            //})
+            //        .fail(function (jqxhr, status, error) {
+            //            // this is the ""error"" callback
+            //        });
+
+            $.ajax({
+                url: '@Url.Action("GenaratePdf", "Home")',
+                data: { htmlcontent: $("#mainDiv")[0].outerHTML },
+                type: 'POST',
+                success: function (data) {
+                    alert(data);
+                }
             });
-        });
+
+        }
+
+        //$('#EditUserButton').attr('href', function () {
+        //    return this.href.replace('__userid__', $("#mainDiv")[0].outerHTML);
+        //});
+
     </script>
 }
 
@@ -62,5 +92,8 @@
         </div>
     </div>
 
-    <input type="submit" value="Submit" class="btn btn-default" />
-}
+    @*<input type="button" value="Submit" class="btn btn-default" onclick="post();" />*@
+
+    @Ajax.ActionLink("Fatch Data", "GenaratePdf", routeValues: new { htmlcontent = "d" }, ajaxOptions: new AjaxOptions { HttpMethod = "POST" }, htmlAttributes: new{@class = "btn",id = "EditUserButton"})
+
+} 
