@@ -1,4 +1,6 @@
-﻿@{
+﻿@model biodata.Controllers.ViewModel
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -49,6 +51,23 @@
         //    return this.href.replace('__userid__', $("#mainDiv")[0].outerHTML);
         //});
 
+        //function JqueryFromPost() {
+        //    var form = $('#MyForm');
+        //    var content = "sdfds";//form[0].outerHTML;
+        //    $.post("Home/GenaratePdf", content, function (data) {
+        //        alert(data);
+        //    });
+        //}
+
+
+        $('document').ready(function () {
+            $('#MyForm1').submit(function () {
+                var pageHTML = $("#mainDiv")[0].outerHTML.trim();//$('#mainDiv').html();
+                alert(pageHTML);
+                $('#ClientHTML').val(pageHTML);
+            });
+        });
+
     </script>
 }
 
@@ -94,6 +113,12 @@
 
     @*<input type="button" value="Submit" class="btn btn-default" onclick="post();" />*@
 
-    @Ajax.ActionLink("Fatch Data", "GenaratePdf", routeValues: new { htmlcontent = "d" }, ajaxOptions: new AjaxOptions { HttpMethod = "POST" }, htmlAttributes: new{@class = "btn",id = "EditUserButton"})
+    @*@Ajax.ActionLink("Fatch Data", "GenaratePdf", new { htmlcontent = "d" }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "btn", id = "EditUserButton" })*@
 
-} 
+}
+
+@using (Html.BeginForm("GenaratePdf", "Home", FormMethod.Post, new { id = "MyForm1" }))
+{
+    @Html.HiddenFor(x => x.ClientHTML)
+    <input type="submit" value="Submit" class="btn btn-default" />
+}

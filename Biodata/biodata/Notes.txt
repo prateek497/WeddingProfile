@@ -3,3 +3,9 @@
 https://code.msdn.microsoft.com/Convert-from-HTML-to-PDF-09ce2a1d#content
 
 http://www.nrecosite.com/pdf_generator_net.aspx
+
+
+
+http://stackoverflow.com/questions/754607/can-jquery-get-all-css-styles-associated-with-an-element
+
+http://stackoverflow.com/questions/17900440/how-to-retrieve-html-code-from-current-page-in-post-method
