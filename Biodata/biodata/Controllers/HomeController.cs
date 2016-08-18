@@ -21,8 +21,16 @@ namespace biodata.Controllers
         {
 
             //render partial view as string
-           // var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(ClientHTML);
-           // System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
+            //StringBuilder str = new StringBuilder();
+            //str.Append("<html><head>" + ClientHTML + "</html>");
+            //var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(ClientHTML);
+            //System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
+            
+            //var htmlToPdf = new NReco.PdfGenerator.HtmlToPdfConverter();
+
+            //htmlToPdf.GeneratePdfFromFile("http://datecalculator.in/", null, @"E:\Practice\biodata\Biodata\testpdf.pdf");
+
+
             return Content(ClientHTML);
         }
 

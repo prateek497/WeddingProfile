@@ -62,8 +62,8 @@
 
         $('document').ready(function () {
             $('#MyForm1').submit(function () {
-                var pageHTML = $("#mainDiv")[0].outerHTML.trim();//$('#mainDiv').html();
-                alert(pageHTML);
+                var pageHTML = document.documentElement.outerHTML;  //$("#mainDiv")[0].outerHTML.trim();//$('#mainDiv').html();
+                //alert(pageHTML);
                 $('#ClientHTML').val(pageHTML);
             });
         });
