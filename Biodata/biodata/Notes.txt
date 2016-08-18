@@ -9,3 +9,11 @@ http://www.nrecosite.com/pdf_generator_net.aspx
 http://stackoverflow.com/questions/754607/can-jquery-get-all-css-styles-associated-with-an-element
 
 http://stackoverflow.com/questions/17900440/how-to-retrieve-html-code-from-current-page-in-post-method
+
+http://stackoverflow.com/questions/28465855/how-do-i-set-margins-with-nreco-pdfgenerator
+
+
+
+Documentation--
+
+http://www.nrecosite.com/doc/NReco.PdfGenerator/
