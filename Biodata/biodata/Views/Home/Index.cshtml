@@ -60,13 +60,22 @@
         //}
 
 
+        //$('document').ready(function () {
+        //    $('#MyForm1').submit(function () {
+        //        var pageHTML = document.documentElement.outerHTML;  //$("#mainDiv")[0].outerHTML.trim();//$('#mainDiv').html();
+        //        //alert(pageHTML);
+        //        $('#ClientHTML').val(pageHTML);
+        //    });
+        //});
+
         $('document').ready(function () {
-            $('#MyForm1').submit(function () {
-                var pageHTML = document.documentElement.outerHTML;  //$("#mainDiv")[0].outerHTML.trim();//$('#mainDiv').html();
-                //alert(pageHTML);
-                $('#ClientHTML').val(pageHTML);
+            $('#gethtml').click(function () {
+                $.get("/Home/_Basic", function (data) {
+                    $('#ClientHTML').val(data);
+                });
             });
         });
+
 
     </script>
 }
@@ -121,4 +130,8 @@
 {
     @Html.HiddenFor(x => x.ClientHTML)
     <input type="submit" value="Submit" class="btn btn-default" />
+
+    @*@Html.ActionLink("Partial form", "_Basic", null, new { @class = "btn btn-primary" })*@
+
+    <a id="gethtml" class="btn bg-primary">Partial form</a>
 }

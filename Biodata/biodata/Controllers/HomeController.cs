@@ -34,11 +34,16 @@ namespace biodata.Controllers
             };
             //htmlToPdf.GeneratePdfFromFile("http://datecalculator.in/", null, @"D:\testpdf.pdf");
 
-            var pdfBytes = new HtmlToPdfConverter();
-
-            //pdfBytes.
+            var pdfBytes = new HtmlToPdfConverter().GeneratePdf(ClientHTML);
+            System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
 
             return Content(ClientHTML);
+        }
+
+
+        public PartialViewResult _Basic()
+        {
+            return PartialView(new ViewModel { ClientHTML = new StringBuilder() });
         }
 
     }
