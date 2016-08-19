@@ -10,4 +10,14 @@ http://stackoverflow.com/questions/754607/can-jquery-get-all-css-styles-associat
 
 http://stackoverflow.com/questions/17900440/how-to-retrieve-html-code-from-current-page-in-post-method
 
+<<<<<<< HEAD
 http://stackoverflow.com/questions/34947804/set-page-size-in-units-with-nreco-wkhtmltopdf
+=======
+http://stackoverflow.com/questions/28465855/how-do-i-set-margins-with-nreco-pdfgenerator
+
+
+
+Documentation--
+
+http://www.nrecosite.com/doc/NReco.PdfGenerator/
+>>>>>>> b6b6f85a96abd91c8ea45b779660c8aa521fceed
