@@ -20,22 +20,17 @@ namespace biodata.Controllers
         [ValidateInput(false)]
         public ActionResult GenaratePdf(string ClientHTML, ViewModel model)
         {
+            var pdfBytes = (new HtmlToPdfConverter { Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 } }).GeneratePdf(ClientHTML);
+            System.IO.File.WriteAllBytes(@"D:\testpdf.pdf", pdfBytes);
 
-            //render partial view as string
-            //StringBuilder str = new StringBuilder();
-            //str.Append("<html><head>" + ClientHTML + "</html>");
-            //var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(ClientHTML);
-            //System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
+            //E:\Practice\biodata\Biodata\testpdf.pdf
 
-            var htmlToPdf = new HtmlToPdfConverter
-            {
-                Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 },
-                Size = PageSize.A4
-            };
+            //var htmlToPdf = new HtmlToPdfConverter
+            //{
+            //    Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 },
+            //    Size = PageSize.A4
+            //};
             //htmlToPdf.GeneratePdfFromFile("http://datecalculator.in/", null, @"D:\testpdf.pdf");
-
-            var pdfBytes = new HtmlToPdfConverter().GeneratePdf(ClientHTML);
-            System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
 
             return Content(ClientHTML);
         }
