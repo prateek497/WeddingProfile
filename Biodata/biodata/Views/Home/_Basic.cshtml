@@ -9,13 +9,6 @@
         <script src="~/Scripts/bootstrap.min.js"></script>*@
 
     <style type="text/css">
-
-        /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-        /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
         html {
             font-family: sans-serif;
             -webkit-text-size-adjust: 100%;
@@ -8201,47 +8194,99 @@
                 display: none !important;
             }
         }
-        /*# sourceMappingURL=bootstrap.css.map */
-
-
-
-
     </style>
 
+    <style type="text/css">
+        /* centered columns styles */
+        .row-centered {
+            text-align: center;
+        }
+
+        .col-centered {
+            display: inline-block;
+            float: none;
+            /* reset the text-align */
+            text-align: left;
+            /* inline-block space fix */
+            margin-right: -4px;
+        }
+    </style>
 
 </head>
 <body>
+    @*595 Pixels(width)  *	842 Pixels(hieght)*@
     <div class="container">
         <div class="row">
-            <div class="col-md-12" style="border: 1px solid black">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <div class="col-md-12" style="border: 1px solid lightgrey">
+                <div class="row">
+                    @* Header *@
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12" style="height: 10px; background-color: #FAAA1F"></div>
+                            <div class="col-md-12" style="height: 200px; background-color: #F0F0F0">
+                                <div class="row">
+                                    <table style="width: 100%; height: 100%">
+                                        <tr>
+                                            <td style="width: 250px; border:1px solid gray">
+                                                <h2>Profile pics</h2>
+                                            </td>
+                                            <td style="border: 1px solid gray">
+                                                <h2>Prateek Gangwar</h2>
+                                            </td>
+
+                                            <td style="width: 250px; border: 1px solid gray">
+                                                <h2>Contact Details</h2>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="height: 2px; background-color: #FAAA1F"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Remember me
-                                </label>
+                    @* Body *@
+                    <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12" style="height: 1150px; background-color: #F0F0F0">
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                    <div class="col-md-12" style="height: 100px; background-color: #F0F0F0">
+                                        <div class="col-md-12" style="height: 1px; background-color: #FAAA1F"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" onclick="getHtml();">Sign in</button>
+                    @* Footer *@
+                    <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12" style="height: 35px; background-color: #FAAA1F"></div>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
