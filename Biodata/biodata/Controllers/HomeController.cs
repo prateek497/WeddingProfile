@@ -21,9 +21,9 @@ namespace biodata.Controllers
         public ActionResult GenaratePdf(string ClientHTML, ViewModel model)
         {
             var pdfBytes = (new HtmlToPdfConverter { Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 } }).GeneratePdf(ClientHTML);
-            System.IO.File.WriteAllBytes(@"D:\testpdf.pdf", pdfBytes);
+            System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
 
-            //E:\Practice\biodata\Biodata\testpdf.pdf
+            //E:\Practice\biodata\Biodata\testpdf.pdf  D:\testpdf.pdf
 
             //var htmlToPdf = new HtmlToPdfConverter
             //{

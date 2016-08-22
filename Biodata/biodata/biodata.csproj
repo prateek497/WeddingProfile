@@ -192,6 +192,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\amazing-resume-template-2016-20.jpg" />
+    <Content Include="images\clean-resume.jpg" />
+    <Content Include="images\Flat-Style-Resume-Template-PSD-e1451163422336.jpg" />
+    <Content Include="images\Image Preview_Resume_V1.jpg" />
+    <Content Include="images\me.jpg" />
+    <Content Include="images\ms-word-resume-pack.jpg" />
+    <Content Include="images\New-Invoice-Template-Design.jpg" />
+    <Content Include="images\professional-resume.jpg" />
+    <Content Include="images\Resume Preview.jpg" />
+    <Content Include="images\resume-design-templates-Below-you-will-find-example-social-work-resums-and-tips-on-how-to-develop-both-Having-an-effective-resume-are-essential-fresh-premium.png" />
+    <Content Include="images\Resume-Templates-100a0.jpg" />
     <Content Include="Notes.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
