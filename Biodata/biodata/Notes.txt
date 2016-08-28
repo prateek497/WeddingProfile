@@ -22,3 +22,7 @@ http://www.nrecosite.com/doc/NReco.PdfGenerator/
 
 Free lib-
 HtmlRenderer.PdfSharp
+
+Future enchasement-
+1- think about fixed width, to support mobile and small screen
+2- add Quora social icon

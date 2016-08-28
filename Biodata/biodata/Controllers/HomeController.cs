@@ -23,7 +23,7 @@ namespace biodata.Controllers
             //var rawHtml = Server.HtmlDecode(ClientHTML);
 
             var pdfBytes = (new HtmlToPdfConverter { Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 } }).GeneratePdf(ClientHTML);
-            System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
+            //System.IO.File.WriteAllBytes(@"E:\Practice\biodata\Biodata\testpdf.pdf", pdfBytes);
 
             //E:\Practice\biodata\Biodata\testpdf.pdf  D:\testpdf.pdf
 
@@ -51,8 +51,8 @@ namespace biodata.Controllers
                 Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 },
                 Size = PageSize.A4
             };
-            htmlToPdf.GeneratePdfFromFile("http://localhost:49183/Home/_Basic", null, @"E:\Practice\biodata\Biodata\testpdf.pdf");
-            return null;
+            htmlToPdf.GeneratePdfFromFile("http://localhost:49183/Home/_Basic", null, @"D:\testpdf.pdf");
+            return RedirectToAction("_Basic");
         }
 
     }
