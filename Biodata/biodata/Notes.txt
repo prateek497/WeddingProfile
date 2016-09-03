@@ -1,15 +1,28 @@
-﻿http://selectpdf.com/community-edition/
+﻿Source-
+http://selectpdf.com/community-edition/
 
 https://code.msdn.microsoft.com/Convert-from-HTML-to-PDF-09ce2a1d#content
 
 http://www.nrecosite.com/pdf_generator_net.aspx
-
 
 Documentation--
 http://www.nrecosite.com/doc/NReco.PdfGenerator/
 
 Free lib-
 HtmlRenderer.PdfSharp
+
+Technologies to be consider-
+1-ASP.NET MVC
+2-Angular JS
+3-Bootstrap
+4-WebAPI(Think about this)
+5-MongoDB(research about this)
+6-MySQL Database
+
+
+
+
+
 
 Future enchasement-
 1- think about fixed width, to support mobile and small screen

@@ -19,7 +19,7 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult _Basic(string model)
         {
-            PDFGenerator.PdfGenerator.Generate("http://localhost:49183/Home/_Basic", "D:\testpdf.pdf");
+            PDFGenerator.PdfGenerator.Generate("http://localhost:49183", "D:\testpdf.pdf");
 
             return RedirectToAction("_Basic");
         }
