@@ -1,0 +1,15 @@
+﻿Step to step designing-
+
+
+Think about database designing
+Application flow
+
+
+
+
+
+
+Future enchasement-
+1- think about fixed width, to support mobile and small screen
+2- add Quora social icon
+3- logo design
