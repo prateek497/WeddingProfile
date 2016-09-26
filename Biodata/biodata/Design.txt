@@ -1,9 +1,5 @@
 ﻿Step to step designing-
 
-Application flow
-Think about database designing
-
-
 
 
 
