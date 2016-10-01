@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BiodataDbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="contactinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameRelation" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNumberRelation" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailRelation" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="culturalinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Religion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotherTongue" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Caste" Type="varchar" MaxLength="50" />
+          <Property Name="Gotra" Type="varchar" MaxLength="50" />
+          <Property Name="Zodiac" Type="varchar" MaxLength="50" />
+          <Property Name="Languages" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="educationinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HigherSecondaryYear" Type="varchar" MaxLength="4" />
+          <Property Name="HigherSecondarySchool" Type="varchar" MaxLength="50" />
+          <Property Name="GraduateDegree" Type="varchar" MaxLength="100" />
+          <Property Name="GraduatedYear" Type="varchar" MaxLength="4" />
+          <Property Name="GraduateCollege" Type="varchar" MaxLength="50" />
+          <Property Name="GraduateUniversity" Type="varchar" MaxLength="50" />
+          <Property Name="PostGraduateDegree" Type="varchar" MaxLength="50" />
+          <Property Name="PostGraduateYear" Type="varchar" MaxLength="4" />
+          <Property Name="PostGraduateCollege" Type="varchar" MaxLength="50" />
+          <Property Name="PostGraduateUniversity" Type="varchar" MaxLength="50" />
+          <Property Name="DoctarateDegree" Type="varchar" MaxLength="50" />
+          <Property Name="DoctarateYear" Type="varchar" MaxLength="4" />
+          <Property Name="DoctarateCollege" Type="varchar" MaxLength="50" />
+          <Property Name="DoctarateUniversity" Type="varchar" MaxLength="50" />
+          <Property Name="AnnualIncome" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="familyinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FatherName" Type="varchar" MaxLength="50" />
+          <Property Name="FatherCity" Type="varchar" MaxLength="50" />
+          <Property Name="FatherState" Type="varchar" MaxLength="50" />
+          <Property Name="FatherDesignation" Type="varchar" MaxLength="50" />
+          <Property Name="FatherCompany" Type="varchar" MaxLength="50" />
+          <Property Name="MotherName" Type="varchar" MaxLength="50" />
+          <Property Name="MotherCity" Type="varchar" MaxLength="50" />
+          <Property Name="MotherState" Type="varchar" MaxLength="50" />
+          <Property Name="MotherDesignation" Type="varchar" MaxLength="50" />
+          <Property Name="MotherCompany" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="personalinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="DOBTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="CurrentCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Height" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Complexion" Type="varchar" MaxLength="25" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="25" />
+          <Property Name="Diet" Type="varchar" MaxLength="25" />
+          <Property Name="Drink" Type="varchar" MaxLength="25" />
+          <Property Name="Smoke" Type="varchar" MaxLength="25" />
+          <Property Name="Hobbies" Type="varchar" MaxLength="150" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="pictures">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Picture1" Type="longblob" Nullable="false" />
+          <Property Name="Picture2" Type="longblob" />
+          <Property Name="Picture3" Type="longblob" />
+          <Property Name="Picture4" Type="longblob" />
+          <Property Name="Picture5" Type="longblob" />
+          <Property Name="Picture6" Type="longblob" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="socialmedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Facebook" Type="varchar" MaxLength="100" />
+          <Property Name="Linkedin" Type="varchar" MaxLength="100" />
+          <Property Name="Instagram" Type="varchar" MaxLength="100" />
+          <Property Name="Twitter" Type="varchar" MaxLength="100" />
+          <Property Name="Quora" Type="varchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="userprofile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="bool" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="workexperienceinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Designation" Type="varchar" MaxLength="100" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Location" Type="varchar" MaxLength="100" />
+          <Property Name="TotalExperience" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <Association Name="ContactInfoUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="contactinfo" Type="Self.contactinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="contactinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CulturalInfoUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="culturalinfo" Type="Self.culturalinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="culturalinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EducationInfoUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="educationinfo" Type="Self.educationinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="educationinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FamilyInfoUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="familyinfo" Type="Self.familyinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="familyinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PersonalInfoUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="personalinfo" Type="Self.personalinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personalinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PicturesUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SocialMediaUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="socialmedia" Type="Self.socialmedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="socialmedia">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="userprofile" Type="Self.userprofile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userprofile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WorkExperienceUserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="workexperienceinfo" Type="Self.workexperienceinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="workexperienceinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BiodataDbModelStoreContainer">
+          <EntitySet Name="contactinfo" EntityType="Self.contactinfo" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="culturalinfo" EntityType="Self.culturalinfo" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="educationinfo" EntityType="Self.educationinfo" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="familyinfo" EntityType="Self.familyinfo" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="personalinfo" EntityType="Self.personalinfo" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="pictures" EntityType="Self.pictures" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="socialmedia" EntityType="Self.socialmedia" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="userprofile" EntityType="Self.userprofile" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="biodatadb" store:Type="Tables" />
+          <EntitySet Name="workexperienceinfo" EntityType="Self.workexperienceinfo" Schema="biodatadb" store:Type="Tables" />
+          <AssociationSet Name="ContactInfoUserId" Association="Self.ContactInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="contactinfo" EntitySet="contactinfo" />
+          </AssociationSet>
+          <AssociationSet Name="CulturalInfoUserId" Association="Self.CulturalInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="culturalinfo" EntitySet="culturalinfo" />
+          </AssociationSet>
+          <AssociationSet Name="EducationInfoUserId" Association="Self.EducationInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="educationinfo" EntitySet="educationinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FamilyInfoUserId" Association="Self.FamilyInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="familyinfo" EntitySet="familyinfo" />
+          </AssociationSet>
+          <AssociationSet Name="PersonalInfoUserId" Association="Self.PersonalInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="personalinfo" EntitySet="personalinfo" />
+          </AssociationSet>
+          <AssociationSet Name="PicturesUserId" Association="Self.PicturesUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="SocialMediaUserId" Association="Self.SocialMediaUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="socialmedia" EntitySet="socialmedia" />
+          </AssociationSet>
+          <AssociationSet Name="UserId" Association="Self.UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="userprofile" EntitySet="userprofile" />
+          </AssociationSet>
+          <AssociationSet Name="WorkExperienceUserId" Association="Self.WorkExperienceUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="workexperienceinfo" EntitySet="workexperienceinfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BiodataDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="contactinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NameRelation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumberRelation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailRelation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.ContactInfoUserId" FromRole="contactinfo" ToRole="users" />
+        </EntityType>
+        <EntityType Name="culturalinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotherTongue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Caste" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gotra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zodiac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Languages" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.CulturalInfoUserId" FromRole="culturalinfo" ToRole="users" />
+        </EntityType>
+        <EntityType Name="educationinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HigherSecondaryYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="HigherSecondarySchool" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GraduateDegree" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GraduatedYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="GraduateCollege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GraduateUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostGraduateDegree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostGraduateYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PostGraduateCollege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostGraduateUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DoctarateDegree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DoctarateYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="DoctarateCollege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DoctarateUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnnualIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.EducationInfoUserId" FromRole="educationinfo" ToRole="users" />
+        </EntityType>
+        <EntityType Name="familyinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FamilyInfoUserId" FromRole="familyinfo" ToRole="users" />
+        </EntityType>
+        <EntityType Name="personalinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" />
+          <Property Name="DOBTime" Type="DateTime" Nullable="false" />
+          <Property Name="CurrentCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Height" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Complexion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Diet" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Drink" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Smoke" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Hobbies" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.PersonalInfoUserId" FromRole="personalinfo" ToRole="users" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Picture1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Picture2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Picture3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Picture4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Picture5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Picture6" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.PicturesUserId" FromRole="pictures" ToRole="users" />
+        </EntityType>
+        <EntityType Name="socialmedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quora" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.SocialMediaUserId" FromRole="socialmedia" ToRole="users" />
+        </EntityType>
+        <EntityType Name="userprofile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.UserId" FromRole="userprofile" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="contactinfoes" Relationship="Self.ContactInfoUserId" FromRole="users" ToRole="contactinfo" />
+          <NavigationProperty Name="culturalinfoes" Relationship="Self.CulturalInfoUserId" FromRole="users" ToRole="culturalinfo" />
+          <NavigationProperty Name="educationinfoes" Relationship="Self.EducationInfoUserId" FromRole="users" ToRole="educationinfo" />
+          <NavigationProperty Name="familyinfoes" Relationship="Self.FamilyInfoUserId" FromRole="users" ToRole="familyinfo" />
+          <NavigationProperty Name="personalinfoes" Relationship="Self.PersonalInfoUserId" FromRole="users" ToRole="personalinfo" />
+          <NavigationProperty Name="pictures" Relationship="Self.PicturesUserId" FromRole="users" ToRole="pictures" />
+          <NavigationProperty Name="socialmedias" Relationship="Self.SocialMediaUserId" FromRole="users" ToRole="socialmedia" />
+          <NavigationProperty Name="userprofiles" Relationship="Self.UserId" FromRole="users" ToRole="userprofile" />
+          <NavigationProperty Name="workexperienceinfoes" Relationship="Self.WorkExperienceUserId" FromRole="users" ToRole="workexperienceinfo" />
+        </EntityType>
+        <EntityType Name="workexperienceinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TotalExperience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.WorkExperienceUserId" FromRole="workexperienceinfo" ToRole="users" />
+        </EntityType>
+        <Association Name="ContactInfoUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="contactinfo" Type="Self.contactinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="contactinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CulturalInfoUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="culturalinfo" Type="Self.culturalinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="culturalinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EducationInfoUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="educationinfo" Type="Self.educationinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="educationinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FamilyInfoUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="familyinfo" Type="Self.familyinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="familyinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PersonalInfoUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="personalinfo" Type="Self.personalinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personalinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PicturesUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SocialMediaUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="socialmedia" Type="Self.socialmedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="socialmedia">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="userprofile" Type="Self.userprofile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userprofile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WorkExperienceUserId">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="workexperienceinfo" Type="Self.workexperienceinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="workexperienceinfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="biodataDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="contactinfoes" EntityType="Self.contactinfo" />
+          <EntitySet Name="culturalinfoes" EntityType="Self.culturalinfo" />
+          <EntitySet Name="educationinfoes" EntityType="Self.educationinfo" />
+          <EntitySet Name="familyinfoes" EntityType="Self.familyinfo" />
+          <EntitySet Name="personalinfoes" EntityType="Self.personalinfo" />
+          <EntitySet Name="pictures" EntityType="Self.picture" />
+          <EntitySet Name="socialmedias" EntityType="Self.socialmedia" />
+          <EntitySet Name="userprofiles" EntityType="Self.userprofile" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="workexperienceinfoes" EntityType="Self.workexperienceinfo" />
+          <AssociationSet Name="ContactInfoUserId" Association="Self.ContactInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="contactinfo" EntitySet="contactinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="CulturalInfoUserId" Association="Self.CulturalInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="culturalinfo" EntitySet="culturalinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="EducationInfoUserId" Association="Self.EducationInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="educationinfo" EntitySet="educationinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FamilyInfoUserId" Association="Self.FamilyInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="familyinfo" EntitySet="familyinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="PersonalInfoUserId" Association="Self.PersonalInfoUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="personalinfo" EntitySet="personalinfoes" />
+          </AssociationSet>
+          <AssociationSet Name="PicturesUserId" Association="Self.PicturesUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="SocialMediaUserId" Association="Self.SocialMediaUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="socialmedia" EntitySet="socialmedias" />
+          </AssociationSet>
+          <AssociationSet Name="UserId" Association="Self.UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="userprofile" EntitySet="userprofiles" />
+          </AssociationSet>
+          <AssociationSet Name="WorkExperienceUserId" Association="Self.WorkExperienceUserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="workexperienceinfo" EntitySet="workexperienceinfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BiodataDbModelStoreContainer" CdmEntityContainer="biodataDbEntities">
+          <EntitySetMapping Name="contactinfoes">
+            <EntityTypeMapping TypeName="BiodataDbModel.contactinfo">
+              <MappingFragment StoreEntitySet="contactinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameRelation" ColumnName="NameRelation" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactNumberRelation" ColumnName="ContactNumberRelation" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailRelation" ColumnName="EmailRelation" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="culturalinfoes">
+            <EntityTypeMapping TypeName="BiodataDbModel.culturalinfo">
+              <MappingFragment StoreEntitySet="culturalinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="Gotra" ColumnName="Gotra" />
+                <ScalarProperty Name="Zodiac" ColumnName="Zodiac" />
+                <ScalarProperty Name="Languages" ColumnName="Languages" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="educationinfoes">
+            <EntityTypeMapping TypeName="BiodataDbModel.educationinfo">
+              <MappingFragment StoreEntitySet="educationinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HigherSecondaryYear" ColumnName="HigherSecondaryYear" />
+                <ScalarProperty Name="HigherSecondarySchool" ColumnName="HigherSecondarySchool" />
+                <ScalarProperty Name="GraduateDegree" ColumnName="GraduateDegree" />
+                <ScalarProperty Name="GraduatedYear" ColumnName="GraduatedYear" />
+                <ScalarProperty Name="GraduateCollege" ColumnName="GraduateCollege" />
+                <ScalarProperty Name="GraduateUniversity" ColumnName="GraduateUniversity" />
+                <ScalarProperty Name="PostGraduateDegree" ColumnName="PostGraduateDegree" />
+                <ScalarProperty Name="PostGraduateYear" ColumnName="PostGraduateYear" />
+                <ScalarProperty Name="PostGraduateCollege" ColumnName="PostGraduateCollege" />
+                <ScalarProperty Name="PostGraduateUniversity" ColumnName="PostGraduateUniversity" />
+                <ScalarProperty Name="DoctarateDegree" ColumnName="DoctarateDegree" />
+                <ScalarProperty Name="DoctarateYear" ColumnName="DoctarateYear" />
+                <ScalarProperty Name="DoctarateCollege" ColumnName="DoctarateCollege" />
+                <ScalarProperty Name="DoctarateUniversity" ColumnName="DoctarateUniversity" />
+                <ScalarProperty Name="AnnualIncome" ColumnName="AnnualIncome" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="familyinfoes">
+            <EntityTypeMapping TypeName="BiodataDbModel.familyinfo">
+              <MappingFragment StoreEntitySet="familyinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="FatherCity" ColumnName="FatherCity" />
+                <ScalarProperty Name="FatherState" ColumnName="FatherState" />
+                <ScalarProperty Name="FatherDesignation" ColumnName="FatherDesignation" />
+                <ScalarProperty Name="FatherCompany" ColumnName="FatherCompany" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="MotherCity" ColumnName="MotherCity" />
+                <ScalarProperty Name="MotherState" ColumnName="MotherState" />
+                <ScalarProperty Name="MotherDesignation" ColumnName="MotherDesignation" />
+                <ScalarProperty Name="MotherCompany" ColumnName="MotherCompany" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personalinfoes">
+            <EntityTypeMapping TypeName="BiodataDbModel.personalinfo">
+              <MappingFragment StoreEntitySet="personalinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="DOBTime" ColumnName="DOBTime" />
+                <ScalarProperty Name="CurrentCity" ColumnName="CurrentCity" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Complexion" ColumnName="Complexion" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Diet" ColumnName="Diet" />
+                <ScalarProperty Name="Drink" ColumnName="Drink" />
+                <ScalarProperty Name="Smoke" ColumnName="Smoke" />
+                <ScalarProperty Name="Hobbies" ColumnName="Hobbies" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="BiodataDbModel.picture">
+              <MappingFragment StoreEntitySet="pictures">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture1" />
+                <ScalarProperty Name="Picture2" ColumnName="Picture2" />
+                <ScalarProperty Name="Picture3" ColumnName="Picture3" />
+                <ScalarProperty Name="Picture4" ColumnName="Picture4" />
+                <ScalarProperty Name="Picture5" ColumnName="Picture5" />
+                <ScalarProperty Name="Picture6" ColumnName="Picture6" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="socialmedias">
+            <EntityTypeMapping TypeName="BiodataDbModel.socialmedia">
+              <MappingFragment StoreEntitySet="socialmedia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Quora" ColumnName="Quora" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userprofiles">
+            <EntityTypeMapping TypeName="BiodataDbModel.userprofile">
+              <MappingFragment StoreEntitySet="userprofile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="BiodataDbModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workexperienceinfoes">
+            <EntityTypeMapping TypeName="BiodataDbModel.workexperienceinfo">
+              <MappingFragment StoreEntitySet="workexperienceinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

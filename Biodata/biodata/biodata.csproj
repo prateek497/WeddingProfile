@@ -55,8 +55,17 @@
     <Reference Include="MySql.Data">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="mysql.data.entity">
+      <HintPath>C:\Users\prtk\Downloads\mysql-connector-net-6.6.7-noinstall\tmp\v4\mysql.data.entity.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data.Entity.EF6">
       <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.visualstudio">
+      <HintPath>C:\Users\prtk\Downloads\mysql-connector-net-6.6.7-noinstall\tmp\v4\mysql.visualstudio.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.web">
+      <HintPath>C:\Users\prtk\Downloads\mysql-connector-net-6.6.7-noinstall\tmp\v4\mysql.web.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -72,6 +81,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -139,6 +150,51 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Database\BiodataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BiodataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BiodataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BiodataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BiodataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\contactinfo.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\culturalinfo.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\educationinfo.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\familyinfo.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\personalinfo.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\picture.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\socialmedia.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\user.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\userprofile.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\workexperienceinfo.cs">
+      <DependentUpon>BiodataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +276,23 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <EntityDeploy Include="Database\BiodataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BiodataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Database\BiodataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BiodataModel.edmx</DependentUpon>
+      <LastGenOutput>BiodataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\BiodataModel.edmx.diagram">
+      <DependentUpon>BiodataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Database\BiodataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BiodataModel.edmx</DependentUpon>
+      <LastGenOutput>BiodataModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1007,10 +1080,9 @@
       <Name>PDFGenerator</Name>
     </ProjectReference>
   </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
