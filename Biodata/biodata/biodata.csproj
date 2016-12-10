@@ -61,9 +61,6 @@
     <Reference Include="MySql.Data.Entity.EF6">
       <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
-    <Reference Include="mysql.visualstudio">
-      <HintPath>C:\Users\prtk\Downloads\mysql-connector-net-6.6.7-noinstall\tmp\v4\mysql.visualstudio.dll</HintPath>
-    </Reference>
     <Reference Include="mysql.web">
       <HintPath>C:\Users\prtk\Downloads\mysql-connector-net-6.6.7-noinstall\tmp\v4\mysql.web.dll</HintPath>
     </Reference>
