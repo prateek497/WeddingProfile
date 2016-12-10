@@ -5,14 +5,25 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using biodata.Database;
+using biodata.Database.Tables;
 using NReco.PdfGenerator;
 
 namespace biodata.Controllers
 {
-    public class HomeController : Controller 
+    public class HomeController : Controller
     {
         public ViewResult _Basic()
         {
+            //BiodataDb db = new BiodataDb();
+
+            //db.Users.Add(
+            //    new User
+            //    {
+            //        Email = "prabakar@gmail.com",
+            //        Password = "bajrangbali"
+            //    });
+            //db.SaveChanges();
             return View();
         }
 

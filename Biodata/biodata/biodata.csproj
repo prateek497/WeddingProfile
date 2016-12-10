@@ -150,51 +150,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Database\BiodataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BiodataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\BiodataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\BiodataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BiodataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Database\contactinfo.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\culturalinfo.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\educationinfo.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\familyinfo.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\personalinfo.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\picture.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\socialmedia.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\user.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\userprofile.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\workexperienceinfo.cs">
-      <DependentUpon>BiodataModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Database\BiodataDb.cs" />
+    <Compile Include="Database\Tables\ContactInfo.cs" />
+    <Compile Include="Database\Tables\CulturalInfo.cs" />
+    <Compile Include="Database\Tables\EducationInfo.cs" />
+    <Compile Include="Database\Tables\FamilyInfo.cs" />
+    <Compile Include="Database\Tables\PersonalInfo.cs" />
+    <Compile Include="Database\Tables\Picture.cs" />
+    <Compile Include="Database\Tables\SocialMedia.cs" />
+    <Compile Include="Database\Tables\User.cs" />
+    <Compile Include="Database\Tables\UserProfile.cs" />
+    <Compile Include="Database\Tables\WorkExperienceInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,23 +242,6 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
-    <EntityDeploy Include="Database\BiodataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BiodataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Database\BiodataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BiodataModel.edmx</DependentUpon>
-      <LastGenOutput>BiodataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Database\BiodataModel.edmx.diagram">
-      <DependentUpon>BiodataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Database\BiodataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BiodataModel.edmx</DependentUpon>
-      <LastGenOutput>BiodataModel.cs</LastGenOutput>
-    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1068,7 +1017,6 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
