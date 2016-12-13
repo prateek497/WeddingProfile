@@ -15,15 +15,15 @@ namespace biodata.Controllers
     {
         public ViewResult _Basic()
         {
-            //BiodataDb db = new BiodataDb();
+            BiodataDb db = new BiodataDb();
 
-            //db.Users.Add(
-            //    new User
-            //    {
-            //        Email = "prabakar@gmail.com",
-            //        Password = "bajrangbali"
-            //    });
-            //db.SaveChanges();
+            db.Users.Add(
+                new User
+                {
+                    Email = "prabakar@gmail.com",
+                    Password = "bajrangbali"
+                });
+            db.SaveChanges();
             return View();
         }
 
