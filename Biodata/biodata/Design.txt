@@ -8,3 +8,4 @@ Future enchasement-
 2- add Quora social icon
 3- logo design
 4- Fb and gmail login
+5- Replace with nosql database
