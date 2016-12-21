@@ -13,17 +13,13 @@ namespace biodata.Controllers
 {
     public class HomeController : Controller
     {
+        public ViewResult Dashboard()
+        {
+            return View();
+        }
+
         public ViewResult _Basic()
         {
-            BiodataDb db = new BiodataDb();
-
-            db.Users.Add(
-                new User
-                {
-                    Email = "prabakar@gmail.com",
-                    Password = "bajrangbali"
-                });
-            db.SaveChanges();
             return View();
         }
 
