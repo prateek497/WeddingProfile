@@ -844,7 +844,7 @@ form label {
   margin-bottom: 0px;
   font-size: 40px; /*100px*/
   line-height: 1.5; /*1.5*/
-  font-family: "Sacramento", Arial, serif;
+    font-family: "Sacramento", Arial, serif;
 }
 @media screen and (max-width: 768px) {
   #fh5co-header .display-tc h1,
@@ -1071,20 +1071,20 @@ form label {
 }
 .couple-half .groom, .couple-half .bride {
   float: left;
-  -webkit-border-radius: 50%;
+  /*-webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
-  border-radius: 50%;
+  border-radius: 50%;*/
   width: 150px;
   height: 150px;
 }
 .couple-half .groom img, .couple-half .bride img {
   width: 150px;
   height: 150px;
-  -webkit-border-radius: 50%;
+  /*-webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
-  border-radius: 50%;
+  border-radius: 50%;*/
 }
 @media screen and (max-width: 480px) {
   .couple-half .groom, .couple-half .bride {
@@ -1374,7 +1374,7 @@ form label {
 #fh5co-started .btn {
   height: 54px;
   border: none !important;
-  background: #F14E95;
+  /*background: #F14E95;*/
   color: #fff;
   font-size: 16px;
   text-transform: uppercase;
@@ -1841,3 +1841,28 @@ form label {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/*For Login Model*/
+.nav-tabs {
+    margin-bottom: 15px;
+}
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
