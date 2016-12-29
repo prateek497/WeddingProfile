@@ -17,10 +17,10 @@ Technologies to be consider-
 3-Bootstrap
 4-WebAPI(Think about this)- create user, edit and update should be done from here 
 5-MySQL Database
-6-Gulp and grunt(think about this one. Is it worth to implement. if so, May be we can implement this in future)
+6-Gulp and grunt(think about this one. Is it worth to implement. if so, May be we can implement this in future) (Skip)
 
-1-complete dashboard
-2-complete login
+1-complete dashboard (before 1 jan)
+2-complete login (before 1 jan)
 3-create first page of progress step
 
 Plans-
