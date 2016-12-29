@@ -19,6 +19,10 @@ Technologies to be consider-
 5-MySQL Database
 6-Gulp and grunt(think about this one. Is it worth to implement. if so, May be we can implement this in future)
 
+1-complete dashboard
+2-complete login
+3-create first page of progress step
+
 Plans-
 1-Design of fill up pages.
 2-First complete the main UI.
