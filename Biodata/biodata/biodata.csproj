@@ -166,16 +166,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\animate.css" />
-    <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\flexslider.css" />
-    <Content Include="Content\css\icomoon.css" />
-    <Content Include="Content\css\magnific-popup.css" />
-    <Content Include="Content\css\owl.carousel.min.css" />
-    <Content Include="Content\css\owl.theme.default.min.css" />
-    <Content Include="Content\css\style.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\flexslider.css" />
+    <Content Include="Content\icomoon.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\owl.theme.default.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Design.txt" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
@@ -231,9 +229,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Content\css\.DS_Store" />
-    <Content Include="Content\css\bootstrap.css.map" />
-    <Content Include="Content\css\style.css.map" />
+    <Content Include="Content\style.css.map" />
     <Content Include="fonts\.DS_Store" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
@@ -256,20 +252,19 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\js\bootstrap.min.js" />
-    <Content Include="Scripts\js\google_map.js" />
-    <Content Include="Scripts\js\jquery.countTo.js" />
-    <Content Include="Scripts\js\jquery.easing.1.3.js" />
-    <Content Include="Scripts\js\jquery.magnific-popup.min.js" />
-    <Content Include="Scripts\js\jquery.min.js" />
-    <Content Include="Scripts\js\jquery.stellar.min.js" />
-    <Content Include="Scripts\js\jquery.waypoints.min.js" />
-    <Content Include="Scripts\js\magnific-popup-options.js" />
-    <Content Include="Scripts\js\main.js" />
-    <Content Include="Scripts\js\modernizr-2.6.2.min.js" />
-    <Content Include="Scripts\js\owl.carousel.min.js" />
-    <Content Include="Scripts\js\respond.min.js" />
-    <Content Include="Scripts\js\simplyCountdown.js" />
+    <Content Include="Scripts\google_map.js" />
+    <Content Include="Scripts\jquery.countTo.js" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.stellar.min.js" />
+    <Content Include="Scripts\jquery.waypoints.min.js" />
+    <Content Include="Scripts\magnific-popup-options.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\simplyCountdown.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -285,7 +280,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Basic.cshtml" />
-    <Content Include="Scripts\js\.DS_Store" />
     <Content Include="Views\Home\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
