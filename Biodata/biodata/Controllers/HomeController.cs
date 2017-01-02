@@ -48,6 +48,12 @@ namespace biodata.Controllers
             return RedirectToAction("Dashboard");
         }
 
+        public ActionResult SignOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Dashboard");
+        }
+
         [HttpPost]
         public ActionResult SignUp(Login model)
         {
