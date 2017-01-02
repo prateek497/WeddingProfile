@@ -8,10 +8,11 @@ namespace biodata.Models
 {
     public class SignIn
     {
-        [Required(ErrorMessage = "Please enter vaild email")]
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
     }
 }

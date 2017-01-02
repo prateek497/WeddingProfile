@@ -29,6 +29,20 @@ namespace biodata.Controllers
             return RedirectToAction("Dashboard");
         }
 
+        [HttpPost]
+        public ActionResult SignIn(Login model)
+        {
+            if (model.SignIn == null) return null;
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(Login model)
+        {
+            if (model.SignUp == null) return null;
+            return RedirectToAction("Dashboard");
+        }
+
         public ViewResult _Basic()
         {
             return View();

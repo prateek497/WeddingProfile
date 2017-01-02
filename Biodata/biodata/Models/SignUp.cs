@@ -16,10 +16,10 @@ namespace biodata.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Comfirm password is required")]
         [Compare("Password", ErrorMessage = "Password should be same")]
         public string ConfirmPassword { get; set; }
     }
