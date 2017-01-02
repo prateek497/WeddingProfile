@@ -1,4 +1,5 @@
-﻿
+﻿@model biodata.Models.Dashboard
+
 <div class="fh5co-loader"></div>
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
@@ -19,7 +20,7 @@
         </div>
     </nav>
 
-    <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(../../images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(../../images/img_bg_2222.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -123,11 +124,17 @@
             </div>
             <div class="row animate-box">
                 <div class="col-md-10 col-md-offset-1">
-                    <form class="form-inline">
+
+                    @using (Html.BeginForm("Dashboard", "Home", new { }, FormMethod.Post, new { @class = "form-inline" }))
+                    {
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                @Html.LabelFor(x => x.Email, new { @for = "email", @class = "sr-only" })
+
+                                @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control", @id = "email", @placeholder = "Email" })
+
+                                @*<label for="email" class="sr-only">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email">*@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
@@ -139,7 +146,7 @@
                         <div class="col-md-4 col-sm-4">
                             <button type="submit" class="btn btn-default btn-block btn-primary">Send</button>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
@@ -167,133 +174,6 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 </div>
-
-@* Ref- http://bootsnipp.com/snippets/33ZZD *@
-
-<div class="modal fade" id="myModal" style="font-family: sans-serif" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" style="font-family: sans-serif" id="myModalLabel">
-                    Sign In/Sign Up
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12" style="padding-right: 30px;">
-                        @*border-right: 1px dotted #C2C2C2;*@
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-                            <li><a href="#signup" data-toggle="tab">Sign Up</a></li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="signin" style="padding: 10px;">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
-                                        @*<label for="email" class="col-sm-2 control-label" style="font-weight: bold; color: black">
-                                                Email
-                                            </label>*@
-                                        <div class="col-sm-12">
-                                            <input type="email" class="form-control" id="email1" placeholder="Email" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        @*<label for="exampleInputPassword1" class="col-sm-2 control-label" style="font-weight: bold; color: black">
-                                                Password
-                                            </label>*@
-                                        <div class="col-sm-12">
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        @*<div class="col-sm-2">
-                                            </div>*@
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button type="submit" class="btn btn-primary btn-sm" style="font-family: sans-serif">
-                                                Sign In
-                                            </button>
-                                            <a href="javascript:;">Forgot your password?</a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane" id="signup" style="padding: 10px;">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
-                                        @*<label for="email" class="col-sm-2 control-label">
-                                                Name
-                                            </label>*@
-                                        <div class="col-sm-12">
-                                            <input type="text" class="form-control" placeholder="Name" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        @*<label for="email" class="col-sm-2 control-label">
-                                                Email
-                                            </label>*@
-                                        <div class="col-sm-12">
-                                            <input type="email" class="form-control" id="email" placeholder="Email" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @*<label for="password" class="col-sm-2 control-label">
-                                                Password
-                                            </label>*@
-                                        <div class="col-sm-12">
-                                            <input type="password" class="form-control" id="password" placeholder="Password" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @*<label for="confirmpassword" class="col-sm-2 control-label">
-                                                Confirm Password
-                                            </label>*@
-                                        <div class="col-sm-12">
-                                            <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" />
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <button type="button" class="btn btn-primary btn-sm" style="font-family: sans-serif">
-                                                Sign Up
-                                            </button>
-                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        @*<div id="OR" class="hidden-xs">
-                                OR
-                            </div>*@
-                    </div>
-                    @*<div class="col-md-4">
-                            <div class="row text-center sign-with">
-                                <div class="col-md-12">
-                                    <h3>
-                                        Sign in with
-                                    </h3>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="btn-group btn-group-justified">
-                                        <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
-                                            Google
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@{
+    Html.RenderPartial("_Login", Model.Login);
+}

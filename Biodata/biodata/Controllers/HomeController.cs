@@ -7,15 +7,26 @@ using System.Web.Mvc;
 using System.IO;
 using biodata.Database;
 using biodata.Database.Tables;
+using biodata.Models;
 using NReco.PdfGenerator;
 
 namespace biodata.Controllers
 {
     public class HomeController : Controller
     {
-        public ViewResult Dashboard()
+        [HttpGet]
+        public ActionResult Dashboard()
         {
-            return View();
+            return View(new Dashboard()
+            {
+                Login = new Login()
+            });
+        }
+
+        [HttpPost]
+        public ActionResult Dashboard(Dashboard model)
+        {
+            return RedirectToAction("Dashboard");
         }
 
         public ViewResult _Basic()

@@ -27,6 +27,8 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
 
+    @*@Styles.Render("~/Content/css")*@
+
     <!-- Animate.css -->
     <link rel="stylesheet" href="~/Content/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -37,6 +39,7 @@
     <link rel="stylesheet" href="~/Content/magnific-popup.css">
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+
     <link rel="stylesheet" href="~/Content/owl.theme.default.min.css">
     <!-- Theme style  -->
     <link rel="stylesheet" href="~/Content/style.css">
@@ -50,6 +53,13 @@
 <body>
 
     @RenderBody()
+
+    @* Follow same order *@
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("scripts", required: false)
 
     <!-- jQuery -->
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
@@ -67,13 +77,11 @@
     <script src="~/Scripts/jquery.stellar.min.js"></script>
     <!-- Magnific Popup -->
     <script src="~/Scripts/jquery.magnific-popup.min.js"></script>
+
     <script src="~/Scripts/magnific-popup-options.js"></script>
-    <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
+
     <script src="~/Scripts/simplyCountdown.js"></script>
     <!-- Main -->
     <script src="~/Scripts/main.js"></script>
-    <script>
-        //$('#myModal').modal('show');
-    </script>
 </body>
 </html>
