@@ -1,4 +1,4 @@
-;(function () {
+(function () {
 	
 	'use strict';
 
@@ -221,11 +221,11 @@
 		burgerMenu();
 		contentWayPoint();
 		dropdown();
-		testimonialCarousel();
+		//testimonialCarousel();
 		goToTop();
 		loaderPage();
-		counter();
-		counterWayPoint();
+		//counter();
+		//counterWayPoint();
 	});
 
 

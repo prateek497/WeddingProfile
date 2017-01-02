@@ -54,13 +54,6 @@
 
     @RenderBody()
 
-    @* Follow same order *@
-    @*@Scripts.Render("~/bundles/jquery")*@
-
-    @Scripts.Render("~/bundles/jqueryval")
-
-    @RenderSection("scripts", required: false)
-
     <!-- jQuery -->
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <!-- jQuery Easing -->
@@ -70,18 +63,25 @@
     <!-- Waypoints -->
     <script src="~/Scripts/jquery.waypoints.min.js"></script>
     <!-- Carousel -->
-    <script src="~/Scripts/owl.carousel.min.js"></script>
+    @*<script src="~/Scripts/owl.carousel.min.js"></script>*@
     <!-- countTo -->
-    <script src="~/Scripts/jquery.countTo.js"></script>
+    @*<script src="~/Scripts/jquery.countTo.js"></script>*@
     <!-- Stellar -->
     <script src="~/Scripts/jquery.stellar.min.js"></script>
     <!-- Magnific Popup -->
     <script src="~/Scripts/jquery.magnific-popup.min.js"></script>
 
-    <script src="~/Scripts/magnific-popup-options.js"></script>
+    @*<script src="~/Scripts/magnific-popup-options.js"></script>*@
 
-    <script src="~/Scripts/simplyCountdown.js"></script>
+    @*<script src="~/Scripts/simplyCountdown.js"></script>*@
     <!-- Main -->
     <script src="~/Scripts/main.js"></script>
+
+    @* Follow same order *@
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>
