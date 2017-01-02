@@ -9,17 +9,19 @@ namespace biodata.Models
 {
     public class SignUp
     {
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
+        [Required(ErrorMessage = "Email is required", AllowEmptyStrings = false)]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [StringLength(150)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Password is required", AllowEmptyStrings = false)]
+        [StringLength(150, MinimumLength = 6)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Comfirm password is required")]
+        [Required(ErrorMessage = "Comfirm password is required", AllowEmptyStrings = false)]
         [Compare("Password", ErrorMessage = "Password should be same")]
         public string ConfirmPassword { get; set; }
     }

@@ -26,6 +26,7 @@
 
                                 @using (Html.BeginForm("SignIn", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
                                 {
+                                    @Html.AntiForgeryToken()
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             @Html.TextBoxFor(x => x.SignIn.Email, new { type = "email", @class = "form-control", id = "email", placeholder = "Email" })
@@ -51,6 +52,7 @@
                             <div class="tab-pane" id="signup" style="padding: 10px;">
                                 @using (Html.BeginForm("SignUp", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                                 {
+                                    @Html.AntiForgeryToken()
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             @Html.TextBoxFor(x => x.SignUp.Name, new { type = "text", @class = "form-control", id = "name", placeholder = "Name" })
