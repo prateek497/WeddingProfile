@@ -8,10 +8,9 @@ namespace biodata.Controllers
 {
     public class InformationController : Controller
     {
-
-        //public ActionResult Contact()
-        //{
-        //    return View();
-        //}
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

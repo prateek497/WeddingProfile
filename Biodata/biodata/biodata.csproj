@@ -290,10 +290,12 @@
     <Content Include="Views\Home\_Basic.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\_Login.cshtml" />
-    <Content Include="Views\Biodata\Contact.cshtml" />
     <Content Include="Views\Shared\_InformationLayout.cshtml" />
+    <Content Include="Views\Information\Contact.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Biodata\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
