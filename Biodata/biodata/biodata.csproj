@@ -149,8 +149,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\BiodataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Database\BiodataDb.cs" />
     <Compile Include="Database\Tables\ContactInfo.cs" />
     <Compile Include="Database\Tables\CulturalInfo.cs" />

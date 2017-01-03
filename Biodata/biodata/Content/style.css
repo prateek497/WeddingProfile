@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6, figure {
     }
 
         .fh5co-nav ul li a {
-            font-size: 15px;
+            font-size: 14px;
             padding: 30px 10px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.5);
@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6, figure {
                         color: #999999;
                         line-height: 1.2;
                         text-transform: none;
-                        font-size: 15px;
+                        font-size: 14px;
                     }
 
                         .fh5co-nav ul li.has-dropdown .dropdown li a:hover {

@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace biodata.Controllers
 {
-    public class BiodataController : Controller
+    public class InformationController : Controller
     {
-        public ActionResult Contact()
-        {
-            return View();
-        }
 
+        //public ActionResult Contact()
+        //{
+        //    return View();
+        //}
     }
 }
