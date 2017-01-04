@@ -1,35 +1,118 @@
-﻿@*<div class="container">*@
-    <div class="bs-wizard" style="border-bottom:0;">
+﻿@model biodata.Models.ProgressWizard
 
-        <div class="col-xs-3 bs-wizard-step complete">
+<div class="container">
+    @*<div class="row">*@
+    <div class="bs-wizard" style="border-bottom: 0;">
+        <div class="col-xs-2 bs-wizard-step">
             <div class="text-center bs-wizard-stepnum">Step 1</div>
-            <div class="progress"><div class="progress-bar"></div></div>
-            <a href="#" class="bs-wizard-dot"></a>
-            <div class="bs-wizard-info text-center">Lorem ipsum dolor sit amet.</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <span class="bs-wizard-dot"></span>
+            <div class="bs-wizard-info text-center">Contact</div>
         </div>
 
-        <div class="col-xs-3 bs-wizard-step complete">
-            <!-- complete -->
+        <div class="col-xs-2 bs-wizard-step">
             <div class="text-center bs-wizard-stepnum">Step 2</div>
-            <div class="progress"><div class="progress-bar"></div></div>
-            <a href="#" class="bs-wizard-dot"></a>
-            <div class="bs-wizard-info text-center">Nam placerat tristique placerat</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <span class="bs-wizard-dot"></span>
+            <div class="bs-wizard-info text-center">Personal</div>
         </div>
 
-        <div class="col-xs-3 bs-wizard-step active">
-            <!-- complete -->
+        <div class="col-xs-2 bs-wizard-step">
             <div class="text-center bs-wizard-stepnum">Step 3</div>
-            <div class="progress"><div class="progress-bar"></div></div>
-            <a href="#" class="bs-wizard-dot"></a>
-            <div class="bs-wizard-info text-center">Integer semper dolor ac auctor rutrum.</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <span class="bs-wizard-dot"></span>
+            <div class="bs-wizard-info text-center">Contact</div>
         </div>
 
-        <div class="col-xs-3 bs-wizard-step disabled">
-            <!-- active -->
+        <div class="col-xs-2 bs-wizard-step">
             <div class="text-center bs-wizard-stepnum">Step 4</div>
-            <div class="progress"><div class="progress-bar"></div></div>
-            <a href="#" class="bs-wizard-dot"></a>
-            <div class="bs-wizard-info text-center">faucibus orci luctus et ultrices posuere cubilia Curae</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <span class="bs-wizard-dot"></span>
+            <div class="bs-wizard-info text-center">Family</div>
+        </div>
+
+        <div class="col-xs-2 bs-wizard-step">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Step 5</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <span class="bs-wizard-dot"></span>
+            <div class="bs-wizard-info text-center">Cultural</div>
+        </div>
+
+        <div class="col-xs-2 bs-wizard-step">
+            @*disabled*@
+            <div class="text-center bs-wizard-stepnum">Step 6</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <span class="bs-wizard-dot"></span>
+            <div class="bs-wizard-info text-center">Family</div>
         </div>
     </div>
-@*</div>*@
+    @*</div>*@
+</div>
+
+
+@*@section scripts
+    {*@
+<script type="text/javascript">
+    $(function() {
+        const step = @Html.Raw(Model.Step);
+        if (step === 1) return;
+
+        for (var i = 0; i < step; i++) {
+            if (i === (step-1)) {
+                $('.col-xs-2.bs-wizard-step').eq(i).addClass('active');
+                break;
+            }
+            $('.col-xs-2.bs-wizard-step').eq(i).addClass( "complete" );
+        }
+    });
+</script>
+@*}*@
+
+
+@*<div class="row">
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-3">
+                    1
+                </div>
+                <div class="col-xs-3">
+                    2
+                </div>
+                <div class="col-xs-3">
+                    3
+                </div>
+                <div class="col-xs-3">
+                    4
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-3">
+                    5
+                </div>
+                <div class="col-xs-3">
+                    6
+                </div>
+                <div class="col-xs-3">
+                    7
+                </div>
+                <div class="col-xs-3">
+                    8
+                </div>
+            </div>
+        </div>
+    </div>*@

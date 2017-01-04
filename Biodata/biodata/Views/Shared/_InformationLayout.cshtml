@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="~/Content/style.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
 
+    @if (Request.IsAuthenticated)
+    {
+        <meta http-equiv="REFRESH" content="1800; URL=/Home/SignOff">
+    }
 </head>
 <body style="padding-bottom: 70px;  padding-top: 70px">
     <div class="navbar navbar-default navbar-fixed-top">
@@ -21,6 +28,7 @@
                     <strong style="font-family: 'Sacramento', Arial, serif; font-size: 40px;">Title</strong>
                 </a>
             </div>
+
             @if (Request.IsAuthenticated)
             {
                 <p class="navbar-text navbar-right">
@@ -28,43 +36,47 @@
                     | @Html.ActionLink("Sign out", "SignOff", "Home", new { }, new { @class = "navbar-link" })
                 </p>
             }
+
         </div>
     </div>
 
     <div class="container">
+        <div class="row">
+            @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+            {
+                <div class="alert alert-danger" role="alert">
+                    <a class="close" data-dismiss="alert">×</a>
+                    @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                    {
+                        <p>@modelError.ErrorMessage</p>
+                    }
+                </div>
+            }
 
-        @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
-        {
-            <div class="alert alert-danger" role="alert">
-                <a class="close" data-dismiss="alert">×</a>
-                @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
-                {
-                    <p>@modelError.ErrorMessage</p>
-                }
-            </div>
-        }
+            @RenderBody()
 
-        @RenderBody()
-
-        <hr />
-        <footer role="contentinfo">
-            <div class="container">
-                <div class="row copyright">
-                    <div class="col-md-12 text-center">
-                        <p>
-                            <small class="block">&copy; @DateTime.Now.Year Biodata. All Rights Reserved.</small>
-                        </p>
-                        <p>
-                            <ul class="fh5co-social-icons">
-                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                            </ul>
-                        </p>
+            <hr />
+            <footer role="contentinfo">
+                <div class="container">
+                    <div class="row copyright">
+                        <div class="col-md-12 text-center">
+                            <p>
+                                <small class="block">&copy; @DateTime.Now.Year Biodata. All Rights Reserved.</small>
+                            </p>
+                            <p>
+                                <ul class="fh5co-social-icons">
+                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                                </ul>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
+   
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

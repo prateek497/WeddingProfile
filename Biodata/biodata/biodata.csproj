@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\ProgressWizard.cs" />
     <Compile Include="Models\SignIn.cs" />
     <Compile Include="Models\SignUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,10 +293,9 @@
     <Content Include="Views\Home\_Login.cshtml" />
     <Content Include="Views\Shared\_InformationLayout.cshtml" />
     <Content Include="Views\Information\Contact.cshtml" />
+    <Content Include="Views\Information\_ProgressWizard.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Biodata\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
