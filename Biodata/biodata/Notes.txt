@@ -32,3 +32,9 @@ Progress Steps Samples
 1- http://bootsnipp.com/snippets/featured/form-wizard-using-tabs
 2- http://bootsnipp.com/snippets/featured/form-process-steps
 3- http://azmind.com/multi-step-registration-form-bootstrap-css3-jquery/
+
+
+Registration Forms
+1- http://bootsnipp.com/snippets/a6nml
+2- http://bootsnipp.com/snippets/DVXQa
+3- http://bootsnipp.com/snippets/97Bpj

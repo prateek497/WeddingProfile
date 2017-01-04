@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-xs-10 text-right menu-1">
                     <ul>
-                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information")</li>
+                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information", new { }, new { id = "startcreating" })</li>
 
                         @if (Request.IsAuthenticated)
                         {
@@ -190,3 +190,4 @@
 @{
     Html.RenderPartial("_Login", Model.Login);
 }
+

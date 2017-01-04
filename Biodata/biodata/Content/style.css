@@ -1545,7 +1545,7 @@ form label {
         }
 
     #fh5co-started .btn {
-        height: 54px;
+        /*height: 54px;*/
         border: none !important;
         /*background: #F14E95;*/
         color: #fff;

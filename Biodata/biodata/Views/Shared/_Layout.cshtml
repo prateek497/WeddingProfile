@@ -83,5 +83,18 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        $('#startcreating').click(function () {
+            if ('@Request.IsAuthenticated' === 'False') {
+                event.preventDefault();
+                $('#myModal').modal('show');
+            }
+
+        });
+
+    </script>
+
 </body>
 </html>
