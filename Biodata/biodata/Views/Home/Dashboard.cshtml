@@ -149,14 +149,14 @@
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.Message, new { @for = "message", @class = "sr-only" })
-                                @Html.TextBoxFor(x => x.Message, new { @type = "text", @class = "form-control", @id = "message", @placeholder = "Message" })
+                                @Html.TextAreaFor(x => x.Message, new { @type = "text", rows = "1", @class = "form-control", @id = "message", @placeholder = "Message" })
                                 @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-2 col-sm-2">
                             <button type="submit" class="btn btn-default btn-block btn-primary">Send</button>
                         </div>
                     }

@@ -19,9 +19,6 @@ Technologies to be consider-
 5-MySQL Database
 6-Gulp and grunt(think about this one. Is it worth to implement. if so, May be we can implement this in future) (Skip)
 
-1-complete dashboard (before 1 jan)
-2-complete login (before 1 jan)
-3-create first page of progress step
 
 Plans-
 1-Design of fill up pages.
@@ -38,3 +35,6 @@ Registration Forms
 1- http://bootsnipp.com/snippets/a6nml
 2- http://bootsnipp.com/snippets/DVXQa
 3- http://bootsnipp.com/snippets/97Bpj
+
+Dashboard
+1- https://freehtml5.co/preview/?item=wedding-free-html5-bootstrap-template-for-wedding-websites

@@ -1544,17 +1544,17 @@ form label {
             background: rgba(255, 255, 255, 0.3);
         }
 
-    #fh5co-started .btn {
-        /*height: 54px;*/
+    /*#fh5co-started .btn {
+        height: 54px;
         border: none !important;
-        /*background: #F14E95;*/
+        background: #F14E95;
         color: #fff;
         font-size: 16px;
         text-transform: uppercase;
         font-weight: 400;
         padding-left: 50px;
         padding-right: 50px;
-    }
+    }*/
 
     #fh5co-started .form-inline .form-group {
         width: 100% !important;
