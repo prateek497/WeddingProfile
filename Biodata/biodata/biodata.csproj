@@ -171,6 +171,7 @@
     <Compile Include="Models\ProgressWizard.cs" />
     <Compile Include="Models\SignIn.cs" />
     <Compile Include="Models\SignUp.cs" />
+    <Compile Include="Models\Support.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

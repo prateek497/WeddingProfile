@@ -37,7 +37,12 @@
                     <div class="col-sm-4 form-group">
                         <label>Relationship with candidate</label>
                         <div class="input-group">
-                            <select id="relationship" class="form-control" data-toggle="tooltip"
+
+                            @Html.DropDownListFor(x => x.RelationshipText, new SelectList(Model.RelationshipList), 
+                            new{id="relationship", @class="form-control", data_toggle="tooltip",
+                                    title="What is the relationship of the contact person to the candidate? (Usually it's the father or a sibling)"})
+
+                            @*<select id="relationship" class="form-control" data-toggle="tooltip"
                                     title="What is the relationship of the contact person to the candidate? (Usually it's the father or a sibling)">
                                 <option selected="selected" value="1">Self</option>
                                 <option value="2">Father</option>
@@ -47,7 +52,7 @@
                                 <option value="6">Friend</option>
                                 <option value="7">Other Relative</option>
                                 <option value="14">Grandfather</option>
-                            </select>
+                            </select>*@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                     </div>

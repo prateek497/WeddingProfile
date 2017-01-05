@@ -15,7 +15,10 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            return View(new Contact());
+            return View(new Contact
+            {
+                RelationshipList = Support.RelationshipList()
+            });
         }
 
         [HttpPost]
@@ -30,7 +33,7 @@ namespace biodata.Controllers
                 {
                     Email = model.Email,
                     Name = model.Name,
-                    Relationship = model.Relationship,
+                    Relationship = model.RelationshipText,
                     City = model.City,
                     ContactNumber = model.Phone,
                     State = model.State,

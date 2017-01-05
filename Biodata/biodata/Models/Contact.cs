@@ -11,8 +11,10 @@ namespace biodata.Models
         [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
 
+        public List<string> RelationshipList { get; set; }
+
         [Required(ErrorMessage = "Relationship is required")]
-        public string Relationship { get; set; }
+        public string RelationshipText { get; set; }
 
         [Required(ErrorMessage = "Phone is required", AllowEmptyStrings = false)]
         [DataType(DataType.PhoneNumber, ErrorMessage = "Phone number is not valid")]
