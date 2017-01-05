@@ -1,0 +1,33 @@
+﻿@using biodata.Models
+
+@{
+    ViewBag.Title = "Career";
+    Layout = "../Shared/_InformationLayout.cshtml";
+}
+
+<h3 class="well well-sm">
+    Career
+    <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
+</h3>
+
+<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
+    @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 5 })
+</div>
+
+<div class="col-sm-12 well well-sm">
+    <div class="row">
+        <form>
+            <div class="col-sm-12">
+                <div class="text-right text-danger" style="font-size: 12px;"><span class="glyphicon glyphicon-asterisk"></span> Required field</div>
+
+                <br />
+
+                @Html.ActionLink("Back", "Education", "Information", new { }, new { @class = "btn btn-default pull-left" })
+
+                @Html.ActionLink("Save & Continue", "Family", "Information", new { }, new { @class = "btn btn-primary pull-right" })
+
+                @*<button type="submit" class="btn btn-primary pull-right">Save & Continue</button>*@
+            </div>
+        </form>
+    </div>
+</div>

@@ -10,3 +10,4 @@ Future enchasement-
 3- logo design
 4- Fb and gmail login
 5- Replace with nosql database
+6- Think about mutiple resume with same account

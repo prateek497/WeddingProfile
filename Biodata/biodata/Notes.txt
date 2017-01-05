@@ -38,3 +38,6 @@ Registration Forms
 
 Dashboard
 1- https://freehtml5.co/preview/?item=wedding-free-html5-bootstrap-template-for-wedding-websites
+
+
+1-For contact - display name and name relationship if address is not empty otherwise nothing

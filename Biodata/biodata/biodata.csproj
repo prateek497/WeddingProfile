@@ -165,6 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ProgressWizard.cs" />
@@ -294,6 +295,13 @@
     <Content Include="Views\Shared\_InformationLayout.cshtml" />
     <Content Include="Views\Information\Contact.cshtml" />
     <Content Include="Views\Information\_ProgressWizard.cshtml" />
+    <Content Include="Views\Information\Personal.cshtml" />
+    <Content Include="Views\Information\Religious.cshtml" />
+    <Content Include="Views\Information\Education.cshtml" />
+    <Content Include="Views\Information\Career.cshtml" />
+    <Content Include="Views\Information\Family.cshtml" />
+    <Content Include="Views\Information\Pictures.cshtml" />
+    <Content Include="Views\Information\Download.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
