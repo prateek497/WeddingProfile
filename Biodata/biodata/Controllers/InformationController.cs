@@ -10,6 +10,7 @@ using Microsoft.Ajax.Utilities;
 
 namespace biodata.Controllers
 {
+    [Authorize]
     public class InformationController : Controller
     {
         [HttpGet]
@@ -26,8 +27,8 @@ namespace biodata.Controllers
         {
             if (model == null) return null;
 
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 var entities = new BiodataDb();
                 entities.Contactinfoes.Add(new ContactInfo
                 {
@@ -37,13 +38,11 @@ namespace biodata.Controllers
                     City = model.City,
                     ContactNumber = model.Phone,
                     State = model.State,
-                    UserId = GetUserId(model.Email, entities)
+                    UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
-
                 entities.SaveChanges();
-                return RedirectToAction("Contact");
-            //}
-
+                return RedirectToAction("Personal");
+            }
             return View(model);
         }
 
@@ -80,13 +79,6 @@ namespace biodata.Controllers
         public ActionResult Download()
         {
             return View();
-        }
-
-        public int GetUserId(string email, BiodataDb entities)
-        {
-            var user = entities.Users.FirstOrDefault(x => x.Email.Equals(email));
-            if (user != null) return user.Id;
-            return 0;
         }
     }
 }
