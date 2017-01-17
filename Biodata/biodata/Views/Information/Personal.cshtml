@@ -1,4 +1,5 @@
 ﻿@using biodata.Models
+@model Personal
 
 @{
     ViewBag.Title = "Personal";
@@ -16,7 +17,93 @@
 
 <div class="col-sm-12 well well-sm">
     <div class="row">
-        <form>
+        @using (Html.BeginForm("Personal", "Information"))
+        {
+            <div class="col-sm-12">
+                <div class="text-right text-danger" style="font-size: 12px;">
+                    <span class="glyphicon glyphicon-asterisk"></span> Required field
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>Name of the contact person</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Name, new
+                       {
+                           type = "text",
+                           placeholder = "e.g. - Prateek Gangwar",
+                           @class = "form-control",
+                           @data_toggle = "tooltip",
+                           title = "Enter name of the person who's resume belong to"
+                       })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Relationship with candidate</label>
+                        <div class="input-group">
+
+                            @Html.DropDownListFor(x => x.RelationshipText, new SelectList(Model.RelationshipList),
+                            new
+                            {
+                                id = "relationship",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "What is the relationship of the contact person to the candidate? (Usually it's the father or a sibling)"
+                            })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Phone Number</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Phone, new
+                       {
+                           type = "text",
+                           placeholder = "e.g. - +91-9164865382",
+                           @class = "form-control",
+                           title = "At least one phone number is required",
+                           data_toggle = "tooltip"
+                       })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>Email Address</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Email, new
+                        {
+                            type = "email",
+                            placeholder = "e.g. - contact@biodata.com",
+                            @class = "form-control",
+                            data_toggle = "tooltip",
+                            title = "Where can people email if they are interested in this biodata? This email will also serve as your username."
+                        })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>City</label>
+                        @Html.TextBoxFor(x => x.City, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>State</label>
+                        @Html.TextBoxFor(x => x.State, new { type = "text", placeholder = "e.g. - Karnataka", @class = "form-control" })
+                    </div>
+                </div>
+
+                @Html.ActionLink("Back", "Dashboard", "Home", new { }, new { @class = "btn btn-default pull-left" })
+
+                <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
+            </div>
+        }
+
+        @*<form>
             <div class="col-sm-12">
                 <div class="text-right text-danger" style="font-size: 12px;"><span class="glyphicon glyphicon-asterisk"></span> Required field</div>
 
@@ -26,8 +113,7 @@
                 
                 @Html.ActionLink("Save & Continue", "Religious", "Information", new { }, new { @class = "btn btn-primary pull-right" })
 
-                @*<button type="submit" class="btn btn-primary pull-right">Save & Continue</button>*@
             </div>
-        </form>
+        </form>*@
     </div>
 </div>

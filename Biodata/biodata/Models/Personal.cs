@@ -8,8 +8,10 @@ namespace biodata.Models
 {
     public class Personal
     {
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public DateTime DateOfBirth { get; set; }
 
         //[Required]
@@ -29,10 +31,10 @@ namespace biodata.Models
 
         public string Birthplace { get; set; }
 
-        public string Gothra { get; set; }
-
         public string Complexion { get; set; }
 
         public string CurrentCity { get; set; }
+
+        public string Height { get; set; }
     }
 }

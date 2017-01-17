@@ -40,7 +40,7 @@ namespace biodata.Controllers
                     State = model.State,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
-                entities.SaveChanges();
+                //entities.SaveChanges();
                 return RedirectToAction("Personal");
             }
             return View(model);
