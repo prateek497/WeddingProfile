@@ -168,6 +168,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Personal.cs" />
     <Compile Include="Models\ProgressWizard.cs" />
     <Compile Include="Models\SignIn.cs" />
     <Compile Include="Models\SignUp.cs" />

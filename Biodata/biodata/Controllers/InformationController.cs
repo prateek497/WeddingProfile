@@ -46,9 +46,16 @@ namespace biodata.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult Personal()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Personal(Personal model)
+        {
+            return RedirectToAction("Personal");
         }
 
         public ActionResult Religious()
