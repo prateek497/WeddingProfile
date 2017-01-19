@@ -8,26 +8,26 @@ namespace biodata.Models
 {
     public class Personal
     {
-        [Required]
         public string Name { get; set; }
 
-        [Required]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
-        //[Required]
-        //[RegularExpression(@"^(0[1-9]|1[0-2]):[0-5][0-9] (am|pm|AM|PM)$", ErrorMessage = "Invalid Time.")]
-        //public string StartTimeValue
-        //{
-        //    get
-        //    {
-        //        return DateOfBirth ? DateOfBirth.Value.ToString("hh:mm tt") : string.Empty;
-        //    }
+        [RegularExpression(@"^(0[1-9]|1[0-2]):[0-5][0-9] (am|pm|AM|PM)$", ErrorMessage = "Invalid Time.")]
+        public string TimeOfBirth
+        {
+            get;
+            set;
 
-        //    set
-        //    {
-        //        DateOfBirth = DateTime.Parse(value);
-        //    }
-        //}
+            //get
+            //{
+            //    return DateOfBirth != null ? DateOfBirth.ToString("hh:mm tt") : string.Empty;
+            //}
+
+            //set
+            //{
+            //    DateOfBirth = DateTime.Parse(value);
+            //}
+        }
 
         public string Birthplace { get; set; }
 

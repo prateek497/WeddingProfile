@@ -26,7 +26,7 @@
 
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        <label>Name of the contact person</label>
+                        <label>Name</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Name, new
                        {
@@ -41,79 +41,71 @@
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-4 form-group">
-                        <label>Relationship with candidate</label>
+                        <label>Date of birth</label>
                         <div class="input-group">
 
-                            @Html.DropDownListFor(x => x.RelationshipText, new SelectList(Model.RelationshipList),
-                            new
+                            @Html.TextBoxFor(x => x.DateOfBirth, new
                             {
-                                id = "relationship",
+                                type = "text",
+                                placeholder = "e.g. - 16/08/1989",
                                 @class = "form-control",
-                                data_toggle = "tooltip",
-                                title = "What is the relationship of the contact person to the candidate? (Usually it's the father or a sibling)"
+                                @data_toggle = "tooltip",
+                                title = "Enter date of birth"
                             })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
+                        @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-4 form-group">
-                        <label>Phone Number</label>
+                        <label>Time of birth</label>
                         <div class="input-group">
-                            @Html.TextBoxFor(x => x.Phone, new
+                            @Html.TextBoxFor(x => x.TimeOfBirth, new
                        {
                            type = "text",
-                           placeholder = "e.g. - +91-9164865382",
+                           placeholder = "e.g. - 01:56pm",
                            @class = "form-control",
-                           title = "At least one phone number is required",
+                           title = "Enter time of birth",
                            data_toggle = "tooltip"
                        })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @Html.ValidationMessageFor(m => m.TimeOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 form-group">
-                        <label>Email Address</label>
+                    <div class="col-sm-3 form-group">
+                        <label>Birth place</label>
                         <div class="input-group">
-                            @Html.TextBoxFor(x => x.Email, new
+                            @Html.TextBoxFor(x => x.Birthplace, new
                         {
-                            type = "email",
-                            placeholder = "e.g. - contact@biodata.com",
+                            type = "text",
+                            placeholder = "e.g. - Bangalore",
                             @class = "form-control",
                             data_toggle = "tooltip",
-                            title = "Where can people email if they are interested in this biodata? This email will also serve as your username."
+                            title = "Birth place"
                         })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @Html.ValidationMessageFor(m => m.Birthplace, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
-                    <div class="col-sm-4 form-group">
-                        <label>City</label>
-                        @Html.TextBoxFor(x => x.City, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })
+                    <div class="col-sm-3 form-group">
+                        <label>Complexion</label>
+                        @Html.TextBoxFor(x => x.Complexion, new { type = "text", placeholder = "e.g. - Weatish", @class = "form-control" })
                     </div>
-                    <div class="col-sm-4 form-group">
-                        <label>State</label>
-                        @Html.TextBoxFor(x => x.State, new { type = "text", placeholder = "e.g. - Karnataka", @class = "form-control" })
+                    <div class="col-sm-3 form-group">
+                        <label>Current City</label>
+                        @Html.TextBoxFor(x => x.CurrentCity, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>Height</label>
+                        @Html.TextBoxFor(x => x.Height, new { type = "text", placeholder = "e.g. - Height", @class = "form-control" })
                     </div>
                 </div>
 
-                @Html.ActionLink("Back", "Dashboard", "Home", new { }, new { @class = "btn btn-default pull-left" })
+                @Html.ActionLink("Back", "Contact", "Information", new { }, new { @class = "btn btn-default pull-left" })
 
                 <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
             </div>
         }
-
-        @*<form>
-            <div class="col-sm-12">
-                <div class="text-right text-danger" style="font-size: 12px;"><span class="glyphicon glyphicon-asterisk"></span> Required field</div>
-
-                <br />
-
-                @Html.ActionLink("Back", "Contact", "Information", new { }, new { @class = "btn btn-default pull-left" })
-                
-                @Html.ActionLink("Save & Continue", "Religious", "Information", new { }, new { @class = "btn btn-primary pull-right" })
-
-            </div>
-        </form>*@
     </div>
 </div>
