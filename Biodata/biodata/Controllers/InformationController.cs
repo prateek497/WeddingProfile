@@ -70,7 +70,14 @@ namespace biodata.Controllers
             return RedirectToAction("Education");
         }
 
+        [HttpGet]
         public ActionResult Education()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Education(Education model)
         {
             return View();
         }
