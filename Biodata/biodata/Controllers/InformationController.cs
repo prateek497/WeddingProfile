@@ -79,15 +79,29 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult Education(Education model)
         {
-            return View();
+            return RedirectToAction("Career");
         }
-
+        
+        [HttpGet]
         public ActionResult Career()
         {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Career(Career model)
+        {
+            return RedirectToAction("Family");
+        }
+
+        [HttpGet]
         public ActionResult Family()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Family(Family model)
         {
             return View();
         }

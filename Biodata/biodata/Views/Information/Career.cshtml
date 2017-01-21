@@ -1,4 +1,5 @@
 ﻿@using biodata.Models
+@model Career
 
 @{
     ViewBag.Title = "Career";
@@ -16,18 +17,93 @@
 
 <div class="col-sm-12 well well-sm">
     <div class="row">
-        <form>
-            <div class="col-sm-12">
-                <div class="text-right text-danger" style="font-size: 12px;"><span class="glyphicon glyphicon-asterisk"></span> Required field</div>
 
-                <br />
+        @using (Html.BeginForm("Career", "Information"))
+        {
+            <div class="col-sm-12">
+                <div class="text-right text-danger" style="font-size: 12px;">
+                    <span class="glyphicon glyphicon-asterisk"></span> Required field
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>Designation</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Designation, new
+                       {
+                           type = "text",
+                           placeholder = "e.g. - Software Engineer",
+                           @class = "form-control",
+                           @data_toggle = "tooltip",
+                           title = "Enter designation of your current employee"
+                       })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Designation, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Company</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Company, new
+                       {
+                           type = "text",
+                           placeholder = "e.g. - Infosys",
+                           @class = "form-control",
+                           title = "Enter your associated company name",
+                           data_toggle = "tooltip"
+                       })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+
+                    <div class="col-sm-4 form-group">
+                        <label>Location</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Location, new
+                       {
+                           type = "text",
+                           placeholder = "e.g. - Bangalore",
+                           @class = "form-control",
+                           title = "Enter location name",
+                           data_toggle = "tooltip"
+                       })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>Working From</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.WorkingFrom, new
+                        {
+                            type = "email",
+                            placeholder = "e.g. - 12-05-2015",
+                            @class = "form-control",
+                            data_toggle = "tooltip",
+                            title = "Enter working from date"
+                        })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.WorkingFrom, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @*<label>City</label>
+                            @Html.TextBoxFor(x => x.City, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })*@
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @*<label>State</label>
+                            @Html.TextBoxFor(x => x.State, new { type = "text", placeholder = "e.g. - Karnataka", @class = "form-control" })*@
+                    </div>
+                </div>
 
                 @Html.ActionLink("Back", "Education", "Information", new { }, new { @class = "btn btn-default pull-left" })
 
-                @Html.ActionLink("Save & Continue", "Family", "Information", new { }, new { @class = "btn btn-primary pull-right" })
+                <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
 
-                @*<button type="submit" class="btn btn-primary pull-right">Save & Continue</button>*@
             </div>
-        </form>
+        }
     </div>
 </div>
