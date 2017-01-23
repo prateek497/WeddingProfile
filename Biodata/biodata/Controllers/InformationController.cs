@@ -49,7 +49,11 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Personal()
         {
-            return View();
+            return View(new Personal
+            {
+                ComplexionList = Support.ComplexionList(),
+                HeightList = Support.HeightList()
+            });
         }
 
         [HttpPost]

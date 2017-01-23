@@ -29,13 +29,13 @@
                         <label>Name</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Name, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Prateek Gangwar",
-                           @class = "form-control",
-                           @data_toggle = "tooltip",
-                           title = "Enter name of the person who's resume belong to"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Prateek Gangwar",
+                                @class = "form-control",
+                                @data_toggle = "tooltip",
+                                title = "Enter name of the person who's resume belong to"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -47,11 +47,12 @@
                             @Html.TextBoxFor(x => x.DateOfBirth, new
                             {
                                 type = "text",
-                                placeholder = "e.g. - 16/08/1989",
+                                placeholder = "e.g. - 16-Aug-1989",
                                 @class = "form-control",
                                 @data_toggle = "tooltip",
                                 title = "Enter date of birth"
                             })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -60,13 +61,14 @@
                         <label>Time of birth</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.TimeOfBirth, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - 01:56pm",
-                           @class = "form-control",
-                           title = "Enter time of birth",
-                           data_toggle = "tooltip"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - 01:56 PM",
+                                @class = "form-control",
+                                title = "Enter time of birth",
+                                data_toggle = "tooltip"
+                            })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.TimeOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -77,20 +79,33 @@
                         <label>Birth place</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Birthplace, new
-                        {
-                            type = "text",
-                            placeholder = "e.g. - Bangalore",
-                            @class = "form-control",
-                            data_toggle = "tooltip",
-                            title = "Birth place"
-                        })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Bangalore",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Birth place"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Birthplace, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Complexion</label>
-                        @Html.TextBoxFor(x => x.Complexion, new { type = "text", placeholder = "e.g. - Weatish", @class = "form-control" })
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.Complexion, new SelectList(Model.ComplexionList),
+                                new
+                                {
+                                    id = "complexion",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select complexion"
+                                })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+
+                        @*<label>Complexion</label>
+                        @Html.TextBoxFor(x => x.Complexion, new { type = "text", placeholder = "e.g. - Weatish", @class = "form-control" })*@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Current City</label>
@@ -98,7 +113,20 @@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Height</label>
-                        @Html.TextBoxFor(x => x.Height, new { type = "text", placeholder = "e.g. - Height", @class = "form-control" })
+                        
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.Height, new SelectList(Model.HeightList),
+                            new
+                            {
+                                id = "height",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Select Height"
+                            })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+
+                        @*@Html.TextBoxFor(x => x.Height, new { type = "text", placeholder = "e.g. - Height", @class = "form-control" })*@
                     </div>
                 </div>
 
@@ -109,3 +137,18 @@
         }
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $('#DateOfBirth').datetimepicker({
+                format: 'D-MMM-YYYY'
+            });
+
+            $('#TimeOfBirth').datetimepicker({
+                format: 'LT'
+            });
+        });
+    </script>
+}

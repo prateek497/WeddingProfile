@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="~/Content/icomoon.css">
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.css" />
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
     
     <!-- jQuery -->
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
 
     @if (Request.IsAuthenticated)
     {
@@ -77,15 +80,15 @@
             </footer>
         </div>
     </div>
-   
-    <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
 
-        //Tool tip background color chnage to this -#333333
-    });
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            //Tool tip background color chnage to this -#333333
+        });
     </script>
     @Scripts.Render("~/bundles/jqueryval")
-@*@RenderSection("scripts", required: false)*@
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

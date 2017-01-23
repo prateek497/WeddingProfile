@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace biodata.Models
 
         public string DateOfBirth { get; set; }
 
-        [RegularExpression(@"^(0[1-9]|1[0-2]):[0-5][0-9] (am|pm|AM|PM)$", ErrorMessage = "Invalid Time.")]
+        //[RegularExpression(@"^(0[1-9]|1[0-2]):[0-5][0-9] (am|pm|AM|PM)$", ErrorMessage = "Invalid Time.")]
         public string TimeOfBirth
         {
             get;
@@ -36,5 +37,9 @@ namespace biodata.Models
         public string CurrentCity { get; set; }
 
         public string Height { get; set; }
+
+        public IEnumerable ComplexionList { get; set; }
+
+        public IEnumerable HeightList { get; set; }
     }
 }
