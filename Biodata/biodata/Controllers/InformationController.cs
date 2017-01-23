@@ -65,7 +65,12 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Religious()
         {
-            return View();
+            return View(new Religious
+            {
+                ReligionList = Support.ReligiousList(),
+                ZodiacList = Support.ZodiacList(),
+                LanguagesList = Support.LanguagesList()
+            });
         }
 
         [HttpPost]

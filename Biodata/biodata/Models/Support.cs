@@ -27,6 +27,21 @@ namespace biodata.Models
             };
         }
 
+        public static List<string> ReligiousList()
+        {
+            return new List<string> { "HINDUISM", "ISLAM", "CHRISTIANITY", "SIKHISM", "BUDDHISM", "JAINISM", "JUDAISM" };
+        }
+
+        public static List<string> ZodiacList()
+        {
+            return new List<string> { "AQUARIUS", "PISCES", "ARIES", "TAURUS", "GEMINI", "CANCER", "LEO", "VIRGO", "LIBRA", "SCORPIO", "SAGITTARIUS", "CAPRICORN" };
+        }
+
+        public static List<string> LanguagesList()
+        {
+            return new List<string> { "English", "Hindi", "Kannada", "Telugu", "Bhojpori", "Tamil", "Bengali" };
+        }
+
         public static int GetUserId(string email, BiodataDb entities)
         {
             var user = entities.Users.FirstOrDefault(x => x.Email.Equals(email));

@@ -1,51 +1,63 @@
 ﻿@using biodata.Models
 @model Religious
 
-    @{
-        ViewBag.Title = "Religious";
-        Layout = "../Shared/_InformationLayout.cshtml";
-    }
+@{
+    ViewBag.Title = "Religious";
+    Layout = "../Shared/_InformationLayout.cshtml";
+}
 
-    <h3 class="well well-sm">
-        Religious
-        <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
-    </h3>
+<h3 class="well well-sm">
+    Religious
+    <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
+</h3>
 
-    <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
-        @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 3 })
-    </div>
+<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
+    @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 3 })
+</div>
 
-    <div class="col-sm-12 well well-sm">
-        <div class="row">
+<div class="col-sm-12 well well-sm">
+    <div class="row">
 
-            @using (Html.BeginForm("Religious", "Information"))
-            {
-                <div class="col-sm-12">
-                    <div class="text-right text-danger" style="font-size: 12px;">
-                        <span class="glyphicon glyphicon-asterisk"></span> Required field
-                    </div>
+        @using (Html.BeginForm("Religious", "Information"))
+        {
+            <div class="col-sm-12">
+                <div class="text-right text-danger" style="font-size: 12px;">
+                    <span class="glyphicon glyphicon-asterisk"></span> Required field
+                </div>
 
-                    <div class="row">
-                        <div class="col-sm-4 form-group">
-                            <label>Religion</label>
-                            <div class="input-group">
-                                @Html.TextBoxFor(x => x.Religion, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Hindu",
-                           @class = "form-control",
-                           @data_toggle = "tooltip",
-                           title = "Enter religion"
-                       })
-                                <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                            </div>
-                            @Html.ValidationMessageFor(m => m.Religion, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>Religion</label>
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.Religion, new SelectList(Model.ReligionList),
+                                new
+                                {
+                                    id = "religion",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select Religion"
+                                })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-                        <div class="col-sm-4 form-group">
-                            <label>Caste</label>
-                            <div class="input-group">
 
-                                @Html.TextBoxFor(x => x.Caste, new
+                        @*<div class="input-group">
+                                     @Html.TextBoxFor(x => x.Religion, new
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Hindu",
+                                @class = "form-control",
+                                @data_toggle = "tooltip",
+                                title = "Enter religion"
+                            })
+                                     <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                                 </div>*@
+                        @Html.ValidationMessageFor(m => m.Religion, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Caste</label>
+                        <div class="input-group">
+
+                            @Html.TextBoxFor(x => x.Caste, new
                             {
                                 type = "text",
                                 placeholder = "e.g. - Kurmi",
@@ -53,14 +65,14 @@
                                 @data_toggle = "tooltip",
                                 title = "Enter date of birth"
                             })
-                                <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                            </div>
-                            @Html.ValidationMessageFor(m => m.Caste, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-                        <div class="col-sm-4 form-group">
-                            <label>Gotra</label>
-                            <div class="input-group">
-                                @Html.TextBoxFor(x => x.Gotra, new
+                        @Html.ValidationMessageFor(m => m.Caste, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Gotra</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Gotra, new
                        {
                            type = "text",
                            placeholder = "e.g. - Kurmi",
@@ -68,16 +80,28 @@
                            title = "Enter Gotra",
                            data_toggle = "tooltip"
                        })
-                                <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                            </div>
-                            @Html.ValidationMessageFor(m => m.Gotra, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
+                        @Html.ValidationMessageFor(m => m.Gotra, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
-                    <div class="row">
-                        <div class="col-sm-4 form-group">
-                            <label>Zodiac</label>
-                            <div class="input-group">
-                                @Html.TextBoxFor(x => x.Zodiac, new
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        <label>Zodiac</label>
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.Zodiac, new SelectList(Model.ZodiacList),
+                                new
+                                {
+                                    id = "zodiac",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select Zodiac"
+                                })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+
+                        @*<div class="input-group">
+                            @Html.TextBoxFor(x => x.Zodiac, new
                         {
                             type = "text",
                             placeholder = "e.g. - Virgo",
@@ -85,36 +109,49 @@
                             data_toggle = "tooltip",
                             title = "Enter Zodiac"
                         })
-                                <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                            </div>
-                            @Html.ValidationMessageFor(m => m.Zodiac, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                        </div>
-                        <div class="col-sm-4 form-group">
-                            <label>Languages</label>
-                            @Html.TextBoxFor(x => x.Languages, new { type = "text", placeholder = "e.g. - English, Hindi", @class = "form-control" })
-                        </div>
-                        <div class="col-sm-3 form-group">
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>*@
 
-                        </div>
+                        @Html.ValidationMessageFor(m => m.Zodiac, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
+                    <div class="col-sm-4 form-group">
+                        <label>Languages</label>
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.Languages, new SelectList(Model.LanguagesList),
+                                new
+                                {
+                                    id = "languages",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select languages"
+                                })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+
+                        @*@Html.TextBoxFor(x => x.Languages, new { type = "text", placeholder = "e.g. - English, Hindi", @class = "form-control" })*@
+                    </div>
+                    <div class="col-sm-3 form-group">
+
+                    </div>
+                </div>
+
+                @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })
+
+                <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
+            </div>
+        }
+
+        @*<form>
+                <div class="col-sm-12">
+                    <div class="text-right text-danger" style="font-size: 12px;"><span class="glyphicon glyphicon-asterisk"></span> Required field</div>
+
+                    <br />
 
                     @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })
 
-                    <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
+                    @Html.ActionLink("Save & Continue", "Education", "Information", new { }, new { @class = "btn btn-primary pull-right" })
+
                 </div>
-            }
-
-            @*<form>
-                    <div class="col-sm-12">
-                        <div class="text-right text-danger" style="font-size: 12px;"><span class="glyphicon glyphicon-asterisk"></span> Required field</div>
-
-                        <br />
-
-                        @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })
-
-                        @Html.ActionLink("Save & Continue", "Education", "Information", new { }, new { @class = "btn btn-primary pull-right" })
-
-                    </div>
-                </form>*@
-        </div>
+            </form>*@
     </div>
+</div>
