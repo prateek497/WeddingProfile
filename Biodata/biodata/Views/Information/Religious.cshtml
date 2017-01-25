@@ -1,4 +1,5 @@
-﻿@using biodata.Models
+﻿@using System.Web.Mvc.Html
+@using biodata.Models
 @model Religious
 
 @{
@@ -73,13 +74,13 @@
                         <label>Gotra</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Gotra, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Kurmi",
-                           @class = "form-control",
-                           title = "Enter Gotra",
-                           data_toggle = "tooltip"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Kurmi",
+                                @class = "form-control",
+                                title = "Enter Gotra",
+                                data_toggle = "tooltip"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Gotra, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -101,34 +102,25 @@
                         </div>
 
                         @*<div class="input-group">
-                            @Html.TextBoxFor(x => x.Zodiac, new
-                        {
-                            type = "text",
-                            placeholder = "e.g. - Virgo",
-                            @class = "form-control",
-                            data_toggle = "tooltip",
-                            title = "Enter Zodiac"
-                        })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>*@
+                                @Html.TextBoxFor(x => x.Zodiac, new
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Virgo",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Enter Zodiac"
+                            })
+                                <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                            </div>*@
 
                         @Html.ValidationMessageFor(m => m.Zodiac, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-4 form-group">
                         <label>Languages</label>
                         <div class="input-group">
-                            @Html.DropDownListFor(x => x.Languages, new SelectList(Model.LanguagesList),
-                                new
-                                {
-                                    id = "languages",
-                                    @class = "form-control",
-                                    data_toggle = "tooltip",
-                                    title = "Select languages"
-                                })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                            @Html.ListBoxFor(m => m.Languages, new SelectList(Model.LanguagesList), new { @class = "form-control listbox" })
+                            @*<span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>*@
                         </div>
-
-                        @*@Html.TextBoxFor(x => x.Languages, new { type = "text", placeholder = "e.g. - English, Hindi", @class = "form-control" })*@
                     </div>
                     <div class="col-sm-3 form-group">
 
@@ -155,3 +147,28 @@
             </form>*@
     </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('.listbox').multiselect({
+                includeSelectAllOption: true,
+                selectAllValue: 'multiselect-all',
+                enableCaseInsensitiveFiltering: true,
+                enableFiltering: true,
+                maxHeight: '300',
+                buttonWidth: '235',
+                onChange: function (element, checked) {
+                    var brands = $('.listbox option:selected');
+                    var selected = [];
+                    $(brands).each(function (index, brand) {
+                        selected.push([$(this).val()]);
+                    });
+
+                    console.log(selected);
+                }
+            });
+        });
+
+    </script>
+}
