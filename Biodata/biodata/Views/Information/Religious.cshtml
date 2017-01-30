@@ -115,16 +115,18 @@
 
                         @Html.ValidationMessageFor(m => m.Zodiac, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
-                    <div class="col-sm-4 form-group">
+                    <div class="col-sm-7 form-group">
                         <label>Languages</label>
                         <div class="input-group">
                             @Html.ListBoxFor(m => m.Languages, new SelectList(Model.LanguagesList), new { @class = "form-control listbox" })
                             @*<span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>*@
+                            <label style="font-size: 14px; font-weight: bold; color: black" class="label" id="languagesString"></label>
                         </div>
+                       
                     </div>
-                    <div class="col-sm-3 form-group">
+                    @*<div class="col-sm-3 form-group">
 
-                    </div>
+                    </div>*@
                 </div>
 
                 @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })
@@ -164,8 +166,7 @@
                     $(brands).each(function (index, brand) {
                         selected.push([$(this).val()]);
                     });
-
-                    console.log(selected);
+                    $('#languagesString').text(selected.join(", "));
                 }
             });
         });
