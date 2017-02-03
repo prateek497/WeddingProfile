@@ -112,6 +112,13 @@
                 viewMode: 'years',
                 format: " YYYY"
             });
+
+            $("#BachelorPassoutYear").on("dp.change", function (e) {
+                var view = viewMode();
+                if (view !== 'years') {
+                    viewMode('years');
+                }
+            });
         });
     </script>
 }
