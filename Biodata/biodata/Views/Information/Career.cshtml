@@ -30,13 +30,13 @@
                         <label>Designation</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Designation, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Software Engineer",
-                           @class = "form-control",
-                           @data_toggle = "tooltip",
-                           title = "Enter designation of your current employee"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Software Engineer",
+                                @class = "form-control",
+                                @data_toggle = "tooltip",
+                                title = "Enter designation of your current employee"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Designation, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -45,13 +45,13 @@
                         <label>Company</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Company, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Infosys",
-                           @class = "form-control",
-                           title = "Enter your associated company name",
-                           data_toggle = "tooltip"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Infosys",
+                                @class = "form-control",
+                                title = "Enter your associated company name",
+                                data_toggle = "tooltip"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -61,13 +61,13 @@
                         <label>Location</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Location, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Bangalore",
-                           @class = "form-control",
-                           title = "Enter location name",
-                           data_toggle = "tooltip"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Bangalore",
+                                @class = "form-control",
+                                title = "Enter location name",
+                                data_toggle = "tooltip"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -78,13 +78,13 @@
                         <label>Working From</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.WorkingFrom, new
-                        {
-                            type = "email",
-                            placeholder = "e.g. - 12-05-2015",
-                            @class = "form-control",
-                            data_toggle = "tooltip",
-                            title = "Enter working from date"
-                        })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - 12-05-2015",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Enter working from date"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.WorkingFrom, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -107,3 +107,14 @@
         }
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $('#WorkingFrom').datetimepicker({
+                format: 'D-MMM-YYYY'
+            });
+        });
+    </script>
+}
