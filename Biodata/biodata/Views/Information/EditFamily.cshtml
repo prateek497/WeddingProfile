@@ -1,0 +1,14 @@
+﻿@model biodata.Models.Family
+
+@{
+    ViewBag.Title = "EditFamily";
+    Layout = "../Shared/_InformationLayout.cshtml";
+}
+
+<div class="col-sm-12 well well-sm">
+    <div class="row">
+        @{
+            Html.RenderPartial("_AddOrEditFamily", Model);
+        }
+    </div>
+</div>

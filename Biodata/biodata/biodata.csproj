@@ -396,6 +396,8 @@
     <Content Include="Views\Information\Family.cshtml" />
     <Content Include="Views\Information\Pictures.cshtml" />
     <Content Include="Views\Information\Download.cshtml" />
+    <Content Include="Views\Information\_AddOrEditFamily.cshtml" />
+    <Content Include="Views\Information\EditFamily.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
