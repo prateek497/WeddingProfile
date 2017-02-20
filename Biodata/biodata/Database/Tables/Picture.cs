@@ -10,15 +10,10 @@ namespace biodata.Database.Tables
     {
         [Key]
         public int Id { get; set; }
-        public byte[] Picture1 { get; set; }
-        public byte[] Picture2 { get; set; }
-        public byte[] Picture3 { get; set; }
-        public byte[] Picture4 { get; set; }
-        public byte[] Picture5 { get; set; }
-        public byte[] Picture6 { get; set; }
+        public byte[] PictureBytes { get; set; }
+        public bool IsProfile { get; set; }
         public int? UserId { get; set; }
 
         public User User { get; set; }
-
     }
 }

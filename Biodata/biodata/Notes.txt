@@ -41,3 +41,5 @@ Dashboard
 
 
 1-For contact - display name and name relationship if address is not empty otherwise nothing
+
+1-Delete everything from database after creating pdf and log in at begining

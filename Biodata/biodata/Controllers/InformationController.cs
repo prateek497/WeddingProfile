@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,7 +41,7 @@ namespace biodata.Controllers
                     State = model.State,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
-                //entities.SaveChanges();
+                // entities.SaveChanges();
                 return RedirectToAction("Personal");
             }
             return View(model);
@@ -59,6 +60,7 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult Personal(Personal model)
         {
+
             return RedirectToAction("Religious");
         }
 
@@ -160,7 +162,7 @@ namespace biodata.Controllers
                     Joblocation = model.JobLocation,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
-                entities.SaveChanges();
+                //entities.SaveChanges();
                 return RedirectToAction("Family");
             }
             return View(model);
@@ -186,7 +188,6 @@ namespace biodata.Controllers
                 }).FirstOrDefault();
 
 
-
             if (editfamily != null)
             {
                 editfamily.RelationshipList = Support.RelationshipList();
@@ -202,18 +203,6 @@ namespace biodata.Controllers
 
             using (var entities = new BiodataDb())
             {
-                //var updateRow = new FamilyInfo
-                //{
-                //    City = model.City,
-                //    State = model.State,
-                //    Company = model.CompanyName,
-                //    Designation = model.Designation,
-                //    Joblocation = model.JobLocation,
-                //    Name = model.Name,
-                //    Relationship = model.RelationshipText,
-                //    UserId = Support.GetUserId(User.Identity.Name, entities)
-                //};
-
                 var familyRecords = entities.Familyinfoes.SingleOrDefault(x => x.Id == model.Id);
 
                 if (familyRecords != null)
@@ -227,7 +216,7 @@ namespace biodata.Controllers
                     familyRecords.Relationship = model.RelationshipText;
                     familyRecords.UserId = Support.GetUserId(User.Identity.Name, entities);
                 }
-                entities.SaveChanges();
+                //entities.SaveChanges();
             }
 
             return RedirectToAction("Family");
@@ -239,19 +228,72 @@ namespace biodata.Controllers
             {
                 var deleteFamily = entities.Familyinfoes.FirstOrDefault(x => x.Id == id);
                 if (deleteFamily != null) entities.Familyinfoes.Remove(deleteFamily);
-                entities.SaveChanges();
+                //entities.SaveChanges();
             }
             return RedirectToAction("Family");
         }
 
+        [HttpGet]
         public ActionResult Pictures()
         {
-            return View();
+            var picModal = new PictureModel {  };
+            using (var entities = new BiodataDb())
+            {
+                var userId = Support.GetUserId(User.Identity.Name, entities);
+                var pictures = entities.Pictures.Where(x => x.UserId == userId);
+                if (pictures.Any())
+                {
+                    foreach (var pic in pictures)
+                    {
+                        //create new class with below prop
+                        picModal.PicBytes = pic.PictureBytes;
+                        picModal.Id = pic.Id;
+                    }
+                }
+            }
+
+            return View(picModal);
+        }
+
+        [HttpPost]
+        public ActionResult Pictures(IEnumerable<HttpPostedFileBase> inputfile)
+        {
+            if (inputfile == null) return RedirectToAction("pictures");
+            var inputFileList = inputfile as IList<HttpPostedFileBase> ?? inputfile.ToList();
+            if (inputFileList.Count > 0)
+            {
+                using (var entities = new BiodataDb())
+                {
+                    foreach (var file in inputFileList)
+                    {
+                        entities.Pictures.Add(new Picture
+                      {
+                          PictureBytes = Support.ConvertToBytes(file),
+                          IsProfile = false,
+                          UserId = Support.GetUserId(User.Identity.Name, entities)
+                      });
+                    }
+                    entities.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Pictures");
         }
 
         public ActionResult Download()
         {
             return View();
+        }
+
+        public ActionResult DeletePicture()
+        {
+            using (var entities = new BiodataDb())
+            {
+               // var deleteFamily = entities.Familyinfoes.FirstOrDefault(x => x.Id == id);
+               // if (deleteFamily != null) entities.Familyinfoes.Remove(deleteFamily);
+                //entities.SaveChanges();
+            }
+            return RedirectToAction("Pictures");
         }
     }
 }

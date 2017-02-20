@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using biodata.Database;
@@ -46,6 +47,14 @@ namespace biodata.Models
         {
             var user = entities.Users.FirstOrDefault(x => x.Email.Equals(email));
             return user != null ? user.Id : 0;
+        }
+
+        public static byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
         }
     }
 }

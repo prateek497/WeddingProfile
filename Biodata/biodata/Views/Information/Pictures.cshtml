@@ -1,5 +1,51 @@
-﻿@{
+﻿@using biodata.Models
+@model PictureModel
+
+@{
     ViewBag.Title = "Pictures";
+    Layout = "../Shared/_InformationLayout.cshtml";
 }
 
-<h2>Pictures</h2>
+<h3 class="well well-sm">
+    Pictures
+    <span class="help-block" style="font-size: 11px;">Add your pictures here</span>
+</h3>
+
+@if (Model.PicBytes.Count > 0)
+{
+    <div class="col-sm-12 well well-sm">
+        <div class="row">
+            @foreach (var img in Model.PicBytes)
+            {
+                <div class="col-sm-2">
+                    <img src="data:image;base64,@Convert.ToBase64String(img)" class="img-rounded center-block" style="width: 100px; height: 100px;" alt=""/>
+                    @Html.ActionLink("Dekete", "DeletePicture", "Information", new {id= Model.Id }, new { @class = "btn btn-danger" })
+                </div>
+            }
+        </div>
+    </div>
+}
+<div class="col-sm-12 well well-sm">
+    <div class="row">
+        <div class="col-sm-12">
+            @{
+                Html.RenderPartial("_FileUpload");
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        //$(function () {
+        //    $('#inputfile').fileinput({
+        //        uploadAsync: true,
+        //        minFileCount: 1,
+        //        maxFileCount: 6,
+        //        allowedFileExtensions: ["jpg", "png"],
+        //        maxfilesize: 2048
+        //    });
+        //});
+    </script>
+}
