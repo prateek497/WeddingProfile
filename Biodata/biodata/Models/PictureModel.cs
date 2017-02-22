@@ -13,4 +13,9 @@ namespace biodata.Models
 
         public int Id { get; set; }
     }
+
+    public class PictureList
+    {
+        public List<PictureModel> PicList { get; set; }
+    }
 }

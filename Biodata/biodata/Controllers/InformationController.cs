@@ -236,23 +236,26 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Pictures()
         {
-            var picModal = new PictureModel {  };
+            var pictureList = new PictureList { PicList = new List<PictureModel>() };
             using (var entities = new BiodataDb())
             {
                 var userId = Support.GetUserId(User.Identity.Name, entities);
-                var pictures = entities.Pictures.Where(x => x.UserId == userId);
+                var pictures = entities.Pictures.Where(x => x.UserId == userId).ToList();
                 if (pictures.Any())
                 {
                     foreach (var pic in pictures)
                     {
-                        //create new class with below prop
-                        picModal.PicBytes = pic.PictureBytes;
-                        picModal.Id = pic.Id;
+                        pictureList.PicList.Add(new PictureModel
+                        {
+                            Id = pic.Id,
+                            PicBytes = pic.PictureBytes,
+                            IsProfile = pic.IsProfile
+                        });
                     }
                 }
             }
 
-            return View(picModal);
+            return View(pictureList);
         }
 
         [HttpPost]
@@ -285,13 +288,29 @@ namespace biodata.Controllers
             return View();
         }
 
-        public ActionResult DeletePicture()
+        public ActionResult DeletePicture(int id)
         {
             using (var entities = new BiodataDb())
             {
-               // var deleteFamily = entities.Familyinfoes.FirstOrDefault(x => x.Id == id);
-               // if (deleteFamily != null) entities.Familyinfoes.Remove(deleteFamily);
-                //entities.SaveChanges();
+                var deletePicture = entities.Pictures.FirstOrDefault(x => x.Id == id);
+                if (deletePicture != null) entities.Pictures.Remove(deletePicture);
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Pictures");
+        }
+
+        public ActionResult ProfilePicture(int id)
+        {
+            using (var entities = new BiodataDb())
+            {
+                var userId = Support.GetUserId(User.Identity.Name, entities);
+                var pictures = entities.Pictures.Where(x => x.UserId == userId).ToList();
+
+                var profilePicture = pictures.SingleOrDefault(x => x.Id == id);
+                if (profilePicture != null) profilePicture.IsProfile = true;
+                var normalPictures = pictures.Where(x => x.Id != id);
+                foreach (var normal in normalPictures) normal.IsProfile = false;
+                entities.SaveChanges();
             }
             return RedirectToAction("Pictures");
         }
