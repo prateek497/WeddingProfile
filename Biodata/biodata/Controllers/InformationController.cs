@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -41,7 +42,7 @@ namespace biodata.Controllers
                     State = model.State,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
-                // entities.SaveChanges();
+                entities.SaveChanges();
                 return RedirectToAction("Personal");
             }
             return View(model);
@@ -60,6 +61,25 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult Personal(Personal model)
         {
+            if (model == null) return null;
+
+            if (ModelState.IsValid)
+            {
+                var entities = new BiodataDb();
+                entities.Personalinfoes.Add(new PersonalInfo
+                {
+                    Name = model.Name,
+                    Dob = Convert.ToDateTime(model.DateOfBirth),
+                    DobTime = Convert.ToDateTime(model.TimeOfBirth),
+                    Complexion = model.Complexion,
+                    CurrentCity = model.CurrentCity,
+                    Height = model.Height,
+                    UserId = Support.GetUserId(User.Identity.Name, entities)
+                });
+                entities.SaveChanges();
+                return RedirectToAction("Religious");
+            }
+
 
             return RedirectToAction("Religious");
         }
@@ -78,6 +98,23 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult Religious(Religious model)
         {
+            if (model == null) return null;
+
+            if (ModelState.IsValid)
+            {
+                var entities = new BiodataDb();
+                entities.Culturalinfoes.Add(new CulturalInfo
+                {
+                    Caste = model.Caste,
+                    Gotra = model.Gotra,
+                    Languages = model.Languages,
+                    Religion = model.Religion,
+                    Zodiac = model.Zodiac,
+                    UserId = Support.GetUserId(User.Identity.Name, entities)
+                });
+                entities.SaveChanges();
+            }
+
             return RedirectToAction("Education");
         }
 
@@ -90,6 +127,24 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult Education(Education model)
         {
+            if (model == null) return null;
+
+            if (ModelState.IsValid)
+            {
+                var entities = new BiodataDb();
+                entities.Educationinfoes.Add(new EducationInfo
+                {
+                    GraduateCollege = model.BachelorCollegeOrUni,
+                    GraduateDegree = model.BachelorDegree,
+                    GraduatedYear = model.BachelorPassoutYear,
+                    PostGraduateCollege = model.PgCollegeOrUni,
+                    PostGraduateDegree = model.PgDegree,
+                    PostGraduateYear = model.PgPassoutYear,
+                    UserId = Support.GetUserId(User.Identity.Name, entities)
+                });
+                entities.SaveChanges();
+            }
+
             return RedirectToAction("Career");
         }
 
@@ -102,6 +157,22 @@ namespace biodata.Controllers
         [HttpPost]
         public ActionResult Career(Career model)
         {
+            if (model == null) return null;
+
+            if (ModelState.IsValid)
+            {
+                var entities = new BiodataDb();
+                entities.Workexperienceinfoes.Add(new WorkExperienceInfo
+                {
+                    Company = model.Company,
+                    Designation = model.Designation,
+                    Location = model.Location,
+                    TotalExperience = (DateTime.Now - Convert.ToDateTime(model.WorkingFrom)).TotalDays.ToString(CultureInfo.InvariantCulture),
+                    UserId = Support.GetUserId(User.Identity.Name, entities)
+                });
+                entities.SaveChanges();
+            }
+
             return RedirectToAction("Family");
         }
 
@@ -162,7 +233,7 @@ namespace biodata.Controllers
                     Joblocation = model.JobLocation,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
-                //entities.SaveChanges();
+                entities.SaveChanges();
                 return RedirectToAction("Family");
             }
             return View(model);
@@ -216,7 +287,7 @@ namespace biodata.Controllers
                     familyRecords.Relationship = model.RelationshipText;
                     familyRecords.UserId = Support.GetUserId(User.Identity.Name, entities);
                 }
-                //entities.SaveChanges();
+                entities.SaveChanges();
             }
 
             return RedirectToAction("Family");
@@ -228,7 +299,7 @@ namespace biodata.Controllers
             {
                 var deleteFamily = entities.Familyinfoes.FirstOrDefault(x => x.Id == id);
                 if (deleteFamily != null) entities.Familyinfoes.Remove(deleteFamily);
-                //entities.SaveChanges();
+                entities.SaveChanges();
             }
             return RedirectToAction("Family");
         }
@@ -283,11 +354,6 @@ namespace biodata.Controllers
             return RedirectToAction("Pictures");
         }
 
-        public ActionResult Download()
-        {
-            return View();
-        }
-
         public ActionResult DeletePicture(int id)
         {
             using (var entities = new BiodataDb())
@@ -313,6 +379,18 @@ namespace biodata.Controllers
                 entities.SaveChanges();
             }
             return RedirectToAction("Pictures");
+        }
+
+        [HttpGet]
+        public ActionResult Download()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Download(string temp)
+        {
+            return View();
         }
     }
 }

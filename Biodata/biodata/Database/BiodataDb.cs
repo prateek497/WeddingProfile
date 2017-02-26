@@ -8,15 +8,15 @@ namespace biodata.Database
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class BiodataDb : DbContext
     {
-        public BiodataDb()
-            : base("name=biodataDbEntities")
+        public BiodataDb(): base("biodataDbEntities")
         {
+            System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<BiodataDb, Migrations.Configuration>("biodataDbEntities"));
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            System.Data.Entity.Database.SetInitializer<BiodataDb>(new CreateDatabaseIfNotExists<BiodataDb>());
-            System.Data.Entity.Database.SetInitializer<BiodataDb>(new DropCreateDatabaseIfModelChanges<BiodataDb>());
+            //System.Data.Entity.Database.SetInitializer<BiodataDb>(new CreateDatabaseIfNotExists<BiodataDb>());
+            //System.Data.Entity.Database.SetInitializer<BiodataDb>(new DropCreateDatabaseIfModelChanges<BiodataDb>());
             base.OnModelCreating(modelBuilder);
         }
 

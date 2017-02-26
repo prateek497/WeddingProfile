@@ -21,9 +21,8 @@ Technologies to be consider-
 
 
 Plans-
-1-Design of fill up pages.
-2-First complete the main UI.
-3-Start writing logical code.
+1-Generate PDF from database.
+2-Fixed all fill up pages.
 
 Progress Steps Samples
 1- http://bootsnipp.com/snippets/featured/form-wizard-using-tabs

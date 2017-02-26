@@ -65,20 +65,24 @@ namespace biodata.Controllers
                 {
                     var crypto = new SimpleCrypto.PBKDF2();
                     var entities = new BiodataDb();
-                    entities.Users.Add(new User
+                    if (model.IsUserExists(model.SignUp.Email))
                     {
-                        Name = model.SignUp.Name,
-                        Email = model.SignUp.Email,
-                        Password = crypto.Compute(model.SignUp.Password),
-                        PasswordSalt = crypto.Salt,
-                        IsAdmin = true,
-                        IsActive = false,
-                        CreatedDateTime = DateTime.Now
-                    });
+                        entities.Users.Add(new User
+                        {
+                            Name = model.SignUp.Name,
+                            Email = model.SignUp.Email,
+                            Password = crypto.Compute(model.SignUp.Password),
+                            PasswordSalt = crypto.Salt,
+                            IsAdmin = true,
+                            IsActive = false,
+                            CreatedDateTime = DateTime.Now
+                        });
 
-                    entities.SaveChanges();
+                        entities.SaveChanges();
 
-                    FormsAuthentication.SetAuthCookie(model.SignUp.Email, false);
+                        FormsAuthentication.SetAuthCookie(model.SignUp.Email, false);
+                    }
+                    else ModelState.AddModelError("","User already exists");
                 }
             }
 
@@ -99,6 +103,8 @@ namespace biodata.Controllers
 
             return RedirectToAction("Dashboard");
         }
+
+
 
         public ViewResult _Basic()
         {

@@ -1,4 +1,4 @@
-﻿@model biodata.Controllers.ViewModel
+﻿@*@model biodata.Controllers.ViewModel*@
 
 @{
     ViewBag.Title = "Index";
@@ -37,14 +37,14 @@
             //            // this is the ""error"" callback
             //        });
 
-            $.ajax({
+            @*$.ajax({
                 url: '@Url.Action("GenaratePdf", "Home")',
                 data: { htmlcontent: $("#mainDiv")[0].outerHTML },
                 type: 'POST',
                 success: function (data) {
                     alert(data);
                 }
-            });
+            });*@
 
         }
 
@@ -81,8 +81,8 @@
     </script>
 }
 
-@using (Html.BeginForm("GenaratePdf", "Home", FormMethod.Post, new { id = "MyForm" }))
-{
+@*@using (Html.BeginForm("GenaratePdf", "Home", FormMethod.Post, new { id = "MyForm" }))
+{*@
     <div class="container-fluid" id="mainDiv">
         <div class="row">
             <div class="col-md-12">
@@ -125,14 +125,14 @@
 
     @*@Ajax.ActionLink("Fatch Data", "GenaratePdf", new { htmlcontent = "d" }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "btn", id = "EditUserButton" })*@
 
-}
+@*}*@
 
-@using (Html.BeginForm("GenaratePdf", "Home", FormMethod.Post, new { id = "MyForm1" }))
+@*@using (Html.BeginForm("GenaratePdf", "Home", FormMethod.Post, new { id = "MyForm1" }))
 {
     @Html.HiddenFor(x => x.ClientHTML)
-    <input type="submit" value="Submit" class="btn btn-default" />
+    <input type="submit" value="Submit" class="btn btn-default" />*@
 
     @*@Html.ActionLink("Partial form", "_Basic", null, new { @class = "btn btn-primary" })*@
 
-    <a id="gethtml" class="btn bg-primary">Partial form</a>
-}
+    @*<a id="gethtml" class="btn bg-primary">Partial form</a>
+}*@
