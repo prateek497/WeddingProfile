@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model biodata.Models.PdfGeneratorModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,11 +8,11 @@
     <title>Basic form</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    @*<script src="~/Scripts/jquery-2.1.4.min.js"></script>*@
-    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    @*<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
 
 </head>
-<body style="font-family: Verdana;">
+<body style="font-family: Verdana; margin: 0 !important; padding: 0 !important">
     @*Pdf size-  595 Pixels(width)  *	842 Pixels(hieght)*@
     <div class="container" style="border: 2px solid #FAAA1F">
         <div class="row">
@@ -28,15 +30,15 @@
                                                 <div style="width: 100%; height: 100%; padding-top: 10px; padding-left: 40px">
                                                     <div style="height: 150px; width: 150px;" class="">
                                                         <img class="img-rounded" style="border: 1px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                                             alt="Prafile Picture" src="~/images/me.jpg" width="150" height="150" />
+                                                             alt="Prafile Picture" src="data:image;base64,@Convert.ToBase64String(Model.ProfilePicture.PicBytes)" width="150" height="150" />
                                                     </div>
                                                 </div>
                                             </td>
                                             <td style="">
                                                 <div style="width: 100%; height: 100%; padding-left: 50px; padding-top: 20px;">
-                                                    <h1 class="h1" style="color: #006699">Prateek Gangwar</h1>
-                                                    <h5 style="color: #6F7174;"><span class="glyphicon glyphicon-envelope" style="top: 4px;"></span> nareshbabu@iffco.in <i>(father)</i></h5>
-                                                    <h5 class="h5" style="color: #6F7174;"><span class="glyphicon glyphicon-earphone" style="top: 4px;"></span> +91-9411008583 <i>(father)</i></h5>
+                                                    <h1 class="h1" style="color: #006699">@Model.PersonalData.Name</h1>
+                                                    <h5 style="color: #6F7174;"><span class="glyphicon glyphicon-envelope" style="top: 4px;"></span>@Model.ContactData.Email<i>(@Model.ContactData.RelationshipText)</i></h5>
+                                                    <h5 class="h5" style="color: #6F7174;"><span class="glyphicon glyphicon-earphone" style="top: 4px;"></span> @Model.ContactData.Phone <i>(@Model.ContactData.RelationshipText)</i></h5>
                                                 </div>
                                             </td>
 
@@ -59,7 +61,7 @@
                                                             <i class="" style="font-size: 32px; color: #006699; position: relative; top: -2px; left: -5px; font-style: normal">Q</i>
                                                         </a>
                                                     </div>
-                                                    <h5 class="h5" style="color: #6F7174; line-height: 140%"><span class="glyphicon glyphicon-home" style="top: 1px;"></span>&nbsp;C-61,Iffco Township (Paul Pothen Nagar), Bareilly, U.P. <i>(father)</i></h5>
+                                                    <h5 class="h5" style="color: #6F7174; line-height: 140%"><span class="glyphicon glyphicon-home" style="top: 1px;"></span>&nbsp;@Model.ContactData.City, @Model.ContactData.State <i>(@Model.ContactData.RelationshipText)</i></h5>
                                                 </div>
                                             </td>
                                         </tr>
@@ -83,8 +85,8 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             BORN
-                                                            <span style="font-size: 18px; color: #006699"> 16 Aug, 1989</span>
-                                                            <span style="font-size: 10px; color: #6F7174"> 06:00AM</span>
+                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.DateOfBirthDb.ToString("dd MMM, yyyy")</span>
+                                                            <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.DateOfTimeDb.ToString("hh:mm tt")</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -101,8 +103,8 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             CURRENT CITY
-                                                            <span style="font-size: 18px; color: #006699"> Bangalore</span>@*FF0000*@
-                                                            <span style="font-size: 10px; color: #6F7174"> KARNATAKA</span>
+                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.CurrentCity</span>@*FF0000*@
+                                                            <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.CurrentCity</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -110,7 +112,7 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             HIEGHT
-                                                            <span style="font-size: 18px; color: #006699"> 5'9"</span>
+                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Height</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -118,7 +120,7 @@
                                                     <div style="width: 100%; height: 100%;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             COMPLEXION
-                                                            <span style="font-size: 18px; color: #006699"> Weatish</span>
+                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Complexion</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -137,7 +139,7 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             RELIGION
-                                                            <span style="font-size: 18px; color: #006699"> Hindu</span>
+                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Religion</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -145,7 +147,7 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             CASTE
-                                                            <span style="font-size: 18px; color: #006699"> Gangwar</span>
+                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Caste</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -153,7 +155,7 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             GOTRA
-                                                            <span style="font-size: 18px; color: #006699"> Kurmi</span>@*3C7DC4*@
+                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Gotra</span>@*3C7DC4*@
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -161,7 +163,7 @@
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             ZODIAC
-                                                            <span style="font-size: 18px; color: #006699"> Virgo</span>@*5A8F29*@
+                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Zodiac</span>@*5A8F29*@
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -169,14 +171,13 @@
                                                     <div style="width: 100%; height: 100%;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             LANGUAGES
-                                                            <span style="font-size: 18px; color: #006699;"> English, Hindi</span>@*52ADDA*@
+                                                            <span style="font-size: 18px; color: #006699;">@Model.ReligiousData.Languages</span>@*52ADDA*@
                                                         </h6>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
-
 
                                     <div class="col-md-12" style="margin-top: 10px;">
                                         <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
@@ -188,8 +189,8 @@
                                                     <div style="width: 100%; height: 100%;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
                                                             BACHELORS
-                                                            <span style="font-size: 18px; color: #006699;"> VTU 2011</span>
-                                                            <span style="font-size: 10px; color: #6F7174"> B.E.</span>
+                                                            <span style="font-size: 18px; color: #006699;">@Model.EducationData.BachelorCollegeOrUni  @Model.EducationData.BachelorPassoutYear</span>
+                                                            <span style="font-size: 10px; color: #6F7174"> @Model.EducationData.BachelorDegree</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -207,9 +208,9 @@
                                                 <td style="padding-right: 10px">
                                                     <div style="width: 100%; height: 100%;">
                                                         <h6 style="color: #6F7174; font-size: 10px;">
-                                                            <span style="font-size: 18px; color: #006699"> Software Engineer</span>
-                                                            <span style="font-size: 18px; color: #006699"> in Calpion Inc</span>
-                                                            <span style="font-size: 10px; color: #6F7174"> BANGALORE, FROM 4+ YEARS</span>
+                                                            <span style="font-size: 18px; color: #006699">@Model.CareerData.Designation</span>
+                                                            <span style="font-size: 18px; color: #006699"> in @Model.CareerData.Company</span>
+                                                            <span style="font-size: 10px; color: #6F7174"> @Model.CareerData.Location, FROM @Model.CareerData.WorkingFrom+ YEARS</span>
                                                         </h6>
                                                     </div>
                                                 </td>
@@ -223,154 +224,158 @@
                                             <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">FAMILY</h5>
                                         </div>
                                         <table style="width: 100%;">
-                                            <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            FATHER
-                                                            <span style="font-size: 18px; color: #006699"> Naresh Babu</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            CITY
-                                                            <span style="font-size: 18px; color: #006699"> Bareilly</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> U.P.</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            OCCUPATION
-                                                            <span style="font-size: 18px; color: #006699"> Manager</span>
-                                                            <span style="font-size: 18px; color: #006699;"> in Iffco</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> BAREILLY</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                            </tr>
 
-                                            <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            MOTHER
-                                                            <span style="font-size: 18px; color: #006699"> Kamla Devi</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            CITY
-                                                            <span style="font-size: 18px; color: #006699"> Bareilly</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> U.P.</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            OCCUPATION
-                                                            <span style="font-size: 18px; color: #006699"> Housewife</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> BAREILLY</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach (var family in Model.FamilyData)
+                                            {
+                                                <tr>
+                                                    <td style="padding-right: 10px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                @family.RelationshipText
+                                                                <span style="font-size: 18px; color: #006699"> @family.Name</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                CITY
+                                                                <span style="font-size: 18px; color: #006699"> @family.City</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> @family.State</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                OCCUPATION
+                                                                <span style="font-size: 18px; color: #006699"> @family.Designation</span>
+                                                                <span style="font-size: 18px; color: #006699;"> in @family.CompanyName</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
 
-                                            <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            ELDER SISTER
-                                                            <span style="font-size: 18px; color: #006699"> Preeti Gangwar</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            CITY
-                                                            <span style="font-size: 18px; color: #006699"> Chandigarh</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> PUNJAB</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            OCCUPATION
-                                                            <span style="font-size: 18px; color: #006699"> Engineer</span>
-                                                            <span style="font-size: 18px; color: #006699"> in Airtel</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> AMBLA</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @*<tr>
+                                                    <td style="padding-right: 10px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                MOTHER
+                                                                <span style="font-size: 18px; color: #006699"> Kamla Devi</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                CITY
+                                                                <span style="font-size: 18px; color: #006699"> Bareilly</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> U.P.</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                OCCUPATION
+                                                                <span style="font-size: 18px; color: #006699"> Housewife</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> BAREILLY</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                </tr>
 
-                                            <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            BROTHER-IN-LAW
-                                                            <span style="font-size: 18px; color: #006699"> Hemant Kumar</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            CITY
-                                                            <span style="font-size: 18px; color: #006699"> Chandigarh</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> PUNJAB</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            OCCUPATION
-                                                            <span style="font-size: 18px; color: #006699"> Team Lead</span>
-                                                            <span style="font-size: 18px; color: #006699"> in Infosys</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> CHANDIGARH</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td style="padding-right: 10px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                ELDER SISTER
+                                                                <span style="font-size: 18px; color: #006699"> Preeti Gangwar</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                CITY
+                                                                <span style="font-size: 18px; color: #006699"> Chandigarh</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> PUNJAB</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                OCCUPATION
+                                                                <span style="font-size: 18px; color: #006699"> Engineer</span>
+                                                                <span style="font-size: 18px; color: #006699"> in Airtel</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> AMBLA</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                </tr>
 
-                                            <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            YOUNGER SISTER
-                                                            <span style="font-size: 18px; color: #006699"> Shalini Gangwar</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            CITY
-                                                            <span style="font-size: 18px; color: #006699"> New Delhi</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> NEW DELHI</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            OCCUPATION
-                                                            <span style="font-size: 18px; color: #006699"> B.SC(CSE)</span>
-                                                            <span style="font-size: 18px; color: #006699"> in Delhi University</span>
-                                                            <span style="font-size: 10px; color: #6F7174;"> NEW DELHI</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td style="padding-right: 10px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                BROTHER-IN-LAW
+                                                                <span style="font-size: 18px; color: #006699"> Hemant Kumar</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                CITY
+                                                                <span style="font-size: 18px; color: #006699"> Chandigarh</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> PUNJAB</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                OCCUPATION
+                                                                <span style="font-size: 18px; color: #006699"> Team Lead</span>
+                                                                <span style="font-size: 18px; color: #006699"> in Infosys</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> CHANDIGARH</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding-right: 10px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                YOUNGER SISTER
+                                                                <span style="font-size: 18px; color: #006699"> Shalini Gangwar</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                CITY
+                                                                <span style="font-size: 18px; color: #006699"> New Delhi</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> NEW DELHI</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-right: 10px; padding-left: 10px;">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                OCCUPATION
+                                                                <span style="font-size: 18px; color: #006699"> B.SC(CSE)</span>
+                                                                <span style="font-size: 18px; color: #006699"> in Delhi University</span>
+                                                                <span style="font-size: 10px; color: #6F7174;"> NEW DELHI</span>
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                </tr>*@
 
                                         </table>
                                     </div>
@@ -399,23 +404,27 @@
         <div class="row">
             <div class="col-md-12" style="height: 1397px; background-color: #F0F0F0;">
                 <table style="width: 100%; height: 100%">
-                    <tr>
-                        <td style="width: 500px; height: 500px;">
-                            <div style="width: 100%; height: 100%; padding: 10px;">
-                                <div style="height: 400px; width: 400px;" class="">
-                                    <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                         alt="Profile Picture" src="~/images/me.jpg" width="400" height="400" />
+
+                    @foreach (var pic in Model.PictureListData)
+                    {
+                        <tr>
+                            <td style="width: 500px; height: 500px;">
+                                <div style="width: 100%; height: 100%; padding: 10px;">
+                                    <div style="height: 400px; width: 400px;" class="">
+                                        <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
+                                             alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="400" height="400" />
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    }
                 </table>
             </div>
         </div>
     </div>
-    @using (Html.BeginForm())
-    {
-        <input type="submit" value="submit" class="btn btn-sm btn-danger" />
-    }
+    @*@using (Html.BeginForm())
+        {
+            <input type="submit" value="submit" class="btn btn-sm btn-danger" />
+        }*@
 </body>
 </html>

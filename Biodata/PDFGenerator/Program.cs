@@ -10,11 +10,11 @@ using NReco.PdfGenerator;
 
 namespace PDFGenerator
 {
-    public class Program
+    public static class Program
     {
-        public static void Main(string[] args)
-        {
-        }
+        //public static void Main(string[] args)
+        //{
+        //}
     }
 
     public static class PdfGenerator
@@ -32,7 +32,7 @@ namespace PDFGenerator
                 Size = PageSize.A4
             };
 
-            htmlToPdf.GeneratePdfFromFile(url, null, @path);
+            htmlToPdf.GeneratePdfFromFile(url, null, path);
         }
 
         /// <summary>

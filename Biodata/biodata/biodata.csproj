@@ -165,20 +165,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DownloadFile.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Models\DownloadModel.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Family.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\PdfGeneratorModel.cs" />
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Models\ProgressWizard.cs" />
     <Compile Include="Models\Religious.cs" />
     <Compile Include="Models\SignIn.cs" />
     <Compile Include="Models\SignUp.cs" />
-    <Compile Include="Models\Support.cs" />
+    <Compile Include="Helper\Support.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -447,8 +450,11 @@
     <Content Include="Views\Information\_AddOrEditFamily.cshtml" />
     <Content Include="Views\Information\EditFamily.cshtml" />
     <Content Include="Views\Information\_FileUpload.cshtml" />
+    <Content Include="Views\Home\_Basic_backupy.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Download\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
