@@ -121,7 +121,8 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Education()
         {
-            return View();
+            //add dynamic form to select higher education
+            return View(new Education());
         }
 
         [HttpPost]
@@ -151,6 +152,7 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Career()
         {
+
             return View();
         }
 

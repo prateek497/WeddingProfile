@@ -42,6 +42,16 @@ namespace biodata.Models
 
         public string Height { get; set; }
 
+        public string MaritalStatus { get; set; }
+
+        public string Diet { get; set; }
+
+        public string Drink { get; set; }
+
+        public string Smoke { get; set; }
+
+        public string Hobbies { get; set; }
+
         public IEnumerable ComplexionList { get; set; }
 
         public IEnumerable HeightList { get; set; }

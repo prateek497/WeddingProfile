@@ -18,6 +18,8 @@ namespace biodata.Models
 
         public string Languages { get; set; }
 
+        public string MotherTongue { get; set; }
+
         public IEnumerable ReligionList { get; set; }
 
         public IEnumerable ZodiacList { get; set; }

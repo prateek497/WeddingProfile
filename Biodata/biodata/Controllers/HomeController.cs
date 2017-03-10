@@ -107,8 +107,6 @@ namespace biodata.Controllers
             return RedirectToAction("Dashboard");
         }
 
-
-
         public ViewResult _Basic()
         {
             var entities = new BiodataDb();
