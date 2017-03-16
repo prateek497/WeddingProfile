@@ -450,7 +450,7 @@
     <Content Include="Views\Information\_AddOrEditFamily.cshtml" />
     <Content Include="Views\Information\EditFamily.cshtml" />
     <Content Include="Views\Information\_FileUpload.cshtml" />
-    <Content Include="Views\Home\_Basic_backupy.cshtml" />
+    <Content Include="Views\Home\_Basic_backup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Download\" />

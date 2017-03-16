@@ -54,7 +54,11 @@ namespace biodata.Controllers
             return View(new Personal
             {
                 ComplexionList = Support.ComplexionList(),
-                HeightList = Support.HeightList()
+                HeightList = Support.HeightList(),
+                MaritalStatusList = Support.MaritalStatusList(),
+                SmokeList = Support.SmokeList(),
+                DrinkList = Support.DrinkList(),
+                DietList = Support.DietList()
             });
         }
 
@@ -74,6 +78,11 @@ namespace biodata.Controllers
                     Complexion = model.Complexion,
                     CurrentCity = model.CurrentCity,
                     Height = model.Height,
+                    Diet = model.Diet,
+                    Drink =model.Drink,
+                    Hobbies = model.Hobbies,
+                    Smoke = model.Smoke,
+                    MaritalStatus = model.MaritalStatus,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
                 entities.SaveChanges();

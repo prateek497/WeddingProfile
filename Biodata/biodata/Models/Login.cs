@@ -27,7 +27,7 @@ namespace biodata.Models
             }
             catch (Exception ex)
             {
-                // ignored
+                throw ex;
             }
 
             return isValid;
@@ -37,8 +37,8 @@ namespace biodata.Models
         {
             using (var db = new BiodataDb())
             {
-                var user = db.Users.Where(x=>x.Email.Equals(email));
-                if (user == null) return true;
+                var user = db.Users.Where(x=>x.Email.Equals(email)).ToList();
+                if (user.Count < 1) return true;
                 return false;
             }
         }

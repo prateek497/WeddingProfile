@@ -74,6 +74,7 @@
                         @Html.ValidationMessageFor(m => m.TimeOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-3 form-group">
                         <label>Birth place</label>
@@ -103,9 +104,6 @@
                                 })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-
-                        @*<label>Complexion</label>
-                        @Html.TextBoxFor(x => x.Complexion, new { type = "text", placeholder = "e.g. - Weatish", @class = "form-control" })*@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Current City</label>
@@ -113,7 +111,7 @@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Height</label>
-                        
+
                         <div class="input-group">
                             @Html.DropDownListFor(x => x.Height, new SelectList(Model.HeightList),
                             new
@@ -125,9 +123,61 @@
                             })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-
-                        @*@Html.TextBoxFor(x => x.Height, new { type = "text", placeholder = "e.g. - Height", @class = "form-control" })*@
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 form-group">
+                        <label>Marital Status</label>
+                        @Html.DropDownListFor(x => x.MaritalStatus, new SelectList(Model.MaritalStatusList),"Select Marital Status",
+                                new
+                                {
+                                    id = "maritalstatus",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select Marital Status"
+                                })
+                        @Html.ValidationMessageFor(m => m.MaritalStatus, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Diet</label>
+                        @Html.DropDownListFor(x => x.Diet, new SelectList(Model.DietList),"Select Diet",
+                                new
+                                {
+                                    id = "diet",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select diet"
+                                })
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Drink</label>
+                        @Html.DropDownListFor(x => x.Drink, new SelectList(Model.DrinkList),"Select Drink",
+                                new
+                                {
+                                    id = "drink",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select drink"
+                                })
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Smoke</label>
+                        @Html.DropDownListFor(x => x.Smoke, new SelectList(Model.SmokeList),"Select Smoke",
+                            new
+                            {
+                                id = "smoke",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Select Smoke"
+                            })
+                    </div>
+
+                    <div class="col-sm-3 form-group">
+                        <label>Hobbies</label>
+                        @Html.TextBoxFor(x => x.Hobbies, new { type = "text", placeholder = "e.g. - Cooking, Movies", @class = "form-control" })
+                    </div>
+
                 </div>
 
                 @Html.ActionLink("Back", "Contact", "Information", new { }, new { @class = "btn btn-default pull-left" })

@@ -43,6 +43,26 @@ namespace biodata.Models
             return new List<string> { "English", "Hindi", "Kannada", "Telugu", "Bhojpori", "Tamil", "Bengali" };
         }
 
+        public static List<string> MaritalStatusList()
+        {
+            return new List<string> { "Never Married", "Divorced", "Seperated" };
+        }
+
+        public static List<string> DietList()
+        {
+            return new List<string> { "Vegetarian", "Non-Vegetarian", "Eggetarian" };
+        }
+
+        public static List<string> DrinkList()
+        {
+            return new List<string> { "Yes", "No", "Occasinally" };
+        }
+
+        public static List<string> SmokeList()
+        {
+            return new List<string> { "Yes", "No", "Occasinally" };
+        }
+
         public static int GetUserId(string email, BiodataDb entities)
         {
             var user = entities.Users.FirstOrDefault(x => x.Email.Equals(email));
