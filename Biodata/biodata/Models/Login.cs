@@ -27,7 +27,7 @@ namespace biodata.Models
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
 
             return isValid;

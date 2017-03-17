@@ -119,6 +119,7 @@ namespace biodata.Controllers
                     Languages = model.Languages,
                     Religion = model.Religion,
                     Zodiac = model.Zodiac,
+                    MotherTongue = model.MotherTongue,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
                 entities.SaveChanges();

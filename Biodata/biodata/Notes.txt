@@ -23,6 +23,11 @@ Technologies to be consider-
 Plans-
 1-Generate PDF from database.
 2-Fixed all fill up pages.
+3-Change the Education into dynamic education
+4-Email to send forget password and contact us
+5-Get the images to showup 
+6-Smaple pdf
+
 
 Progress Steps Samples
 1- http://bootsnipp.com/snippets/featured/form-wizard-using-tabs
