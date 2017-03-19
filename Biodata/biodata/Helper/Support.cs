@@ -63,6 +63,11 @@ namespace biodata.Models
             return new List<string> { "Yes", "No", "Occasinally" };
         }
 
+        public static List<string> EducationList()
+        {
+            return new List<string> { "Graduate", "Post-Graguate", "Docrate" };
+        }
+
         public static int GetUserId(string email, BiodataDb entities)
         {
             var user = entities.Users.FirstOrDefault(x => x.Email.Equals(email));

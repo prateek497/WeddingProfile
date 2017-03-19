@@ -11,7 +11,7 @@ namespace biodata.Models
 
         public Contact ContactData { get; set; }
 
-        public Education EducationData { get; set; }
+        public EducationFields EducationData { get; set; }
 
         public List<Family> FamilyData { get; set; }
 

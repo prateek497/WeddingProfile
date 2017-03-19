@@ -79,7 +79,7 @@ namespace biodata.Controllers
                     CurrentCity = model.CurrentCity,
                     Height = model.Height,
                     Diet = model.Diet,
-                    Drink =model.Drink,
+                    Drink = model.Drink,
                     Hobbies = model.Hobbies,
                     Smoke = model.Smoke,
                     MaritalStatus = model.MaritalStatus,
@@ -131,12 +131,30 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Education()
         {
-            //add dynamic form to select higher education
-            return View(new Education());
+            ViewBag.EducationPostBackAction = "Education";
+
+            var entities = new BiodataDb();
+            int userId = Support.GetUserId(User.Identity.Name, entities);
+            var educationList = entities.Educationinfoes.Where(x => x.UserId == userId).Select(y =>
+                new EducationFields
+                {
+                    Id = y.Id,
+                    College = y.College,
+                    University = y.University,
+                    Degree = y.Degree,
+                    Year = y.Year,
+                    EducationQualText = y.EducationQualification
+                }).ToList();
+
+            return View(new Educations
+            {
+                EducationFieldses = educationList,
+                Education = new EducationFields { EducationList = Support.EducationList() }
+            });
         }
 
         [HttpPost]
-        public ActionResult Education(Education model)
+        public ActionResult Education(EducationFields model)
         {
             if (model == null) return null;
 
@@ -145,18 +163,77 @@ namespace biodata.Controllers
                 var entities = new BiodataDb();
                 entities.Educationinfoes.Add(new EducationInfo
                 {
-                    GraduateCollege = model.BachelorCollegeOrUni,
-                    GraduateDegree = model.BachelorDegree,
-                    GraduatedYear = model.BachelorPassoutYear,
-                    PostGraduateCollege = model.PgCollegeOrUni,
-                    PostGraduateDegree = model.PgDegree,
-                    PostGraduateYear = model.PgPassoutYear,
+                    College = model.College,
+                    Degree = model.Degree,
+                    Year = model.Year,
+                    EducationQualification = model.EducationQualText,
+                    University = model.University,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
                 entities.SaveChanges();
             }
 
-            return RedirectToAction("Career");
+            return RedirectToAction("Education");
+        }
+
+        [HttpGet]
+        public ActionResult EditEducation(int id)
+        {
+            ViewBag.EducationPostBackAction = "EditEducation";
+
+            var entities = new BiodataDb();
+            var editEdu = entities.Educationinfoes.Where(x => x.Id == id).Select(y =>
+                new EducationFields
+                {
+                    Id = y.Id,
+                    University = y.University,
+                    Year = y.Year,
+                    College = y.College,
+                    Degree = y.Degree,
+                    EducationQualText = y.EducationQualification
+                }).FirstOrDefault();
+
+
+            if (editEdu != null)
+            {
+                editEdu.EducationList = Support.EducationList();
+                return View(editEdu);
+            }
+            return RedirectToAction("Education");
+        }
+
+        [HttpPost]
+        public ActionResult EditEducation(EducationFields model)
+        {
+            if (model == null) return null;
+
+            using (var entities = new BiodataDb())
+            {
+                var educationRecords = entities.Educationinfoes.SingleOrDefault(x => x.Id == model.Id);
+
+                if (educationRecords != null)
+                {
+                    educationRecords.Degree = model.Degree;
+                    educationRecords.Year = model.Year;
+                    educationRecords.University = model.University;
+                    educationRecords.College = model.Year;
+                    educationRecords.EducationQualification = model.EducationQualText;
+                    educationRecords.UserId = Support.GetUserId(User.Identity.Name, entities);
+                }
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Education");
+        }
+
+        public ActionResult DeleteEducation(int id)
+        {
+            using (var entities = new BiodataDb())
+            {
+                var deleteEducation = entities.Educationinfoes.FirstOrDefault(x => x.Id == id);
+                if (deleteEducation != null) entities.Educationinfoes.Remove(deleteEducation);
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Education");
         }
 
         [HttpGet]
@@ -404,5 +481,7 @@ namespace biodata.Controllers
         {
             return View();
         }
+
+
     }
 }

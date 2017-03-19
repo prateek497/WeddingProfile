@@ -1,5 +1,5 @@
 ﻿@using biodata.Models
-@model Education
+@model Educations
 @{
     ViewBag.Title = "Education";
     Layout = "../Shared/_InformationLayout.cshtml";
@@ -14,93 +14,65 @@
     @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 4 })
 </div>
 
+@if (Model.EducationFieldses.Count > 0)
+{
+    <div class="col-sm-12 well well-sm">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Qualificatoin</td>
+                            <td>Degree</td>
+                            <td>College</td>
+                            <td>University</td>
+                            <td>Year</td>
+                        </tr>
+                    </thead>
+                    @foreach (var member in Model.EducationFieldses)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                @Html.ActionLink("Edit", "EditEducation", "Information", new { id = member.Id }, new { @class = "btn btn-primary btn-xs" })&nbsp;
+                                @Html.ActionLink("Delete", "DeleteEducation", "Information", new { id = member.Id }, new { @class = "btn btn-primary btn-xs" })
+                            </td>
+                            <td>
+                                @member.EducationQualText
+                            </td>
+                            <td>
+                                @member.Degree
+                            </td>
+                            <td>
+                                @member.College
+                            </td>
+                            <td>
+                                @member.University
+                            </td>
+                            <td>
+                                @member.Year
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
 <div class="col-sm-12 well well-sm">
     <div class="row">
 
-        @using (Html.BeginForm("Education", "Information"))
-        {
-            <div class="col-sm-12">
-                <div class="text-right text-danger" style="font-size: 12px;">
-                    <span class="glyphicon glyphicon-asterisk"></span> Required field
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        <label>Bachelor College Or University</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(x => x.BachelorCollegeOrUni, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - VTU",
-                                @class = "form-control",
-                                @data_toggle = "tooltip",
-                                title = "Enter College"
-                            })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
-                        @Html.ValidationMessageFor(m => m.BachelorCollegeOrUni, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        <label>Bachelor Passout Year</label>
-                        <div class="input-group">
-
-                            @Html.TextBoxFor(x => x.BachelorPassoutYear, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - 2011",
-                                @class = "form-control",
-                                @data_toggle = "tooltip",
-                                title = "Enter Bachelor Passout Year"
-                            })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
-                        @Html.ValidationMessageFor(m => m.BachelorPassoutYear, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        <label>Bachelor Degree</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(x => x.BachelorDegree, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - B.E.",
-                                @class = "form-control",
-                                title = "Enter Bachelor Degree",
-                                data_toggle = "tooltip"
-                            })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
-                        @Html.ValidationMessageFor(m => m.BachelorDegree, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        <label>Post Graduate College Or University</label>
-                        @Html.TextBoxFor(x => x.PgCollegeOrUni, new
-                        {
-                            type = "text",
-                            placeholder = "e.g. - None",
-                            @class = "form-control",
-                            data_toggle = "tooltip",
-                            title = "Enter Post Graduate College Or University"
-                        })
-                        @Html.ValidationMessageFor(m => m.PgCollegeOrUni, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        <label>Post Graduate Passout Year</label>
-                        @Html.TextBoxFor(x => x.PgPassoutYear, new { type = "text", placeholder = "e.g. - 2013", @class = "form-control" })
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        <label>Post Graduate Degree</label>
-                        @Html.TextBoxFor(x => x.PgDegree, new { type = "text", placeholder = "e.g. - ME", @class = "form-control" })
-                    </div>
-                </div>
-
-                @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
-
-                <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
-            </div>
+        @{
+            Html.RenderPartial("_AddOrEditEducation", Model.Education);
         }
 
+        <div class="col-sm-12">
+            <hr />
+
+            @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
+            @Html.ActionLink("Continue", "Career", "Information", new { }, new { @class = "btn btn-primary pull-right" })
+        </div>
     </div>
 </div>
 
@@ -111,13 +83,9 @@
             $('#BachelorPassoutYear , #PgPassoutYear').datetimepicker({
                 viewMode: 'years',
                 format: " YYYY"
-            });
-
-            $("#BachelorPassoutYear").on("dp.change", function (e) {
-                //var view = viewMode();
-                //if (view !== 'years') {
-                //    viewMode('years');
-                //}
+            }).on("dp.show", function () {
+                console.log("dtp open");
+                $(this).data('DateTimePicker').viewMode('years');
             });
         });
     </script>

@@ -1,22 +1,33 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace biodata.Models
 {
-    public class Education
+
+    public class Educations
     {
-        public string BachelorCollegeOrUni { get;  set; }
+        public EducationFields Education { get; set; }
 
-        public string BachelorPassoutYear { get; set; }
+        public List<EducationFields> EducationFieldses { get; set; }
+    }
 
-        public string BachelorDegree { get; set; }
+    public class EducationFields
+    {
+        public int Id { get; set; }
 
-        public string PgCollegeOrUni { get; set; }
+        public string College { get; set; }
 
-        public string PgPassoutYear { get; set; }
+        public string University { get; set; }
 
-        public string PgDegree { get; set; }
+        public string Degree { get; set; }
+
+        public string Year { get; set; }
+
+        public IEnumerable EducationList { get; set; }
+
+        public string EducationQualText { get; set; }
     }
 }

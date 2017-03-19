@@ -1,0 +1,29 @@
+﻿@model biodata.Models.EducationFields
+
+@{
+    ViewBag.Title = "Edit Education";
+    Layout = "../Shared/_InformationLayout.cshtml";
+}
+
+<div class="col-sm-12 well well-sm">
+    <div class="row">
+        @{
+            Html.RenderPartial("_AddOrEditEducation", Model);
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $('#BachelorPassoutYear').datetimepicker({
+                viewMode: 'years',
+                format: " YYYY"
+            }).on("dp.show", function () {
+                console.log("dtp open");
+                $(this).data('DateTimePicker').viewMode('years');
+            });
+        });
+    </script>
+}

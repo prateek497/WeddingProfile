@@ -110,7 +110,7 @@ namespace biodata.Controllers
         public ViewResult _Basic()
         {
             var entities = new BiodataDb();
-            var userId = Support.GetUserId("admin@biodata.com", entities);
+            var userId = Support.GetUserId("prabhakar.prasad26@yahoo.com", entities);
 
             if (userId > 0)
             {
@@ -131,15 +131,15 @@ namespace biodata.Controllers
                     Email = z.Email,
                     Phone = z.ContactNumber
                 }).FirstOrDefault();
-                pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).Select(z => new Education
-                {
-                    PgPassoutYear = z.PostGraduateYear,
-                    PgCollegeOrUni = z.PostGraduateCollege,
-                    PgDegree = z.PostGraduateDegree,
-                    BachelorPassoutYear = z.GraduatedYear,
-                    BachelorDegree = z.GraduateDegree,
-                    BachelorCollegeOrUni = z.GraduateCollege
-                }).FirstOrDefault();
+                //pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).Select(z => new Education
+                //{
+                //    PgPassoutYear = z.PostGraduateYear,
+                //    PgCollegeOrUni = z.PostGraduateCollege,
+                //    PgDegree = z.PostGraduateDegree,
+                //    BachelorPassoutYear = z.GraduatedYear,
+                //    BachelorDegree = z.GraduateDegree,
+                //    BachelorCollegeOrUni = z.GraduateCollege
+                //}).FirstOrDefault();
                 pdfModel.FamilyData = entities.Familyinfoes.Where(x => x.UserId == userId).Select(z => new Family
                 {
                     State = z.State,

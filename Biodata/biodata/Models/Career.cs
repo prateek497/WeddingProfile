@@ -14,5 +14,7 @@ namespace biodata.Models
         public string Location { get; set; }
 
         public string WorkingFrom { get; set; }
+
+        public string AnnualIncome { get; set; }
     }
 }
