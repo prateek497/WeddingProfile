@@ -45,21 +45,41 @@
                                             <td style="width: 300px;">
                                                 <div style="width: 100%; height: 100%; padding-left: 10px; padding-top: 35px;">
                                                     <div class="text-center">
-                                                        <a href="https://www.facebook.com/prateekgng" style="text-decoration: none">
-                                                            <i class="fa fa-facebook-official" style="font-size: 32px; color: #006699; margin: 5px;"></i>
-                                                        </a>
-                                                        <a href="https://www.linkedin.com/in/prateek-gangwar-1a5479103" style="text-decoration: none">
-                                                            <i class="fa fa-linkedin" style="font-size: 32px; color: #006699; margin: 5px;"></i>
-                                                        </a>
-                                                        <a href="https://www.instagram.com/prateek497/?hl=en" style="text-decoration: none">
-                                                            <i class="fa fa-instagram" style="font-size: 32px; color: #006699; margin: 5px;"></i>
-                                                        </a>
-                                                        <a href="https://mobile.twitter.com/prateek497" style="text-decoration: none">
-                                                            <i class="fa fa-twitter" style="font-size: 32px; color: #006699; margin: 5px;"></i>
-                                                        </a>
-                                                        <a href="https://www.quora.com/profile/Prateek-Gangwar-4" style="text-decoration: none">
-                                                            <i class="" style="font-size: 32px; color: #006699; position: relative; top: -2px; left: -5px; font-style: normal">Q</i>
-                                                        </a>
+                                                        @if (!string.IsNullOrEmpty(Model.PersonalData.Facebook))
+                                                        {
+                                                            <a href=@Model.PersonalData.Facebook style="text-decoration: none">
+                                                                <i class="fa fa-facebook-official" style="font-size: 32px; color: #006699; margin: 5px;"></i>
+                                                            </a>
+                                                        }
+
+                                                        @if (!string.IsNullOrEmpty(Model.PersonalData.Linkedin))
+                                                        {
+                                                            <a href=@Model.PersonalData.Linkedin style="text-decoration: none">
+                                                                <i class="fa fa-linkedin" style="font-size: 32px; color: #006699; margin: 5px;"></i>
+                                                            </a>
+                                                        }
+
+                                                        @if (!string.IsNullOrEmpty(Model.PersonalData.Instagram))
+                                                        {
+                                                            <a href=@Model.PersonalData.Instagram style="text-decoration: none">
+                                                                <i class="fa fa-instagram" style="font-size: 32px; color: #006699; margin: 5px;"></i>
+                                                            </a>
+                                                        }
+
+                                                        @if (!string.IsNullOrEmpty(Model.PersonalData.Twitter))
+                                                        {
+                                                            <a href=@Model.PersonalData.Twitter style="text-decoration: none">
+                                                                <i class="fa fa-twitter" style="font-size: 32px; color: #006699; margin: 5px;"></i>
+                                                            </a>
+                                                        }
+
+                                                        @if (!string.IsNullOrEmpty(Model.PersonalData.Quora))
+                                                        {
+                                                            <a href=@Model.PersonalData.Quora style="text-decoration: none">
+                                                                <i class="" style="font-size: 32px; color: #006699; position: relative; top: -2px; left: -5px; font-style: normal">Q</i>
+                                                            </a>
+                                                        }
+
                                                     </div>
                                                     <h5 class="h5" style="color: #6F7174; line-height: 140%"><span class="glyphicon glyphicon-home" style="top: 1px;"></span>&nbsp;@Model.ContactData.City, @Model.ContactData.State <i>(@Model.ContactData.RelationshipText)</i></h5>
                                                 </div>
@@ -187,11 +207,11 @@
                                             <tr>
                                                 <td style="padding-right: 10px">
                                                     <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            BACHELORS
-                                                            <span style="font-size: 18px; color: #006699;">@Model.EducationData.BachelorCollegeOrUni  @Model.EducationData.BachelorPassoutYear</span>
-                                                            <span style="font-size: 10px; color: #6F7174"> @Model.EducationData.BachelorDegree</span>
-                                                        </h6>
+                                                        @*<h6 style="color: #6F7174; font-size: 10px;">
+                                                                BACHELORS
+                                                                <span style="font-size: 18px; color: #006699;">@Model.EducationData.BachelorCollegeOrUni  @Model.EducationData.BachelorPassoutYear</span>
+                                                                <span style="font-size: 10px; color: #6F7174"> @Model.EducationData.BachelorDegree</span>
+                                                            </h6>*@
                                                     </div>
                                                 </td>
                                             </tr>

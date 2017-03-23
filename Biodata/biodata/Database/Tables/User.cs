@@ -16,7 +16,6 @@ namespace biodata.Database.Tables
             Familyinfoes = new HashSet<FamilyInfo>();
             Personalinfoes = new HashSet<PersonalInfo>();
             Pictures = new HashSet<Picture>();
-            Socialmedias = new HashSet<SocialMedia>();
             Userprofiles = new HashSet<UserProfile>();
             Workexperienceinfoes = new HashSet<WorkExperienceInfo>();
         }
@@ -37,7 +36,6 @@ namespace biodata.Database.Tables
         public HashSet<FamilyInfo> Familyinfoes { get; set; }
         public HashSet<PersonalInfo> Personalinfoes { get; set; }
         public HashSet<Picture> Pictures { get; set; }
-        public HashSet<SocialMedia> Socialmedias { get; set; }
         public HashSet<UserProfile> Userprofiles { get; set; }
         public HashSet<WorkExperienceInfo> Workexperienceinfoes { get; set; }
 

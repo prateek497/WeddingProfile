@@ -60,22 +60,25 @@
     </div>
 }
 
-<div class="col-sm-12 well well-sm">
-    <div class="row">
+@if (Model.Education.EducationList.Count > 0)
+{
 
-        @{
-            Html.RenderPartial("_AddOrEditEducation", Model.Education);
-        }
+    <div class="col-sm-12 well well-sm">
+        <div class="row">
 
-        <div class="col-sm-12">
-            <hr />
+            @{
+             Html.RenderPartial("_AddOrEditEducation", Model.Education);
+            }
 
-            @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
-            @Html.ActionLink("Continue", "Career", "Information", new { }, new { @class = "btn btn-primary pull-right" })
+            <div class="col-sm-12">
+                <hr />
+
+                @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
+                @Html.ActionLink("Continue", "Career", "Information", new { }, new { @class = "btn btn-primary pull-right" })
+            </div>
         </div>
     </div>
-</div>
-
+}
 @section Scripts
 {
     <script>

@@ -21,6 +21,11 @@ namespace biodata.Database.Tables
         public string Drink { get; set; }
         public string Smoke { get; set; }
         public string Hobbies { get; set; }
+        public string Facebook { get; set; }
+        public string Linkedin { get; set; }
+        public string Instagram { get; set; }
+        public string Twitter { get; set; }
+        public string Quora { get; set; }
         public int? UserId { get; set; }
 
         public User User { get; set; }

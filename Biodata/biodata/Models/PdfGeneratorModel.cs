@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using biodata.Database.Tables;
 
 namespace biodata.Models
 {
@@ -11,7 +12,7 @@ namespace biodata.Models
 
         public Contact ContactData { get; set; }
 
-        public EducationFields EducationData { get; set; }
+        public List<EducationInfo> EducationData { get; set; }
 
         public List<Family> FamilyData { get; set; }
 

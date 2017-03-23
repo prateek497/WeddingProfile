@@ -158,7 +158,6 @@
     <Compile Include="Database\Tables\FamilyInfo.cs" />
     <Compile Include="Database\Tables\PersonalInfo.cs" />
     <Compile Include="Database\Tables\Picture.cs" />
-    <Compile Include="Database\Tables\SocialMedia.cs" />
     <Compile Include="Database\Tables\User.cs" />
     <Compile Include="Database\Tables\UserProfile.cs" />
     <Compile Include="Database\Tables\WorkExperienceInfo.cs" />

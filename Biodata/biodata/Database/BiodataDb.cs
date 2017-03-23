@@ -26,7 +26,6 @@ namespace biodata.Database
         public DbSet<FamilyInfo> Familyinfoes { get; set; }
         public DbSet<PersonalInfo> Personalinfoes { get; set; }
         public DbSet<Picture> Pictures { get; set; }
-        public DbSet<SocialMedia> Socialmedias { get; set; }
         public DbSet<UserProfile> Userprofiles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<WorkExperienceInfo> Workexperienceinfoes { get; set; }

@@ -26,7 +26,7 @@ namespace biodata.Models
 
         public string Year { get; set; }
 
-        public IEnumerable EducationList { get; set; }
+        public List<string> EducationList { get; set; }
 
         public string EducationQualText { get; set; }
     }

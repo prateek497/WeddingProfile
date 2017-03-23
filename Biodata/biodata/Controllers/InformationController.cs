@@ -83,6 +83,10 @@ namespace biodata.Controllers
                     Hobbies = model.Hobbies,
                     Smoke = model.Smoke,
                     MaritalStatus = model.MaritalStatus,
+                    Facebook = model.Facebook,
+                    Instagram = model.Instagram,
+                    Linkedin = model.Linkedin,
+                    Twitter = model.Twitter,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
                 entities.SaveChanges();
@@ -149,7 +153,7 @@ namespace biodata.Controllers
             return View(new Educations
             {
                 EducationFieldses = educationList,
-                Education = new EducationFields { EducationList = Support.EducationList() }
+                Education = new EducationFields { EducationList = Support.EducationList().Except(educationList.Select(x => x.EducationQualText)).ToList() }
             });
         }
 
@@ -290,7 +294,7 @@ namespace biodata.Controllers
                     new Families
                     {
                         FamilyList = familyList,
-                        FamilyMember = new Family { RelationshipList = Support.RelationshipList() }
+                        FamilyMember = new Family { RelationshipList = Support.RelationshipList().Except(new List<string> { "Self" }).ToList() }
                     }
                 );
             }

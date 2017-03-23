@@ -34,11 +34,13 @@
                                 placeholder = "e.g. - Prateek Gangwar",
                                 @class = "form-control",
                                 @data_toggle = "tooltip",
-                                title = "Enter name of the person who's resume belong to"
+                                title = "Enter name of the person who's resume belong to",
+                                maxlength = 25
                             })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>Maximum letters should be less than 20</i></small>
                     </div>
                     <div class="col-sm-4 form-group">
                         <label>Date of birth</label>
@@ -129,41 +131,41 @@
                 <div class="row">
                     <div class="col-sm-3 form-group">
                         <label>Marital Status</label>
-                        @Html.DropDownListFor(x => x.MaritalStatus, new SelectList(Model.MaritalStatusList),"Select Marital Status",
-                                new
-                                {
-                                    id = "maritalstatus",
-                                    @class = "form-control",
-                                    data_toggle = "tooltip",
-                                    title = "Select Marital Status"
-                                })
+                        @Html.DropDownListFor(x => x.MaritalStatus, new SelectList(Model.MaritalStatusList), "Select Marital Status",
+                            new
+                            {
+                                id = "maritalstatus",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Select Marital Status"
+                            })
                         @Html.ValidationMessageFor(m => m.MaritalStatus, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-2 form-group">
                         <label>Diet</label>
-                        @Html.DropDownListFor(x => x.Diet, new SelectList(Model.DietList),"Select Diet",
-                                new
-                                {
-                                    id = "diet",
-                                    @class = "form-control",
-                                    data_toggle = "tooltip",
-                                    title = "Select diet"
-                                })
+                        @Html.DropDownListFor(x => x.Diet, new SelectList(Model.DietList), "Select Diet",
+                            new
+                            {
+                                id = "diet",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Select diet"
+                            })
                     </div>
                     <div class="col-sm-2 form-group">
                         <label>Drink</label>
-                        @Html.DropDownListFor(x => x.Drink, new SelectList(Model.DrinkList),"Select Drink",
-                                new
-                                {
-                                    id = "drink",
-                                    @class = "form-control",
-                                    data_toggle = "tooltip",
-                                    title = "Select drink"
-                                })
+                        @Html.DropDownListFor(x => x.Drink, new SelectList(Model.DrinkList), "Select Drink",
+                            new
+                            {
+                                id = "drink",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Select drink"
+                            })
                     </div>
                     <div class="col-sm-2 form-group">
                         <label>Smoke</label>
-                        @Html.DropDownListFor(x => x.Smoke, new SelectList(Model.SmokeList),"Select Smoke",
+                        @Html.DropDownListFor(x => x.Smoke, new SelectList(Model.SmokeList), "Select Smoke",
                             new
                             {
                                 id = "smoke",
@@ -177,7 +179,25 @@
                         <label>Hobbies</label>
                         @Html.TextBoxFor(x => x.Hobbies, new { type = "text", placeholder = "e.g. - Cooking, Movies", @class = "form-control" })
                     </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-sm-3 form-group">
+                        <label>Facebook</label>
+                        @Html.TextBoxFor(x => x.Facebook, new { type = "text", placeholder = "e.g. - https://www.facebook.com/prateekgng", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>Linkedin</label>
+                        @Html.TextBoxFor(x => x.Linkedin, new { type = "text", placeholder = "e.g. - https://www.linkedin/prateek497", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>Instagram</label>
+                        @Html.TextBoxFor(x => x.Instagram, new { type = "text", placeholder = "e.g. - https://www.intagram/prateek497", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>Twitter</label>
+                        @Html.TextBoxFor(x => x.Twitter, new { type = "text", placeholder = "e.g. - https://www.quora.com/prateek497", @class = "form-control" })
+                    </div>
                 </div>
 
                 @Html.ActionLink("Back", "Contact", "Information", new { }, new { @class = "btn btn-default pull-left" })
@@ -192,13 +212,31 @@
 {
     <script>
         $(function () {
-            $('#DateOfBirth').datetimepicker({
-                format: 'D-MMM-YYYY'
-            });
+            $('#DateOfBirth')
+                .datetimepicker({
+                    format: 'D-MMM-YYYY'
+                });
 
-            $('#TimeOfBirth').datetimepicker({
-                format: 'LT'
-            });
+            $('#TimeOfBirth')
+                .datetimepicker({
+                    format: 'LT'
+                });
+
+            //$('#Facebook').change(function () {
+            //    $.ajax({
+            //        url: "https://www.facebook.com/prateekgng",
+            //        type: "application/javascript",
+            //        dataType: "jsonp",
+            //        crossDomain: true,
+            //        success: function (response) {
+            //            alert(response);
+            //            this.load(response);
+            //        },
+            //        error: function (xhr, status) {
+            //            alert(xhr);
+            //        }
+            //    });
+            //});
         });
     </script>
 }

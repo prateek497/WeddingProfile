@@ -188,11 +188,6 @@
     <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 </div>
 
-@using (Html.BeginForm("_Basic", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
-{
-    <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
-}
-
 @{
     Html.RenderPartial("_Login", Model.Login);
 }

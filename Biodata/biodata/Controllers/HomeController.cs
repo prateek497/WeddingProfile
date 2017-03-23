@@ -110,7 +110,7 @@ namespace biodata.Controllers
         public ViewResult _Basic()
         {
             var entities = new BiodataDb();
-            var userId = Support.GetUserId("prabhakar.prasad26@yahoo.com", entities);
+            var userId = Support.GetUserId("admin@biodata.com", entities);
 
             if (userId > 0)
             {
@@ -131,15 +131,9 @@ namespace biodata.Controllers
                     Email = z.Email,
                     Phone = z.ContactNumber
                 }).FirstOrDefault();
-                //pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).Select(z => new Education
-                //{
-                //    PgPassoutYear = z.PostGraduateYear,
-                //    PgCollegeOrUni = z.PostGraduateCollege,
-                //    PgDegree = z.PostGraduateDegree,
-                //    BachelorPassoutYear = z.GraduatedYear,
-                //    BachelorDegree = z.GraduateDegree,
-                //    BachelorCollegeOrUni = z.GraduateCollege
-                //}).FirstOrDefault();
+                
+                pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).ToList();
+
                 pdfModel.FamilyData = entities.Familyinfoes.Where(x => x.UserId == userId).Select(z => new Family
                 {
                     State = z.State,
@@ -157,7 +151,11 @@ namespace biodata.Controllers
                     CurrentCity = z.CurrentCity,
                     DateOfBirthDb = z.Dob,
                     DateOfTimeDb = z.DobTime,
-                    Height = z.Height
+                    Height = z.Height,
+                    Twitter = z.Twitter,
+                    Linkedin = z.Linkedin,
+                    Instagram = z.Instagram,
+                    Facebook = z.Facebook
                 }).FirstOrDefault();
                 pdfModel.ReligiousData = entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
                 {

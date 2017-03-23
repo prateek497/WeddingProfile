@@ -51,6 +51,14 @@
         </div>
     </div>
 }
+
+@using (Html.BeginForm("_Basic", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @*<button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>*@
+
+    <a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>Generate PDF</a>
+}
+
 @section Scripts
 {
     <script>
