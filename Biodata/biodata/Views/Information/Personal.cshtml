@@ -25,8 +25,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4 form-group">
-                        <label>Name</label>
+                    <div class="col-sm-3 form-group">
+                        <label>Name of the candidate</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Name, new
                             {
@@ -40,9 +40,9 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                        <small class="help-block" style="font-size: 11px;"><i>Maximum letters should be less than 20</i></small>
+                        <small class="help-block" style="font-size: 11px;"><i>Maximum letters should be less than 25</i></small>
                     </div>
-                    <div class="col-sm-4 form-group">
+                    <div class="col-sm-3 form-group">
                         <label>Date of birth</label>
                         <div class="input-group">
 
@@ -54,12 +54,12 @@
                                 @data_toggle = "tooltip",
                                 title = "Enter date of birth"
                             })
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>
+                            @*<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>*@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
-                    <div class="col-sm-4 form-group">
+                    <div class="col-sm-3 form-group">
                         <label>Time of birth</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.TimeOfBirth, new
@@ -70,52 +70,15 @@
                                 title = "Enter time of birth",
                                 data_toggle = "tooltip"
                             })
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            @*<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>*@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.TimeOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3 form-group">
-                        <label>Birth place</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(x => x.Birthplace, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - Bangalore",
-                                @class = "form-control",
-                                data_toggle = "tooltip",
-                                title = "Birth place"
-                            })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
-                        @Html.ValidationMessageFor(m => m.Birthplace, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label>Complexion</label>
-                        <div class="input-group">
-                            @Html.DropDownListFor(x => x.Complexion, new SelectList(Model.ComplexionList),
-                                new
-                                {
-                                    id = "complexion",
-                                    @class = "form-control",
-                                    data_toggle = "tooltip",
-                                    title = "Select complexion"
-                                })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label>Current City</label>
-                        @Html.TextBoxFor(x => x.CurrentCity, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })
-                    </div>
                     <div class="col-sm-3 form-group">
                         <label>Height</label>
-
                         <div class="input-group">
-                            @Html.DropDownListFor(x => x.Height, new SelectList(Model.HeightList),
+                            @Html.DropDownListFor(x => x.Height, new SelectList(Model.HeightList), "Select Height",
                             new
                             {
                                 id = "height",
@@ -126,6 +89,64 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 form-group">
+                        <label>Birth place</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Birthplace, new
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Bareilly",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Birth place"
+                            })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Birthplace, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+
+                    <div class="col-sm-2 form-group">
+                        <label>Birth state</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.Birthstate, new
+                            {
+                                type = "text",
+                                placeholder = "e.g. - U.P",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Birth state"
+                            })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Birthstate, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    </div>
+
+                    <div class="col-sm-3 form-group">
+                        <label>Complexion</label>
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.Complexion, new SelectList(Model.ComplexionList),"Select Complexion",
+                                new
+                                {
+                                    id = "complexion",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select complexion"
+                                })
+                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Current City</label>
+                        @Html.TextBoxFor(x => x.CurrentCity, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Current State</label>
+                        @Html.TextBoxFor(x => x.CurrentState, new { type = "text", placeholder = "e.g. - Karnataka", @class = "form-control" })
+                    </div>
+                   
                 </div>
 
                 <div class="row">
@@ -190,13 +211,17 @@
                         <label>Linkedin</label>
                         @Html.TextBoxFor(x => x.Linkedin, new { type = "text", placeholder = "e.g. - https://www.linkedin/prateek497", @class = "form-control" })
                     </div>
-                    <div class="col-sm-3 form-group">
+                    <div class="col-sm-2 form-group">
                         <label>Instagram</label>
                         @Html.TextBoxFor(x => x.Instagram, new { type = "text", placeholder = "e.g. - https://www.intagram/prateek497", @class = "form-control" })
                     </div>
-                    <div class="col-sm-3 form-group">
+                    <div class="col-sm-2 form-group">
                         <label>Twitter</label>
-                        @Html.TextBoxFor(x => x.Twitter, new { type = "text", placeholder = "e.g. - https://www.quora.com/prateek497", @class = "form-control" })
+                        @Html.TextBoxFor(x => x.Twitter, new { type = "text", placeholder = "e.g. - https://www.twitter.com/prateek497", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Quora</label>
+                        @Html.TextBoxFor(x => x.Quora, new { type = "text", placeholder = "e.g. - https://www.quora.com/prateek497", @class = "form-control" })
                     </div>
                 </div>
 

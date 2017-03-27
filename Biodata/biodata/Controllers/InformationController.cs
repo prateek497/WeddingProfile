@@ -87,6 +87,7 @@ namespace biodata.Controllers
                     Instagram = model.Instagram,
                     Linkedin = model.Linkedin,
                     Twitter = model.Twitter,
+                    Quora = model.Quora,
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
                 entities.SaveChanges();

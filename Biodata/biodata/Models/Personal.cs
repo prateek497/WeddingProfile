@@ -36,9 +36,13 @@ namespace biodata.Models
 
         public string Birthplace { get; set; }
 
+        public string Birthstate { get; set; }
+
         public string Complexion { get; set; }
 
         public string CurrentCity { get; set; }
+
+        public string CurrentState { get; set; }
 
         public string Height { get; set; }
 

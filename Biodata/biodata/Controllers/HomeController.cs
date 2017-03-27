@@ -155,7 +155,8 @@ namespace biodata.Controllers
                     Twitter = z.Twitter,
                     Linkedin = z.Linkedin,
                     Instagram = z.Instagram,
-                    Facebook = z.Facebook
+                    Facebook = z.Facebook,
+                    Quora = z.Quora
                 }).FirstOrDefault();
                 pdfModel.ReligiousData = entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
                 {
