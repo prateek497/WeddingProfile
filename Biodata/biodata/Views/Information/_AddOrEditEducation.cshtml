@@ -8,10 +8,10 @@
         </div>
 
         <div class="row">
-            <div class="col-md-2 form-group">
+            <div class="col-md-3 form-group">
                 <label>Qualification</label>
                 <div class="input-group">
-                    @Html.DropDownListFor(x => x.EducationQualText, new SelectList(Model.EducationList),
+                    @Html.DropDownListFor(x => x.EducationQualText, new SelectList(Model.EducationList),"Select Qualification",
                             new
                             {
                                 id = "relationship",
@@ -39,7 +39,7 @@
                 @Html.ValidationMessageFor(m => m.Degree, "", new { @class = "text-danger", style = "font-size: 12px;" })
             </div>
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
                 <label>College</label>
                 @Html.TextBoxFor(x => x.College, new
                             {

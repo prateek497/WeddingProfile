@@ -20,10 +20,10 @@
                 if (img.IsProfile)
                 {
                     <div class="col-sm-2 text-center" style="">
-                        <div class="img-rounded img-responsive" style="width: 130px; height: 130px; border: 5px solid brown; background-color: brown">
+                        <div class="img-rounded img-responsive center-block" style="width: 130px; height: 130px; border: 5px solid brown; background-color: brown">
                             <img src="data:image;base64,@Convert.ToBase64String(img.PicBytes)" class="img-rounded center-block img-responsive" style="width: 125px; height: 120px;" alt="" />
                         </div>
-                        @Html.ActionLink("Delete", "DeletePicture", "Information", new { id = img.Id }, new { @class = "btn btn-danger btn-xs" })
+                        @Html.ActionLink("Delete", "DeletePicture", "Information", new { id = img.Id }, new { @class = "btn btn-danger btn-xs " })
                     </div>
                 }
                 else
@@ -54,9 +54,11 @@
 
 @using (Html.BeginForm("_Basic", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    @*<button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>*@
-
-    <a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>Generate PDF</a>
+   
+    <div class="col-md-12 text-center">
+        <a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>Generate PDF</a>
+        <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
+    </div>
 }
 
 @section Scripts

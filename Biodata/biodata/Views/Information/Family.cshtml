@@ -66,15 +66,20 @@
 }
 <div class="col-sm-12 well well-sm">
     <div class="row">
-        @{
-            Html.RenderPartial("_AddOrEditFamily", Model.FamilyMember);
-        }
-        <div class="col-sm-12">
-            <hr />
 
+        @if (Model.FamilyList.Count < 10)
+        {
+            {
+                Html.RenderPartial("_AddOrEditFamily", Model.FamilyMember);
+            }
+            <div class="col-sm-12">
+                <hr />
+            </div>
+        }
+
+        <div class="col-sm-12">
             @Html.ActionLink("Back", "Career", "Information", new { }, new { @class = "btn btn-default pull-left" })
-            @Html.ActionLink("Continue", "Pictures", "Information", new { }, new { @class = "btn btn-primary pull-right" })
-            @*<button type="submit" class="btn btn-primary pull-right">Continue</button>*@
+            @Html.ActionLink("Continue", "FamilyValidation", "Information", new { }, new { @class = "btn btn-primary pull-right" })
         </div>
 
     </div>

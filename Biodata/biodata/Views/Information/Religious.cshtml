@@ -30,7 +30,7 @@
                     <div class="col-sm-4 form-group">
                         <label>Religion</label>
                         <div class="input-group">
-                            @Html.DropDownListFor(x => x.Religion, new SelectList(Model.ReligionList),
+                            @Html.DropDownListFor(x => x.Religion, new SelectList(Model.ReligionList), "Select Religion",
                                 new
                                 {
                                     id = "religion",
@@ -40,25 +40,11 @@
                                 })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-
-                        @*<div class="input-group">
-                                     @Html.TextBoxFor(x => x.Religion, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - Hindu",
-                                @class = "form-control",
-                                @data_toggle = "tooltip",
-                                title = "Enter religion"
-                            })
-                                     <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                                 </div>*@
                         @Html.ValidationMessageFor(m => m.Religion, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-4 form-group">
                         <label>Caste</label>
-                        <div class="input-group">
-
-                            @Html.TextBoxFor(x => x.Caste, new
+                        @Html.TextBoxFor(x => x.Caste, new
                             {
                                 type = "text",
                                 placeholder = "e.g. - Kurmi",
@@ -66,8 +52,6 @@
                                 @data_toggle = "tooltip",
                                 title = "Enter date of birth"
                             })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
                         @Html.ValidationMessageFor(m => m.Caste, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-4 form-group">
@@ -90,7 +74,7 @@
                     <div class="col-sm-3 form-group">
                         <label>Zodiac</label>
                         <div class="input-group">
-                            @Html.DropDownListFor(x => x.Zodiac, new SelectList(Model.ZodiacList),
+                            @Html.DropDownListFor(x => x.Zodiac, new SelectList(Model.ZodiacList), "Select Zodiac",
                                 new
                                 {
                                     id = "zodiac",

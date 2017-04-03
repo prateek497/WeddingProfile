@@ -40,7 +40,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                        <small class="help-block" style="font-size: 11px;"><i>Maximum letters should be less than 25</i></small>
+                        @*<small class="help-block" style="font-size: 11px;"><i>Maximum letters should be less than 25</i></small>*@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Date of birth</label>
@@ -79,15 +79,16 @@
                         <label>Height</label>
                         <div class="input-group">
                             @Html.DropDownListFor(x => x.Height, new SelectList(Model.HeightList), "Select Height",
-                            new
-                            {
-                                id = "height",
-                                @class = "form-control",
-                                data_toggle = "tooltip",
-                                title = "Select Height"
-                            })
+                                new
+                                {
+                                    id = "height",
+                                    @class = "form-control",
+                                    data_toggle = "tooltip",
+                                    title = "Select Height"
+                                })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
+                        @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                 </div>
 
@@ -107,7 +108,7 @@
                         </div>
                         @Html.ValidationMessageFor(m => m.Birthplace, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
-
+                        
                     <div class="col-sm-2 form-group">
                         <label>Birth state</label>
                         <div class="input-group">
@@ -137,6 +138,7 @@
                                 })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
+                        @Html.ValidationMessageFor(m => m.Complexion, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                     <div class="col-sm-2 form-group">
                         <label>Current City</label>

@@ -101,7 +101,7 @@
                                         </div>
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td style="padding-right: 5px">
+                                                <td style="padding-right: 5px; padding-top: 2px">
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                             BORN
@@ -112,7 +112,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="padding-right: 5px; padding-left: 5px;">
+                                                <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                             BIRTHPLACE
@@ -123,7 +123,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="padding-right: 5px; padding-left: 5px;">
+                                                <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <div style="color: #6F7174; font-size: 10px;">CURRENT CITY</div>
                                                         <div>
@@ -132,7 +132,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="padding-right: 5px; padding-left: 5px;">
+                                                <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                         <div style="color: #6F7174; font-size: 10px;">HIEGHT</div>
                                                         <div>
@@ -140,7 +140,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td  style="padding-left: 5px;">
+                                                <td style="padding-left: 5px; padding-top: 2px">
                                                     <div style="width: 100%; height: 100%;">
                                                         <div style="color: #6F7174; font-size: 10px;">
                                                             COMPLEXION
@@ -151,9 +151,85 @@
                                                     </div>
                                                 </td>
                                             </tr>
+
+                                            @if (!string.IsNullOrEmpty(Model.PersonalData.MaritalStatus) || !string.IsNullOrEmpty(Model.PersonalData.Diet)
+                                                || !string.IsNullOrEmpty(Model.PersonalData.Drink) || !string.IsNullOrEmpty(Model.PersonalData.Smoke)
+                                                || !string.IsNullOrEmpty(Model.PersonalData.Hobbies))
+                                            {
+                                                <tr>
+                                                    @if (!string.IsNullOrEmpty(Model.PersonalData.MaritalStatus))
+                                                    {
+                                                        <td style="padding-top: 10px;">
+                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                <div style="color: #6F7174; font-size: 10px;">
+                                                                    MARITAL STATUS
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @Model.PersonalData.MaritalStatus</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.PersonalData.Diet))
+                                                    {
+                                                        <td style="padding-right: 5px; padding-left: 5px; padding-top: 10px;">
+                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    DIET
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Diet</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.PersonalData.Drink))
+                                                    {
+                                                        <td style="padding-right: 5px; padding-left: 5px; padding-top: 10px;">
+                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    DRINK
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Drink</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.PersonalData.Smoke))
+                                                    {
+                                                        <td style="padding-right: 5px; padding-left: 5px; padding-top: 10px;">
+                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    SMOKE
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Smoke</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.PersonalData.Hobbies))
+                                                    {
+                                                        <td style="padding-left: 5px; padding-top: 10px;">
+                                                            <div style="width: 100%; height: 100%;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    HOBBIES
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Hobbies</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
                                         </table>
                                     </div>
-
 
                                     <div class="col-md-12" style="margin-top: 10px;">
                                         <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
@@ -161,46 +237,86 @@
                                         </div>
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td style="padding-right: 10px">
+                                                <td style="padding-right: 5px; padding-top: 2px">
                                                     <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
+                                                        <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                             RELIGION
+                                                        </div>
+                                                        <div>
                                                             <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Religion</span>
-                                                        </h6>
+                                                        </div>
                                                     </div>
                                                 </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            CASTE
-                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Caste</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            GOTRA
-                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Gotra</span>@*3C7DC4*@
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 10px; padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            ZODIAC
-                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Zodiac</span>@*5A8F29*@
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-left: 10px;">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            LANGUAGES
-                                                            <span style="font-size: 18px; color: #006699;">@Model.ReligiousData.Languages</span>@*52ADDA*@
-                                                        </h6>
-                                                    </div>
-                                                </td>
+
+                                                @if (!string.IsNullOrEmpty(Model.ReligiousData.Caste))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                CASTE
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Caste</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(Model.ReligiousData.Gotra))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                GOTRA
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Gotra</span>@*3C7DC4*@
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(Model.ReligiousData.Zodiac))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                ZODIAC
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Zodiac</span>@*5A8F29*@
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(Model.ReligiousData.MotherTongue))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                MOTHER TONGUE
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.MotherTongue</span>@*5A8F29*@
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(Model.ReligiousData.Languages))
+                                                {
+                                                    <td style="padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                LANGUAGES
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699;">@Model.ReligiousData.Languages</span>@*52ADDA*@
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
                                             </tr>
                                         </table>
                                     </div>
@@ -211,200 +327,119 @@
                                         </div>
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        @*<h6 style="color: #6F7174; font-size: 10px;">
-                                                                BACHELORS
-                                                                <span style="font-size: 18px; color: #006699;">@Model.EducationData.BachelorCollegeOrUni  @Model.EducationData.BachelorPassoutYear</span>
-                                                                <span style="font-size: 10px; color: #6F7174"> @Model.EducationData.BachelorDegree</span>
-                                                            </h6>*@
-                                                    </div>
-                                                </td>
+                                                @foreach (var education in Model.EducationData)
+                                                {
+                                                    <td style="padding-top: 2px;">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                @education.EducationQualification
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699;">@education.Degree @education.Year</span>
+                                                                <span style="font-size: 10px; color: #6F7174"> @education.College, @education.University</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                }
                                             </tr>
                                         </table>
                                     </div>
 
-
-                                    <div class="col-md-12" style="margin-top: 10px;">
-                                        <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
-                                            <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">WORK EXPERIENCE</h5>
+                                    @if (Model.CareerData.YesWorkExperience)
+                                    {
+                                        <div class="col-md-12" style="margin-top: 10px;">
+                                            <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
+                                                <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">WORK EXPERIENCE</h5>
+                                            </div>
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td style="padding-right: 10px">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <h6 style="color: #6F7174; font-size: 10px;">
+                                                                <span style="font-size: 18px; color: #006699">@Model.CareerData.Designation</span>
+                                                                @if (!string.IsNullOrEmpty(Model.CareerData.Company))
+                                                                {
+                                                                    <span style="font-size: 18px; color: #006699"> in @Model.CareerData.Company</span>
+                                                                }
+                                                                @if (!string.IsNullOrEmpty(Model.CareerData.Location))
+                                                                {
+                                                                    <span style="font-size: 18px; color: #006699"> ,@Model.CareerData.Location</span>  @*, FROM @Model.CareerData.WorkingFrom+ YEARS*@
+                                                                }
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    @if (!string.IsNullOrEmpty(Model.CareerData.AnnualIncomeText))
+                                                    {
+                                                        <td style="padding-right: 10px">
+                                                            <div style="width: 100%; height: 100%;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    ANNUAL INCOME
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699;">@Model.CareerData.AnnualIncomeText</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            </table>
                                         </div>
-                                        <table style="width: 100%;">
-                                            <tr>
-                                                <td style="padding-right: 10px">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <h6 style="color: #6F7174; font-size: 10px;">
-                                                            <span style="font-size: 18px; color: #006699">@Model.CareerData.Designation</span>
-                                                            <span style="font-size: 18px; color: #006699"> in @Model.CareerData.Company</span>
-                                                            <span style="font-size: 10px; color: #6F7174"> @Model.CareerData.Location, FROM @Model.CareerData.WorkingFrom+ YEARS</span>
-                                                        </h6>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                    }
 
-
-                                    <div class="col-md-12" style="margin-top: 10px;">
-                                        <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
-                                            <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">FAMILY</h5>
+                                    @if (Model.FamilyData.Count > 0)
+                                    {
+                                        <div class="col-md-12" style="margin-top: 10px;">
+                                            <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
+                                                <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">FAMILY</h5>
+                                            </div>
+                                            <table style="width: 100%;">
+                                                @foreach (var family in Model.FamilyData)
+                                                {
+                                                    <tr>
+                                                        <td style="padding-right: 10px; padding-top: 2px;">
+                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    @family.RelationshipText
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @family.Name</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="padding-right: 10px; padding-left: 10px; padding-top: 2px;">
+                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    CITY
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699"> @family.City</span>
+                                                                    <span style="font-size: 10px; color: #6F7174;"> @family.State</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        @if (!string.IsNullOrEmpty(family.Designation) || !string.IsNullOrEmpty(family.CompanyName) || !string.IsNullOrEmpty(family.City))
+                                                        {
+                                                            <td style="padding-right: 10px; padding-left: 10px; padding-top: 2px;">
+                                                                <div style="width: 100%; height: 100%;">
+                                                                    <div style="color: #6F7174; font-size: 10px;">
+                                                                        OCCUPATION
+                                                                    </div>
+                                                                    <div>
+                                                                        <span style="font-size: 18px; color: #006699"> @family.Designation</span>
+                                                                        @if (!string.IsNullOrEmpty(family.CompanyName))
+                                                                        {
+                                                                            <span style="font-size: 18px; color: #006699;"> in @family.CompanyName</span>
+                                                                        }
+                                                                        <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        }
+                                                    </tr>
+                                                }
+                                            </table>
                                         </div>
-                                        <table style="width: 100%;">
-
-                                            @foreach (var family in Model.FamilyData)
-                                            {
-                                                <tr>
-                                                    <td style="padding-right: 10px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                @family.RelationshipText
-                                                                <span style="font-size: 18px; color: #006699"> @family.Name</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                CITY
-                                                                <span style="font-size: 18px; color: #006699"> @family.City</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> @family.State</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                OCCUPATION
-                                                                <span style="font-size: 18px; color: #006699"> @family.Designation</span>
-                                                                <span style="font-size: 18px; color: #006699;"> in @family.CompanyName</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            }
-
-                                            @*<tr>
-                                                    <td style="padding-right: 10px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                MOTHER
-                                                                <span style="font-size: 18px; color: #006699"> Kamla Devi</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                CITY
-                                                                <span style="font-size: 18px; color: #006699"> Bareilly</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> U.P.</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                OCCUPATION
-                                                                <span style="font-size: 18px; color: #006699"> Housewife</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> BAREILLY</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td style="padding-right: 10px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                ELDER SISTER
-                                                                <span style="font-size: 18px; color: #006699"> Preeti Gangwar</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                CITY
-                                                                <span style="font-size: 18px; color: #006699"> Chandigarh</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> PUNJAB</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                OCCUPATION
-                                                                <span style="font-size: 18px; color: #006699"> Engineer</span>
-                                                                <span style="font-size: 18px; color: #006699"> in Airtel</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> AMBLA</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td style="padding-right: 10px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                BROTHER-IN-LAW
-                                                                <span style="font-size: 18px; color: #006699"> Hemant Kumar</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                CITY
-                                                                <span style="font-size: 18px; color: #006699"> Chandigarh</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> PUNJAB</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                OCCUPATION
-                                                                <span style="font-size: 18px; color: #006699"> Team Lead</span>
-                                                                <span style="font-size: 18px; color: #006699"> in Infosys</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> CHANDIGARH</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td style="padding-right: 10px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                YOUNGER SISTER
-                                                                <span style="font-size: 18px; color: #006699"> Shalini Gangwar</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                CITY
-                                                                <span style="font-size: 18px; color: #006699"> New Delhi</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> NEW DELHI</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-right: 10px; padding-left: 10px;">
-                                                        <div style="width: 100%; height: 100%;">
-                                                            <h6 style="color: #6F7174; font-size: 10px;">
-                                                                OCCUPATION
-                                                                <span style="font-size: 18px; color: #006699"> B.SC(CSE)</span>
-                                                                <span style="font-size: 18px; color: #006699"> in Delhi University</span>
-                                                                <span style="font-size: 10px; color: #6F7174;"> NEW DELHI</span>
-                                                            </h6>
-                                                        </div>
-                                                    </td>
-                                                </tr>*@
-
-                                        </table>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -429,22 +464,25 @@
     <div class="container" style="border: 2px solid #FAAA1F">
         <div class="row">
             <div class="col-md-12" style="height: 1397px; background-color: #F0F0F0;">
-                <table style="width: 100%; height: 100%">
-
-                    @foreach (var pic in Model.PictureListData)
-                    {
-                        <tr>
-                            <td style="width: 500px; height: 500px;">
-                                <div style="width: 100%; height: 100%; padding: 10px;">
-                                    <div style="height: 400px; width: 400px;" class="">
-                                        <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                             alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="400" height="400" />
+                <div class="row">
+                    @*<table>
+                        <tr>*@
+                            @foreach (var pic in Model.PictureListData)
+                            {
+                                @*<td>*@
+                                    <div style="margin: 30px; float: left">
+                                        <div style="height: 400px; width: 400px; ">
+                                            @*<div style="padding: 10px;">*@
+                                            <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
+                                                 alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="400" height="400" />
+                                            @*</div>*@
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </table>
+                                @*</td>*@
+                            }
+                        @*</tr>
+                    </table>*@
+                </div>
             </div>
         </div>
     </div>

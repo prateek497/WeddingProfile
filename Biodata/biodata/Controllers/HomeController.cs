@@ -115,13 +115,17 @@ namespace biodata.Controllers
             if (userId > 0)
             {
                 var pdfModel = new PdfGeneratorModel();
-                pdfModel.CareerData = entities.Workexperienceinfoes.Where(x => x.UserId == userId).Select(z => new Career
-                {
-                    Designation = z.Designation,
-                    Company = z.Company,
-                    Location = z.Location,
-                    WorkingFrom = z.TotalExperience
-                }).FirstOrDefault();
+                pdfModel.CareerData =
+                    entities.Workexperienceinfoes.Where(x => x.UserId == userId).Select(z => new Career
+                    {
+                        Designation = z.Designation,
+                        Company = z.Company,
+                        Location = z.Location,
+                        WorkingFrom = z.TotalExperience,
+                        YesWorkExperience = z.IsWorkingExprience,
+                        AnnualIncomeText = z.AnnualIncome
+                    }).FirstOrDefault();
+
                 pdfModel.ContactData = entities.Contactinfoes.Where(x => x.UserId == userId).Select(z => new Contact
                 {
                     State = z.State,
@@ -131,7 +135,7 @@ namespace biodata.Controllers
                     Email = z.Email,
                     Phone = z.ContactNumber
                 }).FirstOrDefault();
-                
+
                 pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).ToList();
 
                 pdfModel.FamilyData = entities.Familyinfoes.Where(x => x.UserId == userId).Select(z => new Family
@@ -156,20 +160,28 @@ namespace biodata.Controllers
                     Linkedin = z.Linkedin,
                     Instagram = z.Instagram,
                     Facebook = z.Facebook,
-                    Quora = z.Quora
+                    Quora = z.Quora,
+                    Smoke = z.Smoke,
+                    Drink = z.Drink,
+                    Hobbies = z.Hobbies,
+                    Diet = z.Diet,
+                    MaritalStatus = z.MaritalStatus,
                 }).FirstOrDefault();
-                pdfModel.ReligiousData = entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
-                {
-                    Caste = z.Caste,
-                    Gotra = z.Gotra,
-                    Languages = z.Languages,
-                    Religion = z.Religion,
-                    Zodiac = z.Zodiac
-                }).FirstOrDefault();
-                pdfModel.ProfilePicture = entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
-                {
-                    PicBytes = z.PictureBytes
-                }).FirstOrDefault();
+                pdfModel.ReligiousData =
+                    entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
+                    {
+                        Caste = z.Caste,
+                        Gotra = z.Gotra,
+                        Languages = z.Languages,
+                        Religion = z.Religion,
+                        Zodiac = z.Zodiac,
+                        MotherTongue = z.MotherTongue
+                    }).FirstOrDefault();
+                pdfModel.ProfilePicture =
+                    entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
+                    {
+                        PicBytes = z.PictureBytes
+                    }).FirstOrDefault();
                 pdfModel.PictureListData = entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
                 {
                     PicBytes = z.PictureBytes
@@ -184,9 +196,17 @@ namespace biodata.Controllers
         [HttpPost]
         public FileResult _Basic(PdfGeneratorModel model)
         {
-            string fileName = "prateek.pdf";//model.PersonalData.Name.Replace(" ", "");
+            string fileName = "prateek.pdf"; //model.PersonalData.Name.Replace(" ", "");
             string filePath = AppDomain.CurrentDomain.BaseDirectory + @"Download\" + fileName;
-            if (Request.Url != null) PDFGenerator.PdfGenerator.Generate(Request.Url.ToString(), filePath);
+            try
+            {
+                if (Request.Url != null) PDFGenerator.PdfGenerator.Generate(Request.Url.ToString(), filePath);
+            }
+            catch (Exception)
+            {
+            }
+
+
             //DownloadFile download = new DownloadFile(fileName, filePath);
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);

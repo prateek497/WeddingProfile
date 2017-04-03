@@ -14,6 +14,15 @@ namespace biodata.Models
             return new List<string> { "Self", "Father", "Mother", "Brother", "Sister", "Friend", "Other Relative", "Grandfather" };
         }
 
+        public static List<string> FamilyRelationshipList()
+        {
+            return new List<string>
+            {
+                "FATHER", "MOTHER", "BROTHER", "SISTER", "FRIEND", "OTHER RELATIVE", "GRANDFATHER","GRANDMOTHER","BROTHER-IN-LAW"
+                ,"SISTER-IN-LAW","UNCLE","AUNTY"
+            };
+        }
+
         public static List<string> ComplexionList()
         {
             return new List<string> { "Weatish", "Fair", "Black" };
@@ -31,12 +40,12 @@ namespace biodata.Models
 
         public static List<string> ReligiousList()
         {
-            return new List<string> { "HINDUISM", "ISLAM", "CHRISTIANITY", "SIKHISM", "BUDDHISM", "JAINISM", "JUDAISM" };
+            return new List<string> { "Hinduism", "Islam", "Christianity", "Sikhism", "Buddhism", "Jainism", "Judaism" };
         }
 
         public static List<string> ZodiacList()
         {
-            return new List<string> { "AQUARIUS", "PISCES", "ARIES", "TAURUS", "GEMINI", "CANCER", "LEO", "VIRGO", "LIBRA", "SCORPIO", "SAGITTARIUS", "CAPRICORN" };
+            return new List<string> { "Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn" };
         }
 
         public static List<string> LanguagesList()
@@ -66,7 +75,12 @@ namespace biodata.Models
 
         public static List<string> EducationList()
         {
-            return new List<string> { "Graduate", "Post-Graguate", "Docrate" };
+            return new List<string> { "GRADUATE", "POST-GRADUATE", "DOCRATE" };
+        }
+
+        public static List<string> AnnualIncomeList()
+        {
+            return new List<string> { "0 - 1Lakh", "1 - 5Lakh", "5 - 10Lakh", "10 - 15Lakh", "15 - 20Lakh", "> 20Lakh" };
         }
 
         public static int GetUserId(string email, BiodataDb entities)

@@ -221,7 +221,7 @@ namespace biodata.Controllers
                     educationRecords.Degree = model.Degree;
                     educationRecords.Year = model.Year;
                     educationRecords.University = model.University;
-                    educationRecords.College = model.Year;
+                    educationRecords.College = model.College;
                     educationRecords.EducationQualification = model.EducationQualText;
                     educationRecords.UserId = Support.GetUserId(User.Identity.Name, entities);
                 }
@@ -245,7 +245,11 @@ namespace biodata.Controllers
         public ActionResult Career()
         {
 
-            return View();
+            return View(new Career
+            {
+                YesWorkExperience = true,
+                AnnualIncomeList = Support.AnnualIncomeList()
+            });
         }
 
         [HttpPost]
@@ -253,20 +257,25 @@ namespace biodata.Controllers
         {
             if (model == null) return null;
 
-            if (ModelState.IsValid)
+            if (model.YesWorkExperience)
             {
-                var entities = new BiodataDb();
-                entities.Workexperienceinfoes.Add(new WorkExperienceInfo
+                if (ModelState.IsValid)
                 {
-                    Company = model.Company,
-                    Designation = model.Designation,
-                    Location = model.Location,
-                    TotalExperience = (DateTime.Now - Convert.ToDateTime(model.WorkingFrom)).TotalDays.ToString(CultureInfo.InvariantCulture),
-                    UserId = Support.GetUserId(User.Identity.Name, entities)
-                });
-                entities.SaveChanges();
-            }
+                    var entities = new BiodataDb();
+                    entities.Workexperienceinfoes.Add(new WorkExperienceInfo
+                    {
+                        Company = model.Company,
+                        Designation = model.Designation,
+                        Location = model.Location,
+                        TotalExperience = (DateTime.Now - Convert.ToDateTime(model.WorkingFrom)).TotalDays.ToString(CultureInfo.InvariantCulture),
+                        AnnualIncome = model.AnnualIncomeText,
+                        UserId = Support.GetUserId(User.Identity.Name, entities)
+                    });
+                    entities.SaveChanges();
+                }
 
+                return RedirectToAction("Family");
+            }
             return RedirectToAction("Family");
         }
 
@@ -289,13 +298,19 @@ namespace biodata.Controllers
                     Name = y.Name,
                 }).ToList();
 
+            if (TempData["FamilyVal"] != null)
+            {
+                string error = Convert.ToString(TempData["FamilyVal"]);
+                ModelState.AddModelError("", error);
+            }
+
             if (familyList.Count > 0)
             {
                 return View(
                     new Families
                     {
                         FamilyList = familyList,
-                        FamilyMember = new Family { RelationshipList = Support.RelationshipList().Except(new List<string> { "Self" }).ToList() }
+                        FamilyMember = new Family { RelationshipList = Support.FamilyRelationshipList().ToList() }
                     }
                 );
             }
@@ -303,7 +318,7 @@ namespace biodata.Controllers
             return View(new Families
                 {
                     FamilyList = new List<Family>(),
-                    FamilyMember = new Family { RelationshipList = Support.RelationshipList() }
+                    FamilyMember = new Family { RelationshipList = Support.FamilyRelationshipList() }
                 });
         }
 
@@ -317,7 +332,6 @@ namespace biodata.Controllers
                 var entities = new BiodataDb();
                 entities.Familyinfoes.Add(new FamilyInfo
                 {
-
                     Name = model.Name,
                     Relationship = model.RelationshipText,
                     City = model.City,
@@ -330,7 +344,11 @@ namespace biodata.Controllers
                 entities.SaveChanges();
                 return RedirectToAction("Family");
             }
-            return View(model);
+            return View(new Families
+            {
+                FamilyList = new List<Family>(),
+                FamilyMember = new Family()
+            });
         }
 
         [HttpGet]
@@ -355,7 +373,7 @@ namespace biodata.Controllers
 
             if (editfamily != null)
             {
-                editfamily.RelationshipList = Support.RelationshipList();
+                editfamily.RelationshipList = Support.FamilyRelationshipList();
                 return View(editfamily);
             }
             return RedirectToAction("Family");
@@ -487,6 +505,19 @@ namespace biodata.Controllers
             return View();
         }
 
-
+        public ActionResult FamilyValidation()
+        {
+            using (var entities = new BiodataDb())
+            {
+                var userId = Support.GetUserId(User.Identity.Name, entities);
+                var familiesCount = entities.Familyinfoes.Count(x => x.UserId == userId);
+                if (familiesCount < 3)
+                {
+                    TempData["FamilyVal"] = "Please add atleast 2 family members";
+                    return RedirectToAction("Family");
+                }
+                return RedirectToAction("Pictures");
+            }
+        }
     }
 }
