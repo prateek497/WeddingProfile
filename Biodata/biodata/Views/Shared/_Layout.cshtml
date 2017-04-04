@@ -90,6 +90,8 @@
             if ('@Request.IsAuthenticated' === 'False') {
                 event.preventDefault();
                 $('#myModal').modal('show');
+            } else {
+                //delete the existing records
             }
         });
 

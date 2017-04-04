@@ -20,6 +20,7 @@ namespace biodata.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Dashboard()
         {
@@ -29,12 +30,14 @@ namespace biodata.Controllers
             });
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Dashboard(Dashboard model)
         {
             return RedirectToAction("Dashboard");
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SignIn(Login model)
         {
@@ -48,15 +51,28 @@ namespace biodata.Controllers
                 }
             }
 
+            using (var entities = new BiodataDb())
+            {
+                int userId = Support.GetUserId(User.Identity.Name, entities);
+                DeleteExistingDataForUser(userId);
+            }
+
             return RedirectToAction("Dashboard");
         }
 
+        [AllowAnonymous]
         public ActionResult SignOff()
         {
+            using (var entities = new BiodataDb())
+            {
+                int userId = Support.GetUserId(User.Identity.Name, entities);
+                DeleteExistingDataForUser(userId);
+            }
             FormsAuthentication.SignOut();
             return RedirectToAction("Dashboard");
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SignUp(Login model)
         {
@@ -107,144 +123,138 @@ namespace biodata.Controllers
             return RedirectToAction("Dashboard");
         }
 
-        public ViewResult _Basic()
+        [NonAction]
+        public void DeleteExistingDataForUser(int userId)
         {
             var entities = new BiodataDb();
-            var userId = Support.GetUserId("admin@biodata.com", entities);
 
             if (userId > 0)
             {
-                var pdfModel = new PdfGeneratorModel();
-                pdfModel.CareerData =
-                    entities.Workexperienceinfoes.Where(x => x.UserId == userId).Select(z => new Career
+                entities.Educationinfoes.RemoveRange(entities.Educationinfoes.Where(x => x.UserId == userId));
+                entities.Contactinfoes.RemoveRange(entities.Contactinfoes.Where(x => x.UserId == userId));
+                entities.Culturalinfoes.RemoveRange(entities.Culturalinfoes.Where(x => x.UserId == userId));
+                entities.Familyinfoes.RemoveRange(entities.Familyinfoes.Where(x => x.UserId == userId));
+                entities.Personalinfoes.RemoveRange(entities.Personalinfoes.Where(x => x.UserId == userId));
+                entities.Pictures.RemoveRange(entities.Pictures.Where(x => x.UserId == userId));
+                entities.Workexperienceinfoes.RemoveRange(entities.Workexperienceinfoes.Where(x => x.UserId == userId));
+                entities.SaveChanges();
+            }
+        }
+
+        [AllowAnonymous]
+        [Authorize]
+        public ViewResult _Basic(string email)
+        {
+            var entities = new BiodataDb();
+            //if (Session["UserEmail"] != null) email1 = Convert.ToString(Session["UserEmail"]);
+            if (!string.IsNullOrEmpty(email))
+            {
+                var userId = Support.GetUserId(email, entities);//User.Identity.Name
+
+                if (userId > 0)
+                {
+                    var pdfModel = new PdfGeneratorModel();
+                    pdfModel.CareerData = entities.Workexperienceinfoes.Where(x => x.UserId == userId).Select(z => new Career
+                        {
+                            Designation = z.Designation,
+                            Company = z.Company,
+                            Location = z.Location,
+                            WorkingFrom = z.TotalExperience,
+                            YesWorkExperience = z.IsWorkingExprience,
+                            AnnualIncomeText = z.AnnualIncome
+                        }).FirstOrDefault();
+
+                    pdfModel.ContactData = entities.Contactinfoes.Where(x => x.UserId == userId).Select(z => new Contact
                     {
+                        State = z.State,
+                        City = z.City,
+                        Name = z.Name,
+                        RelationshipText = z.Relationship,
+                        Email = z.Email,
+                        Phone = z.ContactNumber
+                    }).FirstOrDefault();
+
+                    pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).ToList();
+
+                    pdfModel.FamilyData = entities.Familyinfoes.Where(x => x.UserId == userId).Select(z => new Family
+                    {
+                        State = z.State,
+                        City = z.City,
+                        CompanyName = z.Company,
                         Designation = z.Designation,
-                        Company = z.Company,
-                        Location = z.Location,
-                        WorkingFrom = z.TotalExperience,
-                        YesWorkExperience = z.IsWorkingExprience,
-                        AnnualIncomeText = z.AnnualIncome
-                    }).FirstOrDefault();
-
-                pdfModel.ContactData = entities.Contactinfoes.Where(x => x.UserId == userId).Select(z => new Contact
-                {
-                    State = z.State,
-                    City = z.City,
-                    Name = z.Name,
-                    RelationshipText = z.Relationship,
-                    Email = z.Email,
-                    Phone = z.ContactNumber
-                }).FirstOrDefault();
-
-                pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).ToList();
-
-                pdfModel.FamilyData = entities.Familyinfoes.Where(x => x.UserId == userId).Select(z => new Family
-                {
-                    State = z.State,
-                    City = z.City,
-                    CompanyName = z.Company,
-                    Designation = z.Designation,
-                    JobLocation = z.Joblocation,
-                    RelationshipText = z.Relationship,
-                    Name = z.Name
-                }).ToList();
-                pdfModel.PersonalData = entities.Personalinfoes.Where(x => x.UserId == userId).Select(z => new Personal
-                {
-                    Name = z.Name,
-                    Complexion = z.Complexion,
-                    CurrentCity = z.CurrentCity,
-                    DateOfBirthDb = z.Dob,
-                    DateOfTimeDb = z.DobTime,
-                    Height = z.Height,
-                    Twitter = z.Twitter,
-                    Linkedin = z.Linkedin,
-                    Instagram = z.Instagram,
-                    Facebook = z.Facebook,
-                    Quora = z.Quora,
-                    Smoke = z.Smoke,
-                    Drink = z.Drink,
-                    Hobbies = z.Hobbies,
-                    Diet = z.Diet,
-                    MaritalStatus = z.MaritalStatus,
-                }).FirstOrDefault();
-                pdfModel.ReligiousData =
-                    entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
+                        JobLocation = z.Joblocation,
+                        RelationshipText = z.Relationship,
+                        Name = z.Name
+                    }).ToList();
+                    pdfModel.PersonalData = entities.Personalinfoes.Where(x => x.UserId == userId).Select(z => new Personal
                     {
-                        Caste = z.Caste,
-                        Gotra = z.Gotra,
-                        Languages = z.Languages,
-                        Religion = z.Religion,
-                        Zodiac = z.Zodiac,
-                        MotherTongue = z.MotherTongue
+                        Name = z.Name,
+                        Complexion = z.Complexion,
+                        CurrentCity = z.CurrentCity,
+                        DateOfBirthDb = z.Dob,
+                        DateOfTimeDb = z.DobTime,
+                        Height = z.Height,
+                        Twitter = z.Twitter,
+                        Linkedin = z.Linkedin,
+                        Instagram = z.Instagram,
+                        Facebook = z.Facebook,
+                        Quora = z.Quora,
+                        Smoke = z.Smoke,
+                        Drink = z.Drink,
+                        Hobbies = z.Hobbies,
+                        Diet = z.Diet,
+                        MaritalStatus = z.MaritalStatus,
                     }).FirstOrDefault();
-                pdfModel.ProfilePicture =
-                    entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
+                    pdfModel.ReligiousData =
+                        entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
+                        {
+                            Caste = z.Caste,
+                            Gotra = z.Gotra,
+                            Languages = z.Languages,
+                            Religion = z.Religion,
+                            Zodiac = z.Zodiac,
+                            MotherTongue = z.MotherTongue
+                        }).FirstOrDefault();
+                    pdfModel.ProfilePicture =
+                        entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
+                        {
+                            PicBytes = z.PictureBytes
+                        }).FirstOrDefault();
+                    pdfModel.PictureListData = entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
                     {
                         PicBytes = z.PictureBytes
-                    }).FirstOrDefault();
-                pdfModel.PictureListData = entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
-                {
-                    PicBytes = z.PictureBytes
-                }).ToList();
+                    }).ToList();
 
-                return View(pdfModel);
+                    return View(pdfModel);
+                }
             }
-
             return View(new PdfGeneratorModel());
         }
 
+        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
-        public FileResult _Basic(PdfGeneratorModel model)
+        public FileResult _Basic(string email, PdfGeneratorModel model)
         {
-            string fileName = "prateek.pdf"; //model.PersonalData.Name.Replace(" ", "");
-            string filePath = AppDomain.CurrentDomain.BaseDirectory + @"Download\" + fileName;
+            //Session["UserEmail"] = null;
+            //Session["UserEmail"] = email;
+            string temp = DateTime.Now.Ticks.ToString() + ".pdf";
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + @"Download\" + temp;
             try
             {
-                if (Request.Url != null) PDFGenerator.PdfGenerator.Generate(Request.Url.ToString(), filePath);
+                if (Request.Url != null)
+                {
+                    PDFGenerator.PdfGenerator.Generate(Request.Url.ToString(), filePath);
+                }
             }
             catch (Exception)
             {
+                // ignored
             }
-
 
             //DownloadFile download = new DownloadFile(fileName, filePath);
-
-            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
-
-            //HtmlToPdfConverter pdfConverter = new HtmlToPdfConverter();
-            //var pdfBytes = pdfConverter.GeneratePdf(html);
-            //Response.ContentType = "application/pdf";
-            //Response.ContentEncoding = System.Text.Encoding.UTF8;
-            //Response.AddHeader("Content-Disposition", "Inline; filename=TEST.pdf");
-            //Response.BinaryWrite(pdfBytes);
-            //Response.Flush();
-            //Response.End();
-            //PDFGenerator.PdfGenerator.Generate("http://localhost:49183", "F:\testpdf.pdf");
-
-            return File(filePath, "application/pdf", fileName);
-        }
-
-        private static string RenderPartialToString(Controller controller, string partialViewName, object model, ViewDataDictionary viewData, TempDataDictionary tempData)
-        {
-            ViewEngineResult result = ViewEngines.Engines.FindPartialView(controller.ControllerContext, partialViewName);
-
-            if (result.View != null)
-            {
-                controller.ViewData.Model = model;
-                StringBuilder sb = new StringBuilder();
-                using (StringWriter sw = new StringWriter(sb))
-                {
-                    using (HtmlTextWriter output = new HtmlTextWriter(sw))
-                    {
-                        ViewContext viewContext = new ViewContext(controller.ControllerContext, result.View, viewData, tempData, output);
-                        result.View.Render(viewContext, output);
-                    }
-                }
-
-                return sb.ToString();
-            }
-
-            return String.Empty;
+            //byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(filePath, "application/pdf", "biodata.pdf");
         }
     }
 }

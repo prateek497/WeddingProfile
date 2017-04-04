@@ -15,6 +15,11 @@
 {
     <div class="col-sm-12 well well-sm">
         <div class="row">
+            @*<div class="col-sm-12">
+                    <div class="text-left text-danger" style="font-size: 12px;">
+                        Add atleast one of your images and maximum of 6 images
+                    </div>
+                </div>*@
             @foreach (var img in Model.PicList)
             {
                 if (img.IsProfile)
@@ -52,13 +57,16 @@
     </div>
 }
 
-@using (Html.BeginForm("_Basic", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
+@if (Model.PicList.Count > 0)
 {
-   
-    <div class="col-md-12 text-center">
-        <a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>Generate PDF</a>
-        <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
-    </div>
+    using (Html.BeginForm("_Basic", "Home", new { email = @Model.UserEmail }, FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="col-md-12 text-center">
+            @Html.ActionLink("View as HTML", "_Basic", "Home", new { email = @Model.UserEmail }, new { @class = "btn btn-primary btn-lg" })
+            @*<a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>View HTML</a>*@
+            <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
+        </div>
+    }
 }
 
 @section Scripts

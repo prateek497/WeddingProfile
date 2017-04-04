@@ -419,7 +419,7 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Pictures()
         {
-            var pictureList = new PictureList { PicList = new List<PictureModel>() };
+            var pictureList = new PictureList { PicList = new List<PictureModel>(), UserEmail = User.Identity.Name };
             using (var entities = new BiodataDb())
             {
                 var userId = Support.GetUserId(User.Identity.Name, entities);
@@ -450,16 +450,24 @@ namespace biodata.Controllers
             {
                 using (var entities = new BiodataDb())
                 {
+                    int userid = Support.GetUserId(User.Identity.Name, entities);
                     foreach (var file in inputFileList)
                     {
                         entities.Pictures.Add(new Picture
                       {
                           PictureBytes = Support.ConvertToBytes(file),
                           IsProfile = false,
-                          UserId = Support.GetUserId(User.Identity.Name, entities)
+                          UserId = userid
                       });
                     }
                     entities.SaveChanges();
+
+                    var profile = entities.Pictures.Where(x => x.UserId == userid).OrderBy(x => x.Id).FirstOrDefault();
+                    if (profile != null)
+                    {
+                        profile.IsProfile = true;
+                        entities.SaveChanges();
+                    }
                 }
             }
 
@@ -471,8 +479,24 @@ namespace biodata.Controllers
             using (var entities = new BiodataDb())
             {
                 var deletePicture = entities.Pictures.FirstOrDefault(x => x.Id == id);
-                if (deletePicture != null) entities.Pictures.Remove(deletePicture);
-                entities.SaveChanges();
+                if (deletePicture.IsProfile)
+                {
+                    if (deletePicture != null) entities.Pictures.Remove(deletePicture);
+                    entities.SaveChanges();
+
+                    int userid = Support.GetUserId(User.Identity.Name, entities);
+                    var profile = entities.Pictures.Where(x => x.UserId == userid).OrderBy(x => x.Id).FirstOrDefault();
+                    if (profile != null)
+                    {
+                        profile.IsProfile = true;
+                        entities.SaveChanges();
+                    }
+                }
+                else
+                {
+                    if (deletePicture != null) entities.Pictures.Remove(deletePicture);
+                    entities.SaveChanges();
+                }
             }
             return RedirectToAction("Pictures");
         }

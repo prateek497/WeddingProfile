@@ -21,12 +21,9 @@ Technologies to be consider-
 
 
 Plans-
-1-Generate PDF from database.
-2-Fixed all fill up pages.
-3-Change the Education into dynamic education.
-4-Email to send forget password and contact us.
-5-Get the images to showup.
-6-Sample pdf.
+1-Email to send forget password and contact us.
+2-Get the images to showup.
+3-Sample pdf.
 
 
 Progress Steps Samples

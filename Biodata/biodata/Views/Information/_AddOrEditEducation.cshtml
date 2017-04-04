@@ -12,17 +12,17 @@
                 <label>Qualification</label>
                 <div class="input-group">
                     @Html.DropDownListFor(x => x.EducationQualText, new SelectList(Model.EducationList),"Select Qualification",
-                            new
-                            {
-                                id = "relationship",
-                                @class = "form-control",
-                                data_toggle = "tooltip",
-                                title = "What is the relationship of the contact person to the candidate? (Usually it's the father or a sibling)"
-                            })
+                        new
+                        {
+                            id = "relationship",
+                            @class = "form-control",
+                            data_toggle = "tooltip",
+                            title = "What is the relationship of the contact person to the candidate? (Usually it's the father or a sibling)"
+                        })
                     <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                 </div>
+                @Html.ValidationMessageFor(m => m.EducationQualText, "", new { @class = "text-danger", style = "font-size: 12px;" })
             </div>
-
             <div class="col-md-3 form-group">
                 <label>Degree</label>
                 <div class="input-group">

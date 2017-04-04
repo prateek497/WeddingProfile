@@ -60,32 +60,33 @@
     </div>
 }
 
-@if (Model.Education.EducationList.Count > 0)
-{
 
-    <div class="col-sm-12 well well-sm">
-        <div class="row">
 
-            @{
-             Html.RenderPartial("_AddOrEditEducation", Model.Education);
+<div class="col-sm-12 well well-sm">
+    <div class="row">
+        @if (Model.Education.EducationList.Count > 0)
+        {
+            {
+                Html.RenderPartial("_AddOrEditEducation", Model.Education);
             }
-
             <div class="col-sm-12">
                 <hr />
-
-                @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
-                @Html.ActionLink("Continue", "Career", "Information", new { }, new { @class = "btn btn-primary pull-right" })
             </div>
+        }
+        <div class="col-sm-12">
+            @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
+            @Html.ActionLink("Continue", "Career", "Information", new { }, new { @class = "btn btn-primary pull-right" })
         </div>
     </div>
-}
+</div>
+
 @section Scripts
 {
     <script>
         $(function () {
             $('#BachelorPassoutYear , #PgPassoutYear').datetimepicker({
                 viewMode: 'years',
-                format: " YYYY"
+                format: "YYYY"
             }).on("dp.show", function () {
                 console.log("dtp open");
                 $(this).data('DateTimePicker').viewMode('years');

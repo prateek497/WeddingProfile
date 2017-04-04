@@ -467,21 +467,21 @@
                 <div class="row">
                     @*<table>
                         <tr>*@
-                            @foreach (var pic in Model.PictureListData)
-                            {
-                                @*<td>*@
-                                    <div style="margin: 30px; float: left">
-                                        <div style="height: 400px; width: 400px; ">
-                                            @*<div style="padding: 10px;">*@
-                                            <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                                 alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="400" height="400" />
-                                            @*</div>*@
-                                        </div>
-                                    </div>
-                                @*</td>*@
-                            }
-                        @*</tr>
-                    </table>*@
+                    @foreach (var pic in Model.PictureListData)
+                    {
+                        @*<td>*@
+                        <div style="margin: 30px; float: left">
+                            <div style="height: 400px; width: 400px; ">
+                                @*<div style="padding: 10px;">*@
+                                <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
+                                     alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="400" height="400" />
+                                @*</div>*@
+                            </div>
+                        </div>
+                        @*</td>*@
+                    }
+                    @*</tr>
+                        </table>*@
                 </div>
             </div>
         </div>

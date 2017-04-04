@@ -56,8 +56,7 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         <label>Gotra</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(x => x.Gotra, new
+                        @Html.TextBoxFor(x => x.Gotra, new
                             {
                                 type = "text",
                                 placeholder = "e.g. - Kurmi",
@@ -65,16 +64,13 @@
                                 title = "Enter Gotra",
                                 data_toggle = "tooltip"
                             })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
                         @Html.ValidationMessageFor(m => m.Gotra, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 form-group">
                         <label>Zodiac</label>
-                        <div class="input-group">
-                            @Html.DropDownListFor(x => x.Zodiac, new SelectList(Model.ZodiacList), "Select Zodiac",
+                        @Html.DropDownListFor(x => x.Zodiac, new SelectList(Model.ZodiacList), "Select Zodiac",
                                 new
                                 {
                                     id = "zodiac",
@@ -82,8 +78,6 @@
                                     data_toggle = "tooltip",
                                     title = "Select Zodiac"
                                 })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                        </div>
                         @Html.ValidationMessageFor(m => m.Zodiac, "", new { @class = "text-danger", style = "font-size: 12px;" })
                     </div>
 
@@ -104,19 +98,15 @@
                         <label>Languages</label>
                         <div class="input-group">
                             @Html.ListBoxFor(m => m.Languages, new SelectList(Model.LanguagesList), new { @class = "form-control listbox" })
-                            @*<span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>*@
                             <label style="font-size: 14px; font-weight: bold; color: black" class="label" id="languagesString"></label>
                         </div>
-
                     </div>
                 </div>
 
                 @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })
-
                 <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
             </div>
         }
-
     </div>
 </div>
 
