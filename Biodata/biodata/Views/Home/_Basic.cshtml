@@ -27,18 +27,21 @@
                                     <table style="width: 100%; height: 100%">
                                         <tr>
                                             <td style="width: 250px; height: 200px;">
-                                                <div style="width: 100%; height: 100%; padding-top: 10px; padding-left: 40px">
-                                                    <div style="height: 150px; width: 150px;" class="">
-                                                        <img class="img-rounded" style="border: 1px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                                             alt="Prafile Picture" src="data:image;base64,@Convert.ToBase64String(Model.ProfilePicture.PicBytes)" width="150" height="150" />
+                                                @if (Model.ProfilePicture.PicBytes != null && Model.ProfilePicture.PicBytes.Length > 0)
+                                                {
+                                                    <div style="width: 100%; height: 100%; padding-top: 10px; padding-left: 40px">
+                                                        <div style="height: 150px; width: 150px;" class="">
+                                                            <img class="img-rounded" style="border: 1px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
+                                                                 alt="Prafile Picture" src="data:image;base64,@Convert.ToBase64String(Model.ProfilePicture.PicBytes)" width="150" height="150" />
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                }
                                             </td>
                                             <td style="">
                                                 <div style="width: 100%; height: 100%; padding-left: 50px; padding-top: 20px;">
                                                     <h1 class="h1" style="color: #006699">@Model.PersonalData.Name</h1>
-                                                    <h5 style="color: #6F7174;"><span class="glyphicon glyphicon-envelope" style="top: 4px;"></span> @Model.ContactData.Email<i>(@Model.ContactData.RelationshipText)</i></h5>
-                                                    <h5 class="h5" style="color: #6F7174;"><span class="glyphicon glyphicon-earphone" style="top: 4px;"></span> @Model.ContactData.Phone <i>(@Model.ContactData.RelationshipText)</i></h5>
+                                                    <h5 style="color: #6F7174;"><span class="glyphicon glyphicon-envelope" style="top: 4px;"></span> @Model.ContactData.Email<i> @(string.IsNullOrEmpty(Model.ContactData.RelationshipText) ? "" : "(" + Model.ContactData.RelationshipText + ")")</i></h5>
+                                                    <h5 class="h5" style="color: #6F7174;"><span class="glyphicon glyphicon-earphone" style="top: 4px;"></span> @Model.ContactData.Phone <i> @(string.IsNullOrEmpty(Model.ContactData.RelationshipText) ? "" : "(" + Model.ContactData.RelationshipText + ")")</i></h5>
                                                 </div>
                                             </td>
 
@@ -112,44 +115,57 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
-                                                            BIRTHPLACE
+                                                @if (!string.IsNullOrEmpty(Model.PersonalData.Birthplace) || !string.IsNullOrEmpty(Model.PersonalData.Birthstate))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                BIRTHPLACE
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Birthplace</span>
+                                                                <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.Birthstate</span>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <span style="font-size: 18px; color: #006699"> Bareillyjflkdjfkdjfkdsds</span>
-                                                            <span style="font-size: 10px; color: #6F7174"> U.P.</span>
+                                                    </td>
+                                                }
+                                                @if (!string.IsNullOrEmpty(Model.PersonalData.CurrentCity) || !string.IsNullOrEmpty(Model.PersonalData.CurrentState))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px;">CURRENT CITY</div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.PersonalData.CurrentCity</span>@*FF0000*@
+                                                                <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.CurrentState</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <div style="color: #6F7174; font-size: 10px;">CURRENT CITY</div>
-                                                        <div>
-                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.CurrentCity</span>@*FF0000*@
-                                                            <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.CurrentCity</span>
+                                                    </td>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(Model.PersonalData.Height))
+                                                {
+                                                    <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px;">HIEGHT</div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Height</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <div style="color: #6F7174; font-size: 10px;">HIEGHT</div>
-                                                        <div>
-                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Height</span>
+                                                    </td>
+                                                }
+                                                @if (!string.IsNullOrEmpty(Model.PersonalData.Complexion))
+                                                {
+                                                    <td style="padding-left: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%;">
+                                                            <div style="color: #6F7174; font-size: 10px;">
+                                                                COMPLEXION
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Complexion</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td style="padding-left: 5px; padding-top: 2px">
-                                                    <div style="width: 100%; height: 100%;">
-                                                        <div style="color: #6F7174; font-size: 10px;">
-                                                            COMPLEXION
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Complexion</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                    </td>
+                                                }
                                             </tr>
 
                                             @if (!string.IsNullOrEmpty(Model.PersonalData.MaritalStatus) || !string.IsNullOrEmpty(Model.PersonalData.Diet)
@@ -237,17 +253,19 @@
                                         </div>
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td style="padding-right: 5px; padding-top: 2px">
-                                                    <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                        <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
-                                                            RELIGION
+                                                @if (!string.IsNullOrEmpty(Model.PersonalData.Hobbies))
+                                                {
+                                                    <td style="padding-right: 5px; padding-top: 2px">
+                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                RELIGION
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Religion</span>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <span style="font-size: 18px; color: #006699"> @Model.ReligiousData.Religion</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
+                                                    </td>
+                                                }
                                                 @if (!string.IsNullOrEmpty(Model.ReligiousData.Caste))
                                                 {
                                                     <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
@@ -321,29 +339,32 @@
                                         </table>
                                     </div>
 
-                                    <div class="col-md-12" style="margin-top: 10px;">
-                                        <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
-                                            <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">EDUCATION</h5>
+                                    @if (Model.EducationData.Count > 0)
+                                    {
+                                        <div class="col-md-12" style="margin-top: 10px;">
+                                            <div style="width: 100%; border-bottom: 1px solid #FAAA1F;">
+                                                <h5 class="h5" style="color: #6F7174; margin-bottom: 2px">EDUCATION</h5>
+                                            </div>
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    @foreach (var education in Model.EducationData)
+                                                    {
+                                                        <td style="padding-top: 2px;">
+                                                            <div style="width: 100%; height: 100%;">
+                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                    @education.EducationQualification
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 18px; color: #006699;">@education.Degree @education.Year</span>
+                                                                    <span style="font-size: 10px; color: #6F7174"> @education.College, @education.University</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            </table>
                                         </div>
-                                        <table style="width: 100%;">
-                                            <tr>
-                                                @foreach (var education in Model.EducationData)
-                                                {
-                                                    <td style="padding-top: 2px;">
-                                                        <div style="width: 100%; height: 100%;">
-                                                            <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
-                                                                @education.EducationQualification
-                                                            </div>
-                                                            <div>
-                                                                <span style="font-size: 18px; color: #006699;">@education.Degree @education.Year</span>
-                                                                <span style="font-size: 10px; color: #6F7174"> @education.College, @education.University</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                }
-                                            </tr>
-                                        </table>
-                                    </div>
+                                    }
 
                                     @if (Model.CareerData.YesWorkExperience)
                                     {
@@ -353,7 +374,7 @@
                                             </div>
                                             <table style="width: 100%;">
                                                 <tr>
-                                                    <td style="padding-right: 10px">
+                                                    <td style="padding-right: 5px">
                                                         <div style="width: 100%; height: 100%;">
                                                             <h6 style="color: #6F7174; font-size: 10px;">
                                                                 <span style="font-size: 18px; color: #006699">@Model.CareerData.Designation</span>
@@ -370,7 +391,7 @@
                                                     </td>
                                                     @if (!string.IsNullOrEmpty(Model.CareerData.AnnualIncomeText))
                                                     {
-                                                        <td style="padding-right: 10px">
+                                                        <td style="padding-right: 5px">
                                                             <div style="width: 100%; height: 100%;">
                                                                 <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                     ANNUAL INCOME
@@ -396,7 +417,7 @@
                                                 @foreach (var family in Model.FamilyData)
                                                 {
                                                     <tr>
-                                                        <td style="padding-right: 10px; padding-top: 2px;">
+                                                        <td style="padding-right: 5px; padding-top: 2px;">
                                                             <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
                                                                 <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                     @family.RelationshipText
@@ -406,31 +427,42 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td style="padding-right: 10px; padding-left: 10px; padding-top: 2px;">
-                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
-                                                                <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
-                                                                    CITY
+                                                        @if (!string.IsNullOrEmpty(family.City) || !string.IsNullOrEmpty(family.State))
+                                                        {
+                                                            <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px;">
+                                                                <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                                    <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
+                                                                        CITY
+                                                                    </div>
+                                                                    <div>
+                                                                        <span style="font-size: 18px; color: #006699"> @family.City</span>
+                                                                        <span style="font-size: 10px; color: #6F7174;"> @family.State</span>
+                                                                    </div>
                                                                 </div>
-                                                                <div>
-                                                                    <span style="font-size: 18px; color: #006699"> @family.City</span>
-                                                                    <span style="font-size: 10px; color: #6F7174;"> @family.State</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
+                                                            </td>
+                                                        }
                                                         @if (!string.IsNullOrEmpty(family.Designation) || !string.IsNullOrEmpty(family.CompanyName) || !string.IsNullOrEmpty(family.City))
                                                         {
-                                                            <td style="padding-right: 10px; padding-left: 10px; padding-top: 2px;">
+                                                            <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px;">
                                                                 <div style="width: 100%; height: 100%;">
                                                                     <div style="color: #6F7174; font-size: 10px;">
                                                                         OCCUPATION
                                                                     </div>
                                                                     <div>
-                                                                        <span style="font-size: 18px; color: #006699"> @family.Designation</span>
+                                                                        @if (!string.IsNullOrEmpty(family.Designation))
+                                                                        {
+                                                                            <span style="font-size: 18px; color: #006699"> @family.Designation</span>
+                                                                        }
+
                                                                         @if (!string.IsNullOrEmpty(family.CompanyName))
                                                                         {
                                                                             <span style="font-size: 18px; color: #006699;"> in @family.CompanyName</span>
                                                                         }
-                                                                        <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
+
+                                                                        @if (!string.IsNullOrEmpty(family.City))
+                                                                        {
+                                                                            <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </td>

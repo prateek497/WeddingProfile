@@ -97,8 +97,10 @@
                     <div class="col-sm-6 form-group">
                         <label>Languages</label>
                         <div class="input-group">
-                            @Html.ListBoxFor(m => m.Languages, new SelectList(Model.LanguagesList), new { @class = "form-control listbox" })
-                            <label style="font-size: 14px; font-weight: bold; color: black" class="label" id="languagesString"></label>
+                            @Html.ListBoxFor(m => m.LanguagesListItem, new SelectList(Model.LanguagesList), new { @class = "form-control listbox" })
+                            @*@Html.LabelFor(x => x.Languages, "", new { style = "font-size: 12px; font-weight: bold; color: black", @class = "label", id = "languagesString" })*@
+                            @Html.HiddenFor(m => Model.Languages, new { id = "languagesHidden" })
+                            <label style="font-size: 12px; font-weight: bold; color: black" class="label" id="languagesString"></label>
                         </div>
                     </div>
                 </div>
@@ -113,6 +115,7 @@
 @section Scripts{
     <script type="text/javascript">
         $(function () {
+            //$('#languagesString').text("");
             $('.listbox').multiselect({
                 includeSelectAllOption: true,
                 selectAllValue: 'multiselect-all',
@@ -127,6 +130,7 @@
                         selected.push([$(this).val()]);
                     });
                     $('#languagesString').text(selected.join(", "));
+                    $('#languagesHidden').val(selected.join(", "));
                 }
             });
         });

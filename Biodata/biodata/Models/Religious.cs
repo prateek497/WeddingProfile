@@ -22,6 +22,8 @@ namespace biodata.Models
 
         public string Languages { get; set; }
 
+        public string LanguagesListItem { get; set; }
+
         [StringLength(30, MinimumLength = 1, ErrorMessage = "Mother tongue cannot be longer than 30 characters.")]
         public string MotherTongue { get; set; }
 

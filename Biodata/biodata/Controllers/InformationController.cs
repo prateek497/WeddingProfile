@@ -269,6 +269,7 @@ namespace biodata.Controllers
                         Location = model.Location,
                         TotalExperience = (DateTime.Now - Convert.ToDateTime(model.WorkingFrom)).TotalDays.ToString(CultureInfo.InvariantCulture),
                         AnnualIncome = model.AnnualIncomeText,
+                        IsWorkingExprience = model.YesWorkExperience,
                         UserId = Support.GetUserId(User.Identity.Name, entities)
                     });
                     entities.SaveChanges();
@@ -479,9 +480,9 @@ namespace biodata.Controllers
             using (var entities = new BiodataDb())
             {
                 var deletePicture = entities.Pictures.FirstOrDefault(x => x.Id == id);
-                if (deletePicture.IsProfile)
+                if (deletePicture != null && deletePicture.IsProfile)
                 {
-                    if (deletePicture != null) entities.Pictures.Remove(deletePicture);
+                    entities.Pictures.Remove(deletePicture);
                     entities.SaveChanges();
 
                     int userid = Support.GetUserId(User.Identity.Name, entities);
@@ -498,6 +499,7 @@ namespace biodata.Controllers
                     entities.SaveChanges();
                 }
             }
+
             return RedirectToAction("Pictures");
         }
 
