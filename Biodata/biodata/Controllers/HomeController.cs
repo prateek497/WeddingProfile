@@ -53,7 +53,7 @@ namespace biodata.Controllers
 
             using (var entities = new BiodataDb())
             {
-                int userId = Support.GetUserId(User.Identity.Name, entities);
+                int userId = Support.GetUserId(model.SignIn.Email, entities);
                 DeleteExistingDataForUser(userId);
             }
 
@@ -223,7 +223,7 @@ namespace biodata.Controllers
                     pdfModel.PictureListData = entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
                     {
                         PicBytes = z.PictureBytes
-                    }).ToList();
+                    }).Take(6).ToList();
 
                     return View(pdfModel);
                 }
@@ -254,6 +254,13 @@ namespace biodata.Controllers
 
             //DownloadFile download = new DownloadFile(fileName, filePath);
             //byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+            using (var entities = new BiodataDb())
+            {
+                int userId = Support.GetUserId(email, entities);
+                DeleteExistingDataForUser(userId);
+            }
+
             return File(filePath, "application/pdf", "biodata.pdf");
         }
     }

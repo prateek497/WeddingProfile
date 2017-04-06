@@ -24,6 +24,7 @@ Plans-
 1-Email to send forget password and contact us.
 2-Get the images to showup.
 3-Sample pdf.
+4-Warning for data loss if tries to navigate to dashboard
 
 
 Progress Steps Samples

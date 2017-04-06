@@ -84,7 +84,13 @@
                                                         }
 
                                                     </div>
-                                                    <h5 class="h5 text-center" style="color: #6F7174; line-height: 140%"><span class="glyphicon glyphicon-home" style="top: 1px;"></span>&nbsp;@Model.ContactData.Name, @Model.ContactData.City, @Model.ContactData.State <i>(@Model.ContactData.RelationshipText)</i></h5>
+                                                    <h5 class="h5 text-center" style="color: #6F7174; line-height: 140%">
+                                                        <span class="glyphicon glyphicon-home" style="top: 1px;"></span>
+                                                        &nbsp;@Model.ContactData.Name
+                                                        @(string.IsNullOrEmpty(Model.ContactData.City) ? "" : ", " + Model.ContactData.City)
+                                                        @(string.IsNullOrEmpty(Model.ContactData.State) ? "" : ", " + Model.ContactData.State)
+                                                        <i>@(Model.ContactData.RelationshipText == string.Empty ? "" : "(" + Model.ContactData.RelationshipText + ")")</i>
+                                                    </h5>
                                                 </div>
                                             </td>
                                         </tr>
@@ -253,10 +259,10 @@
                                         </div>
                                         <table style="width: 100%;">
                                             <tr>
-                                                @if (!string.IsNullOrEmpty(Model.PersonalData.Hobbies))
+                                                @if (!string.IsNullOrEmpty(Model.ReligiousData.Religion))
                                                 {
                                                     <td style="padding-right: 5px; padding-top: 2px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                        <div style="width: 100%; height: 100%;">
                                                             <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                 RELIGION
                                                             </div>
@@ -269,7 +275,7 @@
                                                 @if (!string.IsNullOrEmpty(Model.ReligiousData.Caste))
                                                 {
                                                     <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                        <div style="width: 100%; height: 100%;  padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                             <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                 CASTE
                                                             </div>
@@ -283,7 +289,7 @@
                                                 @if (!string.IsNullOrEmpty(Model.ReligiousData.Gotra))
                                                 {
                                                     <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                        <div style="width: 100%; height: 100%; padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                             <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                 GOTRA
                                                             </div>
@@ -297,7 +303,7 @@
                                                 @if (!string.IsNullOrEmpty(Model.ReligiousData.Zodiac))
                                                 {
                                                     <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                        <div style="width: 100%; height: 100%;  padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                             <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                 ZODIAC
                                                             </div>
@@ -311,7 +317,7 @@
                                                 @if (!string.IsNullOrEmpty(Model.ReligiousData.MotherTongue))
                                                 {
                                                     <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px">
-                                                        <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                        <div style="width: 100%; height: 100%;  padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                             <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                 MOTHER TONGUE
                                                             </div>
@@ -325,7 +331,7 @@
                                                 @if (!string.IsNullOrEmpty(Model.ReligiousData.Languages))
                                                 {
                                                     <td style="padding-left: 5px; padding-top: 2px">
-                                                        <div style="width: 100%; height: 100%;">
+                                                        <div style="width: 100%; height: 100%; padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                             <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                 LANGUAGES
                                                             </div>
@@ -418,7 +424,7 @@
                                                 {
                                                     <tr>
                                                         <td style="padding-right: 5px; padding-top: 2px;">
-                                                            <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <div style="width: 100%; height: 100%; ">
                                                                 <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                     @family.RelationshipText
                                                                 </div>
@@ -429,8 +435,8 @@
                                                         </td>
                                                         @if (!string.IsNullOrEmpty(family.City) || !string.IsNullOrEmpty(family.State))
                                                         {
-                                                            <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px;">
-                                                                <div style="width: 100%; height: 100%; border-right: 1px solid #FAAA1F;">
+                                                            <td style="padding-right: 5px; padding-top: 2px;">
+                                                                <div style="width: 100%; height: 100%;  padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                                     <div style="color: #6F7174; font-size: 10px; padding-top: 4px;">
                                                                         CITY
                                                                     </div>
@@ -441,10 +447,10 @@
                                                                 </div>
                                                             </td>
                                                         }
-                                                        @if (!string.IsNullOrEmpty(family.Designation) || !string.IsNullOrEmpty(family.CompanyName) || !string.IsNullOrEmpty(family.City))
+                                                        @if (!string.IsNullOrEmpty(family.Designation) || !string.IsNullOrEmpty(family.CompanyName))
                                                         {
-                                                            <td style="padding-right: 5px; padding-left: 5px; padding-top: 2px;">
-                                                                <div style="width: 100%; height: 100%;">
+                                                            <td style="padding-right: 5px; padding-top: 2px;">
+                                                                <div style="width: 100%; height: 100%; padding-left: 5px; border-left: 1px solid #FAAA1F;">
                                                                     <div style="color: #6F7174; font-size: 10px;">
                                                                         OCCUPATION
                                                                     </div>
@@ -459,10 +465,10 @@
                                                                             <span style="font-size: 18px; color: #006699;"> in @family.CompanyName</span>
                                                                         }
 
-                                                                        @if (!string.IsNullOrEmpty(family.City))
-                                                                        {
-                                                                            <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
-                                                                        }
+                                                                        @*@if (!string.IsNullOrEmpty(family.City))
+                                                                            {
+                                                                                <span style="font-size: 10px; color: #6F7174;"> @family.City</span>
+                                                                            }*@
                                                                     </div>
                                                                 </div>
                                                             </td>

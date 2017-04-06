@@ -537,7 +537,7 @@ namespace biodata.Controllers
             {
                 var userId = Support.GetUserId(User.Identity.Name, entities);
                 var familiesCount = entities.Familyinfoes.Count(x => x.UserId == userId);
-                if (familiesCount < 3)
+                if (familiesCount < 2)
                 {
                     TempData["FamilyVal"] = "Please add atleast 2 family members";
                     return RedirectToAction("Family");
