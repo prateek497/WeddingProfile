@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CustomErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Database\BiodataDb.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Models\DownloadModel.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Family.cs" />
+    <Compile Include="Models\ForgotPassword.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\PdfGeneratorModel.cs" />
     <Compile Include="Models\Personal.cs" />
@@ -213,7 +215,6 @@
     <Content Include="fonts\icomoon\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\amazing-resume-template-2016-20.jpg" />
     <Content Include="images\bride.jpg" />
     <Content Include="images\clean-resume.jpg" />
     <Content Include="images\couple-1.jpg" />
@@ -242,6 +243,7 @@
     <Content Include="images\me.jpg" />
     <Content Include="images\ms-word-resume-pack.jpg" />
     <Content Include="images\New-Invoice-Template-Design.jpg" />
+    <Content Include="images\Premium.jpg" />
     <Content Include="images\professional-resume.jpg" />
     <Content Include="images\Resume Preview.jpg" />
     <Content Include="images\resume-design-templates-Below-you-will-find-example-social-work-resums-and-tips-on-how-to-develop-both-Having-an-effective-resume-are-essential-fresh-premium.png" />
@@ -451,6 +453,7 @@
     <Content Include="Views\Information\_FileUpload.cshtml" />
     <Content Include="Views\Home\_Basic_backup.cshtml" />
     <Content Include="Views\Information\_AddOrEditEducation.cshtml" />
+    <Content Include="Views\Home\Forgot.cshtml" />
     <None Include="Views\Information\EditEducation.cshtml" />
   </ItemGroup>
   <ItemGroup>

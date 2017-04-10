@@ -12,6 +12,8 @@ namespace biodata.Models
 
         public SignUp SignUp { get; set; }
 
+        public ForgotPassword ForgotPassword { get; set; }
+
         public bool IsValid(string email, string password)
         {
             var crypto = new SimpleCrypto.PBKDF2();
@@ -37,7 +39,7 @@ namespace biodata.Models
         {
             using (var db = new BiodataDb())
             {
-                var user = db.Users.Where(x=>x.Email.Equals(email)).ToList();
+                var user = db.Users.Where(x => x.Email.Equals(email)).ToList();
                 if (user.Count < 1) return true;
                 return false;
             }

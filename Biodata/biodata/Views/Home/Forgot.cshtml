@@ -1,0 +1,36 @@
+﻿@model biodata.Models.Login
+@{
+    Layout = "../Shared/_InformationLayout.cshtml";
+    ViewBag.Title = "Forgot password";
+}
+
+<div class="" id="forgotpassword">
+    @using (Html.BeginForm("Forgot", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
+                Email:
+            </label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                    @Html.TextBoxFor(x => x.ForgotPassword.FormatEmail, new { type = "email", @class = "form-control", id = "email", placeholder = "Email" })
+                </div>
+                @Html.ValidationMessageFor(m => m.ForgotPassword.FormatEmail, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                <small class="help-block" style="font-size: 11px;"><i>Enter the email address associated with your account to reset the password.</i></small>
+
+                @Html.DisplayFor(x => x.ForgotPassword.AlertMessage)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-6">
+                <button type="submit" class="btn btn-primary btn-sm" style="font-family: sans-serif">
+                    Submit
+                </button>
+            </div>
+        </div>
+    }
+</div>

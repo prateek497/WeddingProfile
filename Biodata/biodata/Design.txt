@@ -12,3 +12,4 @@ Future enchasement-
 4- Fb and gmail login
 5- Replace with nosql database
 6- Think about mutiple resume with same account
+7- Change password

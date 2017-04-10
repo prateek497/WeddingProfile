@@ -6,6 +6,7 @@
     Layout = "../Shared/_InformationLayout.cshtml";
 }
 
+
 <h3 class="well well-sm">
     Contact
     <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
@@ -15,10 +16,11 @@
     @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 1 })
 </div>
 
+
 <div class="col-sm-12 well well-sm">
     <div class="row">
 
-        @using (Html.BeginForm("Contact", "Information"))
+        @using (Html.BeginForm("Contact", "Information",FormMethod.Post,new{@id="contactform"}))
         {
             <div class="col-sm-12">
                 <div class="text-right text-danger" style="font-size: 12px;">
@@ -30,13 +32,13 @@
                         <label>Name of the contact person</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Name, new
-                       {
-                           type = "text",
-                           placeholder = "e.g. - Prateek Gangwar",
-                           @class = "form-control",
-                           @data_toggle = "tooltip",
-                           title = "Enter name of the person who people can email or call when they are interested in this biodata. (Usually the father or sibling)"
-                       })
+                            {
+                                type = "text",
+                                placeholder = "e.g. - Prateek Gangwar",
+                                @class = "form-control",
+                                @data_toggle = "tooltip",
+                                title = "Enter name of the person who people can email or call when they are interested in this biodata. (Usually the father or sibling)"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -63,15 +65,15 @@
                         <label>Phone Number</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Phone, new
-                       {
-                           type = "number",
-                           placeholder = "e.g. - 9123456780",
-                           @class = "form-control",
-                           title = "At least one phone number is required",
-                           data_toggle = "tooltip",
-                           max = "9999999999",
-                           min = "1"
-                       })
+                            {
+                                type = "number",
+                                placeholder = "e.g. - 9123456780",
+                                @class = "form-control",
+                                title = "At least one phone number is required",
+                                data_toggle = "tooltip",
+                                max = "9999999999",
+                                min = "1"
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -83,13 +85,13 @@
                         <label>Email Address</label>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Email, new
-                        {
-                            type = "email",
-                            placeholder = "e.g. - contact@biodata.com",
-                            @class = "form-control",
-                            data_toggle = "tooltip",
-                            title = "Where can people email if they are interested in this biodata? This email will also serve as your username."
-                        })
+                            {
+                                type = "email",
+                                placeholder = "e.g. - contact@biodata.com",
+                                @class = "form-control",
+                                data_toggle = "tooltip",
+                                title = "Where can people email if they are interested in this biodata? This email will also serve as your username."
+                            })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -99,18 +101,40 @@
                         <label>City</label>
                         @Html.TextBoxFor(x => x.City, new { type = "text", placeholder = "e.g. - Bangalore", @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>City of the person to whom people should contact</i></small>
                     </div>
                     <div class="col-sm-4 form-group">
                         <label>State</label>
                         @Html.TextBoxFor(x => x.State, new { type = "text", placeholder = "e.g. - Karnataka", @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>State of the person to whom people should contact</i></small>
                     </div>
                 </div>
 
-                @Html.ActionLink("Back", "Dashboard", "Home", new { }, new { @class = "btn btn-default pull-left" })
+                @*@Html.ActionLink("Back", "Dashboard", "Home", new { }, new { @class = "btn btn-default pull-left" })*@
 
                 <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
             </div>
         }
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+           
+            $("button[type=submit]").click(function () {
+                $(this).data('clicked', true);
+            });
+
+            $('#contactform').data('serialize', $('#contactform').serialize()); // On load save form current state
+
+            $(window).bind('beforeunload', function (e) {
+                if ($('#contactform').serialize() !== $('#contactform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
+                else e = null; // i.e; if form state change show warning box, else don't show it.
+            });
+        });
+    </script>
+}

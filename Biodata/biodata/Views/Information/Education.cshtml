@@ -7,7 +7,7 @@
 
 <h3 class="well well-sm">
     Education
-    <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
+    <span class="help-block" style="font-size: 11px;">The education information about the candidate. This information will be displayed in the education panel of your biodata.</span>
 </h3>
 
 <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
@@ -74,7 +74,7 @@
             </div>
         }
         <div class="col-sm-12">
-            @Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })
+            @*@Html.ActionLink("Back", "Religious", "Information", new { }, new { @class = "btn btn-default pull-left" })*@
             @Html.ActionLink("Continue", "Career", "Information", new { }, new { @class = "btn btn-primary pull-right" })
         </div>
     </div>
@@ -91,6 +91,19 @@
                 console.log("dtp open");
                 $(this).data('DateTimePicker').viewMode('years');
             });
+
+
+            //$("button[type=submit]").click(function () {
+            //    $(this).data('clicked', true);
+            //});
+
+            //$('#contactform').data('serialize', $('#contactform').serialize()); // On load save form current state
+
+            //$(window).bind('beforeunload', function (e) {
+            //    if ($('#contactform').serialize() !== $('#contactform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
+            //    else e = null; // i.e; if form state change show warning box, else don't show it.
+            //});
+
         });
     </script>
 }

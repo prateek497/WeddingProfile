@@ -9,7 +9,7 @@
 
 <h3 class="well well-sm">
     Religious
-    <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
+    <span class="help-block" style="font-size: 11px;">The religious information about the candidate.This information will be displayed in the religious panel of your biodata.</span>
 </h3>
 
 <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
@@ -19,7 +19,7 @@
 <div class="col-sm-12 well well-sm">
     <div class="row">
 
-        @using (Html.BeginForm("Religious", "Information"))
+        @using (Html.BeginForm("Religious", "Information",FormMethod.Post,new{@id="religiousform"}))
         {
             <div class="col-sm-12">
                 <div class="text-right text-danger" style="font-size: 12px;">
@@ -41,6 +41,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Religion, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>Religion of the person's resume</i></small>
                     </div>
                     <div class="col-sm-4 form-group">
                         <label>Caste</label>
@@ -105,7 +106,7 @@
                     </div>
                 </div>
 
-                @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })
+               @* @Html.ActionLink("Back", "Personal", "Information", new { }, new { @class = "btn btn-default pull-left" })*@
                 <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
             </div>
         }
@@ -132,6 +133,17 @@
                     $('#languagesString').text(selected.join(", "));
                     $('#languagesHidden').val(selected.join(", "));
                 }
+            });
+
+            $("button[type=submit]").click(function () {
+                $(this).data('clicked', true);
+            });
+
+            $('#religiousform').data('serialize', $('#religiousform').serialize()); // On load save form current state
+
+            $(window).bind('beforeunload', function (e) {
+                if ($('#religiousform').serialize() !== $('#religiousform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
+                else e = null; // i.e; if form state change show warning box, else don't show it.
             });
         });
 

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using biodata.Database;
 using biodata.Database.Tables;
+using biodata.Helper;
 using biodata.Models;
 using Microsoft.Ajax.Utilities;
 
@@ -18,6 +19,12 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
+            using (var entities = new BiodataDb())
+            {
+                int userId = Support.GetUserId(User.Identity.Name, entities);
+                if (userId > 0) Support.DeleteExistingDataForUser(userId);
+            }
+
             return View(new Contact
             {
                 RelationshipList = Support.RelationshipList()

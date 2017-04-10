@@ -8,7 +8,7 @@
 
 <h3 class="well well-sm">
     Career
-    <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
+    <span class="help-block" style="font-size: 11px;">The work experience of the candidate. This information will be displayed in the career panel of your biodata.</span>
 </h3>
 
 <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
@@ -18,7 +18,7 @@
 <div class="col-sm-12 well well-sm">
     <div class="row">
 
-        @using (Html.BeginForm("Career", "Information"))
+        @using (Html.BeginForm("Career", "Information",FormMethod.Post,new{@id="careerform"}))
         {
             <div class="col-sm-12">
                 <div class="text-right text-danger" style="font-size: 12px;">
@@ -51,6 +51,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Designation, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>Your current designation</i></small>
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Company</label>
@@ -66,6 +67,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>Your current company</i></small>
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Location</label>
@@ -78,6 +80,7 @@
                                 data_toggle = "tooltip"
                             })
                         @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>Your current work location</i></small>
                     </div>
                     @*<div class="col-sm-2 form-group">
                         <label>Working From</label>
@@ -103,9 +106,10 @@
                                 title = "Enter Annual Income"
                             })
                         @Html.ValidationMessageFor(m => m.AnnualIncomeText, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <small class="help-block" style="font-size: 11px;"><i>Your total annual income</i></small>
                     </div>
                 </div>
-                @Html.ActionLink("Back", "Education", "Information", new { }, new { @class = "btn btn-default pull-left" })
+                @*@Html.ActionLink("Back", "Education", "Information", new { }, new { @class = "btn btn-default pull-left" })*@
                 <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
             </div>
         }
@@ -124,6 +128,17 @@
             });
             $('#noWorkExp').change(function () {
                 $("input[type=text], #annualincome").prop("disabled", this.checked);
+            });
+
+            $("button[type=submit]").click(function () {
+                $(this).data('clicked', true);
+            });
+
+            $('#careerform').data('serialize', $('#careerform').serialize()); // On load save form current state
+
+            $(window).bind('beforeunload', function (e) {
+                if ($('#careerform').serialize() !== $('#careerform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
+                else e = null; // i.e; if form state change show warning box, else don't show it.
             });
         });
     </script>

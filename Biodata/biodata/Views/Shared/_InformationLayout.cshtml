@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/Content/bootstrap-fileinput/css/fileinput.css" />
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-    
+
     <!-- jQuery -->
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -29,19 +29,19 @@
     }
 </head>
 <body style="padding-bottom: 70px;  padding-top: 70px">
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color: #374757 !important">
         <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")" style="padding-top: 25px;">
+            <div class="navbar-header" style="color: White">
+                <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")" style="padding-top: 25px; color: White">
                     <strong style="font-family: 'Sacramento', Arial, serif; font-size: 40px;">Title</strong>
                 </a>
             </div>
 
             @if (Request.IsAuthenticated)
             {
-                <p class="navbar-text navbar-right">
+                <p class="navbar-text navbar-right" style="color: white">
                     Signed in as @Html.Encode(User.Identity.Name)
-                    | @Html.ActionLink("Sign out", "SignOff", "Home", new { }, new { @class = "navbar-link" })
+                    | @Html.ActionLink("Sign out", "SignOff", "Home", new { }, new { @class = "navbar-link; ", style = "color: White" })
                 </p>
             }
 
@@ -63,7 +63,9 @@
 
             @RenderBody()
 
+
             <hr />
+
             <footer role="contentinfo">
                 <div class="container">
                     <div class="row copyright">
@@ -71,13 +73,13 @@
                             <p>
                                 <small class="block">&copy; @DateTime.Now.Year Biodata. All Rights Reserved.</small>
                             </p>
-                            <p>
-                                <ul class="fh5co-social-icons">
-                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                                </ul>
-                            </p>
+                            @*<p>
+                                    <ul class="fh5co-social-icons">
+                                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                                    </ul>
+                                </p>*@
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,9 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Web.Configuration;
 using System.Web.Security;
 using System.Web.UI;
 using biodata.Database;
@@ -54,7 +57,7 @@ namespace biodata.Controllers
             using (var entities = new BiodataDb())
             {
                 int userId = Support.GetUserId(model.SignIn.Email, entities);
-                DeleteExistingDataForUser(userId);
+                if (userId > 0) Support.DeleteExistingDataForUser(userId);
             }
 
             return RedirectToAction("Dashboard");
@@ -66,7 +69,7 @@ namespace biodata.Controllers
             using (var entities = new BiodataDb())
             {
                 int userId = Support.GetUserId(User.Identity.Name, entities);
-                DeleteExistingDataForUser(userId);
+                if (userId > 0) Support.DeleteExistingDataForUser(userId);
             }
             FormsAuthentication.SignOut();
             return RedirectToAction("Dashboard");
@@ -123,22 +126,48 @@ namespace biodata.Controllers
             return RedirectToAction("Dashboard");
         }
 
-        [NonAction]
-        public void DeleteExistingDataForUser(int userId)
+        [HttpGet]
+        public ActionResult Forgot()
         {
-            var entities = new BiodataDb();
+            return View();
+        }
 
-            if (userId > 0)
+        [HttpPost]
+        public ActionResult Forgot(Login model)
+        {
+            if (model.ForgotPassword == null) return null;
+
+            if (ModelState.IsValid)
             {
-                entities.Educationinfoes.RemoveRange(entities.Educationinfoes.Where(x => x.UserId == userId));
-                entities.Contactinfoes.RemoveRange(entities.Contactinfoes.Where(x => x.UserId == userId));
-                entities.Culturalinfoes.RemoveRange(entities.Culturalinfoes.Where(x => x.UserId == userId));
-                entities.Familyinfoes.RemoveRange(entities.Familyinfoes.Where(x => x.UserId == userId));
-                entities.Personalinfoes.RemoveRange(entities.Personalinfoes.Where(x => x.UserId == userId));
-                entities.Pictures.RemoveRange(entities.Pictures.Where(x => x.UserId == userId));
-                entities.Workexperienceinfoes.RemoveRange(entities.Workexperienceinfoes.Where(x => x.UserId == userId));
-                entities.SaveChanges();
+                string password = "password";
+                using (var db = new BiodataDb())
+                {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var user = db.Users.FirstOrDefault(u => u.Email == model.ForgotPassword.FormatEmail);
+                    if (user != null)
+                    {
+                        user.Password = crypto.Compute("password");
+                        user.PasswordSalt = crypto.Salt;
+                        db.SaveChanges();
+                    }
+                }
+                if (!string.IsNullOrEmpty(password))
+                {
+                    var status = Support.SendEmail("Password Reset", "Here is your new password- " + password, model.ForgotPassword.FormatEmail);
+                    if (status)
+                    {
+                        ModelState.Clear();
+                        return View(new Login { ForgotPassword = new ForgotPassword
+                        {
+                            AlertMessage = "Email sent successfully",
+                            FormatEmail = string.Empty
+                        } });
+                    }
+                }
             }
+
+            model.ForgotPassword.AlertMessage = "Something went wrong";
+            return View(model);
         }
 
         [AllowAnonymous]
@@ -238,7 +267,7 @@ namespace biodata.Controllers
         {
             //Session["UserEmail"] = null;
             //Session["UserEmail"] = email;
-            string temp = DateTime.Now.Ticks.ToString() + ".pdf";
+            string temp = DateTime.Now.Ticks + ".pdf";
             string filePath = AppDomain.CurrentDomain.BaseDirectory + @"Download\" + temp;
             try
             {
@@ -258,10 +287,22 @@ namespace biodata.Controllers
             using (var entities = new BiodataDb())
             {
                 int userId = Support.GetUserId(email, entities);
-                DeleteExistingDataForUser(userId);
+                if (userId > 0) Support.DeleteExistingDataForUser(userId);
             }
 
             return File(filePath, "application/pdf", "biodata.pdf");
+        }
+
+        [HttpGet]
+        public ActionResult ContactUs(string email, string message)
+        {
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(message))
+            {
+                var stutus = Support.SendEmail("New message from User", "Email- " + email + " Message: " + message, "prateek497@gmail.com");
+                if (stutus) return Json(new { emailsent = true }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { emailsent = false }, JsonRequestBehavior.AllowGet);
         }
     }
 }

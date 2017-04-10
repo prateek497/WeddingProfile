@@ -8,7 +8,7 @@
 
 <h3 class="well well-sm">
     Personal
-    <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
+    <span class="help-block" style="font-size: 11px;">The personal information about the candidate. This information will be displayed in the first row of your biodata.</span>
 </h3>
 
 <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
@@ -17,7 +17,7 @@
 
 <div class="col-sm-12 well well-sm">
     <div class="row">
-        @using (Html.BeginForm("Personal", "Information"))
+        @using (Html.BeginForm("Personal", "Information", FormMethod.Post, new { @id = "personalform" }))
         {
             <div class="col-sm-12">
                 <div class="text-right text-danger" style="font-size: 12px;">
@@ -40,7 +40,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
-                        @*<small class="help-block" style="font-size: 11px;"><i>Maximum letters should be less than 25</i></small>*@
+                        <small class="help-block" style="font-size: 11px;"><i>Name of the person's resume</i></small>
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Date of birth</label>
@@ -58,6 +58,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @*<small class="help-block" style="font-size: 11px;"><i>Date of birth of the person's resume</i></small>*@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Time of birth</label>
@@ -74,6 +75,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.TimeOfBirth, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @*<small class="help-block" style="font-size: 11px;"><i>Time of birth of the person's resume</i></small>*@
                     </div>
                     <div class="col-sm-3 form-group">
                         <label>Height</label>
@@ -89,6 +91,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @*<small class="help-block" style="font-size: 11px;"><i>Height of birth of the person's resume</i></small>*@
                     </div>
                 </div>
 
@@ -107,8 +110,9 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Birthplace, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @*<small class="help-block" style="font-size: 11px;"><i>Birth place of the person's resume</i></small>*@
                     </div>
-                        
+
                     <div class="col-sm-2 form-group">
                         <label>Birth state</label>
                         <div class="input-group">
@@ -123,12 +127,13 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Birthstate, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @*<small class="help-block" style="font-size: 11px;"><i>Birth state of the person's resume</i></small>*@
                     </div>
 
                     <div class="col-sm-3 form-group">
                         <label>Complexion</label>
                         <div class="input-group">
-                            @Html.DropDownListFor(x => x.Complexion, new SelectList(Model.ComplexionList),"Select Complexion",
+                            @Html.DropDownListFor(x => x.Complexion, new SelectList(Model.ComplexionList), "Select Complexion",
                                 new
                                 {
                                     id = "complexion",
@@ -139,6 +144,7 @@
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
                         @Html.ValidationMessageFor(m => m.Complexion, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @*<small class="help-block" style="font-size: 11px;"><i>Complexion of the person's resume</i></small>*@
                     </div>
                     <div class="col-sm-2 form-group">
                         <label>Current City</label>
@@ -148,7 +154,7 @@
                         <label>Current State</label>
                         @Html.TextBoxFor(x => x.CurrentState, new { type = "text", placeholder = "e.g. - Karnataka", @class = "form-control" })
                     </div>
-                   
+
                 </div>
 
                 <div class="row">
@@ -227,7 +233,7 @@
                     </div>
                 </div>
 
-                @Html.ActionLink("Back", "Contact", "Information", new { }, new { @class = "btn btn-default pull-left" })
+                @*@Html.ActionLink("Back", "Contact", "Information", new { }, new { @class = "btn btn-default pull-left" })*@
 
                 <button type="submit" class="btn btn-primary pull-right">Save & Continue</button>
             </div>
@@ -249,6 +255,16 @@
                     format: 'LT'
                 });
 
+            $("button[type=submit]").click(function () {
+                $(this).data('clicked', true);
+            });
+
+            $('#personalform').data('serialize', $('#personalform').serialize()); // On load save form current state
+
+            $(window).bind('beforeunload', function (e) {
+                if ($('#personalform').serialize() !== $('#personalform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
+                else e = null; // i.e; if form state change show warning box, else don't show it.
+            });
             //$('#Facebook').change(function () {
             //    $.ajax({
             //        url: "https://www.facebook.com/prateekgng",

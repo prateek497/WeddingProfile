@@ -42,10 +42,7 @@
                 <div class="col-md-10 col-md-offset-1 text-center">
                     <div class="display-t">
                         <div class="display-tc animate-box" data-animate-effect="fadeIn">
-
-                            <h1>Create beautiful, professionally designed biodata in minutes.</h1>
-                            <h1>Share Biodata easily with your extended family and friends.</h1>
-                            <h1>Download Biodata to your computer or print them out.</h1>
+                            <h1>Create beautiful, professionally designed matrimonial biodata in minutes.</h1>
                             <h1>Built with your security and privacy in mind.</h1>
                             <h1>It's free. We don't charge anything for it.</h1>
                         </div>
@@ -109,17 +106,23 @@
                             <div class="col-md-6 col-sm-6 text-center">
                                 <div class="event-wrap animate-box">
                                     <h3>Premium Template</h3>
+
+                                    <div class="my-container">
+                                        <h1>Coming Soon</h1>
+                                        <img src="~/images/Premium.jpg" height="300" width="300">
+                                    </div>
+
                                     @*<div class="event-col">
-                                            <i class="icon-clock"></i>
-                                            <span>7:00 PM</span>
-                                            <span>12:00 AM</span>
-                                        </div>
-                                        <div class="event-col">
-                                            <i class="icon-calendar"></i>
-                                            <span>Monday 28</span>
-                                            <span>November, 2016</span>
-                                        </div>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>*@
+                                        <i class="icon-clock"></i>
+                                        <span>7:00 PM</span>
+                                        <span>12:00 AM</span>
+                                    </div>
+                                    <div class="event-col">
+                                        <i class="icon-calendar"></i>
+                                        <span>Monday 28</span>
+                                        <span>November, 2016</span>
+                                    </div>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>*@
                                 </div>
                             </div>
                         </div>
@@ -140,26 +143,30 @@
             <div class="row animate-box">
                 <div class="col-md-10 col-md-offset-1">
 
-                    @using (Html.BeginForm("Dashboard", "Home", new { }, FormMethod.Post, new { @class = "form-inline" }))
-                    {
-                        <div class="col-md-4 col-sm-4">
-                            <div class="form-group">
-                                @Html.LabelFor(x => x.Email, new { @for = "email", @class = "sr-only" })
-                                @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control", @id = "email", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
+                    @*@using (Html.BeginForm("ContactUs", "Home", new { }, FormMethod.Post, new { @class = "form-inline" }))
+                        {*@
+                    <div class="col-md-4 col-sm-4">
+                        <div class="form-group">
+                            @*@Html.LabelFor(x => x.Email, new { @for = "email", @class = "sr-only" })*@
+                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control", @id = "email", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "font-size: 12px;" })
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-group">
-                                @Html.LabelFor(x => x.Message, new { @for = "message", @class = "sr-only" })
-                                @Html.TextAreaFor(x => x.Message, new { @type = "text", rows = "1", @class = "form-control", @id = "message", @placeholder = "Message" })
-                                @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
-                            </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            @*@Html.LabelFor(x => x.Message, new { @for = "message", @class = "sr-only" })*@
+                            @Html.TextAreaFor(x => x.Message, new { @type = "text", rows = "1", @class = "form-control", @id = "message", @placeholder = "Message" })
+                            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger", style = "font-size: 12px;" })
                         </div>
-                        <div class="col-md-2 col-sm-2">
-                            <button type="submit" class="btn btn-default btn-block btn-primary">Send</button>
-                        </div>
-                    }
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <button type="submit" class="btn btn-default btn-block btn-primary" id="sendmail">Send</button>
+                    </div>
+
+                    <div class="col-sm-12">
+                        @Html.LabelFor(x => x.AlertMessage, "", new { @class = "" })
+                    </div>
+                    @*}*@
                 </div>
             </div>
         </div>
@@ -173,11 +180,11 @@
                         <small class="block">&copy; @DateTime.Now.Year Biodata. All Rights Reserved.</small>
                     </p>
                     <p>
-                        <ul class="fh5co-social-icons">
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                        </ul>
+                        @*<ul class="fh5co-social-icons">
+                                <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                            </ul>*@
                     </p>
                 </div>
             </div>
@@ -190,4 +197,36 @@
 
 @{
     Html.RenderPartial("_Login", Model.Login);
+}
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $("#sendmail").click(function () {
+                if ($('#email').val().length > 0 && $('#message').val().length > 0) {
+                    $.ajax({
+                        url: '/Home/ContactUs',
+                        type: 'GET',
+                        data: { email: $('#email').val(), message: $('#message').val() },
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        error: function (xhr) {
+                            // alert('Error: ' + xhr.statusText);
+                        },
+                        success: function (result) {
+                            if (result.emailsent) {
+                                $('#AlertMessage').val("The message is sent successfully");
+                                alert("The message is sent successfully");
+                                $('#email').val("");
+                                $('#message').val("");
+                            } else {
+                                $('#AlertMessage').val("Something went wrong");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 }

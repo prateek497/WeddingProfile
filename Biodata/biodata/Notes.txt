@@ -21,10 +21,11 @@ Technologies to be consider-
 
 
 Plans-
-1-Email to send forget password and contact us.
+1-
 2-Get the images to showup.
 3-Sample pdf.
-4-Warning for data loss if tries to navigate to dashboard
+4-
+5-
 
 
 Progress Steps Samples
@@ -40,8 +41,3 @@ Registration Forms
 
 Dashboard
 1- https://freehtml5.co/preview/?item=wedding-free-html5-bootstrap-template-for-wedding-websites
-
-
-1-For contact - display name and name relationship if address is not empty otherwise nothing
-
-1-Delete everything from database after creating pdf and log in at begining
