@@ -290,7 +290,7 @@ namespace biodata.Controllers
                 if (userId > 0) Support.DeleteExistingDataForUser(userId);
             }
 
-            return File(filePath, "application/pdf", "biodata.pdf");
+            return File(filePath, "application/pdf", temp);
         }
 
         [HttpGet]
