@@ -304,5 +304,15 @@ namespace biodata.Controllers
 
             return Json(new { emailsent = false }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Sample1()
+        {
+            return View();
+        }
+
+        public ActionResult Sample2()
+        {
+            return View();
+        }
     }
 }

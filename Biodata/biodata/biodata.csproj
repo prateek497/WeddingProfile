@@ -236,7 +236,9 @@
     <Content Include="images\img_bg_2.jpg" />
     <Content Include="images\img_bg_2222.jpg" />
     <Content Include="images\img_bg_3.jpg" />
+    <Content Include="images\img_bg_3333.jpg" />
     <Content Include="images\img_bg_4.jpg" />
+    <Content Include="images\img_bg_4444.jpg" />
     <Content Include="images\img_bg_5.jpg" />
     <Content Include="images\loader.gif" />
     <Content Include="images\loc.png" />
@@ -249,6 +251,8 @@
     <Content Include="images\resume-design-templates-Below-you-will-find-example-social-work-resums-and-tips-on-how-to-develop-both-Having-an-effective-resume-are-essential-fresh-premium.png" />
     <Content Include="images\Resume-Templates-100a0.jpg" />
     <Content Include="images\sample.PNG" />
+    <Content Include="images\vaibhav2.jpg" />
+    <Content Include="images\vaibhav3.jpg" />
     <Content Include="Notes.txt" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -455,6 +459,8 @@
     <Content Include="Views\Home\_Basic_backup.cshtml" />
     <Content Include="Views\Information\_AddOrEditEducation.cshtml" />
     <Content Include="Views\Home\Forgot.cshtml" />
+    <Content Include="Views\Home\Sample1.cshtml" />
+    <Content Include="Views\Home\Sample2.cshtml" />
     <None Include="Views\Information\EditEducation.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -486,7 +492,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49183</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49183/</IISUrl>
+          <IISUrl>http://localhost:12345/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

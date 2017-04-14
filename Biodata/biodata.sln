@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biodata", "biodata\biodata.csproj", "{B59680D8-3A11-44C3-989F-2C89E059E28C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biodata", "biodata\Biodata.csproj", "{B59680D8-3A11-44C3-989F-2C89E059E28C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFGenerator", "PDFGenerator\PDFGenerator.csproj", "{7DD72EA9-FAD3-4D23-97D5-B83CA470BBD3}"
 EndProject
