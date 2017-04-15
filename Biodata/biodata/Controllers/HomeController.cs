@@ -310,7 +310,7 @@ namespace biodata.Controllers
             return View();
         }
 
-        public ActionResult Sample2()
+        public ActionResult Sample2() 
         {
             return View();
         }

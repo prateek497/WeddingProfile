@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -461,9 +463,34 @@ namespace biodata.Controllers
                     int userid = Support.GetUserId(User.Identity.Name, entities);
                     foreach (var file in inputFileList)
                     {
+                        //var bitmap = new Bitmap(150, 150);
+                        //try
+                        //{
+                        //    var oldImage = Image.FromStream(file.InputStream, true, true);
+                        //    var clipRectangle = new Rectangle(0, 0, oldImage.Width, oldImage.Height);
+                        //    using (Graphics g = Graphics.FromImage(bitmap))
+                        //    {
+                        //        g.SmoothingMode = SmoothingMode.HighQuality;
+                        //        g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                        //        g.CompositingQuality = CompositingQuality.HighQuality;
+                        //        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        //        g.DrawImage(oldImage, new Rectangle(0, 0, 150, 150), clipRectangle, GraphicsUnit.Pixel);
+                        //    }
+                        //}
+                        //catch (Exception ex)
+                        //{
+
+                        //}
+
+                         System.Drawing.Image sourceimage =   System.Drawing.Image.FromStream(file.InputStream);
+
+                         var bitmap=Support.CropImage(sourceimage, new Rectangle(0, 0, 300, 300));
+
+                        var images = Support.ImageToByte(bitmap);
+
                         entities.Pictures.Add(new Picture
                       {
-                          PictureBytes = Support.ConvertToBytes(file),
+                          PictureBytes = images, //Support.ConvertToBytes(file),
                           IsProfile = false,
                           UserId = userid
                       });

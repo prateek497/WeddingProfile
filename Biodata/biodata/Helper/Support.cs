@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,7 +50,7 @@ namespace biodata.Helper
 
         public static List<string> ComplexionList()
         {
-            return new List<string> {"Weatish", "Fair", "Black"};
+            return new List<string> { "Weatish", "Fair", "Black" };
         }
 
         public static List<string> HeightList()
@@ -93,7 +94,7 @@ namespace biodata.Helper
 
         public static List<string> ReligiousList()
         {
-            return new List<string> {"Hinduism", "Islam", "Christianity", "Sikhism", "Buddhism", "Jainism", "Judaism"};
+            return new List<string> { "Hinduism", "Islam", "Christianity", "Sikhism", "Buddhism", "Jainism", "Judaism" };
         }
 
         public static List<string> ZodiacList()
@@ -117,32 +118,32 @@ namespace biodata.Helper
 
         public static List<string> LanguagesList()
         {
-            return new List<string> {"English", "Hindi", "Kannada", "Telugu", "Bhojpori", "Tamil", "Bengali"};
+            return new List<string> { "English", "Hindi", "Kannada", "Telugu", "Bhojpori", "Tamil", "Bengali" };
         }
 
         public static List<string> MaritalStatusList()
         {
-            return new List<string> {"Never Married", "Divorced", "Seperated"};
+            return new List<string> { "Never Married", "Divorced", "Seperated" };
         }
 
         public static List<string> DietList()
         {
-            return new List<string> {"Vegetarian", "Non-Vegetarian", "Eggetarian"};
+            return new List<string> { "Vegetarian", "Non-Vegetarian", "Eggetarian" };
         }
 
         public static List<string> DrinkList()
         {
-            return new List<string> {"Yes", "No", "Occasinally"};
+            return new List<string> { "Yes", "No", "Occasinally" };
         }
 
         public static List<string> SmokeList()
         {
-            return new List<string> {"Yes", "No", "Occasinally"};
+            return new List<string> { "Yes", "No", "Occasinally" };
         }
 
         public static List<string> EducationList()
         {
-            return new List<string> {"GRADUATE", "POST-GRADUATE", "DOCRATE"};
+            return new List<string> { "GRADUATE", "POST-GRADUATE", "DOCRATE" };
         }
 
         public static List<string> AnnualIncomeList()
@@ -169,7 +170,7 @@ namespace biodata.Helper
         {
             byte[] imageBytes = null;
             BinaryReader reader = new BinaryReader(image.InputStream);
-            imageBytes = reader.ReadBytes((int) image.ContentLength);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
             return imageBytes;
         }
 
@@ -225,6 +226,36 @@ namespace biodata.Helper
                 }
             }
             return true;
+        }
+
+        public static Bitmap CropAtRect(Bitmap b, Rectangle r)
+        {
+            Bitmap nb = new Bitmap(r.Width, r.Height);
+            Graphics g = Graphics.FromImage(nb);
+            g.DrawImage(b, -r.X, -r.Y);
+            return nb;
+        }
+
+        public static byte[] ImageToByte(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+
+        public static Image CropImage(Image img, Rectangle cropArea)
+        {
+            Bitmap bmpImage = new Bitmap(img);
+            if (img.Width > img.Height)
+            {
+                cropArea.Width = img.Height;
+                cropArea.Height = img.Height;
+            }
+            else
+            {
+                cropArea.Width = img.Width;
+                cropArea.Height = img.Width;
+            }
+            return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
         }
     }
 }

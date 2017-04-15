@@ -21,10 +21,10 @@ Technologies to be consider-
 
 
 Plans-
-1-Basic template
-2-Get the images to showup.
-3-Sample pdf.
-4-
+1-Information layout UI
+2-
+3-
+4-delete everything from navigator
 5-
 
 
