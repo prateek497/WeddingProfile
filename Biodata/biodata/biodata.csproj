@@ -215,8 +215,6 @@
     <Content Include="fonts\icomoon\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\bg.jpg" />
-    <Content Include="images\bg1.jpg" />
     <Content Include="images\bride.jpg" />
     <Content Include="images\clean-resume.jpg" />
     <Content Include="images\couple-1.jpg" />

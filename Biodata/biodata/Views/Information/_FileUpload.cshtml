@@ -1,14 +1,12 @@
-﻿@using (Html.BeginForm("Pictures", "Information", FormMethod.Post, new { enctype = "multipart/form-data", id = "picform" }))
+﻿
+@using (Html.BeginForm("Pictures", "Information", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <label class="control-label">Select File</label>
     <input id="inputfile" type="file" name="inputfile" class="file file-loading" multiple data-allowed-file-extensions='["jpg", "png"]' data-max-file-count="6"
-           data-min-file-count="1" data-max-file-size="2048" data-show-upload="true" data-show-preview="true"> @*data-show-upload="false"*@
-
-        @*<input id="input-image-3" name="input-image" type="file" class="file-loading" accept="image/*">*@
-
-        <div class="text-left text-danger" style="font-size: 12px;">
-            <span class="glyphicon glyphicon-asterisk"></span> Add atleast one of your images and maximum of 6 images
-        </div>
-        <br />
-        @*<button type="submit" class="btn btn-primary center-block">Save</button>*@
+           data-min-file-count="1" data-max-file-size="2048" > @*data-show-upload="false"*@
+    <div class="text-left text-danger" style="font-size: 12px;">
+        <span class="glyphicon glyphicon-asterisk"></span> Add atleast one of your images and maximum of 6 images
+    </div>
+    <br/>
+    @*<button type="submit" class="btn btn-primary center-block">Save</button>*@
 }

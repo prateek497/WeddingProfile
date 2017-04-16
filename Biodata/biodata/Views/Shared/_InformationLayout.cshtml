@@ -21,35 +21,19 @@
     <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-multiselect.js"></script>
-    <script type="text/javascript" src="~/Scripts/plugins/canvas-to-blob.js"></script>
     <script type="text/javascript" src="~/Scripts/fileinput.js"></script>
 
     @if (Request.IsAuthenticated)
     {
         <meta http-equiv="REFRESH" content="1800; URL=/Home/SignOff">
     }
-
-    <style>
-        @@media screen and (max-width: 768px) {
-            body {
-                padding-top: 125px !important;
-            }
-        }
-
-        @@media screen and (max-width: 450px) {
-
-            body {
-                padding-top: 150px !important;
-            }
-        }
-    </style>
 </head>
 <body style="padding-bottom: 70px;  padding-top: 70px">
     <div class="navbar navbar-default navbar-fixed-top" style="background-color: #374757 !important">
         <div class="container">
             <div class="navbar-header" style="color: White">
                 <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")" style="padding-top: 25px; color: White">
-                    <strong style="font-family: 'Sacramento', Arial, serif; font-size: 40px;">Title</strong>
+                    <strong style="font-family: 'Sacramento', Arial, serif; font-size: 40px;">CreateBiodata</strong>
                 </a>
             </div>
 
@@ -87,7 +71,7 @@
                     <div class="row copyright">
                         <div class="col-md-12 text-center">
                             <p>
-                                <small class="block">&copy; @DateTime.Now.Year Biodata. All Rights Reserved.</small>
+                                <small class="block">&copy; @DateTime.Now.Year CreateBiodata. All Rights Reserved.</small>
                             </p>
                             @*<p>
                                     <ul class="fh5co-social-icons">
