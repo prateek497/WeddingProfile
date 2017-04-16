@@ -245,6 +245,7 @@
     <Content Include="images\loader.gif" />
     <Content Include="images\loc.png" />
     <Content Include="images\me.jpg" />
+    <Content Include="images\MeNew.jpg" />
     <Content Include="images\ms-word-resume-pack.jpg" />
     <Content Include="images\New-Invoice-Template-Design.jpg" />
     <Content Include="images\Premium.jpg" />

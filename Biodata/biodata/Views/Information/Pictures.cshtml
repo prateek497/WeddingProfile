@@ -1,16 +1,13 @@
 ﻿@using biodata.Models
 @model PictureList
-
 @{
     ViewBag.Title = "Pictures";
     Layout = "../Shared/_InformationLayout.cshtml";
 }
-
 <h3 class="well well-sm">
     Pictures
     <span class="help-block" style="font-size: 11px;">Add your pictures here</span>
 </h3>
-
 @if (Model.PicList.Count > 0)
 {
     <div class="col-sm-12 well well-sm">
@@ -37,11 +34,11 @@
                     </div>
 
                     @*<div class="col-sm-2 text-center" style="">
-                        <div class="img-rounded img-responsive center-block" style="width: 130px; height: 130px; border: 5px solid brown; background-color: brown">
-                            <img src="data:image;base64,@Convert.ToBase64String(img.PicBytes)" class="img-rounded center-block img-responsive" style="width: 125px; height: 120px;" alt="" />
-                        </div>
-                        @Html.ActionLink("Delete", "DeletePicture", "Information", new { id = img.Id }, new { @class = "btn btn-danger btn-xs " })
-                    </div>*@
+                            <div class="img-rounded img-responsive center-block" style="width: 130px; height: 130px; border: 5px solid brown; background-color: brown">
+                                <img src="data:image;base64,@Convert.ToBase64String(img.PicBytes)" class="img-rounded center-block img-responsive" style="width: 125px; height: 120px;" alt="" />
+                            </div>
+                            @Html.ActionLink("Delete", "DeletePicture", "Information", new { id = img.Id }, new { @class = "btn btn-danger btn-xs " })
+                        </div>*@
                 }
                 else
                 {
@@ -55,7 +52,6 @@
         </div>
     </div>
 }
-
 @if (Model.PicList.Count < 6)
 {
     <div class="col-sm-12 well well-sm">
@@ -68,30 +64,46 @@
         </div>
     </div>
 }
-
 @if (Model.PicList.Count > 0)
 {
     using (Html.BeginForm("_Basic", "Home", new { email = @Model.UserEmail }, FormMethod.Post, new { @class = "form-horizontal" }))
     {
         <div class="col-md-12 text-center">
-            @Html.ActionLink("View as HTML", "_Basic", "Home", new { email = @Model.UserEmail }, new { @class = "btn btn-primary btn-lg" })
+            @*@Html.ActionLink("View as HTML", "_Basic", "Home", new { email = @Model.UserEmail }, new { @class = "btn btn-primary btn-lg" })*@
             @*<a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>View HTML</a>*@
             <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
         </div>
     }
 }
-
 @section Scripts
 {
     <script>
-        //$(function () {
-        //    $('#inputfile').fileinput({
-        //        uploadAsync: true,
-        //        minFileCount: 1,
-        //        maxFileCount: 6,
-        //        allowedFileExtensions: ["jpg", "png"],
-        //        maxfilesize: 2048
-        //    });
-        //});
+        $(function () {
+            //    $('#inputfile').fileinput({
+            //        uploadAsync: true,
+            //        minFileCount: 1,
+            //        maxFileCount: 6,
+            //        allowedFileExtensions: ["jpg", "png"],
+            //        maxfilesize: 2048
+            //    });
+
+            @*$("#input-image-3").fileinput({
+                uploadUrl: "@Url.Action("Pictures","Information")",
+                type:"POST",
+                data: new FormData($('#picform')),
+                allowedFileExtensions: ["jpg", "png"],
+                maxImageWidth: 150,
+                maxImageHeight: 150,
+                resizePreference: 'height',
+                minFileCount: 1,
+                maxFileCount: 6,
+                resizeImage: true
+            }).on('filepreupload', function () {
+                $('#kv-success-box').html('');
+            }).on('fileuploaded', function (event, data) {
+                $('#kv-success-box').append(data.response.link);
+                $('#kv-success-modal').modal('show');
+            });*@
+        });
     </script>
 }
