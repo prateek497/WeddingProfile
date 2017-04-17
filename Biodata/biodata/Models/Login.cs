@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Hosting;
 using biodata.Database;
 
 namespace biodata.Models
@@ -29,7 +32,7 @@ namespace biodata.Models
             }
             catch (Exception ex)
             {
-                throw;
+                Logger.WriteToFile(ex.Message.ToString());
             }
 
             return isValid;
@@ -44,5 +47,24 @@ namespace biodata.Models
                 return false;
             }
         }
+    }
+
+    public static class Logger
+    {
+        public static void WriteToFile(string text)
+        {
+            string physicalPath = HostingEnvironment.ApplicationPhysicalPath;
+
+            physicalPath = Path.Combine(physicalPath, @"Notes.txt");
+            //if (!File.Exists(physicalPath)) File.CreateText(physicalPath);
+            using (StreamWriter writer = File.AppendText(physicalPath))
+            {
+                writer.WriteLine(DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt") + " " + text);
+                writer.WriteLine("");
+                writer.Close();
+            }
+
+        }
+
     }
 }

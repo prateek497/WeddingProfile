@@ -32,8 +32,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
                                                 @Html.TextBoxFor(x => x.SignIn.Email, new { type = "email", @class = "form-control", id = "email", placeholder = "Email" })
-                                                @Html.ValidationMessageFor(m => m.SignIn.Email, "", new { @class = "text-danger" })
                                             </div>
+                                            @Html.ValidationMessageFor(m => m.SignIn.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -41,8 +41,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
                                                 @Html.TextBoxFor(x => x.SignIn.Password, new { type = "password", @class = "form-control", id = "exampleInputPassword", placeholder = "Password" })
-                                                @Html.ValidationMessageFor(m => m.SignIn.Password, "", new { @class = "text-danger" })
                                             </div>
+                                            @Html.ValidationMessageFor(m => m.SignIn.Password, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="row">
@@ -64,8 +64,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
                                                 @Html.TextBoxFor(x => x.SignUp.Name, new { type = "text", @class = "form-control", id = "name", placeholder = "Name" })
-                                                @Html.ValidationMessageFor(m => m.SignUp.Name, "", new { @class = "text-danger" })
                                             </div>
+                                            @Html.ValidationMessageFor(m => m.SignUp.Name, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -73,8 +73,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
                                                 @Html.TextBoxFor(x => x.SignUp.Email, new { type = "email", @class = "form-control", id = "email", placeholder = "Email" })
-                                                @Html.ValidationMessageFor(m => m.SignUp.Email, "", new { @class = "text-danger" })
                                             </div>
+                                            @Html.ValidationMessageFor(m => m.SignUp.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
@@ -93,8 +93,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
                                                 @Html.TextBoxFor(x => x.SignUp.ConfirmPassword, new { type = "password", @class = "form-control", id = "confirmpassword", placeholder = "Confirm Password" })
-                                                @Html.ValidationMessageFor(m => m.SignUp.ConfirmPassword, "", new { @class = "text-danger" })
                                             </div>
+                                            @Html.ValidationMessageFor(m => m.SignUp.ConfirmPassword, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="row">
