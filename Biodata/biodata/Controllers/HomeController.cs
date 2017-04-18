@@ -27,6 +27,24 @@ namespace biodata.Controllers
         [HttpGet]
         public ActionResult Dashboard()
         {
+            try
+            {
+                using (var db = new BiodataDb())
+                {
+                    db.Database.Connection.Open();
+                    db.Database.Connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return View(new Dashboard
+                {
+                    AlertMessage = ex.InnerException.ToString(),
+                    Login = new Login()
+                });
+            }
+               
+
             return View(new Dashboard()
             {
                 Login = new Login()

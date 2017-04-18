@@ -32,7 +32,7 @@ namespace biodata.Models
             }
             catch (Exception ex)
             {
-                Logger.WriteToFile(ex.Message.ToString());
+                
             }
 
             return isValid;

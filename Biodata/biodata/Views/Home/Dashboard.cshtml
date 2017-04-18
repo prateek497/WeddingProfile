@@ -1,6 +1,7 @@
 ﻿@model biodata.Models.Dashboard
 
 <div class="fh5co-loader"></div>
+
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
         <div class="container">
@@ -9,8 +10,9 @@
                     <div id="fh5co-logo"><a href="#"><strong>CreateBiodata</strong></a></div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
+                    <label>@Model.AlertMessage</label>
                     <ul>
-                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information", new { }, new { id = "startcreating" })</li>
+                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information", new {}, new {id = "startcreating"})</li>
 
                         @if (Request.IsAuthenticated)
                         {
