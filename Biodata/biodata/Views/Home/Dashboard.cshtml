@@ -10,9 +10,9 @@
                     <div id="fh5co-logo"><a href="#"><strong>CreateBiodata</strong></a></div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
-                    <label>@Model.AlertMessage</label>
+
                     <ul>
-                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information", new {}, new {id = "startcreating"})</li>
+                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information", new { }, new { id = "startcreating" })</li>
 
                         @if (Request.IsAuthenticated)
                         {
@@ -32,6 +32,7 @@
                         <li class="active"><a href="#fh5co-started">Contact Us</a></li>
                     </ul>
                 </div>
+                <label>@Model.AlertMessage</label>
             </div>
 
         </div>
@@ -140,7 +141,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="fh5co-couple-story">
         <div class="container">
             <div class="row">

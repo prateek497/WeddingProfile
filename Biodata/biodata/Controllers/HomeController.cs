@@ -29,21 +29,38 @@ namespace biodata.Controllers
         {
             try
             {
+                if (TempData["errormessage"] != null)
+                    return View(new Dashboard
+                    {
+                        AlertMessage = TempData["errormessage"].ToString(),
+                        Login = new Login()
+                    });
+
                 using (var db = new BiodataDb())
                 {
                     db.Database.Connection.Open();
+                    var user = db.Users.ToList();
                     db.Database.Connection.Close();
                 }
+
+
             }
             catch (Exception ex)
             {
+                if (ex.InnerException != null)
+                    return View(new Dashboard
+                    {
+                        AlertMessage = ex.InnerException.ToString(),
+                        Login = new Login()
+                    });
+
                 return View(new Dashboard
                 {
-                    AlertMessage = ex.InnerException.ToString(),
+                    AlertMessage = ex.ToString(),
                     Login = new Login()
                 });
             }
-               
+
 
             return View(new Dashboard()
             {
@@ -64,19 +81,28 @@ namespace biodata.Controllers
         {
             if (model.SignIn == null) return null;
 
-            if (ModelState.IsValid)
+            try
             {
-                if (model.IsValid(model.SignIn.Email, model.SignIn.Password))
+                if (ModelState.IsValid)
                 {
-                    FormsAuthentication.SetAuthCookie(model.SignIn.Email, true);
+                    if (model.IsValid(model.SignIn.Email, model.SignIn.Password))
+                    {
+                        FormsAuthentication.SetAuthCookie(model.SignIn.Email, true);
+                    }
+                }
+
+                using (var entities = new BiodataDb())
+                {
+                    int userId = Support.GetUserId(model.SignIn.Email, entities);
+                    if (userId > 0) Support.DeleteExistingDataForUser(userId);
                 }
             }
-
-            using (var entities = new BiodataDb())
+            catch (Exception ex)
             {
-                int userId = Support.GetUserId(model.SignIn.Email, entities);
-                if (userId > 0) Support.DeleteExistingDataForUser(userId);
+                TempData["errormessage"] = ex;
             }
+
+
 
             return RedirectToAction("Dashboard");
         }
@@ -175,11 +201,14 @@ namespace biodata.Controllers
                     if (status)
                     {
                         ModelState.Clear();
-                        return View(new Login { ForgotPassword = new ForgotPassword
+                        return View(new Login
                         {
-                            AlertMessage = "Email sent successfully",
-                            FormatEmail = string.Empty
-                        } });
+                            ForgotPassword = new ForgotPassword
+                                {
+                                    AlertMessage = "Email sent successfully",
+                                    FormatEmail = string.Empty
+                                }
+                        });
                     }
                 }
             }
