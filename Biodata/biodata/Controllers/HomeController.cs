@@ -193,22 +193,27 @@ namespace biodata.Controllers
                         user.Password = crypto.Compute("password");
                         user.PasswordSalt = crypto.Salt;
                         db.SaveChanges();
-                    }
-                }
-                if (!string.IsNullOrEmpty(password))
-                {
-                    var status = Support.SendEmail("Password Reset", "Here is your new password- " + password, model.ForgotPassword.FormatEmail);
-                    if (status)
-                    {
-                        ModelState.Clear();
-                        return View(new Login
+                        if (!string.IsNullOrEmpty(password))
                         {
-                            ForgotPassword = new ForgotPassword
+                            var status = Support.SendEmail("Password Reset", "Here is your new password- " + password, model.ForgotPassword.FormatEmail);
+                            if (status)
+                            {
+                                ModelState.Clear();
+                                return View(new Login
                                 {
-                                    AlertMessage = "Email sent successfully",
-                                    FormatEmail = string.Empty
-                                }
-                        });
+                                    ForgotPassword = new ForgotPassword
+                                    {
+                                        AlertMessage = "Email sent successfully",
+                                        FormatEmail = string.Empty
+                                    }
+                                });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        model.ForgotPassword.AlertMessage = model.ForgotPassword.FormatEmail + " does not exists into our database.";
+                        return View(model);
                     }
                 }
             }

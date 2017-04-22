@@ -11,7 +11,7 @@
     <span class="help-block" style="font-size: 11px;">The family memeber information of the candidate. This information will be displayed in the family panel of your biodata.</span>
 </h3>
 
-<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
+<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px; min-width: 400px;">
     @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 6 })
 </div>
 
@@ -84,3 +84,14 @@
 
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 10);
+            window.onunload = function () { null };
+        });
+    </script>
+}

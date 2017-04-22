@@ -265,12 +265,11 @@ namespace biodata.Controllers
         public ActionResult Career(Career model)
         {
             if (model == null) return null;
-
+            var entities = new BiodataDb();
             if (model.YesWorkExperience)
             {
                 if (ModelState.IsValid)
                 {
-                    var entities = new BiodataDb();
                     entities.Workexperienceinfoes.Add(new WorkExperienceInfo
                     {
                         Company = model.Company,
@@ -286,6 +285,20 @@ namespace biodata.Controllers
 
                 return RedirectToAction("Family");
             }
+
+            entities.Workexperienceinfoes.Add(new WorkExperienceInfo
+            {
+                Company = null,
+                Designation = null,
+                Location = null,
+                TotalExperience = null,
+                AnnualIncome = null,
+                IsWorkingExprience = model.YesWorkExperience,
+                UserId = Support.GetUserId(User.Identity.Name, entities)
+            });
+            entities.SaveChanges();
+
+
             return RedirectToAction("Family");
         }
 

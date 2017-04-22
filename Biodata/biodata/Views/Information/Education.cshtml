@@ -10,7 +10,7 @@
     <span class="help-block" style="font-size: 11px;">The education information about the candidate. This information will be displayed in the education panel of your biodata.</span>
 </h3>
 
-<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
+<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px; min-width: 400px;">
     @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 4 })
 </div>
 
@@ -92,7 +92,9 @@
                 $(this).data('DateTimePicker').viewMode('years');
             });
 
-
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 10);
+            window.onunload = function () { null };
             //$("button[type=submit]").click(function () {
             //    $(this).data('clicked', true);
             //});

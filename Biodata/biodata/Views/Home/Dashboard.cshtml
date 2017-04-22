@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-2">
-                    <div id="fh5co-logo"><a href="#"><strong>CreateBiodata</strong></a></div>
+                    <div id="fh5co-logo"><a href="@Url.Action("Dashboard","Home")"><strong>CreateBiodata</strong></a></div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
 
@@ -32,7 +32,7 @@
                         <li class="active"><a href="#fh5co-started">Contact Us</a></li>
                     </ul>
                 </div>
-                <label>@Model.AlertMessage</label>
+                @*<label>@Model.AlertMessage</label>*@
             </div>
 
         </div>
@@ -99,7 +99,9 @@
                             <div class="col-md-6 col-sm-6 text-center">
                                 <div class="event-wrap animate-box">
                                     <h3>Basic Template</h3>
-                                    <img src="~/images/sample.PNG" class="img img-responsive">
+                                    <a href='@Url.Action("Sample1", "Home")' target="_blank" class="">
+                                        <img src="~/images/sample.PNG" class="img img-responsive">
+                                    </a>
                                     @*<div class="event-col">
                                             <i class="icon-clock"></i>
                                             <span>4:00 PM</span>
@@ -162,7 +164,7 @@
                                     @*<span class="date">December 25, 2015</span>*@
                                 </div>
                                 <div class="timeline-body">
-                                    <p>Create the new account or sign in if you're already registred. Hit on start creating menu item on the top right corner of the page</p>
+                                    <p>Create the new account or sign in if you're already registered. Hit on start creating menu item on the top right corner of the page</p>
                                 </div>
                             </div>
                         </li>
@@ -174,7 +176,7 @@
                                     @*<span class="date">December 28, 2015</span>*@
                                 </div>
                                 <div class="timeline-body">
-                                    <p>Fill up all the related information about the person. Add atleast two family members information and one picture about the person. And, Hit generate PDF button to create.</p>
+                                    <p>Fill up all the related information about the person. Add at least two family members information and one picture. And, Hit generate PDF button to create.</p>
                                 </div>
                             </div>
                         </li>
@@ -208,30 +210,30 @@
             <div class="row animate-box">
                 <div class="col-md-10 col-md-offset-1">
 
-                    @*@using (Html.BeginForm("ContactUs", "Home", new { }, FormMethod.Post, new { @class = "form-inline" }))
-                        {*@
-                    <div class="col-md-4 col-sm-4">
-                        <div class="form-group">
-                            @*@Html.LabelFor(x => x.Email, new { @for = "email", @class = "sr-only" })*@
-                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control", @id = "email", @placeholder = "Email" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                    @using (Html.BeginForm("ContactUs", "Home", new { }, FormMethod.Get, new { @class = "form-inline" }))
+                    {
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                @*@Html.LabelFor(x => x.Email, new { @for = "email", @class = "sr-only" })*@
+                                @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control", @id = "email", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <div class="form-group">
-                            @*@Html.LabelFor(x => x.Message, new { @for = "message", @class = "sr-only" })*@
-                            @Html.TextAreaFor(x => x.Message, new { @type = "text", rows = "1", @class = "form-control", @id = "message", @placeholder = "Message" })
-                            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                @*@Html.LabelFor(x => x.Message, new { @for = "message", @class = "sr-only" })*@
+                                @Html.TextAreaFor(x => x.Message, new { @type = "text", rows = "1", @class = "form-control", @id = "message", @placeholder = "Message" })
+                                @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-2">
-                        <button type="submit" class="btn btn-default btn-block btn-primary" id="sendmail">Send</button>
-                    </div>
+                        <div class="col-md-2 col-sm-2">
+                            <button type="submit" class="btn btn-default btn-block btn-primary" id="sendmail">Send</button>
+                        </div>
 
-                    <div class="col-sm-12">
-                        @Html.LabelFor(x => x.AlertMessage, "", new { @class = "" })
-                    </div>
-                    @*}*@
+                        <div class="col-sm-12">
+                            @Html.LabelFor(x => x.AlertMessage, "", new { @class = "" })
+                        </div>
+                    }
                 </div>
             </div>
         </div>

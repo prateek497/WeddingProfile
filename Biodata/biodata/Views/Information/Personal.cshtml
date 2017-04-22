@@ -11,7 +11,7 @@
     <span class="help-block" style="font-size: 11px;">The personal information about the candidate. This information will be displayed in the first row of your biodata.</span>
 </h3>
 
-<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
+<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px; min-width: 400px;">
     @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 2 })
 </div>
 
@@ -31,7 +31,7 @@
                             @Html.TextBoxFor(x => x.Name, new
                             {
                                 type = "text",
-                                placeholder = "e.g. - Prateek Gangwar",
+                                placeholder = "e.g. - Samir Singh",
                                 @class = "form-control",
                                 @data_toggle = "tooltip",
                                 title = "Enter name of the person who's resume belong to",
@@ -49,7 +49,7 @@
                             @Html.TextBoxFor(x => x.DateOfBirth, new
                             {
                                 type = "text",
-                                placeholder = "e.g. - 16-Aug-1989",
+                                placeholder = "e.g. - 16-Aug-1987",
                                 @class = "form-control",
                                 @data_toggle = "tooltip",
                                 title = "Enter date of birth"
@@ -265,6 +265,11 @@
                 if ($('#personalform').serialize() !== $('#personalform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
                 else e = null; // i.e; if form state change show warning box, else don't show it.
             });
+
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 10);
+            window.onunload = function () { null };
+
             //$('#Facebook').change(function () {
             //    $.ajax({
             //        url: "https://www.facebook.com/prateekgng",

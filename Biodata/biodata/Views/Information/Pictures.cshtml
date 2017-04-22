@@ -79,6 +79,11 @@
 {
     <script>
         $(function () {
+
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 10);
+            window.onunload = function () { null };
+
             //    $('#inputfile').fileinput({
             //        uploadAsync: true,
             //        minFileCount: 1,

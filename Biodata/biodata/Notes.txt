@@ -21,7 +21,7 @@ Technologies to be consider-
 
 
 Plans-
-1-Basic template
+1-Login validation messages
 2-Get the images to showup.
 3-
 4-

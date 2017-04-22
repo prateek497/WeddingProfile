@@ -28,7 +28,7 @@
                             @Html.TextBoxFor(x => x.Name, new
                             {
                                 type = "text",
-                                placeholder = "e.g. - Prateek Gangwar",
+                                placeholder = "e.g. - Samir Singh",
                                 @class = "form-control",
                                 @data_toggle = "tooltip",
                                 title = "Enter name of the person who people can email or call when they are interested in this biodata. (Usually the father or sibling)"
@@ -125,6 +125,10 @@
                 if ($('#contactform').serialize() !== $('#contactform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
                 else e = null; // i.e; if form state change show warning box, else don't show it.
             });
+
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 10);
+            window.onunload = function () { null };
         });
     </script>
 }

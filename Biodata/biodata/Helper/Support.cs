@@ -193,8 +193,8 @@ namespace biodata.Helper
 
         public static bool SendEmail(string subject, string body, string toEmail)
         {
-            string fromEmail = WebConfigurationManager.AppSettings["fromEmail"];
-            string fromEmailPassword = WebConfigurationManager.AppSettings["fromEmailPassword"];
+            string fromEmail = "brightfuture497@gmail.com";//WebConfigurationManager.AppSettings["fromEmail"];
+            string fromEmailPassword = "brightfuture";//WebConfigurationManager.AppSettings["fromEmailPassword"];
 
             using (var mm = new MailMessage(fromEmail, toEmail))
             {

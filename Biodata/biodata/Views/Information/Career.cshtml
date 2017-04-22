@@ -11,7 +11,7 @@
     <span class="help-block" style="font-size: 11px;">The work experience of the candidate. This information will be displayed in the career panel of your biodata.</span>
 </h3>
 
-<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px;">
+<div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px; min-width: 400px;">
     @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 5 })
 </div>
 
@@ -140,6 +140,9 @@
                 if ($('#careerform').serialize() !== $('#careerform').data('serialize') && !$('button[type=submit]').data('clicked')) return true;
                 else e = null; // i.e; if form state change show warning box, else don't show it.
             });
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 10);
+            window.onunload = function () { null };
         });
     </script>
 }
