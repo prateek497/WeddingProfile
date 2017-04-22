@@ -407,9 +407,6 @@
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
-    <None Include="Properties\PublishProfiles\datecalculator.in - Web Deploy.pubxml">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
@@ -526,6 +523,7 @@
   <ItemGroup>
     <Folder Include="Download\" />
     <Folder Include="Log\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
