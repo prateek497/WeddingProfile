@@ -260,7 +260,7 @@
     <Content Include="Content\owl.theme.default.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Design.txt" />
+    <None Include="Design.txt" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -308,7 +308,7 @@
     <Content Include="images\sample.PNG" />
     <Content Include="images\vaibhav2.jpg" />
     <Content Include="images\vaibhav3.jpg" />
-    <Content Include="Notes.txt" />
+    <None Include="Notes.txt" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -407,6 +407,7 @@
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
@@ -523,7 +524,6 @@
   <ItemGroup>
     <Folder Include="Download\" />
     <Folder Include="Log\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -10,11 +10,11 @@ namespace biodata.Controllers
     {
         //
         // GET: /CustomError/
-        [HandleError]
-        public ActionResult Error()
-        {
-            return View();
-        }
+        //[HandleError]
+        //public ActionResult Error()
+        //{
+        //    return View();
+        //}
 
     }
 }

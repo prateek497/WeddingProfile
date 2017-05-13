@@ -23,7 +23,7 @@ Technologies to be consider-
 Plans-
 1-Login validation messages
 2-Get the images to showup.
-3-
+3-Contact in last
 4-
 5-
 

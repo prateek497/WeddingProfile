@@ -270,6 +270,8 @@
 {
     <script>
         $(function () {
+            $('#signinmessage').hide();
+            $('#signupmessage').hide();
             $("#sendmail").click(function () {
                 if ($('#email').val().length > 0 && $('#message').val().length > 0) {
                     $.ajax({
@@ -294,6 +296,46 @@
                     });
                 }
             });
+
+            $('#signinButton').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "@Url.Action("SignInValidation", "Home")",
+                    data: {
+                        email: $("#signemail").val(),
+                        password: $("#exampleInputPassword").val()
+                    },
+                    success: function (data) {
+                        if (data === "") {
+                            $("#signinform").submit();
+                        }
+                        else {
+                            $('#signinmessage').empty();
+                            $('#signinmessage').append('<p>' + data + '</p>');
+                            $('#signinmessage').show();
+                        }
+                    }
+                });
+            });
+
+            $('#signupemail').focusout(function (event) {
+                $.ajax({
+                    url: "@Url.Action("SignUpValidation", "Home")",
+                    data: {
+                        email: $("#signupemail").val()
+                    },
+                    success: function (data) {
+                        if (data === "") {
+                        }
+                        else {
+                            $('#signupmessage').empty();
+                            $('#signupmessage').append('<p>' + data + '</p>');
+                            $('#signupmessage').show();
+                        }
+                    }
+                });
+            });
+
         });
     </script>
 }

@@ -23,5 +23,7 @@ namespace biodata.Models
         public PictureModel ProfilePicture { get; set; }
 
         public List<PictureModel> PictureListData { get; set; }
+
+        public string Email { get; set; }
     }
 }

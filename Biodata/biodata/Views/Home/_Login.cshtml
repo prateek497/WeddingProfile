@@ -24,14 +24,14 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="signin" style="padding: 10px;">
 
-                                @using (Html.BeginForm("SignIn", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal" }))
+                                @using (Html.BeginForm("SignIn", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", id = "signinform" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                                                @Html.TextBoxFor(x => x.SignIn.Email, new { type = "email", @class = "form-control", id = "email", placeholder = "Email" })
+                                                @Html.TextBoxFor(x => x.SignIn.Email, new { type = "email", @class = "form-control", id = "signemail", placeholder = "Email" })
                                             </div>
                                             @Html.ValidationMessageFor(m => m.SignIn.Email, "", new { @class = "text-danger" })
                                         </div>
@@ -47,10 +47,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <button type="submit" class="btn btn-primary btn-sm" style="font-family: sans-serif">
+                                            <button type="submit" id="signinButton" class="btn btn-primary btn-sm" style="font-family: sans-serif">
                                                 Sign In
                                             </button>
                                             @Html.ActionLink("Forgot your password?", "Forgot", "Home", new { style = "font-size: 12px;" })
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <br />
+                                        <div id="signinmessage" class=" alert alert-danger">
                                         </div>
                                     </div>
                                 }
@@ -72,7 +79,7 @@
                                         <div class="col-sm-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                                                @Html.TextBoxFor(x => x.SignUp.Email, new { type = "email", @class = "form-control", id = "email", placeholder = "Email" })
+                                                @Html.TextBoxFor(x => x.SignUp.Email, new { type = "email", @class = "form-control", id = "signupemail", placeholder = "Email" })
                                             </div>
                                             @Html.ValidationMessageFor(m => m.SignUp.Email, "", new { @class = "text-danger" })
                                         </div>
@@ -107,6 +114,11 @@
                                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
                                                 Cancel
                                             </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br />
+                                        <div id="signupmessage" class=" alert alert-danger">
                                         </div>
                                     </div>
                                 }

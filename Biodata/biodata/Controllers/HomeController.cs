@@ -75,6 +75,35 @@ namespace biodata.Controllers
             return RedirectToAction("Dashboard");
         }
 
+
+        public ActionResult SignInValidation(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password)) return Content("Something went wrong");
+
+            using (var entities = new BiodataDb())
+            {
+                var isExists = entities.Users.Any(x => x.Email.Equals(email));
+                if (!isExists) return Content("User does not exits");
+                var model = new Login();
+                var isValid = model.IsValid(email, password);
+                if(!isValid) return Content("Username or password is not matched");
+            }
+
+            return Content("");
+        }
+
+        public ActionResult SignUpValidation(string email)
+        {
+            if (string.IsNullOrEmpty(email)) return Content("Something went wrong");
+            using (var entities = new BiodataDb())
+            {
+                var isExists = entities.Users.Any(x => x.Email.Equals(email));
+                if (isExists) return Content("User already exits");
+            }
+
+            return Content("");
+        }
+
         [AllowAnonymous]
         [HttpPost]
         public ActionResult SignIn(Login model)
@@ -224,13 +253,13 @@ namespace biodata.Controllers
 
         [AllowAnonymous]
         [Authorize]
-        public ViewResult _Basic(string email)
+        public ViewResult _Basic(PdfGeneratorModel model)
         {
             var entities = new BiodataDb();
             //if (Session["UserEmail"] != null) email1 = Convert.ToString(Session["UserEmail"]);
-            if (!string.IsNullOrEmpty(email))
+            if (!string.IsNullOrEmpty(model.Email))
             {
-                var userId = Support.GetUserId(email, entities);//User.Identity.Name
+                var userId = Support.GetUserId(model.Email, entities);//User.Identity.Name
 
                 if (userId > 0)
                 {
@@ -317,21 +346,25 @@ namespace biodata.Controllers
         [HttpPost]
         public FileResult _Basic(string email, PdfGeneratorModel model)
         {
-            //Session["UserEmail"] = null;
-            //Session["UserEmail"] = email;
+            model.Email = email;
+            model = GetPdfGeneratorModel(email);
+            string htmlstring = RenderRazorViewToString("_Basic", model);
+
+            var contentBytes = PDFGenerator.PdfGenerator.GenerateBytes(htmlstring);
+
             string temp = DateTime.Now.Ticks + ".pdf";
-            string filePath = AppDomain.CurrentDomain.BaseDirectory + @"Download\" + temp;
-            try
-            {
-                if (Request.Url != null)
-                {
-                    PDFGenerator.PdfGenerator.Generate(Request.Url.ToString(), filePath);
-                }
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
+            //string filePath = AppDomain.CurrentDomain.BaseDirectory + @"Download\" + temp;
+            //try
+            //{
+            //    if (Request.Url != null)
+            //    {
+            //        PDFGenerator.PdfGenerator.Generate(Request.Url.ToString(), filePath);
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    // ignored
+            //}
 
             //DownloadFile download = new DownloadFile(fileName, filePath);
             //byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
@@ -342,7 +375,115 @@ namespace biodata.Controllers
                 if (userId > 0) Support.DeleteExistingDataForUser(userId);
             }
 
-            return File(filePath, "application/pdf", temp);
+            return File(contentBytes, "application/pdf", temp);
+        }
+
+        private PdfGeneratorModel GetPdfGeneratorModel(string email)
+        {
+            var entities = new BiodataDb();
+            var pdfModel = new PdfGeneratorModel();
+            if (!string.IsNullOrEmpty(email))
+            {
+                var userId = Support.GetUserId(email, entities); //User.Identity.Name
+
+                if (userId > 0)
+                {
+
+                    pdfModel.CareerData =
+                        entities.Workexperienceinfoes.Where(x => x.UserId == userId).Select(z => new Career
+                        {
+                            Designation = z.Designation,
+                            Company = z.Company,
+                            Location = z.Location,
+                            WorkingFrom = z.TotalExperience,
+                            YesWorkExperience = z.IsWorkingExprience,
+                            AnnualIncomeText = z.AnnualIncome
+                        }).FirstOrDefault();
+
+                    pdfModel.ContactData = entities.Contactinfoes.Where(x => x.UserId == userId).Select(z => new Contact
+                    {
+                        State = z.State,
+                        City = z.City,
+                        Name = z.Name,
+                        RelationshipText = z.Relationship,
+                        Email = z.Email,
+                        Phone = z.ContactNumber
+                    }).FirstOrDefault();
+
+                    pdfModel.EducationData = entities.Educationinfoes.Where(x => x.UserId == userId).ToList();
+
+                    pdfModel.FamilyData = entities.Familyinfoes.Where(x => x.UserId == userId).Select(z => new Family
+                    {
+                        State = z.State,
+                        City = z.City,
+                        CompanyName = z.Company,
+                        Designation = z.Designation,
+                        JobLocation = z.Joblocation,
+                        RelationshipText = z.Relationship,
+                        Name = z.Name
+                    }).ToList();
+                    pdfModel.PersonalData =
+                        entities.Personalinfoes.Where(x => x.UserId == userId).Select(z => new Personal
+                        {
+                            Name = z.Name,
+                            Complexion = z.Complexion,
+                            CurrentCity = z.CurrentCity,
+                            DateOfBirthDb = z.Dob,
+                            DateOfTimeDb = z.DobTime,
+                            Height = z.Height,
+                            Twitter = z.Twitter,
+                            Linkedin = z.Linkedin,
+                            Instagram = z.Instagram,
+                            Facebook = z.Facebook,
+                            Quora = z.Quora,
+                            Smoke = z.Smoke,
+                            Drink = z.Drink,
+                            Hobbies = z.Hobbies,
+                            Diet = z.Diet,
+                            MaritalStatus = z.MaritalStatus,
+                        }).FirstOrDefault();
+                    pdfModel.ReligiousData =
+                        entities.Culturalinfoes.Where(x => x.UserId == userId).Select(z => new Religious
+                        {
+                            Caste = z.Caste,
+                            Gotra = z.Gotra,
+                            Languages = z.Languages,
+                            Religion = z.Religion,
+                            Zodiac = z.Zodiac,
+                            MotherTongue = z.MotherTongue
+                        }).FirstOrDefault();
+                    pdfModel.ProfilePicture =
+                        entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
+                        {
+                            PicBytes = z.PictureBytes
+                        }).FirstOrDefault();
+                    pdfModel.PictureListData =
+                        entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
+                        {
+                            PicBytes = z.PictureBytes
+                        }).Take(6).ToList();
+
+
+                }
+
+            }
+            return pdfModel;
+
+        }
+
+        public string RenderRazorViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext,
+                                                                         viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View,
+                                             ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+                return sw.GetStringBuilder().ToString();
+            }
         }
 
         [HttpGet]

@@ -28,11 +28,25 @@ namespace PDFGenerator
         {
             var htmlToPdf = new HtmlToPdfConverter
             {
-                Margins = new PageMargins { Top = 0, Bottom = 0, Left = 0, Right = 0 },
+                Margins = new PageMargins {Top = 0, Bottom = 0, Left = 0, Right = 0},
                 Size = PageSize.A4
             };
 
-            htmlToPdf.GeneratePdfFromFile(url, null, path);
+            Stream d = null;
+
+            try
+            {
+                htmlToPdf.GeneratePdfFromFile(url, null, d);
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+
+            
+
+
         }
 
         /// <summary>
@@ -40,7 +54,7 @@ namespace PDFGenerator
         /// </summary>
         /// <param name="html">html code</param>
         /// return bytes
-        public static void GenerateBytes(string html)
+        public static byte[] GenerateBytes(string html)
         {
             var htmlToPdf = new HtmlToPdfConverter
             {
@@ -48,7 +62,7 @@ namespace PDFGenerator
                 Size = PageSize.A4
             };
 
-            htmlToPdf.GeneratePdf(html);
+            return htmlToPdf.GeneratePdf(html);
         }
     }
 }
