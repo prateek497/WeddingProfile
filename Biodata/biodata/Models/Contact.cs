@@ -18,8 +18,9 @@ namespace biodata.Models
         public string RelationshipText { get; set; }
 
         [Required(ErrorMessage = "Phone is required", AllowEmptyStrings = false)]
-        //[StringLength(10, ErrorMessage = "Phone cannot be longer than 10 numbers.")]
-        //[DataType(DataType.PhoneNumber, ErrorMessage = "Phone number is not valid")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+        [MaxLength(10)]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Email is required", AllowEmptyStrings = false)]

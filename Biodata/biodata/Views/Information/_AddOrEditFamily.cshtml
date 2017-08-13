@@ -95,10 +95,14 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
+                @*<small class="help-block" style="font-size: 11px;"><i>Add atleast 2 of your family members</i></small>*@
+                <div class="text-left text-danger" style="font-size: 12px;">
+                    <span class="glyphicon glyphicon-asterisk"></span> Add atleast 2 of your family members
+                </div>
             </div>
-            <div class="col-sm-2">
-            </div>
+            @*<div class="col-sm-2">
+                </div>*@
             @if (string.IsNullOrEmpty(Model.Name))
             {
                 <div class="col-sm-8">

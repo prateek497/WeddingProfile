@@ -86,7 +86,7 @@ namespace biodata.Controllers
                 if (!isExists) return Content("User does not exits");
                 var model = new Login();
                 var isValid = model.IsValid(email, password);
-                if(!isValid) return Content("Username or password is not matched");
+                if (!isValid) return Content("Username or password is not matched");
             }
 
             return Content("");
@@ -102,6 +102,15 @@ namespace biodata.Controllers
             }
 
             return Content("");
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            var signInModel = new Login();
+            return View(signInModel);
         }
 
         [AllowAnonymous]
@@ -131,8 +140,6 @@ namespace biodata.Controllers
                 TempData["errormessage"] = ex;
             }
 
-
-
             return RedirectToAction("Dashboard");
         }
 
@@ -147,6 +154,15 @@ namespace biodata.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Dashboard");
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            var signUp = new Login();
+            return View(signUp);
+        }
+
 
         [AllowAnonymous]
         [HttpPost]
@@ -369,11 +385,13 @@ namespace biodata.Controllers
             //DownloadFile download = new DownloadFile(fileName, filePath);
             //byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
 
-            using (var entities = new BiodataDb())
-            {
-                int userId = Support.GetUserId(email, entities);
-                if (userId > 0) Support.DeleteExistingDataForUser(userId);
-            }
+
+            //Uncmonnent before deploy
+            //using (var entities = new BiodataDb())
+            //{
+            //    int userId = Support.GetUserId(email, entities);
+            //    if (userId > 0) Support.DeleteExistingDataForUser(userId);
+            //}
 
             return File(contentBytes, "application/pdf", temp);
         }

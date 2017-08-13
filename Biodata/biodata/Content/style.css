@@ -533,9 +533,9 @@ h1, h2, h3, h4, h5, h6, figure {
         margin-left: -64px;
     }
 
-    body {
-        /*padding-top: 120px !important;*/
-    }
+    /*body {
+        padding-top: 150px !important;
+    }*/
 }
 
 .timeline > li {
@@ -2217,4 +2217,3 @@ div#OR {
         height: auto;
         opacity: 0.30;
     }
-

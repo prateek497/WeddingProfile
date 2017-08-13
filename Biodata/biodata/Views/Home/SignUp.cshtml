@@ -1,0 +1,116 @@
+﻿@model biodata.Models.Login
+
+@{
+    ViewBag.Title = "Sign Up";
+    Layout = "../Shared/_InformationLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("SignUp", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-4 col-md-offset-4 col-md-offset-4">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#signup" data-toggle="tab">Sign Up</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="signup" style="padding: 10px;">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                                    @Html.TextBoxFor(x => x.SignUp.Name, new { type = "text", @class = "form-control", id = "name", placeholder = "Name" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.SignUp.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                                    @Html.TextBoxFor(x => x.SignUp.Email, new { type = "email", @class = "form-control", id = "signupemail", placeholder = "Email" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.SignUp.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                                    @Html.TextBoxFor(x => x.SignUp.Password, new { type = "password", @class = "form-control", id = "password", placeholder = "Password" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.SignUp.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                                    @Html.TextBoxFor(x => x.SignUp.ConfirmPassword, new { type = "password", @class = "form-control", id = "confirmpassword", placeholder = "Confirm Password" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.SignUp.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @*<div class="col-sm-2">
+                                </div>*@
+                            @*<div class="col-sm-10">*@
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-sm" style="font-family: sans-serif">
+                                    Sign Up
+                                </button>
+
+                                @Html.ActionLink("Sign In", "SignIn", "Home", new { }, new { @class = "btn btn-default btn-sm", style = "" })
+                                @*<button type="button" class="btn btn-default btn-sm">
+                                        Cancel
+                                    </button>*@
+                            </div>
+                            @*</div>*@
+                        </div>
+                        <div class="col-md-12">
+                            <br />
+                            <div id="signupmessage" class=" alert alert-danger">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $('#signupmessage').hide();
+
+            $('#signupemail').focusout(function (event) {
+                $.ajax({
+                    url: "@Url.Action("SignUpValidation", "Home")",
+                    data: {
+                        email: $("#signupemail").val()
+                    },
+                    success: function (data) {
+                        if (data === "") {
+                        }
+                        else {
+                            $('#signupmessage').empty();
+                            $('#signupmessage').append('<p>' + data + '</p>');
+                            $('#signupmessage').show();
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+}
+
+

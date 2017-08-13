@@ -10,7 +10,7 @@
     <span class="help-block" style="font-size: 11px;">Who should people contact when they are interested in this biodata? This information will be displayed in the top right corner of your biodata.</span>
 </h3>
 <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px; min-width: 400px;">
-    @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 1 })
+    @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 6 })
 </div>
 
 <div class="col-sm-12 well well-sm">
@@ -59,13 +59,13 @@
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.Phone, new
                             {
-                                type = "number",
+                                type = "text",
                                 placeholder = "e.g. - 9123456780",
                                 @class = "form-control",
                                 title = "At least one phone number is required",
                                 data_toggle = "tooltip",
-                                max = "9999999999",
-                                min = "1"
+                                maxlength = "10",
+                                minlength = "9"
                             })
                             <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
@@ -129,6 +129,15 @@
             function preventBack() { window.history.forward(); }
             setTimeout("preventBack()", 10);
             window.onunload = function () { null };
+
+            $(document).ready(function () {
+                $("input[data-val-length-max]").each(function () {
+                    var $this = $(this);
+                    var data = $this.data();
+                    $this.attr("maxlength", data.valLengthMax);
+                });
+            });
+
         });
     </script>
 }

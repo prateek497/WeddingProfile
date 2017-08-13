@@ -214,6 +214,7 @@
     <Compile Include="Database\Tables\User.cs" />
     <Compile Include="Database\Tables\UserProfile.cs" />
     <Compile Include="Database\Tables\WorkExperienceInfo.cs" />
+    <Compile Include="Filter\NoDirectAccessAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -285,7 +286,6 @@
     <Content Include="images\gallery-8.jpg" />
     <Content Include="images\gallery-9.jpg" />
     <Content Include="images\groom.jpg" />
-    <Content Include="images\Image Preview_Resume_V1.jpg" />
     <Content Include="images\img_bg_1.jpg" />
     <Content Include="images\img_bg_2.jpg" />
     <Content Include="images\img_bg_2222.jpg" />
@@ -407,7 +407,7 @@
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\HostingRaja.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
@@ -519,6 +519,8 @@
     <Content Include="Views\Home\Forgot.cshtml" />
     <Content Include="Views\Home\Sample1.cshtml" />
     <Content Include="Views\Home\Sample2.cshtml" />
+    <Content Include="Views\Home\SignIn.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
     <None Include="Views\Information\EditEducation.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,7 @@ using biodata.Database.Tables;
 using biodata.Helper;
 using biodata.Models;
 using Microsoft.Ajax.Utilities;
+using biodata.Filter;
 
 namespace biodata.Controllers
 {
@@ -19,14 +20,9 @@ namespace biodata.Controllers
     public class InformationController : Controller
     {
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Contact()
         {
-            using (var entities = new BiodataDb())
-            {
-                int userId = Support.GetUserId(User.Identity.Name, entities);
-                if (userId > 0) Support.DeleteExistingDataForUser(userId);
-            }
-
             return View(new Contact
             {
                 RelationshipList = Support.RelationshipList()
@@ -52,14 +48,21 @@ namespace biodata.Controllers
                     UserId = Support.GetUserId(User.Identity.Name, entities)
                 });
                 entities.SaveChanges();
-                return RedirectToAction("Personal");
+                return RedirectToAction("Pictures");
             }
             return View(model);
         }
 
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Personal()
         {
+            using (var entities = new BiodataDb())
+            {
+                int userId = Support.GetUserId(User.Identity.Name, entities);
+                if (userId > 0) Support.DeleteExistingDataForUser(userId);
+            }
+
             return View(new Personal
             {
                 ComplexionList = Support.ComplexionList(),
@@ -108,6 +111,7 @@ namespace biodata.Controllers
         }
 
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Religious()
         {
             return View(new Religious
@@ -143,6 +147,7 @@ namespace biodata.Controllers
         }
 
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Education()
         {
             ViewBag.EducationPostBackAction = "Education";
@@ -251,6 +256,7 @@ namespace biodata.Controllers
         }
 
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Career()
         {
 
@@ -303,6 +309,7 @@ namespace biodata.Controllers
         }
 
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Family()
         {
             ViewBag.PostBackAction = "Family";
@@ -440,6 +447,7 @@ namespace biodata.Controllers
         }
 
         [HttpGet]
+        [NoDirectAccess]
         public ActionResult Pictures()
         {
             var pictureList = new PictureList { PicList = new List<PictureModel>(), UserEmail = User.Identity.Name };
@@ -476,30 +484,13 @@ namespace biodata.Controllers
                     int userid = Support.GetUserId(User.Identity.Name, entities);
                     foreach (var file in inputFileList)
                     {
-                        //var bitmap = new Bitmap(150, 150);
-                        //try
-                        //{
-                        //    var oldImage = Image.FromStream(file.InputStream, true, true);
-                        //    var clipRectangle = new Rectangle(0, 0, oldImage.Width, oldImage.Height);
-                        //    using (Graphics g = Graphics.FromImage(bitmap))
-                        //    {
-                        //        g.SmoothingMode = SmoothingMode.HighQuality;
-                        //        g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                        //        g.CompositingQuality = CompositingQuality.HighQuality;
-                        //        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                        //        g.DrawImage(oldImage, new Rectangle(0, 0, 150, 150), clipRectangle, GraphicsUnit.Pixel);
-                        //    }
-                        //}
-                        //catch (Exception ex)
-                        //{
-
-                        //}
-
                         System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
 
-                        var bitmap = Support.CropImage(sourceimage, new Rectangle(0, 0, 300, 300));
+                        //var bitmap = Support.CropImage(sourceimage, new Rectangle(0, 0, 300, 300));
 
-                        var images = Support.ImageToByte(bitmap);
+                        //var bitmap = Support.FixedSize(sourceimage, 300, 300, "#ffffff");
+
+                        var images = Support.ImageToByte(sourceimage);
 
                         entities.Pictures.Add(new Picture
                         {
@@ -514,6 +505,10 @@ namespace biodata.Controllers
                     if (profile != null)
                     {
                         profile.IsProfile = true;
+                        var ms = Image.FromStream(new MemoryStream(profile.PictureBytes));
+                        var pbitmap = Support.FixedSize(ms, 300, 300, "#FFFFFF");
+                        var pimages = Support.ImageToByte(pbitmap);
+                        profile.PictureBytes = pimages;
                         entities.SaveChanges();
                     }
                 }
@@ -558,9 +553,17 @@ namespace biodata.Controllers
                 var pictures = entities.Pictures.Where(x => x.UserId == userId).ToList();
 
                 var profilePicture = pictures.SingleOrDefault(x => x.Id == id);
-                if (profilePicture != null) profilePicture.IsProfile = true;
+                if (profilePicture != null)
+                {
+                    profilePicture.IsProfile = true;
+                    var ms = Image.FromStream(new MemoryStream(profilePicture.PictureBytes));
+                    var pbitmap = Support.FixedSize(ms, 300, 300, "#FFFFFF");
+                    var pimages = Support.ImageToByte(pbitmap);
+                    profilePicture.PictureBytes = pimages;
+                }
                 var normalPictures = pictures.Where(x => x.Id != id);
                 foreach (var normal in normalPictures) normal.IsProfile = false;
+
                 entities.SaveChanges();
             }
             return RedirectToAction("Pictures");
@@ -589,7 +592,7 @@ namespace biodata.Controllers
                     TempData["FamilyVal"] = "Please add atleast 2 family members";
                     return RedirectToAction("Family");
                 }
-                return RedirectToAction("Pictures");
+                return RedirectToAction("Contact");
             }
         }
     }

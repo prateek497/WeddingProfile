@@ -8,13 +8,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> CreateBiodata @*&mdash;*@</title>
+    <title> WeddingProfile @*&mdash;*@</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="The application is to design professional matrimonial biodata" />
+    <meta name="keywords" content="prateek gangwar prateek matrimonial biodata marriage shaddi cv" />
     <meta name="author" content="Prateek Gangwar" />
     
-    <link rel="shortcut icon" type="image/png" href="~/images/sample.PNG" />
+    <link rel="shortcut icon" type="image/png" href="~/images/sample.jpg" />
 
     <!-- Facebook and Twitter integration -->
     <meta property="og:title" content="" />
@@ -90,7 +90,8 @@
         $('#startcreating').click(function () {
             if ('@Request.IsAuthenticated' === 'False') {
                 event.preventDefault();
-                $('#myModal').modal('show');
+                //$('#myModal').modal('show');
+                window.location.href = "/Home/SignIn";
             }
         });
     </script>

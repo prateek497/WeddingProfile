@@ -83,6 +83,19 @@
             function preventBack() { window.history.forward(); }
             setTimeout("preventBack()", 10);
             window.onunload = function () { null };
+            
+            $(document).on('invalid-form.validate', '#picform', function () {
+                var button = $(this).find('button[type="submit"]');
+                setTimeout(function () {
+                    button.removeAttr('disabled');
+                }, 1);
+            });
+            $(document).on('submit', '#picform', function () {
+                var button = $(this).find('button[type="submit"]');
+                setTimeout(function () {
+                    button.attr('disabled', 'disabled');
+                }, 0);
+            });
 
             //    $('#inputfile').fileinput({
             //        uploadAsync: true,

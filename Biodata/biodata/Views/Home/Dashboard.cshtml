@@ -7,12 +7,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-2">
-                    <div id="fh5co-logo"><a href="@Url.Action("Dashboard","Home")"><strong>CreateBiodata</strong></a></div>
+                    <div id="fh5co-logo"><a href="@Url.Action("Dashboard","Home")"><strong>WeddingProfile</strong></a></div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
 
                     <ul>
-                        <li class="active"> @Html.ActionLink("Start Creating", "Contact", "Information", new { }, new { id = "startcreating" })</li>
+                        <li class="active"> @Html.ActionLink("Start Creating", "Personal", "Information", new { }, new { id = "startcreating" })</li>
 
                         @if (Request.IsAuthenticated)
                         {
@@ -27,7 +27,13 @@
                         }
                         else
                         {
-                            <li class="active"><a href="#" data-toggle="modal" data-target="#myModal">Log In/Sign Up</a></li>
+                            <li class="active">
+                                @Html.ActionLink("Log In", "SignIn", "Home")
+                                
+                                @Html.ActionLink("Sign Up", "SignUp", "Home")
+                                @*<a href="#" data-toggle="modal" data-target="#myModal">Log In/Sign Up</a>
+                                <a href="#" data-toggle="modal" data-target="#myModal">Log In/Sign Up</a>*@
+                            </li>
                         }
                         <li class="active"><a href="#fh5co-started">Contact Us</a></li>
                     </ul>
@@ -100,7 +106,7 @@
                                 <div class="event-wrap animate-box">
                                     <h3>Basic Template</h3>
                                     <a href='@Url.Action("Sample1", "Home")' target="_blank" class="">
-                                        <img src="~/images/sample.PNG" class="img img-responsive">
+                                        <img src="~/images/sample.jpg" class="img img-responsive">
                                     </a>
                                     @*<div class="event-col">
                                             <i class="icon-clock"></i>
@@ -244,7 +250,7 @@
             <div class="row copyright">
                 <div class="col-md-12 text-center">
                     <p>
-                        <small class="block">&copy; @DateTime.Now.Year CreateBiodata. All Rights Reserved.</small>
+                        <small class="block">&copy; @DateTime.Now.Year WeddingProfile. All Rights Reserved.</small>
                     </p>
                     <p>
                         @*<ul class="fh5co-social-icons">

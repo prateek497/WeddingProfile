@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    
-    <link rel="shortcut icon" type="image/png" href="~/images/sample.PNG" />
+
+    <link rel="shortcut icon" type="image/png" href="~/images/sample.jpg" />
 
     <!-- Icomoon Icon Fonts-->
     <link rel="stylesheet" href="~/Content/icomoon.css">
@@ -29,7 +29,7 @@
     {
         <meta http-equiv="REFRESH" content="1800; URL=/Home/SignOff">
     }
-    
+
     <style>
         @@media screen and (max-width: 768px) {
             body {
@@ -50,8 +50,8 @@
     <div class="navbar navbar-default navbar-fixed-top" style="background-color: #374757 !important">
         <div class="container">
             <div class="navbar-header" style="color: White">
-                <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")" style="padding-top: 20px; color: White">
-                    <strong style="font-family: 'Sacramento', Arial, serif; font-size: 40px;">CreateBiodata</strong>
+                <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")" style="padding-top: 15px; color: White">
+                    <strong style="font-family: 'Sacramento', Arial, serif; font-size: 30px;">WeddingProfile</strong>
                 </a>
             </div>
 
@@ -62,6 +62,10 @@
                     | @Html.ActionLink("Sign out", "SignOff", "Home", new { }, new { @class = "navbar-link; ", style = "color: White" })
                 </p>
             }
+
+            <p class="navbar-text navbar-right" style="color: white">
+                @Html.ActionLink("Home", "Dashboard", "Home", new { }, new { @class = "navbar-link; ", style = "color: White" })
+            </p>
 
         </div>
     </div>
@@ -82,7 +86,7 @@
             @RenderBody()
 
 
-            <hr />
+            @*<hr />*@
 
             <footer role="contentinfo">
                 <div class="container">
@@ -91,7 +95,7 @@
                             <br />
                             <br />
                             <p>
-                                <small class="block">&copy; @DateTime.Now.Year CreateBiodata. All Rights Reserved.</small>
+                                <small class="block">&copy; @DateTime.Now.Year WeddingProfile. All Rights Reserved.</small>
                             </p>
                             @*<p>
                                     <ul class="fh5co-social-icons">

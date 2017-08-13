@@ -11,25 +11,26 @@
 </h3>
 
 <div class="col-sm-12 well well-sm" style="background-color: whitesmoke; padding: 5px; min-width: 400px;">
-    @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 4 })
+    @Html.Partial("_ProgressWizard", new ProgressWizard { Step = 3 })
 </div>
 
-@if (Model.EducationFieldses.Count > 0)
-{
-    <div class="col-sm-12 well well-sm">
-        <div class="row">
-            <div class="col-sm-12">
-                <table class="table table-responsive table-hover">
-                    <thead>
-                        <tr>
-                            <td></td>
-                            <td>Qualification</td>
-                            <td>Degree</td>
-                            <td>College</td>
-                            <td>University</td>
-                            <td>Year</td>
-                        </tr>
-                    </thead>
+@*@if (Model.EducationFieldses.Count > 0)
+    {*@
+<div class="col-sm-12 well well-sm">
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-responsive table-hover table-striped">
+                <thead>
+                    <tr class="success">
+                        <td></td>
+                        <td>Qualification</td>
+                        <td>Degree</td>
+                        <td>College</td>
+                        <td>University</td>
+                        <td>Year</td>
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach (var member in Model.EducationFieldses)
                     {
                         <tr>
@@ -54,13 +55,12 @@
                             </td>
                         </tr>
                     }
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
-}
-
-
+</div>
+@*}*@
 
 <div class="col-sm-12 well well-sm">
     <div class="row">

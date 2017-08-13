@@ -1,0 +1,99 @@
+﻿@model biodata.Models.Login
+
+@{
+    ViewBag.Title = "Sign In";
+    Layout = "../Shared/_InformationLayout.cshtml";
+}
+
+@using (Html.BeginForm("SignIn", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", id = "signinform" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-4 col-md-offset-4 col-md-offset-4">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="signin" style="padding: 10px;">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                                    @Html.TextBoxFor(x => x.SignIn.Email, new { type = "email", @class = "form-control", id = "signemail", placeholder = "Email" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.SignIn.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                                    @Html.TextBoxFor(x => x.SignIn.Password, new { type = "password", @class = "form-control", id = "exampleInputPassword", placeholder = "Password" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.SignIn.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <button type="submit" id="signinButton" class="btn btn-primary btn-sm" style="font-family: sans-serif"> Sign In </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <hr />
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        @Html.ActionLink("Forgot your password?", "Forgot", "Home", new { @class = "pull-left", style = "font-size: 12px; padding-top: 5px;" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        @Html.ActionLink("Sign Up", "SignUp", "Home", new { }, new { @class = "btn btn-default btn-sm pull-right", style = "" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <br />
+                            <div id="signinmessage" class=" alert alert-danger">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $('#signinmessage').hide();
+            $('#signinButton').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "@Url.Action("SignInValidation", "Home")",
+                    data: {
+                        email: $("#signemail").val(),
+                        password: $("#exampleInputPassword").val()
+                    },
+                    success: function (data) {
+                        if (data === "") {
+                            $("#signinform").submit();
+                        }
+                        else {
+                            $('#signinmessage').empty();
+                            $('#signinmessage').append('<p>' + data + '</p>');
+                            $('#signinmessage').show();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
