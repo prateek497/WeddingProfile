@@ -21,9 +21,9 @@ Technologies to be consider-
 
 
 Plans-
-1-Login validation messages
+1-
 2-Get the images to showup.
-3-Contact in last
+3-
 4-
 5-
 
@@ -33,6 +33,8 @@ Progress Steps Samples
 2- http://bootsnipp.com/snippets/featured/form-process-steps
 3- http://azmind.com/multi-step-registration-form-bootstrap-css3-jquery/
 
+Icons-
+https://www.flaticon.com/free-icon/facebook_145802#term=facebook&page=1&position=3
 
 Registration Forms
 1- http://bootsnipp.com/snippets/a6nml

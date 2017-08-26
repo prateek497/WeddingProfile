@@ -3,6 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+
+    <meta name="description" content="The application is to design professional matrimonial biodata" />
+    <meta name="keywords" content="biodata format, biodata for marriage, biodata sample, marriage biodata, sample biodata, biodata marriage, bio data,
+          resume format, matrimonial, matrimony, matrimonials, indian matrimonials, marriage, marriage counselor, marriage sites, matching, india, matchmaking,
+          shaadi, shadi, format of resume, bio data format, marriage biodata format, biodata format for marriage, prateek gangwar, prateek, matrimonial, biodata, marriage" />
+    <meta name="author" content="Prateek Gangwar" />
+
     <title>@ViewBag.Title</title>
 
     <link rel="shortcut icon" type="image/png" href="~/images/sample.jpg" />
@@ -70,7 +77,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container contentWrap">
         <div class="row">
             @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
             {
@@ -86,15 +93,12 @@
             @RenderBody()
 
 
-            @*<hr />*@
 
             <footer role="contentinfo">
                 <div class="container">
                     <div class="row copyright">
-                        <div class="col-md-12 text-center">
-                            <br />
-                            <br />
-                            <p>
+                        <div class="col-md-12 text-center border-top">
+                            <p class="margin-top">
                                 <small class="block">&copy; @DateTime.Now.Year WeddingProfile. All Rights Reserved.</small>
                             </p>
                             @*<p>

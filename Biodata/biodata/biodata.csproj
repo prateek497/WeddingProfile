@@ -268,6 +268,7 @@
     <Content Include="fonts\icomoon\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="googlea31737406b16bcc3.html" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\bg1.jpg" />
     <Content Include="images\bride.jpg" />
@@ -298,14 +299,8 @@
     <Content Include="images\loc.png" />
     <Content Include="images\me.jpg" />
     <Content Include="images\MeNew.jpg" />
-    <Content Include="images\ms-word-resume-pack.jpg" />
-    <Content Include="images\New-Invoice-Template-Design.jpg" />
     <Content Include="images\Premium.jpg" />
-    <Content Include="images\professional-resume.jpg" />
-    <Content Include="images\Resume Preview.jpg" />
-    <Content Include="images\resume-design-templates-Below-you-will-find-example-social-work-resums-and-tips-on-how-to-develop-both-Having-an-effective-resume-are-essential-fresh-premium.png" />
-    <Content Include="images\Resume-Templates-100a0.jpg" />
-    <Content Include="images\sample.PNG" />
+    <Content Include="images\sample.jpg" />
     <Content Include="images\vaibhav2.jpg" />
     <Content Include="images\vaibhav3.jpg" />
     <None Include="Notes.txt" />

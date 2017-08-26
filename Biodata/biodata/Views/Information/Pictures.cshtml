@@ -68,10 +68,11 @@
 {
     using (Html.BeginForm("_Basic", "Home", new { email = @Model.UserEmail }, FormMethod.Post, new { @class = "form-horizontal" }))
     {
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center" style="padding-bottom: 10px;">
             @*@Html.ActionLink("View as HTML", "_Basic", "Home", new { email = @Model.UserEmail }, new { @class = "btn btn-primary btn-lg" })*@
             @*<a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>View HTML</a>*@
             <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
+            <br />
         </div>
     }
 }
@@ -83,7 +84,7 @@
             function preventBack() { window.history.forward(); }
             setTimeout("preventBack()", 10);
             window.onunload = function () { null };
-            
+
             $(document).on('invalid-form.validate', '#picform', function () {
                 var button = $(this).find('button[type="submit"]');
                 setTimeout(function () {

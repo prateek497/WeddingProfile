@@ -75,8 +75,8 @@
                         </div>
                         <div class="col-md-12">
                             <br />
-                            <div id="signupmessage" class=" alert alert-danger">
-                            </div>
+                            @*<div id="signupmessage" class=" alert alert-danger">
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -89,9 +89,8 @@
 {
     <script>
         $(function () {
-            $('#signupmessage').hide();
-
-            $('#signupemail').focusout(function (event) {
+            //$('#signupmessage').hide();
+            @*$('#signupemail').focusout(function (event) {
                 $.ajax({
                     url: "@Url.Action("SignUpValidation", "Home")",
                     data: {
@@ -107,8 +106,7 @@
                         }
                     }
                 });
-            });
-
+            });*@
         });
     </script>
 }

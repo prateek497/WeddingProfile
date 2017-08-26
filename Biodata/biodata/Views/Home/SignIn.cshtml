@@ -35,15 +35,13 @@
                                 @Html.ValidationMessageFor(m => m.SignIn.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 margin-bottom">
                             <div class="col-sm-4 col-sm-offset-4">
                                 <button type="submit" id="signinButton" class="btn btn-primary btn-sm" style="font-family: sans-serif"> Sign In </button>
                             </div>
                         </div>
-
                         <div class="col-md-12">
                             <div class="row">
-                                <hr />
                                 <div class="col-md-6">
                                     <div class="row">
                                         @Html.ActionLink("Forgot your password?", "Forgot", "Home", new { @class = "pull-left", style = "font-size: 12px; padding-top: 5px;" })
@@ -59,22 +57,24 @@
 
                         <div class="col-md-12">
                             <br />
-                            <div id="signinmessage" class=" alert alert-danger">
-                            </div>
+                            @*<div id="signinmessage" class=" alert alert-danger">
+                            </div>*@
                         </div>
                     </div>
                 </div>
+                <br class="clear" />
             </div>
         </div>
     </div>
+    <br class="clear" />
 }
 
 @section Scripts
 {
     <script>
         $(function () {
-            $('#signinmessage').hide();
-            $('#signinButton').click(function (event) {
+            //$('#signinmessage').hide();
+            @*$('#signinButton').click(function (event) {
                 event.preventDefault();
                 $.ajax({
                     url: "@Url.Action("SignInValidation", "Home")",
@@ -93,7 +93,7 @@
                         }
                     }
                 });
-            });
+            });*@
         });
     </script>
 }

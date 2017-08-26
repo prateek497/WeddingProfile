@@ -23,8 +23,22 @@ body {
     body {
         /*padding-top: 125px !important;*/
     }
-}
 
+    .navbar-brand {
+        margin: 0 auto;
+        width: 100%;
+        text-align:center;
+    }
+    .navbar-text {
+        text-align:center;
+        font-size:12px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .contentWrap {
+        margin-top:20px;
+    }
+}
 #page {
     position: relative;
     overflow-x: hidden;
@@ -159,19 +173,19 @@ h1, h2, h3, h4, h5, h6, figure {
         }
 
             .fh5co-nav ul li.has-dropdown .dropdown {
-                width: 130px;
-                -webkit-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
+                width: 90%;
+                /*-webkit-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
                 -moz-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
-                box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
+                box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);*/
                 z-index: 1002;
                 visibility: hidden;
-                opacity: 0;
+                opacity: 0.5;
                 position: absolute;
-                top: 40px;
+                top: 27px;
                 left: 0;
                 text-align: left;
                 background: #fff;
-                padding: 20px;
+                padding: 10px 15px;
                 -webkit-border-radius: 4px;
                 -moz-border-radius: 4px;
                 -ms-border-radius: 4px;
@@ -179,11 +193,13 @@ h1, h2, h3, h4, h5, h6, figure {
                 -webkit-transition: 0s;
                 -o-transition: 0s;
                 transition: 0s;
+                background:#000;
+                border:1px solid #fff;
             }
 
                 .fh5co-nav ul li.has-dropdown .dropdown:before {
                     bottom: 100%;
-                    left: 40px;
+                    left: 50%;
                     border: solid transparent;
                     content: " ";
                     height: 0;
@@ -211,10 +227,11 @@ h1, h2, h3, h4, h5, h6, figure {
                         line-height: 1.2;
                         text-transform: none;
                         font-size: 14px;
+                        text-align:center;
                     }
 
                         .fh5co-nav ul li.has-dropdown .dropdown li a:hover {
-                            color: #000;
+                            color: #ededed;
                         }
 
             .fh5co-nav ul li.has-dropdown:hover a, .fh5co-nav ul li.has-dropdown:focus a {
@@ -2217,3 +2234,21 @@ div#OR {
         height: auto;
         opacity: 0.30;
     }
+
+.clear {
+    clear: both;
+    content: '';
+    padding: 0px;
+    margin: 0px;
+}
+
+.border-top {
+    border-top: 1px solid #ededed;
+}
+
+.margin-top {
+    margin-top: 15px;
+}
+.margin-bottom {
+    margin-bottom:15px;
+}
