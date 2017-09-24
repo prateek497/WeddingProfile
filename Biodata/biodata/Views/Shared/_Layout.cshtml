@@ -8,13 +8,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Wedding Profile @*&mdash;*@</title>
+    <title> Wedding Profile </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The application is to design professional matrimonial biodata" />
+    <meta name="description" content="The weddingprofile is a site for creating beautifully designed matrimony biodata" />
     <meta name="keywords" content="biodata format, biodata for marriage, biodata sample, marriage biodata, sample biodata, biodata marriage, bio data, 
-          resume format, matrimonial, matrimony, matrimonials, indian matrimonials, marriage, marriage counselor, marriage sites, matching, india, matchmaking, 
-          shaadi, shadi, format of resume, bio data format, marriage biodata format, biodata format for marriage, prateek gangwar, prateek, matrimonial, biodata, marriage" />
-    <meta name="author" content="Prateek Gangwar" />
+          resume format, matrimonial, matrimony, matrimonials, indian matrimonials, marriage, marriage counselor, marriage sites, matching, india, 
+          shaadi, shadi, format of resume, bio data format, marriage biodata format, biodata format for marriage, prateek gangwar, prateek, gangwar, 
+          matrimonial, biodata, marriage" />
+    <meta name="author" content="http://weddingprofile.in" />
     
     <link rel="shortcut icon" type="image/png" href="~/images/sample.jpg" />
 
@@ -88,14 +89,13 @@
 
     @RenderSection("scripts", required: false)
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $('#startcreating').click(function () {
             if ('@Request.IsAuthenticated' === 'False') {
                 event.preventDefault();
-                //$('#myModal').modal('show');
                 window.location.href = "/Home/SignIn";
             }
         });
-    </script>
+    </script>*@
 </body>
 </html>

@@ -269,32 +269,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="googlea31737406b16bcc3.html" />
-    <Content Include="images\bg.jpg" />
     <Content Include="images\bg1.jpg" />
-    <Content Include="images\bride.jpg" />
-    <Content Include="images\clean-resume.jpg" />
-    <Content Include="images\couple-1.jpg" />
-    <Content Include="images\couple-2.jpg" />
-    <Content Include="images\couple-3.jpg" />
-    <Content Include="images\Flat-Style-Resume-Template-PSD-e1451163422336.jpg" />
-    <Content Include="images\gallery-1.jpg" />
-    <Content Include="images\gallery-2.jpg" />
-    <Content Include="images\gallery-3.jpg" />
-    <Content Include="images\gallery-4.jpg" />
-    <Content Include="images\gallery-5.jpg" />
-    <Content Include="images\gallery-6.jpg" />
-    <Content Include="images\gallery-7.jpg" />
-    <Content Include="images\gallery-8.jpg" />
-    <Content Include="images\gallery-9.jpg" />
-    <Content Include="images\groom.jpg" />
-    <Content Include="images\img_bg_1.jpg" />
+    <Content Include="images\bg_loc.jpg" />
+    <Content Include="images\bg_new.jpg" />
+    <Content Include="images\guy-2607282_1920.jpg" />
     <Content Include="images\img_bg_2.jpg" />
-    <Content Include="images\img_bg_2222.jpg" />
     <Content Include="images\img_bg_3.jpg" />
-    <Content Include="images\img_bg_3333.jpg" />
-    <Content Include="images\img_bg_4.jpg" />
-    <Content Include="images\img_bg_4444.jpg" />
-    <Content Include="images\img_bg_5.jpg" />
     <Content Include="images\loader.gif" />
     <Content Include="images\loc.png" />
     <Content Include="images\me.jpg" />
@@ -479,6 +459,7 @@
     <Content Include="Scripts\simplyCountdown.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -491,10 +491,13 @@ namespace biodata.Controllers
                         //var bitmap = Support.FixedSize(sourceimage, 300, 300, "#ffffff");
 
                         var images = Support.ImageToByte(sourceimage);
+                        var ms = Image.FromStream(new MemoryStream(images));
+                        var pbitmap = Support.FixedSize(ms, 300, 300, "#FFFFFF");
+                        var pimages = Support.ImageToByte(pbitmap);
 
                         entities.Pictures.Add(new Picture
                         {
-                            PictureBytes = images, //Support.ConvertToBytes(file),
+                            PictureBytes = pimages, //Support.ConvertToBytes(file),
                             IsProfile = false,
                             UserId = userid
                         });
@@ -505,10 +508,10 @@ namespace biodata.Controllers
                     if (profile != null)
                     {
                         profile.IsProfile = true;
-                        var ms = Image.FromStream(new MemoryStream(profile.PictureBytes));
-                        var pbitmap = Support.FixedSize(ms, 300, 300, "#FFFFFF");
-                        var pimages = Support.ImageToByte(pbitmap);
-                        profile.PictureBytes = pimages;
+                        //var ms = Image.FromStream(new MemoryStream(profile.PictureBytes));
+                        //var pbitmap = Support.FixedSize(ms, 300, 300, "#FFFFFF");
+                        //var pimages = Support.ImageToByte(pbitmap);
+                        //profile.PictureBytes = pimages;
                         entities.SaveChanges();
                     }
                 }

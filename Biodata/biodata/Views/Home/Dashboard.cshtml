@@ -12,7 +12,7 @@
                 <div class="col-xs-10 text-right menu-1">
 
                     <ul>
-                        <li class="active"> @Html.ActionLink("Start Creating", "Personal", "Information", new { }, new { id = "startcreating" })</li>
+                        <li class="active"> @Html.ActionLink("Start Creating", "ValidateAuthorize", "Home", new { }, new { id = "startcreating" })</li>
 
                         @if (Request.IsAuthenticated)
                         {
@@ -45,16 +45,16 @@
         </div>
     </nav>
 
-    <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(../../images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(../../images/bg_new.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 text-center">
                     <div class="display-t">
                         <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                            <h1>Create beautiful, professionally designed matrimonial biodata in minutes.</h1>
-                            <h1>Built with your security and privacy in mind.</h1>
-                            <h1>It's free. We don't charge anything for it.</h1>
+                            <h1 style="font-size:40px !important; line-height:1.5">Create beautiful, professionally designed matrimonial biodata in minutes.</h1>
+                            <h1 style="font-size:40px !important; line-height:1.5">Built with your security and privacy in mind.</h1>
+                            @*<h1>It's free. We don't charge anything for it.</h1>*@
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 <div class="couple-half">
                     <div class="groom text-center">
                         <a href='@Url.Action("Sample1", "Home")' target="_blank" class="">
-                            <img src="../../images/MeNew.jpg" alt="groom" class="img img-rounded img-responsive">
+                            <img src="~/images/me.jpg" alt="groom" class="img img-rounded img-responsive">
                             <span>Prateek Gangwar</span>
                         </a>
                     </div>
@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <div id="fh5co-event" class="fh5co-bg" style="background-image:url(../../images/img_bg_3.jpg);">
+    <div id="fh5co-event" class="fh5co-bg" style="background-image:url(../../images/bg_loc.jpg);">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -167,11 +167,11 @@
                             <div class="timeline-badge"><span style="font-size: 6vw; padding: 2.5vw" class="glyphicon glyphicon-lock"></span></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h3 class="timeline-title">Login</h3>
+                                    <h3 class="timeline-title">Login/Sign Up</h3>
                                     @*<span class="date">December 25, 2015</span>*@
                                 </div>
                                 <div class="timeline-body">
-                                    <p>Create the new account or sign in if you're already registered. Hit on start creating menu item on the top right corner of the page</p>
+                                    <p>Create the new account or sign in. Hit on start creating menu item at the top right corner.</p>
                                 </div>
                             </div>
                         </li>
@@ -183,7 +183,7 @@
                                     @*<span class="date">December 28, 2015</span>*@
                                 </div>
                                 <div class="timeline-body">
-                                    <p>Fill up all the related information about the person. Add at least two family members information and one picture. And, Hit generate PDF button to create.</p>
+                                    <p>Fill all the required information and add at least two family members information with one picture of yours. And, Hit generate PDF button to create beautiful designed biodata.</p>
                                 </div>
                             </div>
                         </li>
@@ -195,7 +195,7 @@
                                     @*<span class="date">January 1, 2016</span>*@
                                 </div>
                                 <div class="timeline-body">
-                                    <p>We don't keep any data about you after creating biodata except for login details. Please make sure to complete the process everytime you go for creating new biodata.</p>
+                                    <p>We don't keep any data after creating biodata except for login details. Please make sure to complete the process everytime you go for creating new biodata.</p>
                                 </div>
                             </div>
                         </li>

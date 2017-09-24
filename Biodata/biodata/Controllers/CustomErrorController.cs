@@ -8,13 +8,11 @@ namespace biodata.Controllers
 {
     public class CustomErrorController : Controller
     {
-        //
-        // GET: /CustomError/
-        //[HandleError]
-        //public ActionResult Error()
-        //{
-        //    return View();
-        //}
+        [HandleError]
+        public ActionResult Error()
+        {
+            return View();
+        }
 
     }
 }

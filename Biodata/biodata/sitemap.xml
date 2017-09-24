@@ -1,0 +1,33 @@
+﻿<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://weddingprofile.in/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>http://weddingprofile.in/Home/Sample1</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>http://weddingprofile.in/Home/Sample2</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>http://weddingprofile.in/Information/Personal</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>http://weddingprofile.in/Home/SignIn</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+ <url>
+    <loc>http://weddingprofile.in/Home/SignUp</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+</urlset>
