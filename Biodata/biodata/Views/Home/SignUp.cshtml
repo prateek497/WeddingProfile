@@ -6,7 +6,7 @@
 }
 
 
-@using (Html.BeginForm("SignUp", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("SignUp", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id ="signinForm" }))
 {
     @Html.AntiForgeryToken()
 
@@ -89,6 +89,11 @@
 {
     <script>
         $(function () {
+            $('#signinForm').submit(function () {
+                if ($(this).find('.input-validation-error').length == 0) {
+                    $(this).find(':submit').attr('disabled', 'disabled');
+                }
+            });
             //$('#signupmessage').hide();
             @*$('#signupemail').focusout(function (event) {
                 $.ajax({
