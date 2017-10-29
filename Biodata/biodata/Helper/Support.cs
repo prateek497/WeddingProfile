@@ -195,8 +195,8 @@ namespace biodata.Helper
 
         public static bool SendEmail(string subject, string body, string toEmail)
         {
-            string fromEmail = "brightfuture497@gmail.com";//WebConfigurationManager.AppSettings["fromEmail"];
-            string fromEmailPassword = "brightfuture";//WebConfigurationManager.AppSettings["fromEmailPassword"];
+            string fromEmail = "noreply@weddingprofile.in";//WebConfigurationManager.AppSettings["fromEmail"];
+            string fromEmailPassword = "~Tvm4w16";//WebConfigurationManager.AppSettings["fromEmailPassword"];
 
             using (var mm = new MailMessage(fromEmail, toEmail))
             {
@@ -207,16 +207,16 @@ namespace biodata.Helper
                 //    string fileName = Path.GetFileName(model.Attachment.FileName);
                 //    mm.Attachments.Add(new Attachment(model.Attachment.InputStream, fileName));
                 //}
-                mm.IsBodyHtml = false;
+                mm.IsBodyHtml = true;
 
                 using (SmtpClient smtp = new SmtpClient())
                 {
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.EnableSsl = true;
+                    smtp.Host = "weddingprofile.in";
+                    smtp.EnableSsl = false;
                     NetworkCredential networkCred = new NetworkCredential(fromEmail, fromEmailPassword);
                     smtp.UseDefaultCredentials = true;
                     smtp.Credentials = networkCred;
-                    smtp.Port = 587;
+                    smtp.Port = 25;
                     try
                     {
                         smtp.Send(mm);

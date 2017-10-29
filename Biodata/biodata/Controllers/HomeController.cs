@@ -256,19 +256,19 @@ namespace biodata.Controllers
 
             if (ModelState.IsValid)
             {
-                string password = "password";
+                string password = "password@123";
                 using (var db = new BiodataDb())
                 {
                     var crypto = new SimpleCrypto.PBKDF2();
                     var user = db.Users.FirstOrDefault(u => u.Email == model.ForgotPassword.FormatEmail);
                     if (user != null)
                     {
-                        user.Password = crypto.Compute("password");
+                        user.Password = crypto.Compute("password@123");
                         user.PasswordSalt = crypto.Salt;
                         db.SaveChanges();
                         if (!string.IsNullOrEmpty(password))
                         {
-                            var status = Support.SendEmail("Password Reset", "Here is your new password- " + password, model.ForgotPassword.FormatEmail);
+                            var status = Support.SendEmail("Password Reset", "Your password is changed. Here is your new password- " + password, model.ForgotPassword.FormatEmail);
                             if (status)
                             {
                                 ModelState.Clear();
