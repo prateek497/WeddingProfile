@@ -11,22 +11,6 @@ http://www.nrecosite.com/doc/NReco.PdfGenerator/
 Free lib-
 HtmlRenderer.PdfSharp
 
-Technologies to be consider-
-1-ASP.NET MVC
-2-Angular JS
-3-Bootstrap
-4-WebAPI(Think about this)- create user, edit and update should be done from here 
-5-MySQL Database
-6-Gulp and grunt(think about this one. Is it worth to implement. if so, May be we can implement this in future) (Skip)
-
-
-Plans-
-1-
-2-Get the images to showup.
-3-
-4-
-5-
-
 
 Progress Steps Samples
 1- http://bootsnipp.com/snippets/featured/form-wizard-using-tabs

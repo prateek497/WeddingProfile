@@ -6,10 +6,7 @@
 
 
 Future enchasement-
-1- think about fixed width, to support mobile and small screen
-2- add Quora social icon
 3- logo design
 4- Fb and gmail login
-5- Replace with nosql database
 6- Think about mutiple resume with same account
 7- Change password
