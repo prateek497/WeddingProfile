@@ -76,10 +76,27 @@
         </div>
     }
 }
+else
+{
+    <div class="col-md-12 text-center" style="padding-bottom: 10px;">
+        <button type="button" class="btn btn-primary btn-lg" style="font-family: sans-serif;" disabled="disabled">Generate Pdf</button>
+        <div>
+            @*<span class="help-block" style="font-size: 11px;">Add one of your picture to enable the download!</span>*@
+        </div>
+    </div>
+
+}
+
+
 @section Scripts
 {
     <script>
         $(function () {
+
+            $(document).ready(function () {
+                $("button[title='Upload selected files']").addClass('btn-danger').removeClass('btn-default')
+            });
+
 
             function preventBack() { window.history.forward(); }
             setTimeout("preventBack()", 10);

@@ -158,7 +158,8 @@ namespace biodata.Helper
                 "10 - 15Lakh",
                 "15 - 20Lakh",
                 "20 - 30Lakh",
-                "> 30Lakh"
+                "30 - 50Lakh",
+                ">50Lakh",
             };
         }
 
