@@ -43,7 +43,7 @@
                 else
                 {
                     <div class="col-sm-2 text-center">
-                        <img src="data:image;base64,@Convert.ToBase64String(img.PicBytes)" class="img-thumbnail center-block img-responsive" style="width: 125px; height: 125px;" alt="" />
+                        <img src="data:image;base64,@Convert.ToBase64String(img.PicBytes)" class="img-thumbnail center-block img-responsive" style="width: @img.Width + 'px'; height: @img.Height + 'px';" alt="" />
                         @Html.ActionLink("Profile Picture", "ProfilePicture", "Information", new { id = img.Id }, new { @class = "btn btn-primary btn-xs" })
                         @Html.ActionLink("Delete", "DeletePicture", "Information", new { id = img.Id }, new { @class = "btn btn-danger btn-xs" })
                     </div>
@@ -52,7 +52,7 @@
         </div>
     </div>
 }
-@if (Model.PicList.Count < 6)
+@if (Model.PicList.Count < 5)
 {
     <div class="col-sm-12 well well-sm">
         <div class="row">
@@ -70,7 +70,6 @@
     {
         <div class="col-md-12 text-center" style="padding-bottom: 10px;">
             @*@Html.ActionLink("View as HTML", "_Basic", "Home", new { email = @Model.UserEmail }, new { @class = "btn btn-primary btn-lg" })*@
-            @*<a class="btn btn-primary btn-lg" style="font-family: sans-serif" href=@Url.Action("_Basic", "Home")>View HTML</a>*@
             <button type="submit" class="btn btn-primary btn-lg" style="font-family: sans-serif">Generate Pdf</button>
             <br />
         </div>

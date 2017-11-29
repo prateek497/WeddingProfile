@@ -17,6 +17,7 @@ using biodata.Database.Tables;
 using biodata.Helper;
 using biodata.Models;
 using NReco.PdfGenerator;
+using System.Drawing;
 
 namespace biodata.Controllers
 {
@@ -370,14 +371,28 @@ namespace biodata.Controllers
                             MotherTongue = z.MotherTongue
                         }).FirstOrDefault();
                     pdfModel.ProfilePicture =
-                        entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
+                       entities.Pictures.Where(x => x.UserId == userId && x.IsProfile).Select(z => new PictureModel
+                       {
+                           PicBytes = z.PictureBytes
+                       }).FirstOrDefault();
+                    if (pdfModel.ProfilePicture != null)
+                    {
+                        var ms = Image.FromStream(new MemoryStream(pdfModel.ProfilePicture.PicBytes));
+                        pdfModel.ProfilePicture.Height = ms.Height / 3;
+                        pdfModel.ProfilePicture.Width = ms.Width / 3;
+                    }
+                    pdfModel.PictureListData =
+                        entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
                         {
                             PicBytes = z.PictureBytes
-                        }).FirstOrDefault();
-                    pdfModel.PictureListData = entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
+                        }).Take(6).ToList();
+
+                    foreach (var images in pdfModel.PictureListData)
                     {
-                        PicBytes = z.PictureBytes
-                    }).Take(6).ToList();
+                        var ms = Image.FromStream(new MemoryStream(images.PicBytes));
+                        images.Height = ms.Height;
+                        images.Width = ms.Width;
+                    }
 
                     return View(pdfModel);
                 }
@@ -487,13 +502,24 @@ namespace biodata.Controllers
                         {
                             PicBytes = z.PictureBytes
                         }).FirstOrDefault();
+                    if (pdfModel.ProfilePicture != null)
+                    {
+                        var ms = Image.FromStream(new MemoryStream(pdfModel.ProfilePicture.PicBytes));
+                        pdfModel.ProfilePicture.Height = ms.Height / 3;
+                        pdfModel.ProfilePicture.Width = ms.Width / 3;
+                    }
                     pdfModel.PictureListData =
                         entities.Pictures.Where(x => x.UserId == userId).Select(z => new PictureModel
                         {
                             PicBytes = z.PictureBytes
-                        }).Take(6).ToList();
+                        }).Take(5).ToList();
 
-
+                    foreach (var images in pdfModel.PictureListData)
+                    {
+                        var ms = Image.FromStream(new MemoryStream(images.PicBytes));
+                        images.Height = ms.Height;
+                        images.Width = ms.Width;
+                    }
                 }
 
             }

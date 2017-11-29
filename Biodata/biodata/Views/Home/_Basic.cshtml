@@ -7245,9 +7245,9 @@
                                                 @if (Model.ProfilePicture.PicBytes != null && Model.ProfilePicture.PicBytes.Length > 0)
                                                 {
                                                     <div style="width: 100%; height: 100%; padding-top: 10px; padding-left: 40px">
-                                                        <div style="height: 150px; width: 150px;" class="">
+                                                        <div style="height: @Model.ProfilePicture.Height + 'px'; width: @Model.ProfilePicture.Width + 'px';">
                                                             <img class="img-rounded" style="border: 1px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                                                 alt="Prafile Picture" src="data:image;base64,@Convert.ToBase64String(Model.ProfilePicture.PicBytes)" width="150" height="150" />
+                                                                 alt="Prafile Picture" src="data:image;base64,@Convert.ToBase64String(Model.ProfilePicture.PicBytes)" width="@Model.ProfilePicture.Width" height="@Model.ProfilePicture.Height" />
                                                         </div>
                                                     </div>
                                                 }
@@ -7741,11 +7741,11 @@
                     @foreach (var pic in Model.PictureListData)
                     {
                         @*<td>*@
-                        <div style="margin: 30px 60px; float: left">
-                            <div style="height: 400px; width: 400px; ">
+                        <div style="margin: 30px 40px; float: left">
+                            <div style="height: @pic.Height +'px'; width: @pic.Width+'px'; ">
                                 @*<div style="padding: 10px;">*@
                                 <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                     alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="400" height="400" />
+                                     alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="@pic.Width" height="@pic.Height" />
                                 @*</div>*@
                             </div>
                         </div>

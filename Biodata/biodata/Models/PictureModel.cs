@@ -12,6 +12,10 @@ namespace biodata.Models
         public byte[] PicBytes { get; set; }
 
         public int Id { get; set; }
+
+        public int Height { get; set; }
+
+        public int Width { get; set; }
     }
 
     public class PictureList

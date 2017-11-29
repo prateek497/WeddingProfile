@@ -459,11 +459,14 @@ namespace biodata.Controllers
                 {
                     foreach (var pic in pictures)
                     {
+                        var ms = Image.FromStream(new MemoryStream(pic.PictureBytes));
                         pictureList.PicList.Add(new PictureModel
                         {
                             Id = pic.Id,
                             PicBytes = pic.PictureBytes,
-                            IsProfile = pic.IsProfile
+                            IsProfile = pic.IsProfile,
+                            Height = ms.Height,
+                            Width = ms.Width
                         });
                     }
                 }
@@ -486,13 +489,29 @@ namespace biodata.Controllers
                     {
                         System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
 
+                        var heightDynamic = 250;
+                        var widthDynamic = 250;
+                        var aspectRatio = 0f;
+                        if (sourceimage.Height > sourceimage.Width)
+                        {
+                            aspectRatio = (float)sourceimage.Height / (float)sourceimage.Width;
+                            widthDynamic = 250;
+                            heightDynamic = (int)(250 * aspectRatio);
+                        }
+                        else
+                        {
+                            aspectRatio = ((float)sourceimage.Width / (float)sourceimage.Height);
+                            heightDynamic = 250;
+                            widthDynamic = (int)(250 * aspectRatio);
+                        }
+
                         //var bitmap = Support.CropImage(sourceimage, new Rectangle(0, 0, 300, 300));
 
                         //var bitmap = Support.FixedSize(sourceimage, 300, 300, "#ffffff");
 
                         var images = Support.ImageToByte(sourceimage);
                         var ms = Image.FromStream(new MemoryStream(images));
-                        var pbitmap = Support.FixedSize(ms, 300, 300, "#FFFFFF");
+                        var pbitmap = Support.FixedSize(ms, widthDynamic, heightDynamic, "#FFFFFF");
                         var pimages = Support.ImageToByte(pbitmap);
 
                         entities.Pictures.Add(new Picture
