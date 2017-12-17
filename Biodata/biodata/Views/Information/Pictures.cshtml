@@ -52,13 +52,13 @@
         </div>
     </div>
 }
-@if (Model.PicList.Count < 5)
+@if (Model.PicList.Count < 4)
 {
     <div class="col-sm-12 well well-sm">
         <div class="row">
             <div class="col-sm-12">
                 @{
-    Html.RenderPartial("_FileUpload");
+                      Html.RenderPartial("_FileUpload");
                 }
             </div>
         </div>

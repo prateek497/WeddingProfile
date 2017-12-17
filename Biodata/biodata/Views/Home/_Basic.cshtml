@@ -7408,8 +7408,8 @@
                                             </tr>
 
                                             @if (!string.IsNullOrEmpty(Model.PersonalData.MaritalStatus) || !string.IsNullOrEmpty(Model.PersonalData.Diet)
-                                                || !string.IsNullOrEmpty(Model.PersonalData.Drink) || !string.IsNullOrEmpty(Model.PersonalData.Smoke)
-                                                || !string.IsNullOrEmpty(Model.PersonalData.Hobbies))
+                || !string.IsNullOrEmpty(Model.PersonalData.Drink) || !string.IsNullOrEmpty(Model.PersonalData.Smoke)
+                || !string.IsNullOrEmpty(Model.PersonalData.Hobbies))
                                             {
                                                 <tr>
                                                     @if (!string.IsNullOrEmpty(Model.PersonalData.MaritalStatus))
@@ -7736,23 +7736,32 @@
         <div class="row">
             <div class="col-md-12" style="height: 1397px; background-color: #F0F0F0;">
                 <div class="row">
-                    @*<table>
-                        <tr>*@
-                    @foreach (var pic in Model.PictureListData)
-                    {
-                        @*<td>*@
-                        <div style="margin: 30px 40px; float: left">
-                            <div style="height: @pic.Height +'px'; width: @pic.Width+'px'; ">
-                                @*<div style="padding: 10px;">*@
-                                <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                     alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="@pic.Width" height="@pic.Height" />
-                                @*</div>*@
-                            </div>
-                        </div>
-                        @*</td>*@
-                    }
-                    @*</tr>
-                        </table>*@
+                    <table>
+
+                        @foreach (var pic in Model.PictureListData)
+                        {
+                            if ((Model.PictureListData.IndexOf(pic) + 1) % 2 != 0)
+                            {
+                                @Html.Raw(true ? "<tr>" : "")
+                            }
+
+                            <td>
+                                <div style="margin: 30px 40px; text-align:center">
+                                    @*<div style="height: @pic.Height +'px'; width: @pic.Width+'px'; ">*@
+                                    @*<div style="padding: 10px;">*@
+                                    <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
+                                            alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="@pic.Width" height="@pic.Height" />
+                                    @*</div>*@
+                                    @*</div>*@
+                                </div>
+                            </td>
+
+                            if ((Model.PictureListData.IndexOf(pic) + 1) % 2 == 0)
+                            {
+                                @Html.Raw(true ? "</tr>" : "")
+                            }
+                        }
+                    </table>
                 </div>
             </div>
         </div>

@@ -451,6 +451,15 @@ namespace biodata.Controllers
         public ActionResult Pictures()
         {
             var pictureList = new PictureList { PicList = new List<PictureModel>(), UserEmail = User.Identity.Name };
+
+            if (TempData["ErrorMessage"] != null)
+            {
+                if (Convert.ToBoolean(TempData["ErrorMessage"]) == true)
+                {
+                    ModelState.AddModelError("", "pictures should not be more than 4");
+                }
+            }
+
             using (var entities = new BiodataDb())
             {
                 var userId = Support.GetUserId(User.Identity.Name, entities);
@@ -485,6 +494,13 @@ namespace biodata.Controllers
                 using (var entities = new BiodataDb())
                 {
                     int userid = Support.GetUserId(User.Identity.Name, entities);
+                    var pictures = entities.Pictures.Count(x => x.UserId == userid);
+                    if ((pictures + inputFileList.Count) > 4)
+                    {
+                        TempData["ErrorMessage"] = true;
+                        return RedirectToAction("Pictures");
+                    }
+
                     foreach (var file in inputFileList)
                     {
                         System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
