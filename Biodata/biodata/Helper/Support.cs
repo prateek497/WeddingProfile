@@ -1,15 +1,14 @@
-﻿using System;
+﻿using biodata.Database;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
-using System.Web.Configuration;
-using biodata.Database;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
 
 namespace biodata.Helper
 {
@@ -42,8 +41,7 @@ namespace biodata.Helper
                 "OTHER RELATIVE",
                 "GRANDFATHER",
                 "GRANDMOTHER",
-                "BROTHER-IN-LAW"
-                ,
+                "BROTHER-IN-LAW",
                 "SISTER-IN-LAW",
                 "UNCLE",
                 "AUNTY"
@@ -52,45 +50,46 @@ namespace biodata.Helper
 
         public static List<string> ComplexionList()
         {
-            return new List<string> { "Weatish", "Fair", "Black" };
+            return new List<string> { "Wheatish", "Fair", "Dark" };
         }
 
         public static List<string> HeightList()
         {
             return new List<string>
             {
-                "4\"09",
-                "4\"10",
-                "4\"11",
-                "4\"12",
-                "5\"01",
-                "5\"02",
-                "5\"03",
-                "5\"04",
-                "5\"05",
-                "5\"06",
-                "5\"07",
-                "5\"08",
-                "5\"09",
-                "5\"10",
-                "5\"11",
-                "5\"12",
-                "6\"01",
-                "6\"02",
-                "6\"03",
-                "6\"04",
-                "6\"05",
-                "6\"06",
-                "6\"07",
-                "6\"08",
-                "6\"09",
-                "6\"10",
-                "6\"11",
-                "6\"12",
-                "7\"01",
-                "7\"02",
-                "7\"03",
-                "7\"04"
+                "4ft 08in",
+                "4ft 09in",
+                "4ft 10in",
+                "4ft 11in",
+                "4ft 12in",
+                "5ft 01in",
+                "5ft 02in",
+                "5ft 03in",
+                "5ft 04in",
+                "5ft 05in",
+                "5ft 06in",
+                "5ft 07in",
+                "5ft 08in",
+                "5ft 09in",
+                "5ft 10in",
+                "5ft 11in",
+                "5ft 12in",
+                "6ft 01in",
+                "6ft 02in",
+                "6ft 03in",
+                "6ft 04in",
+                "6ft 05in",
+                "6ft 06in",
+                "6ft 07in",
+                "6ft 08in",
+                "6ft 09in",
+                "6ft 10in",
+                "6ft 11in",
+                "6ft 12in",
+                "7ft 01in",
+                "7ft 02in",
+                "7ft 03in",
+                "7ft 04in"
             };
         }
 
