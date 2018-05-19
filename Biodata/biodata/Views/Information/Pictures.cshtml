@@ -49,6 +49,12 @@
                     </div>
                 }
             }
+            <script>
+                $(function () {
+                    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                });
+            </script>
+
         </div>
     </div>
 }
@@ -58,12 +64,13 @@
         <div class="row">
             <div class="col-sm-12">
                 @{
-                      Html.RenderPartial("_FileUpload");
+                    Html.RenderPartial("_FileUpload");
                 }
             </div>
         </div>
     </div>
 }
+
 @if (Model.PicList.Count > 0)
 {
     using (Html.BeginForm("_Basic", "Home", new { email = @Model.UserEmail }, FormMethod.Post, new { @class = "form-horizontal" }))
@@ -106,12 +113,14 @@ else
                 setTimeout(function () {
                     button.removeAttr('disabled');
                 }, 1);
+                  
             });
             $(document).on('submit', '#picform', function () {
                 var button = $(this).find('button[type="submit"]');
                 setTimeout(function () {
                     button.attr('disabled', 'disabled');
                 }, 0);
+
             });
 
             //    $('#inputfile').fileinput({

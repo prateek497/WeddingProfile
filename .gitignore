@@ -156,3 +156,8 @@ $RECYCLE.BIN/
 .DS_Store
 Biodata/biodata/Download/
 /Biodata/assests/Rooshil Katiyar.pdf
+/Biodata/packages
+/Biodata/.vs/biodata/v15/Server/sqlite3/db.lock
+/Biodata/.vs/biodata/v15/Server/sqlite3/storage.ide
+/Biodata/.vs/biodata/v15/Server/sqlite3/storage.ide-shm
+/Biodata/.vs/biodata/v15/Server/sqlite3/storage.ide-wal
