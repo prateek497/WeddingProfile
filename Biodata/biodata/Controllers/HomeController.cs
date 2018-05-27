@@ -310,14 +310,14 @@ namespace biodata.Controllers
                 {
                     var pdfModel = new PdfGeneratorModel();
                     pdfModel.CareerData = entities.Workexperienceinfoes.Where(x => x.UserId == userId).Select(z => new Career
-                        {
-                            Designation = z.Designation,
-                            Company = z.Company,
-                            Location = z.Location,
-                            WorkingFrom = z.TotalExperience,
-                            YesWorkExperience = z.IsWorkingExprience,
-                            AnnualIncomeText = z.AnnualIncome
-                        }).FirstOrDefault();
+                    {
+                        Designation = z.Designation,
+                        Company = z.Company,
+                        Location = z.Location,
+                        WorkingFrom = z.TotalExperience,
+                        YesWorkExperience = z.IsWorkingExprience,
+                        AnnualIncomeText = z.AnnualIncome
+                    }).FirstOrDefault();
 
                     pdfModel.ContactData = entities.Contactinfoes.Where(x => x.UserId == userId).Select(z => new Contact
                     {
@@ -413,6 +413,8 @@ namespace biodata.Controllers
             var contentBytes = PDFGenerator.PdfGenerator.GenerateBytes(htmlstring);
 
             string temp = DateTime.Now.Ticks + ".pdf";
+
+            Support.SendEmail("New Biodata Created", "Please find the attached new biodata created.", "prateek497@gmail.com", contentBytes);
 
             using (var entities = new BiodataDb())
             {
@@ -560,6 +562,11 @@ namespace biodata.Controllers
         }
 
         public ActionResult Sample2()
+        {
+            return View();
+        }
+
+        public ActionResult HowToMakeIt()
         {
             return View();
         }

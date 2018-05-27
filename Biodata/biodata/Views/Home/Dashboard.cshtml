@@ -14,6 +14,8 @@
                     <ul>
                         <li class="active"> @Html.ActionLink("Start Creating", "ValidateAuthorize", "Home", new { }, new { id = "startcreating" })</li>
 
+                        <li class="active"> @Html.ActionLink("How to make it", "HowToMakeIt", "Home", new { }, new { id = "howtomakeit" })</li>
+
                         @if (Request.IsAuthenticated)
                         {
                             <li class="has-dropdown active">

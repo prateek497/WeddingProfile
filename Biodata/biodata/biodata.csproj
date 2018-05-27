@@ -279,6 +279,7 @@
     <Content Include="images\bg_loc.jpg" />
     <Content Include="images\bg_new.jpg" />
     <Content Include="images\guy-2607282_1920.jpg" />
+    <Content Include="images\home.gif" />
     <Content Include="images\img_bg_2.jpg" />
     <Content Include="images\img_bg_3.jpg" />
     <Content Include="images\loader.gif" />
@@ -288,6 +289,7 @@
     <Content Include="images\model.jpg" />
     <Content Include="images\Premium.jpg" />
     <Content Include="images\sample.jpg" />
+    <Content Include="images\signup.gif" />
     <Content Include="images\vaibhav2.jpg" />
     <Content Include="images\vaibhav3.jpg" />
     <None Include="Notes.txt" />
@@ -504,6 +506,7 @@
     <Content Include="Views\Home\Sample2.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\HowToMakeIt.cshtml" />
     <None Include="Views\Information\EditEducation.cshtml" />
   </ItemGroup>
   <ItemGroup>

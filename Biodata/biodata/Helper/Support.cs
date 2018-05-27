@@ -193,7 +193,7 @@ namespace biodata.Helper
             }
         }
 
-        public static bool SendEmail(string subject, string body, string toEmail)
+        public static bool SendEmail(string subject, string body, string toEmail, byte[] attachment = null)
         {
             string fromEmail = "noreply@weddingprofile.in";//WebConfigurationManager.AppSettings["fromEmail"];
             string fromEmailPassword = "~Tvm4w16";//WebConfigurationManager.AppSettings["fromEmailPassword"];
@@ -202,11 +202,12 @@ namespace biodata.Helper
             {
                 mm.Subject = subject;
                 mm.Body = body;
-                //if (model.Attachment.ContentLength > 0)
-                //{
-                //    string fileName = Path.GetFileName(model.Attachment.FileName);
-                //    mm.Attachments.Add(new Attachment(model.Attachment.InputStream, fileName));
-                //}
+                if (attachment != null)
+                {
+                    Attachment att = new Attachment(new MemoryStream(attachment), "NewBiodata");
+                    //string fileName = Path.GetFileName(model.Attachment.FileName);
+                    mm.Attachments.Add(att);
+                }
                 mm.IsBodyHtml = true;
 
                 using (SmtpClient smtp = new SmtpClient())
