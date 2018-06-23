@@ -2,7 +2,7 @@
     Layout = "../Shared/_InformationLayout.cshtml";
     ViewBag.Title = "How to make it";
 }
-<div>
+<div class="col-md-12 col-sm-12">
     <div class="h3">
         <p>
             How to make it
@@ -24,16 +24,16 @@
 
     <div class="well well-lg">
         <p>
-            2. Logged in
+            2. Log in
         </p>
         <p>
-            This step is only required if you are already member of wedding profile. 
+            This step is only required if you are already member of wedding profile.
 
             Click on sign in anchor at the top right of the page, provide your sign in information and hit sign in button. If sign in goes successfull,
             the page will navigate to home page.
         </p>
         <div class="text-center">
-            <img src="~/images/home.gif" height="300" alt="home" />
+            <img src="~/images/signin.gif" height="300" alt="signin" />
         </div>
     </div>
 
@@ -49,8 +49,107 @@
             <img src="~/images/home.gif" height="300" alt="home" />
         </div>
     </div>
+    <div class="well well-lg">
+        <p>
+            4. Fill up personal-info
+        </p>
+        <p>
+            Fill your personal info like your name, Date of birth, Time of birth, Height, Birth place, Birth state, Complexion, Current city,
+            Current state, Marital status, Diet, Drink, Smoke, Hobbies. Also, you can add your social account info like facebook, linkedin,
+            Instagram, Twitter, Quora.
+        </p>
+        <div class="text-center">
+            <img src="~/images/Personal.gif" height="300" alt="personal" />
+        </div>
+    </div>
+    <div class="well well-lg">
+        <p>
+            5. Add your religious info
+        </p>
+        <p>
+            Select your religion along with your Caste, Gotra, Zodiac, Mother tongue and select known languages.
+        </p>
+        <div class="text-center">
+            <img src="~/images/religious.gif" height="300" alt="religious" />
+        </div>
+    </div>
+    <div class="well well-lg">
+        <p>
+            6. Add your education info
+        </p>
+        <p>
+            Select Qualification, Enter your Degree, College Name, University and Year. Hit Add button to add into the list.
+            You can add mutiple Qualification If you hold mutiple.
+        </p>
+        <div class="text-center">
+            <img src="~/images/Education.gif" height="300" alt="education" />
+        </div>
+    </div>
+    <div class="well well-lg">
+        <p>
+            7. Add your work experience
+        </p>
+        <p>
+            If you have work experience, Select Yes, Fill all the information and hit save and continue button. If you don't have work experience
+            select No and hit save and countiue button to proceed to next form.
+        </p>
+        <div class="text-center">
+            <img src="~/images/career.gif" height="300" alt="career" />
+        </div>
+    </div>
+    <div class="well well-lg">
+        <p>
+            8. Add your family info
+        </p>
+        <p>
+            Select Relationship with candidate, Enter Name, City, State, Designation, Company Name, Job Location and hit Add new member button to
+            add member to the family group. You have to add atleast 2 family members.
+        </p>
+        <div class="text-center">
+            <img src="~/images/family.gif" height="300" alt="family" />
+        </div>
+    </div>
+
+    <div class="well well-lg">
+        <p>
+            9. Add contact-info
+        </p>
+        <p>
+            Enter the Name of the contact person, Relationship with you, Phone Number, Email Address, City, State and hit save & continue
+            to proceed to next step.
+        </p>
+        <div class="text-center">
+            <img src="~/images/contact.gif" height="300" alt="contact" />
+        </div>
+    </div>
+
+    <div class="well well-lg">
+        <p>
+            10. Add your pictures
+        </p>
+        <p>
+            Add atleat your one image and hit upload button to save it. Once your image is saved, You can able to view it on top of the page.
+
+        </p>
+        <div class="text-center">
+            <img src="~/images/pictures.gif" height="300" alt="pictures" />
+        </div>
+    </div>
+
+    <div class="well well-lg">
+        <p>
+            11. Create your biodata
+        </p>
+        <p>
+            Once your image got saved. The download button will enable, Hit download button to generate your bio-data.
+        </p>
+        <div class="text-center">
+            <img src="~/images/download.gif" height="300" alt="download" />
+        </div>
+    </div>
+
+    <div class="col-md-7 col-sm-7" style="padding-bottom: 10px;">
+        @Html.ActionLink("Start Creating", "ValidateAuthorize", "Home", new {}, new { id = "startcreating", @class="btn btn-primary btn-lg pull-right"})
+    </div>
+
 </div>
-
-
-
-

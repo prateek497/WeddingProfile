@@ -2,6 +2,8 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+  <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+<VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
@@ -278,6 +280,11 @@
     <Content Include="images\bg1.jpg" />
     <Content Include="images\bg_loc.jpg" />
     <Content Include="images\bg_new.jpg" />
+    <Content Include="images\career.gif" />
+    <Content Include="images\contact.gif" />
+    <Content Include="images\download.gif" />
+    <Content Include="images\Education.gif" />
+    <Content Include="images\family.gif" />
     <Content Include="images\guy-2607282_1920.jpg" />
     <Content Include="images\home.gif" />
     <Content Include="images\img_bg_2.jpg" />
@@ -287,8 +294,12 @@
     <Content Include="images\me.jpg" />
     <Content Include="images\MeNew.jpg" />
     <Content Include="images\model.jpg" />
+    <Content Include="images\Personal.gif" />
+    <Content Include="images\pictures.gif" />
     <Content Include="images\Premium.jpg" />
+    <Content Include="images\religious.gif" />
     <Content Include="images\sample.jpg" />
+    <Content Include="images\signin.gif" />
     <Content Include="images\signup.gif" />
     <Content Include="images\vaibhav2.jpg" />
     <Content Include="images\vaibhav3.jpg" />
@@ -468,7 +479,9 @@
     <Content Include="Scripts\simplyCountdown.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="sitemap.xml" />
+    <Content Include="sitemap.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -531,7 +544,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v15.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
