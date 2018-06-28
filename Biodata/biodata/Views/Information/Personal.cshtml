@@ -115,7 +115,7 @@
 
                     <div class="col-sm-2 form-group">
                         <label>Birth state</label>
-                        <div class="input-group">
+                        @*<div class="input-group">*@
                             @Html.TextBoxFor(x => x.Birthstate, new
                        {
                            type = "text",
@@ -124,9 +124,9 @@
                            data_toggle = "tooltip",
                            title = "Birth state"
                        })
-                            <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                            @*<span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         </div>
-                        @Html.ValidationMessageFor(m => m.Birthstate, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                        @Html.ValidationMessageFor(m => m.Birthstate, "", new { @class = "text-danger", style = "font-size: 12px;" })*@
                         @*<small class="help-block" style="font-size: 11px;"><i>Birth state of the person's resume</i></small>*@
                     </div>
 

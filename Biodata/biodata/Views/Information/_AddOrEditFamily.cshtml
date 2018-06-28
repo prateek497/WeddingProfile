@@ -11,13 +11,13 @@
                 <label>Relationship with candidate</label>
                 <div class="input-group">
                     @Html.DropDownListFor(x => x.RelationshipText, new SelectList(Model.RelationshipList),
-                        new
-                        {
-                            id = "relationship",
-                            @class = "form-control",
-                            data_toggle = "tooltip",
-                            title = "Relationship with the person"
-                        })
+                             new
+                             {
+                                 id = "relationship",
+                                 @class = "form-control",
+                                 data_toggle = "tooltip",
+                                 title = "Relationship with the person"
+                             })
                     <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                 </div>
                 @Html.ValidationMessageFor(m => m.RelationshipText, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -26,13 +26,13 @@
                 <label>Name</label>
                 <div class="input-group">
                     @Html.TextBoxFor(x => x.Name, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - Name",
-                                @class = "form-control",
-                                @data_toggle = "tooltip",
-                                title = "Enter Name"
-                            })
+                    {
+                        type = "text",
+                        placeholder = "e.g. - Name",
+                        @class = "form-control",
+                        @data_toggle = "tooltip",
+                        title = "Enter Name"
+                    })
                     <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                 </div>
                 @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -41,13 +41,13 @@
                 <label>City</label>
                 <div class="input-group">
                     @Html.TextBoxFor(x => x.City, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - City",
-                                @class = "form-control",
-                                title = "Enter your City",
-                                data_toggle = "tooltip"
-                            })
+                    {
+                        type = "text",
+                        placeholder = "e.g. - City",
+                        @class = "form-control",
+                        title = "Enter your City",
+                        data_toggle = "tooltip"
+                    })
                     <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                 </div>
                 @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger", style = "font-size: 12px;" })
@@ -55,31 +55,31 @@
 
             <div class="col-sm-3 form-group">
                 <label>State</label>
-                <div class="input-group">
-                    @Html.TextBoxFor(x => x.State, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - State",
-                                @class = "form-control",
-                                title = "Enter State",
-                                data_toggle = "tooltip"
-                            })
-                    <span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
-                </div>
-                @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger", style = "font-size: 12px;" })
+                @*<div class="input-group">*@
+                @Html.TextBoxFor(x => x.State, new
+                {
+                    type = "text",
+                    placeholder = "e.g. - State",
+                    @class = "form-control",
+                    title = "Enter State",
+                    data_toggle = "tooltip"
+                })
+                @*<span class="input-group-addon "><span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger", style = "font-size: 12px;" })*@
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label>Designation</label>
                 @Html.TextBoxFor(x => x.Designation, new
-                            {
-                                type = "text",
-                                placeholder = "e.g. - Designation",
-                                @class = "form-control",
-                                data_toggle = "tooltip",
-                                title = "Enter Designation"
-                            })
+                {
+                    type = "text",
+                    placeholder = "e.g. - Designation",
+                    @class = "form-control",
+                    data_toggle = "tooltip",
+                    title = "Enter Designation"
+                })
                 @Html.ValidationMessageFor(m => m.Designation, "", new { @class = "text-danger", style = "font-size: 12px;" })
             </div>
             <div class="col-sm-4 form-group">

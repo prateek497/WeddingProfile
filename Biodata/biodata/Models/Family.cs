@@ -26,7 +26,7 @@ namespace biodata.Models
         [StringLength(40, MinimumLength = 1, ErrorMessage = "City cannot be longer than 40 characters.")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "State is required", AllowEmptyStrings = false)]
+        //[Required(ErrorMessage = "State is required", AllowEmptyStrings = false)]
         [StringLength(40, MinimumLength = 1, ErrorMessage = "State cannot be longer than 40 characters.")]
         public string State { get; set; }
 

@@ -7363,7 +7363,11 @@
                                                             </div>
                                                             <div>
                                                                 <span style="font-size: 18px; color: #006699"> @Model.PersonalData.Birthplace</span>
-                                                                <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.Birthstate</span>
+                                                                @if (!string.IsNullOrEmpty(Model.PersonalData.Birthstate))
+                                                                {
+
+                                                                    <span style="font-size: 10px; color: #6F7174"> @Model.PersonalData.Birthstate</span>
+                                                                }
                                                             </div>
                                                         </div>
                                                     </td>
@@ -7623,7 +7627,7 @@
                                                                 }
                                                                 @if (!string.IsNullOrEmpty(Model.CareerData.Location))
                                                                 {
-                                                                    <span style="font-size: 18px; color: #006699"> ,@Model.CareerData.Location</span>  @*, FROM @Model.CareerData.WorkingFrom+ YEARS*@
+                                                                    <span style="font-size: 18px; color: #006699"> ,@Model.CareerData.Location</span> @*, FROM @Model.CareerData.WorkingFrom+ YEARS*@
                                                                 }
                                                             </h6>
                                                         </div>
@@ -7750,7 +7754,7 @@
                                     @*<div style="height: @pic.Height +'px'; width: @pic.Width+'px'; ">*@
                                     @*<div style="padding: 10px;">*@
                                     <img class="img-rounded" style="border: 2px solid #FAAA1F; background-color: #F2F2F2; padding: 0px;"
-                                            alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="@pic.Width" height="@pic.Height" />
+                                         alt="Profile Picture" src="data:image;base64,@Convert.ToBase64String(pic.PicBytes)" width="@pic.Width" height="@pic.Height" />
                                     @*</div>*@
                                     @*</div>*@
                                 </div>

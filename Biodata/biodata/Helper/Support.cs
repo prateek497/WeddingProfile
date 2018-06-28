@@ -247,7 +247,7 @@ namespace biodata.Helper
                 mm.Body = body;
                 if (attachment != null)
                 {
-                    Attachment att = new Attachment(new MemoryStream(attachment), "NewBiodata");
+                    Attachment att = new Attachment(new MemoryStream(attachment), "NewBiodata.pdf");
                     //string fileName = Path.GetFileName(model.Attachment.FileName);
                     mm.Attachments.Add(att);
                 }

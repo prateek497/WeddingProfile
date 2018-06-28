@@ -27,7 +27,7 @@ namespace biodata.Models
         [StringLength(30, MinimumLength = 1, ErrorMessage = "Birth place cannot be longer than 30 characters.")]
         public string Birthplace { get; set; }
 
-        [Required(ErrorMessage = "Birth state is required", AllowEmptyStrings = false)]
+        //[Required(ErrorMessage = "Birth state is required", AllowEmptyStrings = false)]
         [StringLength(30, MinimumLength = 1, ErrorMessage = "Name cannot be longer than 30 characters.")]
         public string Birthstate { get; set; }
 
