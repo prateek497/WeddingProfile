@@ -406,8 +406,16 @@ namespace biodata.Controllers
         public ActionResult _Basic(string email, PdfGeneratorModel model)
         {
             model.Email = email;
-            model = GetPdfGeneratorModel(email);
-            if (string.IsNullOrEmpty(model.PersonalData.Name)) return Content("Empty model");
+            try
+            {
+                model = GetPdfGeneratorModel(email);
+                if (string.IsNullOrEmpty(model.PersonalData.Name)) return Content("Empty model");
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+
             string htmlstring = RenderRazorViewToString("_Basic", model);
 
             var contentBytes = PDFGenerator.PdfGenerator.GenerateBytes(htmlstring);
